@@ -1,0 +1,57 @@
+BEAVRS Input File Generator
+===========================
+
+The BEAVRS script has been redesigned to be more user-friendly and modular. With
+the new script it should be much easier to extract single elements of the
+geometry (e.g., single assemblies and pins) as well as make modifications to
+different parts of the geometry.
+
+The old script is replaced with python module `beavrs`, and a main builder class
+that contains all elements of the model that can be manipulated in python before
+outputing input files.
+
+The script has been built to use OpenCG (formerly
+[OpenCG](https://github.com/mit-crpg/opencg)) and the OpenMC python API.
+This should enable future changes to OpenMC input file format to be easily
+accomodated for, and allow for easy creation of inputs for different codes (e.g.
+Serpent, MCNP) once OpenCG compatibility modules are created for them.
+
+Installation
+------------
+
+This package can be installed with distutils via:
+
+```bash
+python setup.py install --user
+```
+
+The dependencies are not officially released yet, but they are easy to obtain
+for CRPG group members.  In the near future these will be part of official
+publicly-available releases.
+
+To satisfy the OpenCG dependency:
+
+```bash
+git clone https://github.com/mit-crpg/OpenCG.git
+cd OpenCG
+python setup.py install --user
+```
+
+Usage
+-----
+
+Once the module is installed, it can be constructed in python:
+
+```python
+from beavrs.builder import BEAVRS
+
+model = BEAVRS()
+
+model.write_openmc_geometry()
+model.write_openmc_materials()
+model.write_openmc_plots()
+model.write_openmc_settings()
+
+```
+
+For convenience, a script `make_beavrs.py` is also provided to build the model.
