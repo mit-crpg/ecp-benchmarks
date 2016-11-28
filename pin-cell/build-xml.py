@@ -1,5 +1,4 @@
-"""This script creates an infinitely long fuel pin cell with reflective
-boundary conditions derived from the mit-crpg/PWR_benchmarks repository."""
+"""Creates a 2D fuel pin cell with reflective BCs."""
 
 import numpy as np
 

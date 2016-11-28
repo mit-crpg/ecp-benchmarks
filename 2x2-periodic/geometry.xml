@@ -1,0 +1,245 @@
+<?xml version='1.0' encoding='utf-8'?>
+<geometry>
+    <cell fill="2" id="10002" name="(Fuel rod - 1.6% enr) wrapped by (Grids axial universe) radial 0: Fuel rod - 1.6% enr" region="(-10003)" universe="70" />
+    <cell fill="6" id="10003" name="Grids axial universe axial 7: Intermediate grid pincell" region="(-10004 10005)" universe="89" />
+    <cell id="10011" material="10014" name="Grids axial universe axial 8: water" region="(-10016 10004)" universe="89" />
+    <cell id="10012" material="10001" name="BPRA rod lower/upper fitting radial 0: SS304" region="(-10017)" universe="131" />
+    <cell fill="53" id="10014" name="BPRA rod axial 5: BPRA rod plenum" region="(-10020 10021)" universe="34" />
+    <cell id="10024" material="10014" name="Intermediate grid pincell radial 0: water" region="(10025 -10026 10027 -10028)" universe="6" />
+    <cell id="10025" material="10014" name="Fuel rod - 1.6% enr axial 0: water" region="(-10029)" universe="2" />
+    <cell fill="5" id="10027" name="Fuel rod - 3.1% enr axial 4: Fuel rod plenum" region="(-10032 10033)" universe="105" />
+    <cell fill="34" id="10034" name="(BPRA rod) wrapped by ((Empty Guide Tube) wrapped by (Grids axial universe)) radial 0: BPRA rod" region="(-10017)" universe="64" />
+    <cell id="10037" material="10000" name="BPRA rod active poison radial 4: air" region="(10039 -10040)" universe="122" />
+    <cell id="10038" material="10014" name="Fuel rod active region - 1.6% enr radial outer: water" region="(10003)" universe="4" />
+    <cell id="10044" material="10014" name="Empty Guide Tube in Center Position axial top: water" region="(10042)" universe="130" />
+    <cell fill="102" id="10045" name="(Empty Guide Tube) wrapped by (Grids axial universe) radial 0: Empty Guide Tube" region="(-10043)" universe="138" />
+    <cell id="10046" material="10014" name="Grids axial universe axial 2: water" region="(-10044 10036)" universe="89" />
+    <cell fill="89" id="10051" name="(Fuel rod - 3.1% enr) wrapped by (Grids axial universe) radial outer: Grids axial universe" region="(10003)" universe="133" />
+    <cell id="10052" material="10014" name="Grids axial universe axial 14: water" region="(-10045 10046)" universe="89" />
+    <cell id="10057" material="10005" name="Top/Bottom grid pincell radial outer: inconel box N" region="(10050)" universe="129" />
+    <cell id="10058" material="10001" name="BPRA rod plenum radial 3: SS304" region="(10040 -10017)" universe="53" />
+    <cell id="10059" material="10010" name="Fuel rod active region - 3.1% enr radial 0: fuel 3.1%" region="(-10051)" universe="43" />
+    <cell id="10063" material="10000" name="Instrument tube thimble radial 0: air" region="(-10056)" universe="51" />
+    <cell id="10064" material="10014" name="Grids axial universe axial 16: water" region="(-10009 10057)" universe="89" />
+    <cell id="10065" material="10014" name="Empty GT below the dashpot radial outer: water" region="(10058)" universe="30" />
+    <cell fill="30" id="10067" name="Empty Guide Tube axial 2: Empty GT below the dashpot" region="(-10059 10060)" universe="102" />
+    <cell fill="6" id="10068" name="Grids axial universe axial 9: Intermediate grid pincell" region="(-10061 10016)" universe="89" />
+    <cell id="10073" material="10005" name="Top/Bottom grid pincell radial outer: inconel box E" region="(10063 10064 -10050)" universe="129" />
+    <cell id="10079" material="10014" name="Fuel rod - 1.6% enr axial 6: water" region="(-10041 10048)" universe="2" />
+    <cell fill="122" id="10082" name="BPRA rod axial 4: BPRA rod active poison" region="(-10021 10068)" universe="34" />
+    <cell id="10085" material="10014" name="Fuel rod lower/upper fitting radial outer: water" region="(10003)" universe="3" />
+    <cell id="10090" material="10015" name="Instrument tube axial stack axial 3: water_spn" region="(-10042 10041)" universe="83" />
+    <cell id="10098" material="10014" name="Fuel rod plenum radial outer: water" region="(10003)" universe="5" />
+    <cell id="10101" material="10006" name="Intermediate grid pincell radial outer: zirc box S" region="(-10025)" universe="6" />
+    <cell id="10116" material="10014" name="BPRA rod active poison radial outer: water" region="(10017)" universe="122" />
+    <cell id="10122" material="10014" name="Grids axial universe axial 0: water" region="(-10029)" universe="89" />
+    <cell id="10124" material="10006" name="Empty GT above the dashpot radial 1: zirc" region="(10082 -10043)" universe="72" />
+    <cell id="10125" material="10014" name="Grids axial universe axial 4: water" region="(-10083 10084)" universe="89" />
+    <cell id="10138" material="10016" name="Fuel rod - 1.6% enr axial 1: ss_spn" region="(-10093 10029)" universe="2" />
+    <cell id="10141" material="10006" name="Fuel rod active region - 3.1% enr radial 2: zirc" region="(10095 -10003)" universe="43" />
+    <cell id="10145" material="10014" name="Instrument tube thimble radial outer: water" region="(10098)" universe="51" />
+    <cell fill="5" id="10147" name="Fuel rod - 1.6% enr axial 4: Fuel rod plenum" region="(-10032 10033)" universe="2" />
+    <cell id="10148" material="10000" name="BPRA rod plenum radial 2: air" region="(10099 -10040)" universe="53" />
+    <cell id="10150" material="10015" name="Empty Guide Tube axial 4: water_spn" region="(-10042 10102)" universe="102" />
+    <cell fill="6" id="10151" name="Grids axial universe axial 11: Intermediate grid pincell" region="(-10022 10023)" universe="89" />
+    <cell fill="72" id="10155" name="Empty Guide Tube in Center Position axial 2: Empty GT above the dashpot" region="(-10102 10060)" universe="130" />
+    <cell id="10162" material="10016" name="Fuel rod - 3.1% enr axial 1: ss_spn" region="(-10093 10029)" universe="105" />
+    <cell id="10165" material="10014" name="Fuel rod - 1.6% enr axial top: water" region="(10042)" universe="2" />
+    <cell fill="131" id="10169" name="BPRA rod axial 6: BPRA rod lower/upper fitting" region="(-10111 10020)" universe="34" />
+    <cell id="10171" material="10001" name="BPRA rod active poison radial 1: SS304" region="(10112 -10099)" universe="122" />
+    <cell id="10172" material="10008" name="Fuel rod active region - 1.6% enr radial 0: fuel 1.6%" region="(-10051)" universe="4" />
+    <cell id="10179" material="10015" name="Empty Guide Tube in Center Position axial 1: water_spn" region="(-10060 10029)" universe="130" />
+    <cell id="10180" material="10014" name="Grids axial universe axial 18: water" region="(-10041 10008)" universe="89" />
+    <cell id="10183" material="10014" name="Empty GT below the dashpot radial 0: water" region="(-10116)" universe="30" />
+    <cell id="10188" material="10000" name="BPRA rod active poison radial 0: air" region="(-10112)" universe="122" />
+    <cell id="10191" material="10014" name="Fuel rod - 3.1% enr axial top: water" region="(10042)" universe="105" />
+    <cell id="10199" material="10004" name="Fuel rod plenum radial 1: helium" region="(10121 -10095)" universe="5" />
+    <cell id="10202" material="10006" name="Intermediate grid pincell radial outer: zirc box W" region="(-10027 10025 -10026)" universe="6" />
+    <cell id="10204" material="10000" name="BPRA rod plenum radial 0: air" region="(-10112)" universe="53" />
+    <cell id="10209" material="10014" name="Instrument tube axial stack axial top: water" region="(10042)" universe="83" />
+    <cell id="10213" material="10015" name="Grids axial universe axial 1: water_spn" region="(-10036 10029)" universe="89" />
+    <cell id="10215" material="10014" name="Grids axial universe axial 6: water" region="(-10005 10108)" universe="89" />
+    <cell fill="4" id="10228" name="Fuel rod - 1.6% enr axial 3: Fuel rod active region - 1.6% enr" region="(-10033 10120)" universe="2" />
+    <cell id="10231" material="10015" name="BPRA rod axial 1: water_spn" region="(-10036 10029)" universe="34" />
+    <cell id="10236" material="10014" name="Instrument tube axial stack axial 0: water" region="(-10029)" universe="83" />
+    <cell fill="6" id="10241" name="Grids axial universe axial 13: Intermediate grid pincell" region="(-10046 10073)" universe="89" />
+    <cell fill="43" id="10250" name="Fuel rod - 3.1% enr axial 3: Fuel rod active region - 3.1% enr" region="(-10033 10120)" universe="105" />
+    <cell id="10254" material="10014" name="BPRA rod axial 2: water" region="(-10130 10036)" universe="34" />
+    <cell id="10259" material="10013" name="BPRA rod active poison radial 3: borosilicate" region="(10131 -10039)" universe="122" />
+    <cell id="10260" material="10006" name="Fuel rod active region - 1.6% enr radial 2: zirc" region="(10095 -10003)" universe="4" />
+    <cell id="10265" material="10015" name="Empty Guide Tube in Center Position axial 3: water_spn" region="(-10042 10102)" universe="130" />
+    <cell id="10266" material="10014" name="Grids axial universe axial top: water" region="(10042)" universe="89" />
+    <cell id="10272" material="10014" name="Top/Bottom grid pincell radial 0: water" region="(10064 -10050 10135 -10063)" universe="129" />
+    <cell id="10282" material="10015" name="Empty Guide Tube axial 1: water_spn" region="(-10060 10029)" universe="102" />
+    <cell fill="3" id="10292" name="Fuel rod - 1.6% enr axial 5: Fuel rod lower/upper fitting" region="(-10048 10032)" universe="2" />
+    <cell fill="131" id="10295" name="BPRA rod axial 3: BPRA rod lower/upper fitting" region="(-10068 10130)" universe="34" />
+    <cell id="10297" material="10014" name="BPRA rod lower/upper fitting radial outer: water" region="(10017)" universe="131" />
+    <cell id="10298" material="10006" name="Fuel rod lower/upper fitting radial 0: zirc" region="(-10003)" universe="3" />
+    <cell fill="51" id="10302" name="Instrument tube axial stack axial 2: Instrument tube thimble" region="(-10041 10093)" universe="83" />
+    <cell fill="89" id="10307" name="(Empty Guide Tube) wrapped by (Grids axial universe) radial outer: Grids axial universe" region="(10043)" universe="138" />
+    <cell fill="6" id="10308" name="Grids axial universe axial 15: Intermediate grid pincell" region="(-10057 10045)" universe="89" />
+    <cell id="10317" material="10006" name="Intermediate grid pincell radial outer: zirc box N" region="(10026)" universe="6" />
+    <cell id="10318" material="10014" name="Fuel rod - 3.1% enr axial 6: water" region="(-10041 10048)" universe="105" />
+    <cell fill="3" id="10319" name="Fuel rod - 3.1% enr axial 5: Fuel rod lower/upper fitting" region="(-10048 10032)" universe="105" />
+    <cell fill="108" id="10322" name="(Instrument tube axial stack) wrapped by ((Empty Guide Tube in Center Position) wrapped by (Grids axial universe)) radial outer: (Empty Guide Tube in Center Position) wrapped by (Grids axial universe)" region="(10098)" universe="74" />
+    <cell id="10324" material="10014" name="Fuel rod - 3.1% enr axial 0: water" region="(-10029)" universe="105" />
+    <cell fill="138" id="10327" name="(BPRA rod) wrapped by ((Empty Guide Tube) wrapped by (Grids axial universe)) radial outer: (Empty Guide Tube) wrapped by (Grids axial universe)" region="(10017)" universe="64" />
+    <cell id="10331" material="10001" name="BPRA rod active poison radial 5: SS304" region="(10040 -10017)" universe="122" />
+    <cell fill="129" id="10332" name="Grids axial universe axial 17: Top/Bottom grid pincell" region="(-10008 10009)" universe="89" />
+    <cell id="10341" material="10014" name="Empty GT above the dashpot radial 0: water" region="(-10082)" universe="72" />
+    <cell fill="129" id="10342" name="Grids axial universe axial 3: Top/Bottom grid pincell" region="(-10084 10044)" universe="89" />
+    <cell id="10345" material="10005" name="Top/Bottom grid pincell radial outer: inconel box S" region="(-10064)" universe="129" />
+    <cell id="10360" material="10014" name="BPRA rod plenum radial outer: water" region="(10017)" universe="53" />
+    <cell id="10361" material="10004" name="Fuel rod active region - 3.1% enr radial 1: helium" region="(10051 -10095)" universe="43" />
+    <cell id="10367" material="10006" name="Instrument tube thimble radial 1: zirc" region="(10056 -10098)" universe="51" />
+    <cell id="10369" material="10015" name="Instrument tube axial stack axial 1: water_spn" region="(-10093 10029)" universe="83" />
+    <cell fill="72" id="10371" name="Empty Guide Tube axial 3: Empty GT above the dashpot" region="(-10102 10059)" universe="102" />
+    <cell id="10372" material="10014" name="Grids axial universe axial 10: water" region="(-10023 10061)" universe="89" />
+    <cell id="10388" material="10016" name="Fuel rod - 1.6% enr axial 7: ss_spn" region="(-10042 10041)" universe="2" />
+    <cell id="10403" material="10014" name="Empty Guide Tube in Center Position axial 0: water" region="(-10029)" universe="130" />
+    <cell id="10404" material="10014" name="Empty Guide Tube axial 0: water" region="(-10029)" universe="102" />
+    <cell id="10413" material="10006" name="Intermediate grid pincell radial outer: zirc box E" region="(10028 10025 -10026)" universe="6" />
+    <cell fill="130" id="10414" name="(Empty Guide Tube in Center Position) wrapped by (Grids axial universe) radial 0: Empty Guide Tube in Center Position" region="(-10043)" universe="108" />
+    <cell id="10418" material="10016" name="Fuel rod - 3.1% enr axial 7: ss_spn" region="(-10042 10041)" universe="105" />
+    <cell fill="105" id="10421" name="(Fuel rod - 3.1% enr) wrapped by (Grids axial universe) radial 0: Fuel rod - 3.1% enr" region="(-10003)" universe="133" />
+    <cell id="10428" material="10005" name="Fuel rod plenum radial 0: inconel" region="(-10121)" universe="5" />
+    <cell fill="89" id="10436" name="(Empty Guide Tube in Center Position) wrapped by (Grids axial universe) radial outer: Grids axial universe" region="(10043)" universe="108" />
+    <cell id="10441" material="10014" name="Empty GT above the dashpot radial outer: water" region="(10043)" universe="72" />
+    <cell fill="6" id="10442" name="Grids axial universe axial 5: Intermediate grid pincell" region="(-10108 10083)" universe="89" />
+    <cell id="10444" material="10005" name="Top/Bottom grid pincell radial outer: inconel box W" region="(-10135 10064 -10050)" universe="129" />
+    <cell fill="3" id="10455" name="Fuel rod - 1.6% enr axial 2: Fuel rod lower/upper fitting" region="(-10120 10093)" universe="2" />
+    <cell id="10457" material="10014" name="BPRA rod axial 0: water" region="(-10029)" universe="34" />
+    <cell id="10458" material="10014" name="Fuel rod active region - 3.1% enr radial outer: water" region="(10003)" universe="43" />
+    <cell id="10467" material="10014" name="Empty Guide Tube axial top: water" region="(10042)" universe="102" />
+    <cell id="10468" material="10014" name="Grids axial universe axial 12: water" region="(-10073 10022)" universe="89" />
+    <cell fill="3" id="10479" name="Fuel rod - 3.1% enr axial 2: Fuel rod lower/upper fitting" region="(-10120 10093)" universe="105" />
+    <cell fill="89" id="10482" name="(Fuel rod - 1.6% enr) wrapped by (Grids axial universe) radial outer: Grids axial universe" region="(10003)" universe="70" />
+    <cell id="10484" material="10014" name="BPRA rod axial top: water" region="(10111)" universe="34" />
+    <cell id="10490" material="10000" name="BPRA rod active poison radial 2: air" region="(10099 -10131)" universe="122" />
+    <cell id="10491" material="10004" name="Fuel rod active region - 1.6% enr radial 1: helium" region="(10051 -10095)" universe="4" />
+    <cell fill="83" id="10496" name="(Instrument tube axial stack) wrapped by ((Empty Guide Tube in Center Position) wrapped by (Grids axial universe)) radial 0: Instrument tube axial stack" region="(-10098)" universe="74" />
+    <cell id="10501" material="10015" name="Grids axial universe axial 19: water_spn" region="(-10042 10041)" universe="89" />
+    <cell id="10505" material="10006" name="Empty GT below the dashpot radial 1: zirc" region="(10116 -10058)" universe="30" />
+    <cell id="10524" material="10006" name="Fuel rod plenum radial 2: zirc" region="(10095 -10003)" universe="5" />
+    <cell id="10529" material="10001" name="BPRA rod plenum radial 1: SS304" region="(10112 -10099)" universe="53" />
+    <cell fill="79" id="10530" name="assm2 cell" universe="140" />
+    <cell fill="141" id="10531" name="root cell" region="(10136 -10137 10138 -10139 10140 -10141)" universe="0" />
+    <cell fill="31" id="10532" name="assm1 cell" universe="139" />
+    <lattice id="141" name="reflector">
+        <pitch>21.41728 21.41728 1000.0</pitch>
+        <dimension>2 2 1</dimension>
+        <lower_left>-21.41728 -21.41728 -500.0</lower_left>
+        <universes>
+139 140 
+140 139 </universes>
+    </lattice>
+    <lattice id="31" name="Fuel 1.6% enr instr no BAs">
+        <pitch>1.25984 1.25984 1000.0</pitch>
+        <dimension>17 17 1</dimension>
+        <lower_left>-10.70864 -10.70864 -500.0</lower_left>
+        <universes>
+70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 
+70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 
+70 70 70 70 70 138 70 70 138 70 70 138 70 70 70 70 70 
+70 70 70 138 70 70 70 70 70 70 70 70 70 138 70 70 70 
+70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 
+70 70 138 70 70 138 70 70 138 70 70 138 70 70 138 70 70 
+70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 
+70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 
+70 70 138 70 70 138 70 70 74 70 70 138 70 70 138 70 70 
+70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 
+70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 
+70 70 138 70 70 138 70 70 138 70 70 138 70 70 138 70 70 
+70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 
+70 70 70 138 70 70 70 70 70 70 70 70 70 138 70 70 70 
+70 70 70 70 70 138 70 70 138 70 70 138 70 70 70 70 70 
+70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 
+70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 70 </universes>
+    </lattice>
+    <lattice id="79" name="Fuel 3.1% enr instr 20">
+        <pitch>1.25984 1.25984 1000.0</pitch>
+        <dimension>17 17 1</dimension>
+        <lower_left>-10.70864 -10.70864 -500.0</lower_left>
+        <universes>
+133 133 133 133 133 133 133 133 133 133 133 133 133 133 133 133 133 
+133 133 133 133 133 133 133 133 133 133 133 133 133 133 133 133 133 
+133 133 133 133 133 64 133 133 64 133 133 64 133 133 133 133 133 
+133 133 133 64 133 133 133 133 133 133 133 133 133 64 133 133 133 
+133 133 133 133 133 133 133 133 133 133 133 133 133 133 133 133 133 
+133 133 64 133 133 64 133 133 138 133 133 64 133 133 64 133 133 
+133 133 133 133 133 133 133 133 133 133 133 133 133 133 133 133 133 
+133 133 133 133 133 133 133 133 133 133 133 133 133 133 133 133 133 
+133 133 64 133 133 138 133 133 74 133 133 138 133 133 64 133 133 
+133 133 133 133 133 133 133 133 133 133 133 133 133 133 133 133 133 
+133 133 133 133 133 133 133 133 133 133 133 133 133 133 133 133 133 
+133 133 64 133 133 64 133 133 138 133 133 64 133 133 64 133 133 
+133 133 133 133 133 133 133 133 133 133 133 133 133 133 133 133 133 
+133 133 133 64 133 133 133 133 133 133 133 133 133 64 133 133 133 
+133 133 133 133 133 64 133 133 64 133 133 64 133 133 133 133 133 
+133 133 133 133 133 133 133 133 133 133 133 133 133 133 133 133 133 
+133 133 133 133 133 133 133 133 133 133 133 133 133 133 133 133 133 </universes>
+    </lattice>
+    <surface coeffs="0.0 0.0 0.4572" id="10003" name="Fuel clad OR" type="z-cylinder" />
+    <surface coeffs="155.937" id="10004" name="Top of grid 3" type="z-plane" />
+    <surface coeffs="150.222" id="10005" name="Bottom of grid 3" type="z-plane" />
+    <surface coeffs="415.164" id="10008" name="Top of grid 8" type="z-plane" />
+    <surface coeffs="411.806" id="10009" name="Bottom of grid 8" type="z-plane" />
+    <surface coeffs="202.419" id="10016" name="Bottom of grid 4" type="z-plane" />
+    <surface coeffs="0.0 0.0 0.48387" id="10017" name="BPRA rod radius 6" type="z-cylinder" />
+    <surface coeffs="421.532" id="10020" name="Top of plenum in BPRA rod" type="z-plane" />
+    <surface coeffs="401.238" id="10021" name="Top of active poison in BPRA rod" type="z-plane" />
+    <surface coeffs="260.331" id="10022" name="Top of grid 5" type="z-plane" />
+    <surface coeffs="254.616" id="10023" name="Bottom of grid 5" type="z-plane" />
+    <surface coeffs="-0.61049" id="10025" name="Intermediate grid Y min around rods" type="y-plane" />
+    <surface coeffs="0.61049" id="10026" name="Intermediate grid Y max around rods" type="y-plane" />
+    <surface coeffs="-0.61049" id="10027" name="Intermediate grid X min around rods" type="x-plane" />
+    <surface coeffs="0.61049" id="10028" name="Intermediate grid X max around rods" type="x-plane" />
+    <surface coeffs="20.0" id="10029" name="Support plate bottom" type="z-plane" />
+    <surface coeffs="417.164" id="10032" name="Fuel plenum top" type="z-plane" />
+    <surface coeffs="402.508" id="10033" name="Fuel active region top" type="z-plane" />
+    <surface coeffs="35.0" id="10036" name="Lower nozzle top" type="z-plane" />
+    <surface coeffs="0.0 0.0 0.42672" id="10039" name="BPRA rod radius 4" type="z-cylinder" />
+    <surface coeffs="0.0 0.0 0.43688" id="10040" name="BPRA rod radius 5" type="z-cylinder" />
+    <surface coeffs="423.049" id="10041" name="Upper nozzle bottom" type="z-plane" />
+    <surface coeffs="431.876" id="10042" name="Upper nozzle top" type="z-plane" />
+    <surface coeffs="0.0 0.0 0.60198" id="10043" name="Guide tube OR" type="z-cylinder" />
+    <surface coeffs="37.1621" id="10044" name="Bottom of grid 1" type="z-plane" />
+    <surface coeffs="359.01" id="10045" name="Bottom of grid 7" type="z-plane" />
+    <surface coeffs="312.528" id="10046" name="Top of grid 6" type="z-plane" />
+    <surface coeffs="419.704" id="10048" name="Fuel upper fitting top" type="z-plane" />
+    <surface coeffs="0.61015" id="10050" name="Top/Bottom grid Y max around rods" type="y-plane" />
+    <surface coeffs="0.0 0.0 0.39218" id="10051" name="Fuel pellet OR" type="z-cylinder" />
+    <surface coeffs="0.0 0.0 0.43688" id="10056" name="Instrument tube thimble IR" type="z-cylinder" />
+    <surface coeffs="364.725" id="10057" name="Top of grid 7" type="z-plane" />
+    <surface coeffs="0.0 0.0 0.5461" id="10058" name="Guide tube OR below dashpot" type="z-cylinder" />
+    <surface coeffs="39.958" id="10059" name="GT Dashpot plane" type="z-plane" />
+    <surface coeffs="35.0" id="10060" name="Bottom of GT rod" type="z-plane" />
+    <surface coeffs="208.134" id="10061" name="Top of grid 4" type="z-plane" />
+    <surface coeffs="0.61015" id="10063" name="Top/Bottom grid X max around rods" type="x-plane" />
+    <surface coeffs="-0.61015" id="10064" name="Top/Bottom grid Y min around rods" type="y-plane" />
+    <surface coeffs="40.558" id="10068" name="Top of lower fitting in BPRA rod" type="z-plane" />
+    <surface coeffs="306.813" id="10073" name="Bottom of grid 6" type="z-plane" />
+    <surface coeffs="0.0 0.0 0.56134" id="10082" name="Guide tube IR" type="z-cylinder" />
+    <surface coeffs="98.025" id="10083" name="Bottom of grid 2" type="z-plane" />
+    <surface coeffs="40.52" id="10084" name="Top of grid 1" type="z-plane" />
+    <surface coeffs="35.0" id="10093" name="Fuel rod bottom" type="z-plane" />
+    <surface coeffs="0.0 0.0 0.40005" id="10095" name="Fuel clad IR" type="z-cylinder" />
+    <surface coeffs="0.0 0.0 0.48387" id="10098" name="Instrument tube thimble OR" type="z-cylinder" />
+    <surface coeffs="0.0 0.0 0.23051" id="10099" name="BPRA rod radius 2" type="z-cylinder" />
+    <surface coeffs="423.049" id="10102" name="Top of GT rod" type="z-plane" />
+    <surface coeffs="103.74" id="10108" name="Top of grid 2" type="z-plane" />
+    <surface coeffs="431.876" id="10111" name="Top of BPRA rod" type="z-plane" />
+    <surface coeffs="0.0 0.0 0.214" id="10112" name="BPRA rod radius 1" type="z-cylinder" />
+    <surface coeffs="0.0 0.0 0.50419" id="10116" name="Guide tube IR below dashpot" type="z-cylinder" />
+    <surface coeffs="36.748" id="10120" name="Fuel lower fitting top" type="z-plane" />
+    <surface coeffs="0.0 0.0 0.06459" id="10121" name="Fuel rod plenum spring OR" type="z-cylinder" />
+    <surface coeffs="38.66" id="10130" name="Bottom of BPRA rod" type="z-plane" />
+    <surface coeffs="0.0 0.0 0.2413" id="10131" name="BPRA rod radius 3" type="z-cylinder" />
+    <surface coeffs="-0.61015" id="10135" name="Top/Bottom grid X min around rods" type="x-plane" />
+    <surface boundary="periodic" coeffs="-21.41728" id="10136" type="x-plane" />
+    <surface boundary="periodic" coeffs="21.41728" id="10137" type="x-plane" />
+    <surface boundary="periodic" coeffs="-21.41728" id="10138" type="y-plane" />
+    <surface boundary="periodic" coeffs="21.41728" id="10139" type="y-plane" />
+    <surface boundary="reflective" coeffs="192.5" id="10140" type="z-plane" />
+    <surface boundary="reflective" coeffs="197.5" id="10141" type="z-plane" />
+</geometry>
