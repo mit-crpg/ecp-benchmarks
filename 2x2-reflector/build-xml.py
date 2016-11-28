@@ -199,6 +199,28 @@ settings_file.sourcepoint_write = False
 settings_file.export_to_xml()
 
 
+#### Create OpenMC "plots.xml" file
+
+# Initialize the BEAVRS color mapping scheme
+beavrs.write_openmc_plots()
+
+# Create a plot colored by materials
+plot = openmc.Plot()
+bounds = reflector.bounds
+plot.width = [reflector.max_x - reflector.min_x,
+              reflector.max_y - reflector.min_y]
+plot.origin = [bounds[0] + (bounds[3] - bounds[0]) / 2.,
+               bounds[1] + (bounds[4] - bounds[1]) / 2.,
+               bounds[2] + (bounds[5] - bounds[2]) / 2.]
+plot.color = 'mat'
+plot.filename = '2x2-reflector'
+plot.col_spec = beavrs.plots.colspec_mat
+plot.pixels = [1000, 1000]
+
+plot_file = openmc.Plots([plot])
+plot_file.export_to_xml()
+
+
 #### Create OpenMC MGXS libraries
 
 # Get all cells filled with a "fuel" material

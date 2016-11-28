@@ -94,6 +94,8 @@ ENV/
 # OpenMC output files
 *.h5
 *.out
+*.ppm
+*.png
 
 # Temp files
 *.xml~
