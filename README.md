@@ -52,9 +52,9 @@ These scripts depend on the following Python packages:
 * mit-crpg/OpenCG
 * mit-crpg/PWR_benchmarks
 
-Of particular note, The Python ``beavrs'' package must be installed from the
+Of particular note, The Python ``beavrs`` package must be installed from the
 mit-crpg/PWR_benchmarks repository. This package may be installed with
-``distutils'' as follows:
+``distutils`` as follows:
 
 ```bash
 cd PWR_benchmarks/BEAVRS/openmc/inputs
