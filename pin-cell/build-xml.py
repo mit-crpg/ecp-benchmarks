@@ -82,7 +82,7 @@ beavrs = BEAVRS(nndc_xs=True)
 # Write all BEAVRS materials to materials.xml file
 beavrs.write_openmc_materials()
 
-# Extract fuel pin of interest from InferMC's pre-built pin cell Geometries
+# Extract fuel pin of interest from BEAVRS model
 pin_name = 'Fuel rod active region - {}% enr'.format(enrichment)
 pin_geometry = find_pin(pin_name)
 openmc_geometry = opencg_compatible.get_openmc_geometry(pin_geometry)
@@ -108,11 +108,11 @@ settings_file.sourcepoint_write = False
 settings_file.export_to_xml()
 
 
-#### Create OpenMC MGXS Library and "tallies.xml" file
+#### Create OpenMC MGXS library and "tallies.xml" file
 
 # CASMO 70-group structure
-groups = openmc.mgxs.EnergyGroups()
-groups.group_edges = np.array([
+energy_groups = openmc.mgxs.EnergyGroups()
+energy_groups.group_edges = np.array([
     0, 0.005, 0.01, 0.015, 0.02, 0.025, 0.03, 0.035, 0.042, 0.05, 0.058, 0.067,
     0.08, 0.1, 0.14, 0.18, 0.22, 0.25, 0.28, 0.3, 0.32, 0.35, 0.4, 0.5, 0.625,
     0.78, 0.85, 0.91, 0.95, 0.972, 0.996, 1.02, 1.045, 1.071, 1.097, 1.123,
@@ -121,9 +121,9 @@ groups.group_edges = np.array([
     9.118e3, 15.03e3, 24.78e3, 40.85e3, 67.34e3, 111.e3, 183e3, 302.5e3, 500e3,
     821e3, 1.353e6, 2.231e6, 3.679e6, 6.0655e6, 2e7])
 
-# Initialize a 70-group MGXS Library
+# Initialize a 70-group MGXS library
 mgxs_lib = openmc.mgxs.Library(openmc_geometry, by_nuclide=True)
-mgxs_lib.energy_groups = groups
+mgxs_lib.energy_groups = energy_groups
 mgxs_lib.mgxs_types = ['total', 'nu-fission', 'nu-scatter matrix', 'chi']
 mgxs_lib.domain_type = 'material'
 mgxs_lib.correction = None

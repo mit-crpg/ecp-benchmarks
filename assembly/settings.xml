@@ -3,11 +3,11 @@
     <eigenvalue>
         <particles>100000</particles>
         <batches>100</batches>
-        <inactive>5</inactive>
+        <inactive>10</inactive>
     </eigenvalue>
     <source strength="1.0">
         <space type="fission">
-            <parameters>-0.62992 -0.62992 -10.0 0.62992 0.62992 10.0</parameters>
+            <parameters>-10.70864 -10.70864 192.5 10.70864 10.70864 197.5</parameters>
         </space>
     </source>
     <output>
