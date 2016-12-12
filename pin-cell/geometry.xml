@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='utf-8'?>
 <geometry>
-    <cell id="10075" material="10008" name="Fuel rod active region - 1.6% enr radial 0: fuel 1.6%" region="(-10031)" universe="34" />
-    <cell id="10153" material="10006" name="Fuel rod active region - 1.6% enr radial 2: zirc" region="(10034 -10002)" universe="34" />
-    <cell id="10338" material="10014" name="Fuel rod active region - 1.6% enr radial outer: water" region="(10002)" universe="34" />
-    <cell id="10394" material="10004" name="Fuel rod active region - 1.6% enr radial 1: helium" region="(10031 -10034)" universe="34" />
-    <cell fill="34" id="10395" name="root cell" region="(10035 -10036 10037 -10038)" universe="0" />
-    <surface coeffs="0.0 0.0 0.4572" id="10002" name="Fuel clad OR" type="z-cylinder" />
-    <surface coeffs="0.0 0.0 0.39218" id="10031" name="Fuel pellet OR" type="z-cylinder" />
-    <surface coeffs="0.0 0.0 0.40005" id="10034" name="Fuel clad IR" type="z-cylinder" />
-    <surface boundary="reflective" coeffs="-0.62992" id="10035" type="x-plane" />
-    <surface boundary="reflective" coeffs="0.62992" id="10036" type="x-plane" />
-    <surface boundary="reflective" coeffs="-0.62992" id="10037" type="y-plane" />
-    <surface boundary="reflective" coeffs="0.62992" id="10038" type="y-plane" />
+    <cell id="10214" material="10004" name="Fuel rod active region - 1.6% enr radial 1: helium" region="(10005 -10079)" universe="40" />
+    <cell id="10297" material="10014" name="Fuel rod active region - 1.6% enr radial outer: water" region="(10019)" universe="40" />
+    <cell id="10441" material="10008" name="Fuel rod active region - 1.6% enr radial 0: fuel 1.6%" region="(-10005)" universe="40" />
+    <cell id="10533" material="10006" name="Fuel rod active region - 1.6% enr radial 2: zirc" region="(10079 -10019)" universe="40" />
+    <cell fill="40" id="10534" name="root cell" region="(10080 -10081 10082 -10083)" universe="0" />
+    <surface coeffs="0.0 0.0 0.39218" id="10005" name="Fuel pellet OR" type="z-cylinder" />
+    <surface coeffs="0.0 0.0 0.4572" id="10019" name="Fuel clad OR" type="z-cylinder" />
+    <surface coeffs="0.0 0.0 0.40005" id="10079" name="Fuel clad IR" type="z-cylinder" />
+    <surface boundary="reflective" coeffs="-0.62992" id="10080" type="x-plane" />
+    <surface boundary="reflective" coeffs="0.62992" id="10081" type="x-plane" />
+    <surface boundary="reflective" coeffs="-0.62992" id="10082" type="y-plane" />
+    <surface boundary="reflective" coeffs="0.62992" id="10083" type="y-plane" />
 </geometry>
