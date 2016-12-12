@@ -90,6 +90,10 @@ openmc_geometry.export_to_xml()
 
 #### Create OpenMC "settings.xml" file
 
+# Query the user on whether to use multipole cross sections
+multipole = input('Use multipole cross sections? (y/n): ').lower()
+multipole = True if multipole == 'y' else False
+
 # Construct uniform initial source distribution over fissionable zones
 lower_left = fuel_assembly.bounds[:3]
 upper_right = fuel_assembly.bounds[3:]
@@ -104,6 +108,10 @@ settings_file.ptables = True
 settings_file.output = {'tallies': False}
 settings_file.source = source
 settings_file.sourcepoint_write = False
+
+if multipole:
+    settings_file.temperature = {'multipole': True, 'tolerance': 1000}
+
 settings_file.export_to_xml()
 
 
