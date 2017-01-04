@@ -101,9 +101,9 @@ source = openmc.source.Source(space=openmc.stats.Box(lower_left, upper_right))
 source.space.only_fissionable = True
 
 settings_file = openmc.Settings()
-settings_file.batches = 50
-settings_file.inactive = 10
-settings_file.particles = 30000
+settings_file.batches = 10
+settings_file.inactive = 5
+settings_file.particles = 10000
 settings_file.ptables = True
 settings_file.output = {'tallies': False}
 settings_file.source = source

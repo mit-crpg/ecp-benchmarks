@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <settings>
     <eigenvalue>
-        <particles>100000</particles>
-        <batches>100</batches>
+        <particles>10000</particles>
+        <batches>10</batches>
         <inactive>5</inactive>
     </eigenvalue>
     <source strength="1.0">
@@ -17,4 +17,6 @@
         <write>false</write>
     </source_point>
     <ptables>true</ptables>
+    <temperature_multipole>True</temperature_multipole>
+    <temperature_tolerance>1000</temperature_tolerance>
 </settings>

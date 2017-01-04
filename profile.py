@@ -10,46 +10,76 @@ benchmark = input('Benchmark: ')
 os.chdir(benchmark)
 
 # Query user for hardware platform to consider
-platform = input('Hardware platform (Haswell / Phi): ')
+platform = os.environ['HOSTNAME']
 
-# Default MPI+OMP runtime parameters for HASWELL/Phi
-if platform.lower() == 'haswell':
+# Default MPI+OMP runtime parameters for Phi/Haswell
+if 'thing' in platform:
+    platform = 'haswell'
     mpi_procs = [1, 2, 4, 8, 36, 72]
     omp_threads = [72, 36, 18, 9, 2, 1]
-elif platform.lower() == 'phi':
-    mpi_procs = [4, 64, 64, 64]
-    omp_threads = [64, 1, 2, 4]
 else:
-    exit('Unknown hardware platform {}'.format(platform))
+    platform = 'phi'
+    mpi_procs = [4, 4, 4, 64, 64, 64]
+    omp_threads = [16, 32, 64, 1, 2, 4]
 
-# Allocate NumPy arrays for timing data
-inactive_times = np.zeros(len(mpi_procs), dtype=np.int)
-active_times = np.zeros(len(mpi_procs), dtype=np.int)
+# Allocate arrays for timing data for inactive and active cycles
+times = np.zeros((len(mpi_procs),2), dtype=np.int)
 
-for i, (procs, threads) in enumerate(zip(mpi_procs, omp_threads)):
+# Instantiate a Summary object to retrieve the geometry
+su = openmc.Summary('summary.h5')
 
-    # Run OpenMC
-    openmc.run(threads=threads, mpi_procs=procs)
+for i, xs in enumerate(['ace', 'multipole']):
 
-    # Glob the names of all statepoints in the directory
-    sp_filenames = glob.glob('statepoint.*.h5')
+    # Construct uniform initial source distribution over fissionable zones
+    lower_left = su.opencg_geometry.bounds[:2] + [-10.]
+    upper_right = su.opencg_geometry.bounds[3:5] + [10.]
+    source = openmc.source.Source(space=openmc.stats.Box(lower_left, upper_right))
+    source.space.only_fissionable = True
 
-    # Load the final statepoint
-    sp = openmc.StatePoint(sp_filenames[0])
+    settings_file = openmc.Settings()
+    settings_file.batches = 10
+    settings_file.inactive = 5
+    settings_file.particles = 10000
+    settings_file.ptables = True
+    settings_file.output = {'tallies': False}
+    settings_file.source = source
+    settings_file.sourcepoint_write = False
 
-    # Extract cumulative time spent in (in)active cycles in seconds
-    inactive_time = sp.runtime['inactive batches']
-    active_time = sp.runtime['active batches']
+    if xs == 'multipole':
+        settings_file.temperature = {'multipole': True, 'tolerance': 1000}
 
-    # Convert times to neutrons / second
-    inactive_times[i] = int((sp.n_inactive * sp.n_particles) / inactive_time)
-    active_times[i] = int((sp.n_realizations * sp.n_particles) / active_time)
+    settings_file.export_to_xml()
 
-    print('inactive time (n / sec): {}'.format(inactive_times[i]))
-    print('active time (n / sec): {}'.format(active_times[i]))
+    for j, (procs, threads) in enumerate(zip(mpi_procs, omp_threads)):
 
-# Save timing data to CSV files
-np.savetxt('{}-{}-inactive.csv'.format(benchmark, platform),
-           inactive_times, delimiter=',')
-np.savetxt('{}-{}-active.csv'.format(benchmark, platform),
-           active_times, delimiter=',')
+        # Run OpenMC - works for both flat and cache memory modes
+        #openmc.run(threads=threads, mpi_procs=procs,
+        #           mpi_exec='HYDRA_TOPO_DEBUG=1 mpiexec -bind-to numa')
+
+        # Run OpenMC - works for both flat mode with MCDRAM only
+        #openmc.run(threads=threads, mpi_procs=procs,
+        #           mpi_exec='HYDRA_TOPO_DEBUG=1 mpiexec -bind-to core:16 numactl --preferred 4,5,6,7')
+
+        # Run OpenMC - works for both flat and cache memory modes
+        openmc.run(threads=threads, mpi_procs=procs,
+                   mpi_exec='HYDRA_TOPO_DEBUG=1 mpiexec -bind-to core:16')
+
+        # Glob the names of all statepoints in the directory
+        sp_filenames = glob.glob('statepoint.*.h5')
+
+        # Load the final statepoint
+        sp = openmc.StatePoint(sp_filenames[0])
+
+        # Extract cumulative time spent in (in)active cycles in seconds
+        inactive = sp.runtime['inactive batches']
+        active = sp.runtime['active batches']
+
+        # Convert times to neutrons / second
+        times[j,0] = int((sp.n_inactive * sp.n_particles) / inactive)
+        times[j,1] = int((sp.n_realizations * sp.n_particles) / active)
+
+        print('inactive time (n / sec): {}'.format(times[j,0]))
+        print('active time (n / sec): {}'.format(times[j,1]))
+
+    # Save timing data to CSV files
+    np.savetxt('{}-{}.csv'.format(platform, xs), times, delimiter=',', fmt='%d')
