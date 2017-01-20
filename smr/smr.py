@@ -54,24 +54,6 @@ def init_data():
 
   # (if not a fill cell, set 'fill': None.  if not None, 'mat' is ignored)
 
-  co = {'n': 0}
-  cells = {}
-  cells['water pin'] =          { 'order':   inc_order(co),
-                                  'section': comm_t.format("Empty water pincell universe"),
-                                  'comm':    "",
-                                  'id':      new_id(cellIDs),
-                                  'univ':    new_id(univIDs),
-                                  'mat':     mats['water-nominal']['id'],
-                                  'fill':    None,
-                                  'surfs':  '-{0}'.format(surfs['dummy outer']['id'])}
-  cells['water pin 2'] =        { 'order':   inc_order(co),
-                                  'comm':    "",
-                                  'id':      new_id(cellIDs),
-                                  'univ':    cells['water pin']['univ'],
-                                  'mat':     mats['water-nominal']['id'],
-                                  'fill':    None,
-                                  'surfs':  '{0}'.format(surfs['dummy outer']['id'])}
-
   # GUIDE TUBE PIN CELLS
   
   
@@ -2279,7 +2261,8 @@ def make_pin(name,section,co,cells,univ,cellIDs,radSurfList,matList,
                                   'mat':     gridMat,
                                   'fill':    None,
                                   'surfs':  '{0} -{1} {2}'.format(surfs['rod grid box xtop {0}'.format(gridType)]['id'],
-                                                                  surfs['rod grid box ytop {0}'.format(gridType)]['id'],surfs['rod grid box ybot {0}'.format(gridType)]['id'])}
+                                                                  surfs['rod grid box ytop {0}'.format(gridType)]['id'],
+                                                                  surfs['rod grid box ybot {0}'.format(gridType)]['id'])}
     cells[name + ' grid 4'] = {   'order':   inc_order(co),
                                   'comm':    "",
                                   'id':      new_id(cellIDs),
@@ -2287,7 +2270,8 @@ def make_pin(name,section,co,cells,univ,cellIDs,radSurfList,matList,
                                   'mat':     gridMat,
                                   'fill':    None,
                                   'surfs':  '-{0} -{1} {2}'.format(surfs['rod grid box xbot {0}'.format(gridType)]['id'],
-                                                                   surfs['rod grid box ytop {0}'.format(gridType)]['id'],surfs['rod grid box ybot {0}'.format(gridType)]['id'])}
+                                                                   surfs['rod grid box ytop {0}'.format(gridType)]['id'],
+                                                                   surfs['rod grid box ybot {0}'.format(gridType)]['id'])}
 
 def make_stack(name,co,cells,univ,cellIDs,axSurfList,fillList):
   """Populates the cells dictionary with an axial stack universe
