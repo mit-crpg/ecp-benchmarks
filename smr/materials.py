@@ -1,11 +1,82 @@
-import re
-
 import openmc
 from openmc.data import atomic_weight, atomic_mass
 
+# FIXME: Write docstrings
 
+mats = {}
 
-# Parameters
+# Create He gas material for fuel pin gap
+mats['He'] = openmc.Material(hame='Helium')
+mats['He'].temperature = 300
+mats['He'].set_density('g/cc', 0.0015981)
+mats['He'].add_element('He', 1.0, 'ao')
+
+# Create air material for instrument tubes
+mats['Air'] = openmc.Material(name='Air')
+mats['Air'].temperature = 300
+mats['Air'].set_density('g/cc', 000616)
+mats['Air'].add_element('O', 0.2095, 'ao')
+mats['Air'].add_element('N', 0.7809, 'ao')
+mats['Air'].add_element('Ar', 0.00933, 'ao')
+mats['Air'].add_element('C', 0.00027, 'ao')
+
+# Create inconel 718 material
+mats['In'] = openmc.Material(name='Inconel')
+mats['In'].temperature = 300
+mats['In'].set_density('g/cc', 8.2)
+mats['In'].add_lement('Si', 0.0035, 'wo')
+mats['In'].add_element('Cr', 0.1896, 'wo')
+mats['In'].add_element('Mn', 0.0087, 'wo')
+mats['In'].add_element('Fe', 0.2863, 'wo')
+mats['In'].add_element('Ni', 0.5119, 'wo')
+
+# Create stainless steel material
+mats['SS'] = openmc.Material(name='SS304')
+mats['SS'].temperature = 300
+mats['SS'].set_density('g/cc', 8.03)
+mats['SS'].add_element('Si', 0.0060, 'wo')
+mats['SS'].add_element('Cr', 0.1900, 'wo')
+mats['SS'].add_element('Mn', 0.0200, 'wo')
+mats['SS'].add_element('Fe', 0.6840, 'wo')
+mats['SS'].add_element('Ni', 0.1000, 'wo')
+
+# Create carbon steel material
+mats['CS'] = openmc.Material(name='Carbon Steel')
+mats['CS'].temperature = 300
+mats['CS'].set_density('g/cc', 7.8)
+mats['CS'].add_element('C', 0.00270, 'wo')
+mats['CS'].add_element('Mn', 0.00750, 'wo')
+mats['CS'].add_element('P', 0.00025, 'wo')
+mats['CS'].add_element('S', 0.00025, 'wo')
+mats['CS'].add_element('Si', 0.00400, 'wo')
+mats['CS'].add_element('Ni', 0.00750, 'wo')
+mats['CS'].add_element('Cr', 0.00350, 'wo')
+mats['CS'].add_element('Mo', 0.00625, 'wo')
+mats['CS'].add_element('V', 0.00050, 'wo')
+mats['CS'].add_element('Nb', 0.00010, 'wo')
+mats['CS'].add_element('Cu', 0.00200, 'wo')
+mats['CS'].add_element('Ca', 0.00015, 'wo')
+mats['CS'].add_element('B', 0.00003, 'wo')
+mats['CS'].add_element('Ti', 0.00015, 'wo')
+mats['CS'].add_element('Al', 0.00025, 'wo')
+mats['CS'].add_element('Fe', 0.96487, 'wo')
+
+# Create zircaloy 4 material
+mats['Zr'] = openmc.Material(name='Zircaloy-4')
+mats['Zr'].temperature = 300
+mats['Zr'].set_density('g/cc', 6.55)
+mats['Zr'].add_element('O', 0.00125, 'wo')
+mats['Zr'].add_element('Cr', 0.0010, 'wo')
+mats['Zr'].add_element('Fe', 0.0021, 'wo')
+mats['Zr'].add_element('Zr', 0.98115, 'wo')
+mats['Zr'].add_element('Sn', 0.0145, 'wo')
+
+# Create Ag-In-Cd control rod material
+mats['AIC'] = openmc.Material(name='aic_rod')
+mats['AIC'].temperature = 300
+mats['AIC'].set_density('g/cc', 10.16)
+mats['AIC'].add_element('Ag', 0.80, 'wo')
+mats['AIC'].add_element('In', 0.15, 'wo')
 
 
 ########## Borated Water #################
@@ -39,87 +110,13 @@ ah_Bh2o = 2.0 * ah2o_Bh2o
 aho_Bh2o = ah2o_Bh2o
 
 # Create borated water for coolant / moderator
-mat_h2o = openmc.Material(name='Borated Water')
-mat_h2o.temperature = 300
-mat_h2o.set_density('g/cc', rho_Bh2o)
-mat_h2o.add_element('B', aB_Bh2o, 'ao')
-mat_h2o.add_element('H', ah_Bh2o, 'ao')
-mat_h2o.add_element('O', aho_Bh2o, 'ao')
-mat_h2o.add_s_alpha_beta(name='lwtr', xs='15t')
-
-# Create He gas material for fuel pin gap
-mat_he = openmc.Material(hame='Helium')
-mat_he.temperature = 300
-mat_he.set_density('g/cc', 0.0015981)
-mat_he.add_element('He', 1.0, 'ao')
-
-# Create air material for instrument tubes
-mat_air = openmc.Material(name='Air')
-mat_air.temperature = 300
-mat_air.set_density('g/cc', 000616)
-mat_air.add_element('O', 0.2095, 'ao')
-mat_air.add_element('N', 0.7809, 'ao')
-mat_air.add_element('Ar', 0.00933, 'ao')
-mat_air.add_element('C', 0.00027, 'ao')
-
-# Create inconel 718 material
-mat_in = openmc.Material(name='Inconel')
-mat_in.temperature = 300
-mat_in.set_density('g/cc', 8.2)
-mat_in.add_lement('Si', 0.0035, 'wo')
-mat_in.add_element('Cr', 0.1896, 'wo')
-mat_in.add_element('Mn', 0.0087, 'wo')
-mat_in.add_element('Fe', 0.2863, 'wo')
-mat_in.add_element('Ni', 0.5119, 'wo')
-
-# Create stainless steel material
-mat_ss = openmc.Material(name='SS304')
-mat_ss.temperature = 300
-mat_ss.set_density('g/cc', 8.03)
-mat_ss.add_element('Si', 0.0060, 'wo')
-mat_ss.add_element('Cr', 0.1900, 'wo')
-mat_ss.add_element('Mn', 0.0200, 'wo')
-mat_ss.add_element('Fe', 0.6840, 'wo')
-mat_ss.add_element('Ni', 0.1000, 'wo')
-
-# Create carbon steel material
-mat_cs = openmc.Material(name='Carbon Steel')
-mat_cs.temperature = 300
-mat_cs.set_density('g/cc', 7.8)
-mat_cs.add_element('C', 0.00270, 'wo')
-mat_cs.add_element('Mn', 0.00750, 'wo')
-mat_cs.add_element('P', 0.00025, 'wo')
-mat_cs.add_element('S', 0.00025, 'wo')
-mat_cs.add_element('Si', 0.00400, 'wo')
-mat_cs.add_element('Ni', 0.00750, 'wo')
-mat_cs.add_element('Cr', 0.00350, 'wo')
-mat_cs.add_element('Mo', 0.00625, 'wo')
-mat_cs.add_element('V', 0.00050, 'wo')
-mat_cs.add_element('Nb', 0.00010, 'wo')
-mat_cs.add_element('Cu', 0.00200, 'wo')
-mat_cs.add_element('Ca', 0.00015, 'wo')
-mat_cs.add_element('B', 0.00003, 'wo')
-mat_cs.add_element('Ti', 0.00015, 'wo')
-mat_cs.add_element('Al', 0.00025, 'wo')
-mat_cs.add_element('Fe', 0.96487, 'wo')
-
-# Create zircaloy 4 material
-mat_zr = openmc.Material(name='Zircaloy-4')
-mat_zr.temperature = 300
-mat_zr.set_density('g/cc', 6.55)
-mat_zr.add_element('O', 0.00125, 'wo')
-mat_zr.add_element('Cr', 0.0010, 'wo')
-mat_zr.add_element('Fe', 0.0021, 'wo')
-mat_zr.add_element('Zr', 0.98115, 'wo')
-mat_zr.add_element('Sn', 0.0145, 'wo')
-
-# Create Ag-In-Cd control rod material
-mat_aic = openmc.Material(name='aic_rod')
-mat_aic.temperature = 300
-mat_aic.set_density('g/cc', 10.16)
-mat_aic.add_element('Ag', 0.80, 'wo')
-mat_aic.add_element('In', 0.15, 'wo')
-mat_aic.add_element('Cd', 0.05, 'wo')
+mats['H2O'] = openmc.Material(name='Borated Water')
+mats['H2O'].temperature = 300
+mats['H2O'].set_density('g/cc', rho_Bh2o)
+mats['H2O'].add_element('B', aB_Bh2o, 'ao')
+mats['H2O'].add_element('H', ah_Bh2o, 'ao')
+mats['H2O'].add_element('O', aho_Bh2o, 'ao')
+mats['H2O'].add_s_alpha_beta(name='lwtr', xs='15t')
 
 
 ########## Borosilicate Glass #################
@@ -149,42 +146,41 @@ aB10_B = aB10_bsg / (aB10_bsg + aB11_bsg)
 aB11_B = 1.0 - aB10_B
 
 # Create borosilicate glass material
-mat_bsg = openmc.Material(name='Borosilicate Glass')
-mat_bsg.temperature = 300
-mat_bsg.set_density('g/cc', 2.26)
-mat_bsg.add_element('O', aO_bsg, 'ao')
-mat_bsg.add_element('Si', aSi_bsg, 'ao')
-mat_bsg.add_element('Al', aAl_bsg, 'ao')
-mat_bsg.add_nuclide('B10', aB10_B, 'ao')
-mat_bsg.add_nuclide('B11', aB11_B, 'ao')
-
+mats['BSG'] = openmc.Material(name='Borosilicate Glass')
+mats['BSG'].temperature = 300
+mats['BSG'].set_density('g/cc', 2.26)
+mats['BSG'].add_element('O', aO_bsg, 'ao')
+mats['BSG'].add_element('Si', aSi_bsg, 'ao')
+mats['BSG'].add_element('Al', aAl_bsg, 'ao')
+mats['BSG'].add_nuclide('B10', aB10_B, 'ao')
+mats['BSG'].add_nuclide('B11', aB11_B, 'ao')
 
 
 ########## Enriched UO2 Fuel #################
 
 # Create 1.6% enriched UO2 fuel material
 a_U234, a_U235, a_U238, a_U, a_O = get_fuel_aos(0.0161006)
-mat_fuel16 = openmc.Material(name='1.6\% Enr. UO2 Fuel')
-mat_fuel16.temperature = 300
-mat_fuel16.set_density('g/cc', 10.31341)
-mat_fuel16.add_element('O', a_O, 'ao')
-mat_fuel16.add_element('U', a_U, 'ao', enrichment=0.0161006)
+mats['UO2 1.6'] = openmc.Material(name='1.6\% Enr. UO2 Fuel')
+mats['UO2 1.6'].temperature = 300
+mats['UO2 1.6'].set_density('g/cc', 10.31341)
+mats['UO2 1.6'].add_element('O', a_O, 'ao')
+mats['UO2 1.6'].add_element('U', a_U, 'ao', enrichment=0.0161006)
 
 # Create 2.4% enriched UO2 fuel material
 a_U234, a_U235, a_U238, a_U, a_O = get_fuel_aos(0.0239993)
-mat_fuel16 = openmc.Material(name='2.4\% Enr. UO2 Fuel')
-mat_fuel16.temperature = 300
-mat_fuel16.set_density('g/cc', 10.29748)
-mat_fuel16.add_element('O', a_O, 'ao')
-mat_fuel16.add_element('U', a_U, 'ao', enrichment=0.0239993)
+mats['UO2 2.4'] = openmc.Material(name='2.4\% Enr. UO2 Fuel')
+mats['UO2 2.4'].temperature = 300
+mats['UO2 2.4'].set_density('g/cc', 10.29748)
+mats['UO2 2.4'].add_element('O', a_O, 'ao')
+mats['UO2 2.4'].add_element('U', a_U, 'ao', enrichment=0.0239993)
 
 # Create 3.1% enriched UO2 fuel material
 a_U234, a_U235, a_U238, a_U. a_O = get_fuel_aos(0.0310221)
-mat_fuel16 = openmc.Material(name='3.1\% Enr. UO2 Fuel')
-mat_fuel16.temperature = 300
-mat_fuel16.set_density('g/cc', 10.30166)
-mat_fuel16.add_element('O', a_O, 'ao')
-mat_fuel16.add_element('U', a_U, 'ao', enrichment=0.0310221)
+mats['UO2 3.1'] = openmc.Material(name='3.1\% Enr. UO2 Fuel')
+mats['UO2 3.1'].temperature = 300
+mats['UO2 3.1'].set_density('g/cc', 10.30166)
+mats['UO2 3.1'].add_element('O', a_O, 'ao')
+mats['UO2 3.1'].add_element('U', a_U, 'ao', enrichment=0.0310221)
 
 
 def get_fuel_aos(enr_U235):

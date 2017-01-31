@@ -1,6 +1,7 @@
 from surfaces import surfs
 
-import openmc
+# FIXME: Add docstring explanation
+# FIXME: Put this in surface.py??
 
 
 grids = {}

@@ -1,4 +1,4 @@
-# openmc templates
+c# openmc templates
 comm_t = """  <!--{0:^40}-->"""
 surf_t = """  <surface id="{id:>6}" type={type:<17} coeffs="{coeffs:>25}"/> {comm}\n"""
 surf_t_bc = """  <surface id="{id:>6}" type={type:<17} coeffs="{coeffs:>25}" boundary="{bc}"/> {comm}\n"""

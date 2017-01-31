@@ -3,6 +3,22 @@ import math
 
 import openmc
 
+# FIXME: Add back parameters for pin cell radial surfaces
+# FIXME: Cleanup parameters
+# FIXME: Add docstring explanation
+
+
+# Notation
+# GT: Guide Tube
+# BA: Burnable Absorber
+# CP: Control Poison
+# FR: Fuel Rod
+# IR: Inner Radius
+# OR: Outer Radius
+# IT: Instrument Tube
+# FA: Fuel Assembly
+# RPV: Reactor Pressure Vessel
+
 # Parameters
 rod_grid_side_tb  = 1.24416
 rod_grid_side_i   = 1.21962
@@ -71,16 +87,6 @@ neutron_shield_NEbot_SWtop = math.tan(-math.pi/3)
 neutron_shield_NEtop_SWbot = math.tan(-math.pi/6)
 
 
-# Notation
-# GT: Guide Tube
-# BA: Burnable Absorber
-# FR: Fuel Rod
-# IR: Inner Radius
-# OR: Outer Radius
-# IT: Instrument Tube
-# FA: Fuel Assembly
-# RPV: Reactor Pressure Vessel
-
 surfs = {}
 
 # FIXME: Is this a good idea???
@@ -104,7 +110,7 @@ surfs['GT dashpot IR'] = openmc.ZCylinder(
     x0=0., y0=0., R=0.50419, name='GT IR (at dashpot)')
 surfs['GT dashpot OR'] = openmc.ZCylinder(
     x0=0., y0=0., R=0.54610, name='GT OR (at dashpot)')
-surfs['control poison OR'] = openmc.ZCylinder(
+surfs['CP OR'] = openmc.ZCylinder(
     x0=0., y0=0., R=0.43310, name='Control Poison OR')
 surfs['CR IR'] = openmc.ZCylinder(
     x0=0., y0=0., R=0.43688, name='CR Clad IR')
@@ -206,13 +212,13 @@ surfs['grid4top'] = openmc.ZPlane(
     z0=grid4_top, name='top grid 4')
 
 grid_surfaces = [surfs['grid1bot']['id'],
-                surfs['grid1top']['id'],
-                surfs['grid2bot']['id'],
-                surfs['grid2top']['id'],
-                surfs['grid3bot']['id'],
-                surfs['grid3top']['id'],
-                surfs['grid4bot']['id'],
-                surfs['grid4top']['id']]
+                 surfs['grid1top']['id'],
+                 surfs['grid2bot']['id'],
+                 surfs['grid2top']['id'],
+                 surfs['grid3bot']['id'],
+                 surfs['grid3top']['id'],
+                 surfs['grid4bot']['id'],
+                 surfs['grid4top']['id']]
 
 surfs['top pin plenum'] = openmc.ZPlane(
     z0=top_plenum, name='top pin plenum')
@@ -259,13 +265,17 @@ surfs['neutron shield OR'] = openmc.ZPlane(
 
 # neutron shield planes
 surfs['neutron shield NWbot SEtop'] = openmc.Plane(
-    A=1., B=neutron_shield_NWbot_SEtop, C=0., D=0., name='neutron shield NWbot SEtop')
+    A=1., B=neutron_shield_NWbot_SEtop, C=0., D=0.,
+    name='neutron shield NWbot SEtop')
 surfs['neutron shield NWtop SEbot'] = openmc.Plane(
-    A=1., B=neutron_shield_NWtop_SEbot, C=0., D=0., name='neutron shield NWtop SEbot')
+    A=1., B=neutron_shield_NWtop_SEbot, C=0., D=0.,
+    name='neutron shield NWtop SEbot')
 surfs['neutron shield NEbot SWtop'] = openmc.Plane(
-    A=1., B=neutron_shield_NEbot_SWtop, C=0., D=0., name='neutron shield NEbot SWtop')
+    A=1., B=neutron_shield_NEbot_SWtop, C=0., D=0.,
+    name='neutron shield NEbot SWtop')
 surfs['neutron shield NEtop SWbot'] = openmc.Plane(
-    A=1., B=neutron_shield_NEtop_SWbot, C=0., D=0., name='neutron shield NEtop SWbot')
+    A=1., B=neutron_shield_NEtop_SWbot, C=0., D=0.,
+    name='neutron shield NEtop SWbot')
 
 # outer radial surfaces
 surfs['RPV IR'] = openmc.ZCylinder(
