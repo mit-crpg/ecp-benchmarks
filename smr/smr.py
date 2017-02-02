@@ -690,61 +690,9 @@ def make_assembly(latts, cells, surfs, lo, co, univIDs, cellIDs, water, name,
 
   """
 
-  name = str(name)
-
-  # first make the lattice
-
-  latts[name] =                 { 'order':   inc_order(lo),
-                                  'id':      new_id(univIDs),
-                                  'type':    'rectangular'}
-  if comm:
-    latts[name]['comm'] = comm_t.format(comm)
-  else:
-    latts[name]['comm'] = ""
-  if sect:
-    latts[name]['section'] = comm_t.format(sect)
-
-  for key in ['dim','lleft','width','univs']:
-    if not locals()[key]:
-      raise Exception('make_assembly requires {0}'.format(key))
-    else:
-      latts[name][key] = locals()[key]
-  
-  # add lattice to bounding cell
-  cells[name+' lattice'] =    { 'order':   inc_order(co),
-                                'id':      new_id(cellIDs),
-                                'univ':    new_id(univIDs),
-                                'fill':    latts[name]['id'],
-                                'surfs':  '-{0} {1} -{2} {3}'.format(surfs['lat box xtop']['id'],surfs['lat box xbot']['id'],surfs['lat box ytop']['id'],surfs['lat box ybot']['id'])}
-  if comm:
-    cells[name+' lattice']['comm'] = comm_t.format(comm)
-  else:
-    cells[name+' lattice']['comm'] = ""
-  if sect:
-    cells[name+' lattice']['section'] = comm_t.format(sect)
-  
-  
   # make axial all cells for outside of assembly
 
-  # !! all of this would be greatly simplified if box-type surfaces were implemented in openmc !!
-  
-  outKeys = []  # we only keep track of this to facilitate certain plots/tallies
-  
   # first bottom part
-  cells[name+' lattice 2'] =  { 'order':   inc_order(co), 'comm':"",
-                                'id':      new_id(cellIDs),
-                                'univ':    cells[name+' lattice']['univ'],
-                                'fill':    None,
-                                'mat':     water,
-                                'surfs':  '-{0} -{1}'.format(surfs['lat box ybot']['id'],gridSurfs[0])}
-  outKeys.append(cells[name+' lattice 2']['id'])
-  cells[name+' lattice 3'] =  { 'order':   inc_order(co), 'comm':"",
-                                'id':      new_id(cellIDs),
-                                'univ':    cells[name+' lattice']['univ'],
-                                'fill':    None,
-                                'mat':     water,
-                                'surfs':  '{0} -{1}'.format(surfs['lat box ytop']['id'],gridSurfs[0])}
-  outKeys.append(cells[name+' lattice 3']['id'])
   cells[name+' lattice 4'] =  { 'order':   inc_order(co), 'comm':"",
                                 'id':      new_id(cellIDs),
                                 'univ':    cells[name+' lattice']['univ'],
