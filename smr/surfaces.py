@@ -288,3 +288,13 @@ surfs['upper bound'] = openmc.ZPlane(
     z0=highest_extent, name='upper problem boundary')
 surfs['lower bound'] = openmc.ZPlane(
     z0=lowest_extent, name='lower problem boundary')
+
+# baffle surfaces
+surfs['baffle north'] = openmc.YPlane(
+    y0=(lattice_pitch/4. - baffle_width), name='baffle north')
+surfs['baffle south'] = openmc.YPlane(
+    y0=(baffle_width - lattice_pitch/4.), name='baffle south')
+surfs['baffle east'] = openmc.XPlane(
+    y0=(lattice_pitch/4. - baffle_width), name='baffle east')
+surfs['baffle west'] = openmc.YPlane(
+    y0=(baffle_width - lattice_pitch/4), name='baffle west')
