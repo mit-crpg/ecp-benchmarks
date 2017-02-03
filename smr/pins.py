@@ -217,7 +217,7 @@ univs['IT dashpot'] = make_pin(
 
 # Stack all axial pieces of instrument tube together
 
-univs['IT'] = make_stack(
+univs['IT stack'] = make_stack(
     'GT instr', surfaces=stack_surfs,
     universes=[univs['IT dashpot'],
                univs['IT dashpot'],
