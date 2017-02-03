@@ -3,6 +3,7 @@ from surfaces import surfs
 # FIXME: Add docstring explanation
 # FIXME: Put this in surface.py??
 
+# FIXME: Use get_rectangular_prism method instead???
 
 grids = {}
 

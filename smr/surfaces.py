@@ -154,13 +154,14 @@ surfs['rod grid box ytop i'] = openmc.yPlane(
 surfs['rod grid box ybot i'] = openmc.YPlane(
     y0=-rod_grid_side_i/2, name='Y min for grid outside FR in intermediate spacers')
 
+# FIXME: Can these be removed??? Use the get_rectangular_prism method instead???
 surfs['lat grid box xtop'] = openmc.XPlane(
     x0=grid_strap_side/2, name='X max for grid outside FA')
 surfs['lat grid box xbot'] = openmc.XPlane(
     x0=-grid_strap_side/2, name='Y min for grid outside FA')
 surfs['lat grid box ytop'] = openmc.YPlane(
     y0=grid_strap_side/2, name='Y max for grid outside FA')
-surfs['lat grid box xbot'] = openmc.YPlane(
+surfs['lat grid box ybot'] = openmc.YPlane(
     y0=-grid_strap_side/2, name='Y min for grid outside FA')
 
 surfs['lat box xtop'] = openmc.XPlane(
@@ -171,6 +172,12 @@ surfs['lat box ytop'] = openmc.YPlane(
     x0=17.*pin_pitch/2., name='lattice Y max')
 surfs['lat box ybot'] = openmc.YPlane(
     x0=-17.*pin_pitch/2., name='lattice Y min')
+
+# FIXME: rectangular prism for lattice grid sleeves
+surfs['lat grid box inner'] = \
+    openmc.get_rectangular_prism(17.*pin_pitch, 17.*pin_pitch)
+surfs['lat grid box outer'] = \
+    openmc.get_rectangular_prism(grid_strap_side, grid_strap_side)
 
 surfs['lowest extent'] = openmc.ZPlane(
     z0=lowest_extent, name='lowest extent')
