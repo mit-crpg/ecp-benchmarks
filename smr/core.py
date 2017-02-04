@@ -11,7 +11,7 @@ from baffle import univs
 
 core = openmc.RectLattice(name='Main core')
 core.lower_left = [-19.*lattice_pitch/2., -19.*lattice_pitch/2.]
-core.width = [lattice_pitch, lattice_pitch]
+core.pitch = [lattice_pitch, lattice_pitch]
 universes = np.empty((19,19), dtype=openmc.Universe)
 universes[:,:] = univs['water pin']
 core.universes = universes
@@ -201,6 +201,10 @@ root_univ.add_cell(cell)
 
 
 # CONSTRUCT GEOMETRY
+
+materials = openmc.Materials()
+materials.add_materials(mats.values())
+materials.export_to_xml()
 
 geometry = openmc.Geometry()
 geometry.root_universe = root_univ

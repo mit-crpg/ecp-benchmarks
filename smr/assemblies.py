@@ -16,7 +16,7 @@ def make_assembly(name, universes):
     # Instantiate the lattice
     lattice = openmc.RectLattice(name=name)
     lattice.lower_left = [-17.*pin_pitch/2., -17.*pin_pitch/2.]
-    lattice.width = [pin_pitch, pin_pitch]
+    lattice.pitch = [pin_pitch, pin_pitch]
     lattice.universes = universes
 
     # Create rectangular prism cylinder for lattice grid box

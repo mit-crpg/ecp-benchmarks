@@ -144,7 +144,7 @@ mats['H2O'].set_density('g/cc', rho_Bh2o)
 mats['H2O'].add_element('B', aB_Bh2o, 'ao')
 mats['H2O'].add_element('H', ah_Bh2o, 'ao')
 mats['H2O'].add_element('O', aho_Bh2o, 'ao')
-mats['H2O'].add_s_alpha_beta(name='c_H_in_H2')
+mats['H2O'].add_s_alpha_beta(name='lwtr')
 
 
 ########## Borosilicate Glass #################
