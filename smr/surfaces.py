@@ -149,7 +149,7 @@ surfs['rod grid box xtop i'] = openmc.XPlane(
     x0=rod_grid_side_i/2, name='X max for grid outside FR in intermediate spacers')
 surfs['rod grid box xbot i'] = openmc.XPlane(
     x0=-rod_grid_side_i/2, name='X min for grid outside FR in intermediate spacers')
-surfs['rod grid box ytop i'] = openmc.yPlane(
+surfs['rod grid box ytop i'] = openmc.YPlane(
     y0=rod_grid_side_i/2, name='Y max for grid outside FR in intermediate spacers')
 surfs['rod grid box ybot i'] = openmc.YPlane(
     y0=-rod_grid_side_i/2, name='Y min for grid outside FR in intermediate spacers')
@@ -169,9 +169,9 @@ surfs['lat box xtop'] = openmc.XPlane(
 surfs['lat box xbot'] = openmc.XPlane(
     x0=-17.*pin_pitch/2., name='lattice X min')
 surfs['lat box ytop'] = openmc.YPlane(
-    x0=17.*pin_pitch/2., name='lattice Y max')
+    y0=17.*pin_pitch/2., name='lattice Y max')
 surfs['lat box ybot'] = openmc.YPlane(
-    x0=-17.*pin_pitch/2., name='lattice Y min')
+    y0=-17.*pin_pitch/2., name='lattice Y min')
 
 # FIXME: rectangular prism for lattice grid sleeves
 surfs['lat grid box inner'] = \
@@ -185,7 +185,7 @@ surfs['bot support plate'] = openmc.ZPlane(
     z0=bottom_support_plate, name='bot support plate')
 surfs['top support plate'] = openmc.ZPlane(
     z0=top_support_plate, name='top support plate')
-surfs['bot fuel rod'] = openmc.ZPlane(z0=bottom_fuel_rod, name='bottom FR')
+surfs['bottom FR'] = openmc.ZPlane(z0=bottom_fuel_rod, name='bottom FR')
 surfs['top lower nozzle'] = copy.deepcopy(surfs['bottom FR'])
 surfs['bot lower nozzle'] = copy.deepcopy(surfs['top support plate'])
 
@@ -218,19 +218,10 @@ surfs['grid4bot'] = openmc.ZPlane(
 surfs['grid4top'] = openmc.ZPlane(
     z0=grid4_top, name='top grid 4')
 
-grid_surfaces = [surfs['grid1bot']['id'],
-                 surfs['grid1top']['id'],
-                 surfs['grid2bot']['id'],
-                 surfs['grid2top']['id'],
-                 surfs['grid3bot']['id'],
-                 surfs['grid3top']['id'],
-                 surfs['grid4bot']['id'],
-                 surfs['grid4top']['id']]
-
 surfs['top pin plenum'] = openmc.ZPlane(
     z0=top_plenum, name='top pin plenum')
-surfs['top fuel rod'] = openmc.ZPlane(
-    z0=top_fuel_rod, name='top fuel rod')
+surfs['top FR'] = openmc.ZPlane(
+    z0=top_fuel_rod, name='top FR')
 surfs['bot upper nozzle'] = openmc.ZPlane(
     z0=bottom_upper_nozzle, name='bottom upper nozzle')
 surfs['top upper nozzle'] = openmc.ZPlane(
@@ -267,7 +258,7 @@ surfs['core barrel IR'] = openmc.ZCylinder(
     x0=0., y0=0., R=core_barrel_IR, name='core barrel IR')
 surfs['core barrel OR'] = openmc.ZCylinder(
     x0=0., y0=0., R=core_barrel_OR, name='core barrel OR')
-surfs['neutron shield OR'] = openmc.ZPlane(
+surfs['neutron shield OR'] = openmc.ZCylinder(
     x0=0., y0=0., R=neutron_shield_OR, name='neutron shield OR')
 
 # neutron shield planes
@@ -302,6 +293,6 @@ surfs['baffle north'] = openmc.YPlane(
 surfs['baffle south'] = openmc.YPlane(
     y0=(baffle_width - lattice_pitch/4.), name='baffle south')
 surfs['baffle east'] = openmc.XPlane(
-    y0=(lattice_pitch/4. - baffle_width), name='baffle east')
-surfs['baffle west'] = openmc.YPlane(
-    y0=(baffle_width - lattice_pitch/4), name='baffle west')
+    x0=(lattice_pitch/4. - baffle_width), name='baffle east')
+surfs['baffle west'] = openmc.XPlane(
+    x0=(baffle_width - lattice_pitch/4), name='baffle west')
