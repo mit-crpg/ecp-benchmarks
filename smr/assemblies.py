@@ -28,7 +28,7 @@ def make_assembly(name, universes):
     universe = openmc.Universe(name=univ_name)
     cell = openmc.Cell(name=univ_name)
     cell.fill = lattice
-    cell.region = surfs['lat box inner']
+    cell.region = surfs['lat grid box inner']
     universe.add_cell(cell)
 
     # Make bottom axial cell for outside of assembly (without sleeve)
@@ -123,7 +123,7 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                                        gtu, gtu,  gtu,  gtu, gtu,
                                          gtu,              gtu,
                                            gtu,   gtu,   gtu     ]
-    univs['Assembly (1.6\%) no BAs' + comment] = \
+    univs['Assembly (1.6\%)' + comment] = \
         make_assembly('Assembly (1.6\%) no BAs' + comment, universes)
 
     # WITH EACH CONTROL ROD BANK
@@ -131,7 +131,7 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                  (crSB, 'SB'), (crSC, 'SC'), (crSD, 'SD'), (crSE, 'SE')]:
 
         universes = np.empty((17,17), dtype=openmc.Universe)
-        universes[:,:] = univs['Assembly (1.6\%) stack']
+        universes[:,:] = univs['Fuel (1.6\%) stack']
         universes[nonfuel_y, nonfuel_x] = [    bank,    bank,   bank,
                                              bank,                 bank,
                                            bank, bank,  bank,  bank, bank,
@@ -214,7 +214,7 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                                        gtu, gtu,  gtu,  gtu, gtu,
                                          gtu,              gtu,
                                            gtu,   gtu,   gtu     ]
-    univs['Assembly (3.1\%) no BAs' + comment] = \
+    univs['Assembly (3.1\%)' + comment] = \
         make_assembly('Assembly (3.1\%) no BAs' + comment, universes)
 
     # WITH CONTROL ROD SA BANK
@@ -240,7 +240,7 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                                        bas, bas,  gtu,  bas, bas,
                                          bas,              bas,
                                            bas,   bas,   bas     ]
-    univs['Assembly (3,1\%) 20BA' + comment] = \
+    univs['Assembly (3.1\%) 20BA' + comment] = \
         make_assembly('Assembly (3.1\%) 20BA' + comment, universes)
 
     # WITH 16 BURNABLE ABSORBERS
@@ -253,7 +253,7 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                                        bas, gtu,  gtu,  gtu, bas,
                                          bas,              bas,
                                            bas,   bas,   bas     ]
-    univs['Assembly (3,1\%) 16BA' + comment] = \
+    univs['Assembly (3.1\%) 16BA' + comment] = \
         make_assembly('Assembly (3.1\%) 16BA' + comment, universes)
 
     # WITH 15 BURNABLE ABSORBERS NW
@@ -266,7 +266,7 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                                        gtu, bas,  bas,  bas, bas,
                                          gtu,              bas,
                                            bas,   bas,   bas     ]
-    univs['Assembly (3,1\%) 15BANW' + comment] = \
+    univs['Assembly (3.1\%) 15BANW' + comment] = \
         make_assembly('Assembly (3.1\%) 15BANW' + comment, universes)
 
     # WITH 15 BURNABLE ABSORBERS NE
@@ -279,7 +279,7 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                                        bas, bas,  bas,  bas, gtu,
                                          bas,              gtu,
                                            bas,   bas,   bas     ]
-    univs['Assembly (3,1\%) 15BANE' + comment] = \
+    univs['Assembly (3.1\%) 15BANE' + comment] = \
         make_assembly('Assembly (3.1\%) 15BANE' + comment, universes)
 
     # WITH 15 BURNABLE ABSORBERS SW
@@ -292,7 +292,7 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                                        gtu, bas,  bas,  bas, bas,
                                          gtu,              gtu,
                                            gtu,   gtu,   gtu     ]
-    univs['Assembly (3,1\%) 15BASW' + comment] = \
+    univs['Assembly (3.1\%) 15BASW' + comment] = \
         make_assembly('Assembly (3.1\%) 15BASW' + comment, universes)
 
     # WITH 15 BURNABLE ABSORBERS SE
@@ -305,7 +305,7 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                                        bas, bas,  bas,  bas, gtu,
                                          gtu,              gtu,
                                            gtu,   gtu,   gtu     ]
-    univs['Assembly (3,1\%) 15BASE' + comment] = \
+    univs['Assembly (3.1\%) 15BASE' + comment] = \
         make_assembly('Assembly (3.1\%) 15BASE' + comment, universes)
 
     # WITH 6 BURNABLE ABSORBERS N
@@ -318,7 +318,7 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                                        bas, gtu,  gtu,  gtu, bas,
                                          bas,              bas,
                                            bas,   gtu,   bas     ]
-    univs['Assembly (3,1\%) 6BAN' + comment] = \
+    univs['Assembly (3.1\%) 6BAN' + comment] = \
         make_assembly('Assembly (3.1\%) 6BAN' + comment, universes)
 
     # WITH 6 BURNABLE ABSORBERS S
@@ -331,7 +331,7 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                                        gtu, gtu,  gtu,  gtu, gtu,
                                          gtu,              gtu,
                                            gtu,   gtu,   gtu     ]
-    univs['Assembly (3,1\%) 6BAS' + comment] = \
+    univs['Assembly (3.1\%) 6BAS' + comment] = \
         make_assembly('Assembly (3.1\%) 6BAS' + comment, universes)
 
     # WITH 6 BURNABLE ABSORBERS W
@@ -344,7 +344,7 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                                        gtu, gtu,  gtu,  gtu, bas,
                                          gtu,              bas,
                                            gtu,   gtu,   bas     ]
-    univs['Assembly (3,1\%) 6BAW' + comment] = \
+    univs['Assembly (3.1\%) 6BAW' + comment] = \
         make_assembly('Assembly (3.1\%) 6BAW' + comment, universes)
 
     # WITH 6 BURNABLE ABSORBERS E
@@ -357,5 +357,5 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                                        bas, gtu,  gtu,  gtu, gtu,
                                          bas,              gtu,
                                            bas,   gtu,   gtu     ]
-    univs['Assembly (3,1\%) 6BAE' + comment] = \
+    univs['Assembly (3.1\%) 6BAE' + comment] = \
         make_assembly('Assembly (3.1\%) 6BAE' + comment, universes)

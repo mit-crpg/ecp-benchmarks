@@ -4,7 +4,7 @@ import openmc
 
 from materials import mats
 from surfaces import surfs, lattice_pitch
-from assemblies import univs
+from baffle import univs
 
 
 # CONSTRUCT MAIN CORE LATTICE
@@ -12,8 +12,9 @@ from assemblies import univs
 core = openmc.RectLattice(name='Main core')
 core.lower_left = [-19.*lattice_pitch/2., -19.*lattice_pitch/2.]
 core.width = [lattice_pitch, lattice_pitch]
-core.universes = np.empty((19,19), dtype=openmc.Universe)
-core.universes[:, :] = univs['water pin']
+universes = np.empty((19,19), dtype=openmc.Universe)
+universes[:,:] = univs['water pin']
+core.universes = universes
 
 core.universes[5, 7] = univs['baffle northwest']
 core.universes[5, 8] = univs['baffle north']
@@ -50,7 +51,7 @@ core.universes[8, 12] = univs['Assembly (3.1\%) instr']
 core.universes[8, 13] = univs['baffle east']
 
 core.universes[9, 5] = univs['baffle west']
-core.universes[9, 6] = univs['Assembly (3.1\%) CR B']
+core.universes[9, 6] = univs['Assembly (1.6\%) CR B']
 core.universes[9, 7] = univs['Assembly (3.1\%) 16BA']
 core.universes[9, 8] = univs['Assembly (2.4\%) CR D']
 core.universes[9, 9] = univs['Assembly (1.6\%) instr']
@@ -63,7 +64,7 @@ core.universes[10, 5] = univs['baffle west']
 core.universes[10, 6] = univs['Assembly (3.1\%) instr']
 core.universes[10, 7] = univs['Assembly (1.6\%) CR B']
 core.universes[10, 8] = univs['Assembly (3.1\%) 16BA']
-core.universes[10, 9] = univs['Assembly (2,4\%) CR D']
+core.universes[10, 9] = univs['Assembly (2.4\%) CR D']
 core.universes[10, 10] = univs['Assembly (3.1\%) 16BA']
 core.universes[10, 11] = univs['Assembly (1.6\%) CR B']
 core.universes[10, 12] = univs['Assembly (3.1\%) instr']
@@ -109,7 +110,7 @@ root_univ.add_cell(cell)
 
 cell = openmc.Cell(name='core barrel')
 cell.material = mats['SS']
-cell.region = (surfs['core barrel IR'] & surfs['core barrel OR'] &
+cell.region = (+surfs['core barrel IR'] & -surfs['core barrel OR'] &
                +surfs['lower bound'] & -surfs['upper bound'])
 root_univ.add_cell(cell)
 
@@ -118,65 +119,65 @@ root_univ.add_cell(cell)
 
 cell = openmc.Cell(name='neutron shield panel NW')
 cell.material = mats['SS']
-cell.region = (+surfs['core barrel OR'] & -surfs['neut shield OR'] &
+cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
                +surfs['neutron shield NWbot SEtop'] &
-               -surfs['neutron shield NWtop SEbot']
+               -surfs['neutron shield NWtop SEbot'] &
                +surfs['lower bound'] & -surfs['upper bound'])
 root_univ.add_cell(cell)
 
 cell = openmc.Cell(name='neutron shield panel N')
 cell.material = mats['H2O']
-cell.region = (+surfs['core barrel OR'] & -surfs['neut shield OR'] &
+cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
                +surfs['neutron shield NWtop SEbot'] &
-               -surfs['neutron shield NEtop SWbot']
+               -surfs['neutron shield NEtop SWbot'] &
                +surfs['lower bound'] & -surfs['upper bound'])
 root_univ.add_cell(cell)
 
 cell = openmc.Cell(name='neutron shield panel SE')
 cell.material = mats['SS']
-cell.region = (+surfs['core barrel OR'] & -surfs['neut shield OR'] &
+cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
                +surfs['neutron shield NWbot SEtop'] &
-               -surfs['neutron shield NWtop SWbot']
+               -surfs['neutron shield NWtop SEbot'] &
                +surfs['lower bound'] & -surfs['upper bound'])
 root_univ.add_cell(cell)
 
 cell = openmc.Cell(name='neutron shield panel E')
 cell.material = mats['H2O']
-cell.region = (+surfs['core barrel OR'] & -surfs['neut shield OR'] &
+cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
                +surfs['neutron shield NWbot SEtop'] &
-               -surfs['neutron shield NEbot SWtop']
+               -surfs['neutron shield NEbot SWtop'] &
                +surfs['lower bound'] & -surfs['upper bound'])
 root_univ.add_cell(cell)
 
 cell = openmc.Cell(name='neutron shield panel NE')
 cell.material = mats['SS']
-cell.region = (+surfs['core barrel OR'] & -surfs['neut shield OR'] &
+cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
                +surfs['neutron shield NEbot SWtop'] &
-               -surfs['neutron shield NEtop SWbot']
+               -surfs['neutron shield NEtop SWbot'] &
                +surfs['lower bound'] & -surfs['upper bound'])
 root_univ.add_cell(cell)
 
 cell = openmc.Cell(name='neutron shield panel S')
 cell.material = mats['H2O']
-cell.region = (+surfs['core barrel OR'] & -surfs['neut shield OR'] &
+cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
                +surfs['neutron shield NWtop SEbot'] &
-               -surfs['neutron shield NEtop SWbot']
+               -surfs['neutron shield NEtop SWbot'] &
                +surfs['lower bound'] & -surfs['upper bound'])
 root_univ.add_cell(cell)
 
 cell = openmc.Cell(name='neutron shield panel SW')
 cell.material = mats['SS']
-cell.region = (+surfs['core barrel OR'] & -surfs['neut shield OR'] &
+cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
                +surfs['neutron shield NEbot SWtop'] &
-               -surfs['neutron shield NEtop SWbot']
+               -surfs['neutron shield NEtop SWbot'] &
                +surfs['lower bound'] & -surfs['upper bound'])
 root_univ.add_cell(cell)
 
 cell = openmc.Cell(name='neutron shield panel W')
 cell.material = mats['H2O']
-cell.region = (+surfs['core barrel OR'] & -surfs['neut shield OR'] &
+cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
                +surfs['neutron shield NWbot SEtop'] &
-               -surfs['neutron shield NEbot SWtop']
+               -surfs['neutron shield NEbot SWtop'] &
                +surfs['lower bound'] & -surfs['upper bound'])
 root_univ.add_cell(cell)
 
@@ -185,7 +186,7 @@ root_univ.add_cell(cell)
 
 cell = openmc.Cell(name='downcomer')
 cell.material = mats['H2O']
-cell.region = (+surfs['neut shield OR'] & -surfs['RPV IR'] &
+cell.region = (+surfs['neutron shield OR'] & -surfs['RPV IR'] &
                +surfs['lower bound'] & -surfs['upper bound'])
 root_univ.add_cell(cell)
 
@@ -197,3 +198,10 @@ cell.material = mats['CS']
 cell.region = (+surfs['RPV IR'] & -surfs['RPV OR'] &
                +surfs['lower bound'] & -surfs['upper bound'])
 root_univ.add_cell(cell)
+
+
+# CONSTRUCT GEOMETRY
+
+geometry = openmc.Geometry()
+geometry.root_universe = root_univ
+geometry.export_to_xml()

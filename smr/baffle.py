@@ -2,7 +2,7 @@ import openmc
 
 from materials import mats
 from surfaces import surfs, lattice_pitch
-from pins import univs
+from assemblies import univs
 
 
 # FIXME: is this necessary??
@@ -260,7 +260,7 @@ latts['baffle southeast'].universes = [
     [univs['water pin'],          univs['baffle east dummy']],
     [univs['baffle south dummy'], univs['baffle southeast dummy']]]
 
-univs['baffle southwest'] = openmc.Universe(name='baffle southeast')
+univs['baffle southeast'] = openmc.Universe(name='baffle southeast')
 
 cell = openmc.Cell(name='baffle southeast')
 cell.fill = latts['baffle southeast']
@@ -330,7 +330,7 @@ latts['baffle northeast corner'] = openmc.RectLattice(name='baffle northeast cor
 latts['baffle northeast corner'].lower_left = [-lattice_pitch/2., -lattice_pitch/2.]
 latts['baffle northeast corner'].pitch = [lattice_pitch/2., lattice_pitch/2.]
 latts['baffle northeast corner'].universes = [
-    [univs['water pin'], univs['baffle northweast corner dummy']],
+    [univs['water pin'], univs['baffle northeast corner dummy']],
     [univs['water pin'], univs['water pin']]]
 
 univs['baffle northeast corner'] = \
