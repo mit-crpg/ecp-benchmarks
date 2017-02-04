@@ -231,10 +231,10 @@ surfs['highest extent'] = openmc.ZPlane(
 
 # Control rod bank surfaces for ARO configuration
 for bank in ['A','B','C','D','E',]:
-    surfs['bank{} top'.format(bank)] = openmc.ZPlane(
-        z0=step228H+step_width*228, name='CR bank {} top'.format(bank))
-    surfs['bank{} top'.format(bank)] = openmc.ZPlane(
-        z0=step228H, name='CR bank {} bottom'.format(bank))
+    surfs['bankS{} top'.format(bank)] = openmc.ZPlane(
+        z0=step228H+step_width*228, name='CR bankS{} top'.format(bank))
+    surfs['bankS{} bot'.format(bank)] = openmc.ZPlane(
+        z0=step228H, name='CR bankS{} bottom'.format(bank))
 
 surfs['bankA top'] = openmc.ZPlane(
     z0=bank_top, name='CR bank A top')

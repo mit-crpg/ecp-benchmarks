@@ -35,11 +35,11 @@ def make_pin(name, surfaces, materials, grid=None):
 
     # Add spacer grid cells if specified
     if grid:
-        inner_grid_name = 'inner {}'.format(grid)
-        outer_grid_name = 'outer {}'.format(grid)
+        inner_grid_name = 'inner grid box {}'.format(grid)
+        outer_grid_name = 'outer grid box {}'.format(grid)
 
         # FIXME: Does this work???
-        cell.region += grids[inner_grid_name]
+        cell.region = openmc.Union(cell.region, grids[inner_grid_name])
 
         cell_name = name + ' (grid)'
         cell = openmc.Cell(name=cell_name)
@@ -141,7 +141,7 @@ stack_surfs = [
     surfs['grid4top'],
     surfs['top active core'],
     surfs['top pin plenum'],
-    surfs['top fuel rod'],
+    surfs['top FR'],
     surfs['bot upper nozzle'],
     surfs['top upper nozzle']
 ]
@@ -200,12 +200,12 @@ univs['IT grid (top/bottom)'] = make_pin(
     'IT grid (top/bottom)',
     [surfs['IT IR'], surfs['IT OR'], surfs['GT IR'], surfs['GT OR']],
     [mats['Air'], mats['Zr'], mats['H2O'], mats['Zr'], mats['H2O']],
-    grid='top/bottom')
+    grid='(top/bottom)')
 univs['IT grid (intermediate)'] = make_pin(
     'IT grid (intermediate)',
     [surfs['IT IR'], surfs['IT OR'], surfs['GT IR'], surfs['GT OR']],
     [mats['Air'], mats['Zr'], mats['H2O'], mats['Zr'], mats['H2O']],
-    grid='intermediate')
+    grid='(intermediate)')
 
 univs['IT nozzle'] = make_pin(
     'IT nozzle',
@@ -266,12 +266,12 @@ univs['CR blank grid (top/bottom)'] = make_pin(
     'CR blank grid (top/bottom)',
     [surfs['CP OR'], surfs['CR IR'], surfs['CR OR'], surfs['GT IR'], surfs['GT OR']],
     [mats['SS'], mats['Air'], mats['SS'], mats['H2O'], mats['Zr'], mats['H2O']],
-    grid='top/bottom')
+    grid='(top/bottom)')
 univs['CR blank grid (intermediate)'] = make_pin(
     'CR blank grid (intermediate)',
     [surfs['CP OR'], surfs['CR IR'], surfs['CR OR'], surfs['GT IR'], surfs['GT OR']],
     [mats['SS'], mats['Air'], mats['SS'], mats['H2O'], mats['Zr'], mats['H2O']],
-    grid='intermediate')
+    grid='(intermediate)')
 univs['CR blank nozzle'] = make_pin(
     'CR blank nozzle', [surfs['CP OR'], surfs['CR IR'], surfs['CR OR']],
     [mats['SS'], mats['Air'], mats['SS'], mats['H2O']])
@@ -291,7 +291,7 @@ for b in banks:
     # no grid, no nozzle
     univs['GT CR bank {} dummy'.format(b)] = make_stack(
         'GT CR bank {} dummy'.format(b),
-        surfaces=[surfs['bot fuel rod'],
+        surfaces=[surfs['bottom FR'],
                   surfs['dashpot top'],
                   surfs['bank{} bot'.format(b)],
                   surfs['bank{} top'.format(b)]],
@@ -304,7 +304,7 @@ for b in banks:
     # top/bottom grid
     univs['GT CR bank {} dummy grid (top/bottom)'.format(b)] = make_stack(
         'GT CR bank {} dummy grid (top/bottom)'.format(b),
-        surfaces=[surfs['bot fuel rod'],
+        surfaces=[surfs['bottom FR'],
                   surfs['dashpot top'],
                   surfs['bank{} bot'.format(b)],
                   surfs['bank{} top'.format(b)]],
@@ -317,7 +317,7 @@ for b in banks:
     # intermediate grid
     univs['GT CR bank {} dummy grid (intermediate)'.format(b)] = make_stack(
         'GT CR bank {} dummy grid (intermediate)'.format(b),
-        surfaces=[surfs['bot fuel rod'],
+        surfaces=[surfs['bottom FR'],
                   surfs['dashpot top'],
                   surfs['bank{} bot'.format(b)],
                   surfs['bank{} top'.format(b)]],
@@ -330,27 +330,27 @@ for b in banks:
     # nozzle
     univs['GT CR bank {} dummy nozzle'.format(b)] = make_stack(
         'GT CR bank {} dummy nozzle'.format(b),
-        surfaces=[surfs['bot fuel rod'],
+        surfaces=[surfs['bottom FR'],
                   surfs['dashpot top'],
                   surfs['bank{} bot'.format(b)],
                   surfs['bank{} top'.format(b)]],
         universes=[univs['water pin'],
                    univs['GTd empty nozzle'],
                    univs['GT empty nozzle'],
-                   univs['CR grid nozzle'],
+                   univs['CR nozzle'],
                    univs['CR blank nozzle']])
 
-    # nozzle
+    # bare
     univs['GT CR bank {} dummy bare'.format(b)] = make_stack(
         'GT CR bank {} dummy bare'.format(b),
-        surfaces=[surfs['bot fuel rod'],
+        surfaces=[surfs['bottom FR'],
                   surfs['dashpot top'],
                   surfs['bank{} bot'.format(b)],
                   surfs['bank{} top'.format(b)]],
         universes=[univs['water pin'],
-                   univs['GTd empty bare'],
-                   univs['GT empty bare'],
-                   univs['CR grid bare'],
+                   univs['GTd empty nozzle'],
+                   univs['GT empty nozzle'],
+                   univs['CR bare'],
                    univs['CR blank bare']])
 
     # final combination of all axial pieces for control rod bank "b"
@@ -418,7 +418,7 @@ univs['BA grid (top/bottom)'] = make_pin(
                mats['H2O'],
                mats['Zr'],
                mats['H2O']],
-    grid='top/bottom')
+    grid='(top/bottom)')
 
 univs['BA grid (intermediate)'] = make_pin(
     'BA grid (intermediate)',
@@ -439,7 +439,7 @@ univs['BA grid (intermediate)'] = make_pin(
                mats['H2O'],
                mats['Zr'],
                mats['H2O']],
-    grid='intermediate')
+    grid='(intermediate)')
 
 univs['BA dashpot'] = make_pin(
     'BA dashpot',
@@ -480,7 +480,7 @@ univs['BA dashpot grid (top/bottom)'] = make_pin(
                mats['H2O'],
                mats['Zr'],
                mats['H2O']],
-    grid='top/bottom')
+    grid='(top/bottom)')
 
 univs['BA dashpot grid (intermediate)'] = make_pin(
     'BA dashpot grid (intermediate)',
@@ -501,7 +501,7 @@ univs['BA dashpot grid (intermediate)'] = make_pin(
                mats['H2O'],
                mats['Zr'],
                mats['H2O']],
-    grid='intermediate')
+    grid='(intermediate)')
 
 univs['BA blank SS'] = make_pin(
     'BA blank SS',
@@ -536,7 +536,7 @@ stack_surfs_BA = [
     surfs['grid4bot'],
     surfs['grid4top'],
     surfs['top pin plenum'],
-    surfs['top fuel rod'],
+    surfs['top FR'],
     surfs['bot upper nozzle'],
     surfs['top upper nozzle']]
 
@@ -598,7 +598,7 @@ univs['pin plenum grid (top/bottom)'] = make_pin(
                mats['He'],
                mats['Zr'],
                mats['H2O']],
-    grid='top/bottom')
+    grid='(top/bottom)')
 
 
 # 1.6% ENRICHED FUEL PIN CELL
@@ -622,7 +622,7 @@ univs['Fuel (1.6\%) grid (top/bottom)'] = make_pin(
                mats['He'],
                mats['Zr'],
                mats['H2O']],
-    grid='top/bottom')
+    grid='(top/bottom)')
 
 univs['Fuel (1.6\%) grid (intermediate)'] = make_pin(
     'Fuel (1.6\%) grid (intermediate)',
@@ -633,7 +633,7 @@ univs['Fuel (1.6\%) grid (intermediate)'] = make_pin(
                mats['He'],
                mats['Zr'],
                mats['H2O']],
-    grid='intermediate')
+    grid='(intermediate)')
 
 # Stack all axial pieces of 1.6% enriched fuel pin cell
 
@@ -682,7 +682,7 @@ univs['Fuel (2.4\%) grid (top/bottom)'] = make_pin(
                mats['He'],
                mats['Zr'],
                mats['H2O']],
-    grid='top/bottom')
+    grid='(top/bottom)')
 
 univs['Fuel (2.4\%) grid (intermediate)'] = make_pin(
     'Fuel (2.4\%) grid (intermediate)',
@@ -693,7 +693,7 @@ univs['Fuel (2.4\%) grid (intermediate)'] = make_pin(
                mats['He'],
                mats['Zr'],
                mats['H2O']],
-    grid='intermediate')
+    grid='(intermediate)')
 
 # Stack all axial pieces of 2.4% enriched fuel pin cell
 
@@ -742,7 +742,7 @@ univs['Fuel (3.1\%) grid (top/bottom)'] = make_pin(
                mats['He'],
                mats['Zr'],
                mats['H2O']],
-    grid='top/bottom')
+    grid='(top/bottom)')
 
 univs['Fuel (3.1\%) grid (intermediate)'] = make_pin(
     'Fuel (3.1\%) grid (intermediate)',
@@ -753,7 +753,7 @@ univs['Fuel (3.1\%) grid (intermediate)'] = make_pin(
                mats['He'],
                mats['Zr'],
                mats['H2O']],
-    grid='intermediate')
+    grid='(intermediate)')
 
 # Stack all axial pieces of 3.1% enriched fuel pin cell
 
