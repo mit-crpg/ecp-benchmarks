@@ -127,7 +127,8 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
         make_assembly('Assembly (1.6\%) no BAs' + comment, universes)
 
     # WITH EACH CONTROL ROD BANK
-    for bank in [crA, crB, crC, crD, crSB, crSC, crSD, crSE]:
+    for bank, comment2 in [(crA, 'A'), (crB, 'B'), (crC, 'C'), (crD, 'D'),
+                 (crSB, 'SB'), (crSC, 'SC'), (crSD, 'SD'), (crSE, 'SE')]:
 
         universes = np.empty((17,17), dtype=openmc.Universe)
         universes[:,:] = univs['Assembly (1.6\%) stack']
@@ -138,8 +139,8 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                                            bank, bank,  bank,  bank, bank,
                                              bank,                 bank,
                                                bank,    bank,   bank     ]
-        univs['Assembly (1.6\%) {}'.format(bank) + comment] = \
-            make_assembly('Assembly (1.6\%) {}'.format(bank) + comment, universes)
+        univs['Assembly (1.6\%) CR {}'.format(comment2) + comment] = \
+            make_assembly('Assembly (1.6\%) CR {}'.format(comment2) + comment, universes)
 
 
 # 2.4% ENRICHED ASSEMBLIES

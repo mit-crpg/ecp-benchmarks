@@ -63,27 +63,6 @@ settings_t = """<?xml version="1.0" encoding="UTF-8"?>
   </entropy>
 
 </settings>"""
-coreLattice_t = """
-{dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4}
-{dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4}
-{dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4}
-{dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4}
-{dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4}
-{dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {bafnw:>4} {bafn_:>4} {bafn_:>4} {bafn_:>4} {bafne:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4}
-{dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {bafnw:>4} {bfcnw:>4} {J___5:>4} {H___5:>4} {G___5:>4} {bfcne:>4} {bafne:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4}
-{dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {bafnw:>4} {bfcnw:>4} {K___6:>4} {J___6:>4} {H___6:>4} {G___6:>4} {F___6:>4} {bfcne:>4} {bafne:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4}
-{dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {bafw_:>4} {L___7:>4} {K___7:>4} {J___7:>4} {H___7:>4} {G___7:>4} {F___7:>4} {E___7:>4} {bafe_:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4}
-{dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {bafw_:>4} {L___8:>4} {K___8:>4} {J___8:>4} {H___8:>4} {G___8:>4} {F___8:>4} {E___8:>4} {bafe_:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4}
-{dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {bafw_:>4} {L___9:>4} {K___9:>4} {J___9:>4} {H___9:>4} {G___9:>4} {F___9:>4} {E___9:>4} {bafe_:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4}
-{dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {bafsw:>4} {bfcsw:>4} {K__10:>4} {J__10:>4} {H__10:>4} {G__10:>4} {F__10:>4} {bfcse:>4} {bafse:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4}
-{dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {bafsw:>4} {bfcsw:>4} {J__11:>4} {H__11:>4} {G__11:>4} {bfcse:>4} {bafse:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4}
-{dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {bafsw:>4} {bafs_:>4} {bafs_:>4} {bafs_:>4} {bafse:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4}
-{dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4}
-{dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4}
-{dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4}
-{dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4}
-{dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4} {dummy:>4}
-"""
 pinLattice_t = """
 {0:>4} {0:>4} {0:>4} {0:>4} {0:>4} {0:>4} {0:>4} {0:>4} {0:>4} {0:>4} {0:>4} {0:>4} {0:>4} {0:>4} {0:>4} {0:>4} {0:>4}
 {0:>4} {0:>4} {0:>4} {0:>4} {0:>4} {0:>4} {0:>4} {0:>4} {0:>4} {0:>4} {0:>4} {0:>4} {0:>4} {0:>4} {0:>4} {0:>4} {0:>4}

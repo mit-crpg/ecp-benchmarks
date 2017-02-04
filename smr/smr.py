@@ -1,109 +1,4 @@
-#!/usr/bin/env python
-
-"""
-PWR OpenMC Model Generator
-
-Allows for tweaking of specifications for the PWR OpenMC model, producing:
-  geometry.xml
-  materials.xml
-  settings.xml
-  plot.xml
-  tallies.xml
-
-"""
-
-from __future__ import division
-
-from templates2 import *
-
-############## Geometry paramters ##############
-
 def init_data():
-  """All model parameters set here
-
-  Materials, surfaces, cells, and lattices are defined here and automatically written
-  to the proper files later.  Dictionary keys need to match those in the templates.
-
-  The order each item is written is the order of appearance as written below
-
-  Notes about core construction:
-    The entire axial extent for each pincell is constructed in universes, and then added to fuel assembly lattices
-    The fuel assembly lattices are then added to one master core lattice
-
-
-  """
-
-
-  ################## lattices ##################
-
-  assemblyCells = {} # convenience dictionary holds which cells point to which assembly type
-
-  # commonly needed universes
-  gtu = cells['GT empty stack']['univ']
-  gti = cells['GT empty stack instr']['univ']
-  bas = cells['burn abs stack']['univ']
-  ins = cells['GT instr stack']['univ']
-  crA = cells['GT CR bank A']['univ']
-  crB = cells['GT CR bank B']['univ']
-  crC = cells['GT CR bank C']['univ']
-  crD = cells['GT CR bank D']['univ']
-  crSA = cells['GT CR bank SA']['univ']
-  crSB = cells['GT CR bank SB']['univ']
-  crSC = cells['GT CR bank SC']['univ']
-  crSD = cells['GT CR bank SD']['univ']
-  crSE = cells['GT CR bank SE']['univ']
-
-  ################## Main Core Lattices ##################
-
-  latts['Main Core'] =          { 'order':   inc_order(lo),
-                                  'comm':    comm_t.format("Main Core Lattice"),
-                                  'id':      new_id(univIDs),
-                                  'type':    'rectangular',
-                                  'dim':     19,
-                                  'lleft':   -19*latticePitch/2,
-                                  'width':   latticePitch,
-                                  'univs':   coreLattice_t.format(
-dummy = cells['water pin']['univ'],
-
-G___5 = cells['Fuel 3.1 w/o + instr lattice']['univ'],
-H___5 = cells['Fuel 1.6 w/o + shutB lattice']['univ'],
-J___5 = cells['Fuel 3.1 w/o + instr lattice']['univ'],
-F___6 = cells['Fuel 3.1 w/o + instr lattice']['univ'],
-G___6 = cells['Fuel 1.6 w/o + shutB lattice']['univ'],
-H___6 = cells['Fuel 3.1 w/o + 16BA lattice']['univ'],
-J___6 = cells['Fuel 1.6 w/o + shutB lattice']['univ'],
-K___6 = cells['Fuel 3.1 w/o + instr lattice']['univ'],
-E___7 = cells['Fuel 3.1 w/o + instr lattice']['univ'],
-F___7 = cells['Fuel 1.6 w/o + shutB lattice']['univ'],
-G___7 = cells['Fuel 3.1 w/o + 16BA lattice']['univ'],
-H___7 = cells['Fuel 2.4 w/o + CRD lattice']['univ'],
-J___7 = cells['Fuel 3.1 w/o + 16BA lattice']['univ'],
-K___7 = cells['Fuel 1.6 w/o + shutB lattice']['univ'],
-L___7 = cells['Fuel 3.1 w/o + instr lattice']['univ'],
-E___8 = cells['Fuel 1.6 w/o + shutB lattice']['univ'],
-F___8 = cells['Fuel 3.1 w/o + 16BA lattice']['univ'],
-G___8 = cells['Fuel 2.4 w/o + CRD lattice']['univ'],
-H___8 = cells['Fuel 1.6 w/o + instr lattice']['univ'],
-J___8 = cells['Fuel 2.4 w/o + CRD lattice']['univ'],
-K___8 = cells['Fuel 3.1 w/o + 16BA lattice']['univ'],
-L___8 = cells['Fuel 1.6 w/o + shutB lattice']['univ'],
-E___9 = cells['Fuel 3.1 w/o + instr lattice']['univ'],
-F___9 = cells['Fuel 1.6 w/o + shutB lattice']['univ'],
-G___9 = cells['Fuel 3.1 w/o + 16BA lattice']['univ'],
-H___9 = cells['Fuel 2.4 w/o + CRD lattice']['univ'],
-J___9 = cells['Fuel 3.1 w/o + 16BA lattice']['univ'],
-K___9 = cells['Fuel 1.6 w/o + shutB lattice']['univ'],
-L___9 = cells['Fuel 3.1 w/o + instr lattice']['univ'],
-F__10 = cells['Fuel 3.1 w/o + instr lattice']['univ'],
-G__10 = cells['Fuel 1.6 w/o + shutB lattice']['univ'],
-H__10 = cells['Fuel 3.1 w/o + 16BA lattice']['univ'],
-J__10 = cells['Fuel 1.6 w/o + shutB lattice']['univ'],
-K__10 = cells['Fuel 3.1 w/o + instr lattice']['univ'],
-G__11 = cells['Fuel 3.1 w/o + instr lattice']['univ'],
-H__11 = cells['Fuel 1.6 w/o + shutB lattice']['univ'],
-J__11 = cells['Fuel 3.1 w/o + instr lattice']['univ'],
-**baffle)}
-
 
   ################## universe 0 cells ##################
 
@@ -357,9 +252,6 @@ def main():
   write_geometry(surfs,cells,latts,"geometry.xml")
   write_settings(sett,"settings.xml")
   write_plots(plots,"plots.xml")
-  write_tallies(tallies,"tallies.xml")
-  write_cmfd(cmfd,"cmfd.xml")
-
 
 if __name__ == "__main__":
   main()
