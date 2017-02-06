@@ -20,35 +20,34 @@ def make_pin(name, surfaces, materials, grid=None):
 
     # Create cells between two ZCylinders
     for i, (mat, surf) in enumerate(zip(materials[1:-1], surfaces[:-1])):
-        cell_name = name + '({})'.format(i+1)
+        cell_name = name + ' ({})'.format(i+1)
         cell = openmc.Cell(name=cell_name)
-        cell.material = mat
+        cell.fill = mat
         cell.region = +surf & -surfaces[i+1]
         universe.add_cell(cell)
 
     # Create cell for exterior of outermost ZCylinder
     cell_name = name + ' (last)'
     cell = openmc.Cell(name=cell_name)
-    cell.material = materials[-1]
+    cell.fill = materials[-1]
     cell.region = +surfaces[-1]
     universe.add_cell(cell)
 
     # Add spacer grid cells if specified
     if grid:
         inner_grid_name = 'inner grid box {}'.format(grid)
-        outer_grid_name = 'outer grid box {}'.format(grid)
 
         # FIXME: Does this work???
-        cell.region = openmc.Union(cell.region, grids[inner_grid_name])
+        cell.region = openmc.Intersection(cell.region, grids[inner_grid_name])
 
         cell_name = name + ' (grid)'
         cell = openmc.Cell(name=cell_name)
-        cell.region = grids[outer_grid_name]
+        cell.region = openmc.Complement(grids[inner_grid_name])
 
         if grid == 'top/bottom':
-            cell.material = mats['In']
+            cell.fill = mats['In']
         else:
-            cell.material = mats['Zr']
+            cell.fill = mats['Zr']
 
         universe.add_cell(cell)
 
@@ -68,7 +67,7 @@ def make_stack(name, surfaces, universes):
 
     # Create cells between two ZCylinders
     for i, (univ, surf) in enumerate(zip(universes[1:-1], surfaces[:-1])):
-        cell_name = name + '({})'.format(i+1)
+        cell_name = name + ' ({})'.format(i+1)
         cell = openmc.Cell(name=cell_name)
         cell.fill = univ
         cell.region = +surf & -surfaces[i+1]

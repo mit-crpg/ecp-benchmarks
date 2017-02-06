@@ -209,3 +209,9 @@ mats['UO2 3.1'].temperature = 300
 mats['UO2 3.1'].set_density('g/cc', 10.30166)
 mats['UO2 3.1'].add_element('O', a_O, 'ao')
 mats['UO2 3.1'].add_element('U', a_U, 'ao', enrichment=0.0310221)
+
+
+# Construct a collection of Materials to export to XML
+
+materials = openmc.Materials()
+materials.add_materials(mats.values())

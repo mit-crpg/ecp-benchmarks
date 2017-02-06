@@ -33,55 +33,55 @@ def make_assembly(name, universes):
 
     # Make bottom axial cell for outside of assembly (without sleeve)
     cell = openmc.Cell(name=univ_name + ' axial (0)')
-    cell.material = mats['H2O']
+    cell.fill = mats['H2O']
     cell.region = lat_grid_box & -surfs['grid1bot']
     universe.add_cell(cell)
 
     # Make axial cell for outside of assembly (with sleeve)
     cell = openmc.Cell(name=univ_name + ' axial (1)')
-    cell.material = mats['SS']
+    cell.fill = mats['SS']
     cell.region = lat_grid_box & +surfs['grid1bot'] & -surfs['grid1top']
     universe.add_cell(cell)
 
     # Make axial cell for outside of assembly (without sleeve)
     cell = openmc.Cell(name=univ_name + ' axial (2)')
-    cell.material = mats['H2O']
+    cell.fill = mats['H2O']
     cell.region = lat_grid_box & +surfs['grid1top'] & -surfs['grid2bot']
     universe.add_cell(cell)
 
     # Make axial cell for outside of assembly (with sleeve)
     cell = openmc.Cell(name=univ_name + ' axial (3)')
-    cell.material = mats['Zr']
+    cell.fill = mats['Zr']
     cell.region = lat_grid_box & +surfs['grid2bot'] & -surfs['grid2top']
     universe.add_cell(cell)
 
     # Make axial cell for outside of assembly (without sleeve)
     cell = openmc.Cell(name=univ_name + ' axial (4)')
-    cell.material = mats['H2O']
+    cell.fill = mats['H2O']
     cell.region = lat_grid_box & +surfs['grid2top'] & -surfs['grid3bot']
     universe.add_cell(cell)
 
     # Make axial cell for outside of assembly (with sleeve)
     cell = openmc.Cell(name=univ_name + ' axial (5)')
-    cell.material = mats['Zr']
+    cell.fill = mats['Zr']
     cell.region = lat_grid_box & +surfs['grid3bot'] & -surfs['grid3top']
     universe.add_cell(cell)
 
     # Make axial cell for outside of assembly (without sleeve)
     cell = openmc.Cell(name=univ_name + ' axial (6)')
-    cell.material = mats['H2O']
+    cell.fill = mats['H2O']
     cell.region = lat_grid_box & +surfs['grid3top'] & -surfs['grid4bot']
     universe.add_cell(cell)
 
     # Make axial cell for outside of assembly (with sleeve)
     cell = openmc.Cell(name=univ_name + ' axial (7)')
-    cell.material = mats['SS']
+    cell.fill = mats['SS']
     cell.region = lat_grid_box & +surfs['grid4bot'] & -surfs['grid4top']
     universe.add_cell(cell)
 
     # Make top axial cell for outside of assembly (without sleeve)
     cell = openmc.Cell(name=univ_name + ' axial (last)')
-    cell.material = mats['H2O']
+    cell.fill = mats['H2O']
     cell.region = lat_grid_box & +surfs['grid4top']
     universe.add_cell(cell)
 

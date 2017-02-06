@@ -41,12 +41,12 @@ lowest_extent        =      0.000  #
 highest_extent       =    255.444  # arbitrary amount of water above core
 bottom_support_plate =     20.000  # arbitrary amount of water below core
 top_support_plate    =     25.000  # guessed
-bottomLowerNozzle    =     25.000  # same as topSupportPlate
-topLowerNozzle       =     35.160  # approx from seabrook NDR of 4.088in for lower nozzle height
-bottom_fuel_rod      =     35.160  # same as topLowerNozzle
-topLowerThimble      =     36.007  # approx as 1/3 of inch, this is exact seabrook NDR value for bottom thimble
+bottom_lower_nozzle  =     25.000  # same as topSupportPlate
+top_lower_nozzle     =     35.160  # approx from seabrook NDR of 4.088in for lower nozzle height
+bottom_fuel_rod      =     35.160  # same as top_lower_nozzle
+top_lower_thimble    =     36.007  # approx as 1/3 of inch, this is exact seabrook NDR value for bottom thimble
 bottom_fuel_stack    =     36.007  # same as topLowerThimble
-activeCoreHeight     =    182.880  # provided by D***
+active_core_height   =    182.880  # provided by D***
 top_active_core      =    218.887  # bottomFuelStack + activeCoreHeight
 bot_burn_abs         =     41.087  # approx from seabrook NDR of 1.987in for space between bot of BAs and bot of active fuel
 
@@ -279,7 +279,7 @@ surfs['neutron shield NEtop SWbot'] = openmc.Plane(
 surfs['RPV IR'] = openmc.ZCylinder(
     x0=0., y0=0., R=rpv_IR, name='RPV IR')
 surfs['RPV OR'] = openmc.ZCylinder(
-    x0=0., y0=0., R=rpv_OR, name='RPV OR')
+    x0=0., y0=0., R=rpv_OR, name='RPV OR', boundary_type='vacuum')
 
 # outer axial surfaces
 surfs['upper bound'] = openmc.ZPlane(

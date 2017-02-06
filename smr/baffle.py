@@ -13,12 +13,12 @@ latts = {}
 univs['baffle north dummy'] = openmc.Universe(name='baffle north dummy')
 
 cell = openmc.Cell(name='baffle dummy SS')
-cell.material = mats['SS']
+cell.fill = mats['SS']
 cell.region = +surfs['baffle north']
 univs['baffle north dummy'].add_cell(cell)
 
 cell = openmc.Cell(name='baffle north water')
-cell.material = mats['H2O']
+cell.fill = mats['H2O']
 cell.region = -surfs['baffle north']
 univs['baffle north dummy'].add_cell(cell)
 
@@ -43,12 +43,12 @@ univs['baffle north'].add_cell(cell)
 univs['baffle south dummy'] = openmc.Universe(name='baffle south dummy')
 
 cell = openmc.Cell(name='baffle dummy SS')
-cell.material = mats['H2O']
+cell.fill = mats['H2O']
 cell.region = +surfs['baffle south']
 univs['baffle south dummy'].add_cell(cell)
 
 cell = openmc.Cell(name='baffle south water')
-cell.material = mats['SS']
+cell.fill = mats['SS']
 cell.region = -surfs['baffle south']
 univs['baffle south dummy'].add_cell(cell)
 
@@ -73,12 +73,12 @@ univs['baffle south'].add_cell(cell)
 univs['baffle east dummy'] = openmc.Universe(name='baffle east dummy')
 
 cell = openmc.Cell(name='baffle dummy SS')
-cell.material = mats['SS']
+cell.fill = mats['SS']
 cell.region = +surfs['baffle east']
 univs['baffle east dummy'].add_cell(cell)
 
 cell = openmc.Cell(name='baffle east water')
-cell.material = mats['H2O']
+cell.fill = mats['H2O']
 cell.region = -surfs['baffle east']
 univs['baffle east dummy'].add_cell(cell)
 
@@ -103,12 +103,12 @@ univs['baffle east'].add_cell(cell)
 univs['baffle west dummy'] = openmc.Universe(name='baffle west dummy')
 
 cell = openmc.Cell(name='baffle dummy SS')
-cell.material = mats['H2O']
+cell.fill = mats['H2O']
 cell.region = +surfs['baffle west']
 univs['baffle west dummy'].add_cell(cell)
 
 cell = openmc.Cell(name='baffle west water')
-cell.material = mats['SS']
+cell.fill = mats['SS']
 cell.region = -surfs['baffle west']
 univs['baffle west dummy'].add_cell(cell)
 
@@ -133,17 +133,17 @@ univs['baffle west'].add_cell(cell)
 univs['baffle northwest dummy'] = openmc.Universe(name='baffle northwest dummy')
 
 cell = openmc.Cell(name='baffle northwest dummy 1')
-cell.material = mats['H2O']
+cell.fill = mats['H2O']
 cell.region = +surfs['baffle west'] & -surfs['baffle north']
 univs['baffle northwest dummy'].add_cell(cell)
 
 cell = openmc.Cell(name='baffle northwest dummy 2')
-cell.material = mats['SS']
+cell.fill = mats['SS']
 cell.region = +surfs['baffle west'] & +surfs['baffle north']
 univs['baffle northwest dummy'].add_cell(cell)
 
 cell = openmc.Cell(name='baffle northwest dummy 3')
-cell.material = mats['SS']
+cell.fill = mats['SS']
 cell.region = -surfs['baffle west']
 univs['baffle northwest dummy'].add_cell(cell)
 
@@ -168,17 +168,17 @@ univs['baffle northwest'].add_cell(cell)
 univs['baffle northeast dummy'] = openmc.Universe(name='baffle northeast dummy')
 
 cell = openmc.Cell(name='baffle northeast dummy 1')
-cell.material = mats['H2O']
+cell.fill = mats['H2O']
 cell.region = -surfs['baffle north'] & -surfs['baffle east']
 univs['baffle northeast dummy'].add_cell(cell)
 
 cell = openmc.Cell(name='baffle northeast dummy 2')
-cell.material = mats['SS']
+cell.fill = mats['SS']
 cell.region = +surfs['baffle north'] & -surfs['baffle east']
 univs['baffle northeast dummy'].add_cell(cell)
 
 cell = openmc.Cell(name='baffle northeast dummy 3')
-cell.material = mats['SS']
+cell.fill = mats['SS']
 cell.region = +surfs['baffle east']
 univs['baffle northeast dummy'].add_cell(cell)
 
@@ -203,17 +203,17 @@ univs['baffle northeast'].add_cell(cell)
 univs['baffle southwest dummy'] = openmc.Universe(name='baffle southwest dummy')
 
 cell = openmc.Cell(name='baffle southwest dummy 1')
-cell.material = mats['H2O']
+cell.fill = mats['H2O']
 cell.region = +surfs['baffle south'] & +surfs['baffle east']
 univs['baffle southwest dummy'].add_cell(cell)
 
 cell = openmc.Cell(name='baffle southwest dummy 2')
-cell.material = mats['SS']
+cell.fill = mats['SS']
 cell.region = -surfs['baffle south'] & +surfs['baffle west']
 univs['baffle southwest dummy'].add_cell(cell)
 
 cell = openmc.Cell(name='baffle southwest dummy 3')
-cell.material = mats['SS']
+cell.fill = mats['SS']
 cell.region = -surfs['baffle west']
 univs['baffle southwest dummy'].add_cell(cell)
 
@@ -238,17 +238,17 @@ univs['baffle southwest'].add_cell(cell)
 univs['baffle southeast dummy'] = openmc.Universe(name='baffle southeast dummy')
 
 cell = openmc.Cell(name='baffle southeast dummy 1')
-cell.material = mats['H2O']
+cell.fill = mats['H2O']
 cell.region = +surfs['baffle south'] & -surfs['baffle east']
 univs['baffle southeast dummy'].add_cell(cell)
 
 cell = openmc.Cell(name='baffle southeast dummy 2')
-cell.material = mats['SS']
+cell.fill = mats['SS']
 cell.region = -surfs['baffle south'] & -surfs['baffle east']
 univs['baffle southeast dummy'].add_cell(cell)
 
 cell = openmc.Cell(name='baffle southeast dummy 3')
-cell.material = mats['SS']
+cell.fill = mats['SS']
 cell.region = +surfs['baffle east']
 univs['baffle southeast dummy'].add_cell(cell)
 
@@ -274,17 +274,17 @@ univs['baffle northwest corner dummy'] = \
     openmc.Universe(name='baffle northwest corner dummy')
 
 cell = openmc.Cell(name='baffle northwest corner dummy 1')
-cell.material = mats['H2O']
+cell.fill = mats['H2O']
 cell.region = -surfs['baffle west'] & -surfs['baffle north']
 univs['baffle northwest corner dummy'].add_cell(cell)
 
 cell = openmc.Cell(name='baffle northwest corner dummy 2')
-cell.material = mats['H2O']
+cell.fill = mats['H2O']
 cell.region = +surfs['baffle west']
 univs['baffle northwest corner dummy'].add_cell(cell)
 
 cell = openmc.Cell(name='baffle northwest corner dummy 3')
-cell.material = mats['SS']
+cell.fill = mats['SS']
 cell.region = +surfs['baffle north'] & -surfs['baffle west']
 univs['baffle northwest corner dummy'].add_cell(cell)
 
@@ -311,18 +311,18 @@ univs['baffle northeast corner dummy'] = \
     openmc.Universe(name='baffle northeast corner dummy')
 
 cell = openmc.Cell(name='baffle northeast corner dummy 1')
-cell.material = mats['H2O']
+cell.fill = mats['H2O']
 cell.region = +surfs['baffle east'] & -surfs['baffle north']
 univs['baffle northeast corner dummy'].add_cell(cell)
 
 cell = openmc.Cell(name='baffle northeast corner dummy 2')
-cell.material = mats['H2O']
+cell.fill = mats['H2O']
 cell.region = -surfs['baffle east']
 univs['baffle northeast corner dummy'].add_cell(cell)
 
 cell = openmc.Cell(name='baffle northeast corner dummy 3')
-cell.material = mats['SS']
-cell.region = +surfs['baffle north'] & -surfs['baffle east']
+cell.fill = mats['SS']
+cell.region = +surfs['baffle north'] & +surfs['baffle east']
 univs['baffle northeast corner dummy'].add_cell(cell)
 
 # FIXME: Is this necessary? Or can we simply fill the lattice with this universe???
@@ -348,17 +348,17 @@ univs['baffle southeast corner dummy'] = \
     openmc.Universe(name='baffle southeast corner dummy')
 
 cell = openmc.Cell(name='baffle southeast corner dummy 1')
-cell.material = mats['H2O']
+cell.fill = mats['H2O']
 cell.region = +surfs['baffle east'] & +surfs['baffle south']
 univs['baffle southeast corner dummy'].add_cell(cell)
 
 cell = openmc.Cell(name='baffle southeast corner dummy 2')
-cell.material = mats['H2O']
+cell.fill = mats['H2O']
 cell.region = -surfs['baffle east']
 univs['baffle southeast corner dummy'].add_cell(cell)
 
 cell = openmc.Cell(name='baffle southeast corner dummy 3')
-cell.material = mats['SS']
+cell.fill = mats['SS']
 cell.region = -surfs['baffle south'] & +surfs['baffle east']
 univs['baffle southeast corner dummy'].add_cell(cell)
 
@@ -385,17 +385,17 @@ univs['baffle southwest corner dummy'] = \
     openmc.Universe(name='baffle southwest corner dummy')
 
 cell = openmc.Cell(name='baffle southwest corner dummy 1')
-cell.material = mats['H2O']
+cell.fill = mats['H2O']
 cell.region = -surfs['baffle west'] & +surfs['baffle south']
 univs['baffle southwest corner dummy'].add_cell(cell)
 
 cell = openmc.Cell(name='baffle southwest corner dummy 2')
-cell.material = mats['H2O']
+cell.fill = mats['H2O']
 cell.region = +surfs['baffle west']
 univs['baffle southwest corner dummy'].add_cell(cell)
 
 cell = openmc.Cell(name='baffle southwest corner dummy 3')
-cell.material = mats['SS']
+cell.fill = mats['SS']
 cell.region = -surfs['baffle south'] & -surfs['baffle west']
 univs['baffle southwest corner dummy'].add_cell(cell)
 
