@@ -283,9 +283,9 @@ surfs['RPV OR'] = openmc.ZCylinder(
 
 # outer axial surfaces
 surfs['upper bound'] = openmc.ZPlane(
-    z0=highest_extent, name='upper problem boundary')
+    z0=highest_extent, name='upper problem boundary', boundary_type='vacuum')
 surfs['lower bound'] = openmc.ZPlane(
-    z0=lowest_extent, name='lower problem boundary')
+    z0=lowest_extent, name='lower problem boundary', boundary_type='vacuum')
 
 # baffle surfaces
 surfs['baffle north'] = openmc.YPlane(
