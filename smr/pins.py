@@ -539,6 +539,28 @@ stack_surfs_BA = [
     surfs['bot upper nozzle'],
     surfs['top upper nozzle']]
 
+stack_surfs = [
+    surfs['bot support plate'],
+    surfs['top support plate'],
+    surfs['top lower nozzle'],
+    surfs['top lower thimble'],
+    surfs['grid1bot'],
+    surfs['grid1top'],
+    surfs['dashpot top'],
+    surfs['grid2bot'],
+    surfs['grid2top'],
+    surfs['grid3bot'],
+    surfs['grid3top'],
+    surfs['grid4bot'],
+    surfs['grid4top'],
+    surfs['top active core'],
+    surfs['top pin plenum'],
+    surfs['top FR'],
+    surfs['bot upper nozzle'],
+    surfs['top upper nozzle']
+]
+
+
 # Stack all axial pieces of control rod tubes together for each bank
 
 univs['BA stack'] = make_stack(
@@ -561,7 +583,8 @@ univs['BA stack'] = make_stack(
                univs['BA blank SS'],
                univs['BA blank SS'],
                univs['BA blank SS'],
-               univs['BA blank SS bare']])
+               univs['BA blank SS bare'],
+               univs['water pin']])
 
 
 # FUEL PIN CELLS

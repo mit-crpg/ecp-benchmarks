@@ -31,6 +31,12 @@ def make_assembly(name, universes):
     cell.region = surfs['lat grid box inner']
     universe.add_cell(cell)
 
+    # Add outer water cell
+    cell = openmc.Cell(name=univ_name + ' outer water')
+    cell.fill = univs['water pin']
+    cell.region = openmc.Complement(surfs['lat grid box outer'])
+    universe.add_cell(cell)
+
     # Make bottom axial cell for outside of assembly (without sleeve)
     cell = openmc.Cell(name=univ_name + ' axial (0)')
     cell.fill = mats['H2O']
