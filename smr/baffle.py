@@ -188,7 +188,7 @@ latts['baffle northeast'].lower_left = [-lattice_pitch/2., -lattice_pitch/2.]
 latts['baffle northeast'].pitch = [lattice_pitch/2., lattice_pitch/2.]
 latts['baffle northeast'].universes = [
     [univs['baffle north dummy'], univs['baffle northeast dummy']],
-    [univs['water pin'],          univs['baffle east']]]
+    [univs['water pin'],          univs['baffle east dummy']]]
 
 univs['baffle northeast'] = openmc.Universe(name='baffle northeast')
 
@@ -204,7 +204,7 @@ univs['baffle southwest dummy'] = openmc.Universe(name='baffle southwest dummy')
 
 cell = openmc.Cell(name='baffle southwest dummy 1')
 cell.fill = mats['H2O']
-cell.region = +surfs['baffle south'] & +surfs['baffle east']
+cell.region = +surfs['baffle south'] & +surfs['baffle west']
 univs['baffle southwest dummy'].add_cell(cell)
 
 cell = openmc.Cell(name='baffle southwest dummy 2')

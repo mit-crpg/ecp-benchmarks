@@ -23,17 +23,6 @@ col_spec = {mats['H2O'].id:     [198, 226, 255],  # light blue
 # Create a collection of plots
 plots = openmc.Plots()
 
-plot = openmc.Plot(name='center assm')
-plot.basis = 'xy'
-plot.color = 'mat'
-plot.origin = [0., 0., (highest_extent-lowest_extent)/2.]
-plot.width = [25, 25.]
-plot.filename = 'center_assm'
-plot.col_spec = col_spec
-plot.background = [255, 255, 255]
-plot.pixels = [1000, 1000]
-plots += [plot]
-
 plot = openmc.Plot(name='radial core map 1')
 plot.basis = 'xy'
 plot.color = 'mat'
