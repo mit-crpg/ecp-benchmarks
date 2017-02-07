@@ -23,12 +23,34 @@ col_spec = {mats['H2O'].id:     [198, 226, 255],  # light blue
 # Create a collection of plots
 plots = openmc.Plots()
 
-plot = openmc.Plot(name='radial core map')
+plot = openmc.Plot(name='radial core map 1')
 plot.basis = 'xy'
 plot.color = 'mat'
 plot.origin = [0., 0., (highest_extent-lowest_extent)/2.]
 plot.width = [19*lattice_pitch/2, 19*lattice_pitch/2.]
-plot.filename = 'radial_core_map'
+plot.filename = 'radial_core_map1'
+plot.col_spec = col_spec
+plot.background = [255, 255, 255]
+plot.pixels = [1000, 1000]
+plots += [plot]
+
+plot = openmc.Plot(name='radial core map 2')
+plot.basis = 'xy'
+plot.color = 'mat'
+plot.origin = [0., 0., 40.]
+plot.width = [19*lattice_pitch/2, 19*lattice_pitch/2.]
+plot.filename = 'radial_core_map2'
+plot.col_spec = col_spec
+plot.background = [255, 255, 255]
+plot.pixels = [1000, 1000]
+plots += [plot]
+
+plot = openmc.Plot(name='radial core map 3')
+plot.basis = 'xy'
+plot.color = 'mat'
+plot.origin = [0., 0., 218.]
+plot.width = [19*lattice_pitch/2, 19*lattice_pitch/2.]
+plot.filename = 'radial_core_map3'
 plot.col_spec = col_spec
 plot.background = [255, 255, 255]
 plot.pixels = [1000, 1000]
