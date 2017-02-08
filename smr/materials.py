@@ -192,7 +192,7 @@ mats['UO2 1.6'] = openmc.Material(name='1.6\% Enr. UO2 Fuel')
 mats['UO2 1.6'].temperature = 300
 mats['UO2 1.6'].set_density('g/cc', 10.31341)
 mats['UO2 1.6'].add_element('O', a_O, 'ao')
-mats['UO2 1.6'].add_element('U', a_U, 'ao', enrichment=0.0161006)
+mats['UO2 1.6'].add_element('U', a_U, 'ao', enrichment=1.61006)
 
 # Create 2.4% enriched UO2 fuel material
 a_U234, a_U235, a_U238, a_U, a_O = get_fuel_aos(0.0239993)
@@ -200,7 +200,7 @@ mats['UO2 2.4'] = openmc.Material(name='2.4\% Enr. UO2 Fuel')
 mats['UO2 2.4'].temperature = 300
 mats['UO2 2.4'].set_density('g/cc', 10.29748)
 mats['UO2 2.4'].add_element('O', a_O, 'ao')
-mats['UO2 2.4'].add_element('U', a_U, 'ao', enrichment=0.0239993)
+mats['UO2 2.4'].add_element('U', a_U, 'ao', enrichment=2.39993)
 
 # Create 3.1% enriched UO2 fuel material
 a_U234, a_U235, a_U238, a_U, a_O = get_fuel_aos(0.0310221)
@@ -208,7 +208,7 @@ mats['UO2 3.1'] = openmc.Material(name='3.1\% Enr. UO2 Fuel')
 mats['UO2 3.1'].temperature = 300
 mats['UO2 3.1'].set_density('g/cc', 10.30166)
 mats['UO2 3.1'].add_element('O', a_O, 'ao')
-mats['UO2 3.1'].add_element('U', a_U, 'ao', enrichment=0.0310221)
+mats['UO2 3.1'].add_element('U', a_U, 'ao', enrichment=3.10221)
 
 
 # Construct a collection of Materials to export to XML

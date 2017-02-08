@@ -2,7 +2,7 @@
 <plots>
     <!--radial core map -->
     <plot basis="xy" color="mat" filename="radial_core_map" id="10000" type="slice">
-        <origin>0.0 0.0 200.0</origin>
+        <origin>0.0 0.0 127.722</origin>
         <width>268.7955 268.7955</width>
         <pixels>1000 1000</pixels>
         <background>255 255 255</background>
