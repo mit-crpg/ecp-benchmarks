@@ -1,12 +1,33 @@
+"""Instantiate pin cell Cells and Universes for core model."""
+
 import openmc
 
-from materials import mats
-from surfaces import surfs
+from .materials import mats
+from .surfaces import surfs
 
-# FIXME: Add docstrings, etc.
-# FIXME: Assign names of cells, universes based on dict keys
 
 def make_pin(name, surfaces, materials, grid=None):
+    """Construct a pin cell Universes with radially layered Cells.
+
+    Parameters
+    ----------
+    name: str
+        The string name to assign to the Universe and each of its Cells
+    surfaces: Iterable of openmc.ZCylinder
+        The surfaces between which Cells are constructed
+        to comprise the radially layered pin cell Universe.
+    materials: Iterable of openmc.Material
+        The Materials used within each radial layer. This collection
+        collection must be one unit longer than the collection of surfaces.
+    grid: str, optional
+        The type of grid spacer to wrap around the pin cell universe.
+        Accepted types include 'top/bottom' and 'intermediate'.
+
+    Returns
+    -------
+    universe: openmc.Universe
+        The pin cell Universe
+    """
 
     universe = openmc.Universe(name=name)
 
@@ -52,6 +73,24 @@ def make_pin(name, surfaces, materials, grid=None):
 
 
 def make_stack(name, surfaces, universes):
+    """Construct a Universe of axially stacked pin cell Universes.
+
+    Parameters
+    ----------
+    name: str
+        The string name to assign to the Universe and each of its Cells
+    surfaces: Iterable of openmc.ZPlane
+        A collection of axial surfaces between which pin cells are
+        filled to comprise an axially stacked pin cell
+    universes: Iterable of openmc.Universe
+        The Universes used within each axial layer. This collection
+        collection must be one unit longer than the collection of surfaces.
+
+    Returns
+    -------
+    universe: openmc.Universe
+        The pin cell Universe
+    """
 
     universe = openmc.Universe(name=name)
 
@@ -82,12 +121,16 @@ def make_stack(name, surfaces, universes):
 
 univs = {}
 
+
+#### DUMMY WATER CELL
+
 cell = openmc.Cell(name='water pin')
 cell.fill = mats['H2O']
 univs['water pin'] = openmc.Universe(name='Empty water pin cell universe')
 univs['water pin'].add_cell(cell)
 
-# GUIDE TUBE PIN CELLS
+
+#### GUIDE TUBE PIN CELLS
 
 univs['GT empty'] = make_pin(
     'GT empty', [surfs['GT IR'], surfs['GT OR']],
@@ -185,7 +228,7 @@ univs['GT empty instr'] = make_stack(
                univs['water pin']])
 
 
-# INSTRUMENT TUBE PIN CELL
+#### INSTRUMENT TUBE PIN CELL
 
 univs['IT'] = make_pin(
     'IT', [surfs['IT IR'], surfs['IT OR'], surfs['GT IR'], surfs['GT OR']],
@@ -234,7 +277,7 @@ univs['IT stack'] = make_stack(
                univs['water pin']])
 
 
-# CONTROL ROD PIN CELLS
+#### CONTROL ROD PIN CELLS
 
 univs['CR'] = make_pin(
     'CR', [surfs['CP OR'], surfs['CR IR'], surfs['GT IR'], surfs['GT OR']],
@@ -371,7 +414,7 @@ for b in banks:
                    univs['GT CR bank {} dummy bare'.format(b)]])
 
 
-# BURNABLE ABSORBER PIN CELLS
+#### BURNABLE ABSORBER PIN CELLS
 
 univs['BA'] = make_pin(
     'BA',
@@ -582,7 +625,7 @@ univs['BA stack'] = make_stack(
                univs['water pin']])
 
 
-# FUEL PIN CELLS
+#### FUEL PIN CELLS
 
 univs['SS pin'] = make_pin(
     'SS pin',
@@ -618,7 +661,7 @@ univs['pin plenum grid (top/bottom)'] = make_pin(
     grid='(top/bottom)')
 
 
-# 1.6% ENRICHED FUEL PIN CELL
+#### 1.6% ENRICHED FUEL PIN CELL
 
 univs['Fuel (1.6\%)'] = make_pin(
     'Fuel (1.6\%)',
@@ -678,7 +721,7 @@ univs['Fuel (1.6\%) stack'] = make_stack(
                univs['water pin']])
 
 
-# 2.4% ENRICHED FUEL PIN CELL
+#### 2.4% ENRICHED FUEL PIN CELL
 
 univs['Fuel (2.4\%)'] = make_pin(
     'Fuel (2.4\%)',
@@ -738,7 +781,7 @@ univs['Fuel (2.4\%) stack'] = make_stack(
                univs['water pin']])
 
 
-# 3.1% ENRICHED FUEL PIN CELL
+#### 3.1% ENRICHED FUEL PIN CELL
 
 univs['Fuel (3.1\%)'] = make_pin(
     'Fuel (3.1\%)',

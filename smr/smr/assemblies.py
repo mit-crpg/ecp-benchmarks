@@ -1,16 +1,32 @@
+"""Instantiate each fuel assembly as an OpenMC Lattice."""
+
 import numpy as np
 
 import openmc
 
-from materials import mats
-from surfaces import surfs, pin_pitch
-from pins import univs
+from .materials import mats
+from .surfaces import surfs, pin_pitch
+from .pins import univs
 
 
 def make_assembly(name, universes):
+    """Instantiate an OpenMC Lattice for this fuel assembly.
 
-    # FIXME: Add a docstring
-    # FIXME: Make this general with a loop over axial sections
+    This method creates a 17x17 PWR lattice with axially spaced
+    sleeves defined in the global surfs dictionary.
+
+    Parameters
+    ----------
+    name: str
+        The string name to assign to the Lattice
+    universes: numpy.ndarray of openmc.Universe
+        A 2D NumPy array of Universes to use for the Lattice
+
+    Returns
+    -------
+    universe: openmc.Universe
+        A Universe with a Cell filled by the Lattice
+    """
 
     # Instantiate the lattice
     lattice = openmc.RectLattice(name=name)
@@ -108,13 +124,16 @@ crSC = univs['GT CR bank SC']
 crSD = univs['GT CR bank SD']
 crSE = univs['GT CR bank SE']
 
+
+# Define the NumPy array indices for assembly locations where there
+# may be CR guide tubes, instrument tubes and burnable absorbers
 nonfuel_y = \
     np.array([2,2,2,3,3,5,5,5,5,5,8,8,8,8,8,11,11,11,11,11,13,13,14,14,14])
 nonfuel_x = \
     np.array([5,8,11,3,13,2,5,8,11,14,2,5,8,11,14,2,5,8,11,14,3,13,5,8,11])
 
 
-# 1.6% ENRICHED ASSEMBLIES
+#### 1.6% ENRICHED ASSEMBLIES
 
 for cent, comment in [(gti, ''), (ins, ' instr')]:
 
@@ -148,7 +167,7 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
             make_assembly('Assembly (1.6\%) CR {}'.format(comment2) + comment, universes)
 
 
-# 2.4% ENRICHED ASSEMBLIES
+#### 2.4% ENRICHED ASSEMBLIES
 
 for cent, comment in [(gti, ''), (ins, ' instr')]:
 
@@ -205,7 +224,7 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
         make_assembly('Assembly (2.4\%) 16BA' + comment, universes)
 
 
-# 3.1% ENRICHED ASSEMBLIES
+#### 3.1% ENRICHED ASSEMBLIES
 
 for cent, comment in [(gti, ''), (ins, ' instr')]:
 

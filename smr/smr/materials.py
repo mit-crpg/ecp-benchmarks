@@ -127,6 +127,7 @@ mats['AIC'].temperature = 300
 mats['AIC'].set_density('g/cc', 10.16)
 mats['AIC'].add_element('Ag', 0.80, 'wo')
 mats['AIC'].add_element('In', 0.15, 'wo')
+mats['AIC'].add_element('Cd', 0.05, 'wo')
 
 
 #### Borated Water

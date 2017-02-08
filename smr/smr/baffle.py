@@ -2,9 +2,9 @@
 
 import openmc
 
-from materials import mats
-from surfaces import surfs, lattice_pitch
-from assemblies import univs
+from .materials import mats
+from .surfaces import surfs, lattice_pitch
+from .assemblies import univs
 
 
 #### SOUTH BAFFLE

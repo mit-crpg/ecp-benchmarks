@@ -1,7 +1,9 @@
+"""Instantiate OpenMC Plots to visualize the core model."""
+
 import openmc
 
-from surfaces import lowest_extent, highest_extent, lattice_pitch
-from materials import mats
+from .surfaces import lowest_extent, highest_extent, lattice_pitch
+from .materials import mats
 
 
 # color specifications
@@ -22,24 +24,46 @@ col_spec = {mats['H2O'].id:     [198, 226, 255],  # light blue
 # Create a collection of plots
 plots = openmc.Plots()
 
-plot = openmc.Plot(name='radial core map ')
+plot = openmc.Plot(name='radial slice ')
 plot.basis = 'xy'
 plot.color = 'mat'
 plot.origin = [0., 0., (highest_extent-lowest_extent)/2.]
 plot.width = [25*lattice_pitch/2, 25*lattice_pitch/2.]
-plot.filename = 'radial_core_map'
+plot.filename = 'radial_xy_slice'
 plot.col_spec = col_spec
 plot.background = [255, 255, 255]
 plot.pixels = [1000, 1000]
 plots += [plot]
 
-plot = openmc.Plot(name='row 8 axial')
+plot = openmc.Plot(name='axial slice')
 plot.basis = 'xz'
 plot.color = 'mat'
 plot.origin = [0., 0., (highest_extent-lowest_extent)/2.]
 plot.width = [(highest_extent-lowest_extent)/2.] * 2
-plot.filename = 'row_8_mats_axial'
+plot.filename = 'axial_xz_slice'
 plot.col_spec = col_spec
 plot.background = [255, 255, 255]
-plot.pixels = [600, 600]
+plot.pixels = [1000, 1000]
+plots += [plot]
+
+plot = openmc.Plot(name='assembly grid spacer')
+plot.basis = 'xy'
+plot.color = 'mat'
+plot.origin = [0., 0., 102.021]
+plot.width = [lattice_pitch*1.5, lattice_pitch*1.5]
+plot.filename = 'assm_grid_spacer'
+plot.col_spec = col_spec
+plot.background = [255, 255, 255]
+plot.pixels = [1000, 1000]
+plots += [plot]
+
+plot = openmc.Plot(name='assembly no spacer')
+plot.basis = 'xy'
+plot.color = 'mat'
+plot.origin = [0., 0., 90.]
+plot.width = [lattice_pitch*1.5, lattice_pitch*1.5]
+plot.filename = 'assm_no_spacer'
+plot.col_spec = col_spec
+plot.background = [255, 255, 255]
+plot.pixels = [1000, 1000]
 plots += [plot]

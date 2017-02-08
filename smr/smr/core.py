@@ -4,9 +4,9 @@ import numpy as np
 
 import openmc
 
-from materials import mats
-from surfaces import surfs, lattice_pitch
-from baffle import univs
+from .materials import mats
+from .surfaces import surfs, lattice_pitch
+from .baffle import univs
 
 
 #### CONSTRUCT MAIN CORE LATTICE

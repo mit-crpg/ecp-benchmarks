@@ -81,16 +81,12 @@ top_upper_nozzle     =    235.444
 highest_extent       =    255.444
 
 # grid z planes
-grid1_center          =    39.974
 grid1_bot             =    37.879
 grid1_top             =    42.070
-grid2_center          =   102.021
 grid2_bot             =    99.164
 grid2_top             =   104.879
-grid3_center          =   154.218
 grid3_bot             =   151.361
 grid3_top             =   157.076
-grid4_center          =   206.415
 grid4_bot             =   203.558
 grid4_top             =   209.273
 
