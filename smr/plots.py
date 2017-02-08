@@ -23,34 +23,12 @@ col_spec = {mats['H2O'].id:     [198, 226, 255],  # light blue
 # Create a collection of plots
 plots = openmc.Plots()
 
-plot = openmc.Plot(name='radial core map 1')
+plot = openmc.Plot(name='radial core map ')
 plot.basis = 'xy'
 plot.color = 'mat'
 plot.origin = [0., 0., (highest_extent-lowest_extent)/2.]
-plot.width = [19*lattice_pitch/2, 19*lattice_pitch/2.]
-plot.filename = 'radial_core_map1'
-plot.col_spec = col_spec
-plot.background = [255, 255, 255]
-plot.pixels = [1000, 1000]
-plots += [plot]
-
-plot = openmc.Plot(name='radial core map 2')
-plot.basis = 'xy'
-plot.color = 'mat'
-plot.origin = [0., 0., 40.]
-plot.width = [19*lattice_pitch/2, 19*lattice_pitch/2.]
-plot.filename = 'radial_core_map2'
-plot.col_spec = col_spec
-plot.background = [255, 255, 255]
-plot.pixels = [1000, 1000]
-plots += [plot]
-
-plot = openmc.Plot(name='radial core map 3')
-plot.basis = 'xy'
-plot.color = 'mat'
-plot.origin = [0., 0., 210.]
-plot.width = [19*lattice_pitch/2, 19*lattice_pitch/2.]
-plot.filename = 'radial_core_map3'
+plot.width = [25*lattice_pitch/2, 25*lattice_pitch/2.]
+plot.filename = 'radial_core_map'
 plot.col_spec = col_spec
 plot.background = [255, 255, 255]
 plot.pixels = [1000, 1000]
@@ -67,17 +45,6 @@ plot.background = [255, 255, 255]
 plot.pixels = [600, 600]
 plots += [plot]
 
-plot = openmc.Plot(name='mats J8 ax bot')
-plot.basis = 'xz'
-plot.color = 'mat'
-plot.origin = [0., lattice_pitch, top_lower_nozzle]
-plot.width = [lattice_pitch, 2.1*(top_lower_nozzle-bottom_support_plate)]
-plot.filename = 'J8_mats_ax_bot'
-plot.col_spec = col_spec
-plot.background = [255, 255, 255]
-plot.pixels = [400, int(400*2.1*(top_lower_nozzle-bottom_support_plate)/lattice_pitch)]
-plots += [plot]
-
 plot = openmc.Plot(name='mats J8 nozzle')
 plot.basis = 'xy'
 plot.color = 'mat'
@@ -87,15 +54,4 @@ plot.filename = 'J8_mats_nozzle'
 plot.col_spec = col_spec
 plot.background = [255, 255, 255]
 plot.pixels = [400, 400]
-plots += [plot]
-
-plot = openmc.Plot(name='mats H8 axial top')
-plot.basis = 'xy'
-plot.color = 'mat'
-plot.origin = [0., 0., top_fuel_rod]
-plot.width = [lattice_pitch, 5*(top_upper_nozzle-top_fuel_rod)]
-plot.filename = 'H8_mats_ax_top'
-plot.col_spec = col_spec
-plot.background = [255, 255, 255]
-plot.pixels = [400, int(400*2.1*(top_upper_nozzle-top_fuel_rod)/lattice_pitch)]
 plots += [plot]

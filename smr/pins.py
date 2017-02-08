@@ -2,7 +2,6 @@ import openmc
 
 from materials import mats
 from surfaces import surfs
-from grids import grids
 
 # FIXME: Add docstrings, etc.
 # FIXME: Assign names of cells, universes based on dict keys
@@ -35,14 +34,12 @@ def make_pin(name, surfaces, materials, grid=None):
 
     # Add spacer grid cells if specified
     if grid:
-        inner_grid_name = 'inner grid box {}'.format(grid)
-
-        # FIXME: Does this work???
-        cell.region = openmc.Intersection(cell.region, grids[inner_grid_name])
+        grid_name = 'rod grid box {}'.format(grid)
+        cell.region = openmc.Intersection(cell.region, surfs[grid_name])
 
         cell_name = name + ' (grid)'
         cell = openmc.Cell(name=cell_name)
-        cell.region = openmc.Complement(grids[inner_grid_name])
+        cell.region = openmc.Complement(surfs[grid_name])
 
         if grid == 'top/bottom':
             cell.fill = mats['In']
@@ -88,7 +85,6 @@ univs = {}
 
 cell = openmc.Cell(name='water pin 1')
 cell.fill = mats['H2O']
-cell.region = -surfs['dummy outer']
 univs['water pin'] = openmc.Universe(name='Empty water pin cell universe')
 univs['water pin'].add_cell(cell)
 

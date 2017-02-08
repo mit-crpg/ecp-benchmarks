@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plots>
+    <!--radial core map -->
+    <plot basis="xy" color="mat" filename="radial_core_map" id="10000" type="slice">
+        <origin>0.0 0.0 127.722</origin>
+        <width>268.7955 268.7955</width>
+        <pixels>1000 1000</pixels>
+        <background>255 255 255</background>
+        <col_spec id="10000" rgb="255 218 185" />
+        <col_spec id="10001" rgb="255 255 255" />
+        <col_spec id="10002" rgb="101 101 101" />
+        <col_spec id="10003" rgb="0 0 0" />
+        <col_spec id="10004" rgb="0 0 0" />
+        <col_spec id="10005" rgb="201 201 201" />
+        <col_spec id="10006" rgb="255 0 0" />
+        <col_spec id="10007" rgb="198 226 255" />
+        <col_spec id="10008" rgb="0 255 0" />
+        <col_spec id="10009" rgb="142 35 35" />
+        <col_spec id="10010" rgb="255 215 0" />
+        <col_spec id="10011" rgb="0 0 128" />
+    </plot>
+    <!--row 8 axial-->
+    <plot basis="xz" color="mat" filename="row_8_mats_axial" id="10001" type="slice">
+        <origin>0.0 0.0 127.722</origin>
+        <width>127.722 127.722</width>
+        <pixels>600 600</pixels>
+        <background>255 255 255</background>
+        <col_spec id="10000" rgb="255 218 185" />
+        <col_spec id="10001" rgb="255 255 255" />
+        <col_spec id="10002" rgb="101 101 101" />
+        <col_spec id="10003" rgb="0 0 0" />
+        <col_spec id="10004" rgb="0 0 0" />
+        <col_spec id="10005" rgb="201 201 201" />
+        <col_spec id="10006" rgb="255 0 0" />
+        <col_spec id="10007" rgb="198 226 255" />
+        <col_spec id="10008" rgb="0 255 0" />
+        <col_spec id="10009" rgb="142 35 35" />
+        <col_spec id="10010" rgb="255 215 0" />
+        <col_spec id="10011" rgb="0 0 128" />
+    </plot>
+    <!--mats J8 nozzle-->
+    <plot basis="xy" color="mat" filename="J8_mats_nozzle" id="10002" type="slice">
+        <origin>0.0 21.50364 20.0</origin>
+        <width>21.50364 21.50364</width>
+        <pixels>400 400</pixels>
+        <background>255 255 255</background>
+        <col_spec id="10000" rgb="255 218 185" />
+        <col_spec id="10001" rgb="255 255 255" />
+        <col_spec id="10002" rgb="101 101 101" />
+        <col_spec id="10003" rgb="0 0 0" />
+        <col_spec id="10004" rgb="0 0 0" />
+        <col_spec id="10005" rgb="201 201 201" />
+        <col_spec id="10006" rgb="255 0 0" />
+        <col_spec id="10007" rgb="198 226 255" />
+        <col_spec id="10008" rgb="0 255 0" />
+        <col_spec id="10009" rgb="142 35 35" />
+        <col_spec id="10010" rgb="255 215 0" />
+        <col_spec id="10011" rgb="0 0 128" />
+    </plot>
+</plots>

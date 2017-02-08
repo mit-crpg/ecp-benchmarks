@@ -89,91 +89,53 @@ neutron_shield_NEtop_SWbot = math.tan(-math.pi/6)
 
 surfs = {}
 
-# FIXME: Is this a good idea???
-surfs['dummy outer'] = openmc.Sphere(
-    x0=0., y0=0., R=4000., name='Dummy Outer Surface')
-
-
-surfs['pellet OR'] = openmc.ZCylinder(
-    x0=0., y0=0., R=0.39218, name='Pellet OR')
+surfs['pellet OR'] = openmc.ZCylinder(R=0.39218)
 surfs['plenum spring OR'] = openmc.ZCylinder(
-    x0=0., y0=0., R=0.06459, name='FR Plenum Spring OR')
+    R=0.06459, name='FR Plenum Spring OR')
 surfs['clad IR'] = openmc.ZCylinder(
-    x0=0., y0=0., R=0.40005, name='Clad IR')
+    R=0.40005, name='Clad IR')
 surfs['clad OR'] = openmc.ZCylinder(
-    x0=0., y0=0., R=0.45720, name='Clad OR')
+    R=0.45720, name='Clad OR')
 surfs['GT IR'] = openmc.ZCylinder(
-    x0=0., y0=0., R=0.56134, name='GT IR (above dashpot)')
+    R=0.56134, name='GT IR (above dashpot)')
 surfs['GT OR'] = openmc.ZCylinder(
-    x0=0., y0=0., R=0.60198, name='GT OR (above dashpot)')
+    R=0.60198, name='GT OR (above dashpot)')
 surfs['GT dashpot IR'] = openmc.ZCylinder(
-    x0=0., y0=0., R=0.50419, name='GT IR (at dashpot)')
+    R=0.50419, name='GT IR (at dashpot)')
 surfs['GT dashpot OR'] = openmc.ZCylinder(
-    x0=0., y0=0., R=0.54610, name='GT OR (at dashpot)')
+    R=0.54610, name='GT OR (at dashpot)')
 surfs['CP OR'] = openmc.ZCylinder(
-    x0=0., y0=0., R=0.43310, name='Control Poison OR')
+    R=0.43310, name='Control Poison OR')
 surfs['CR IR'] = openmc.ZCylinder(
-    x0=0., y0=0., R=0.43688, name='CR Clad IR')
+    R=0.43688, name='CR Clad IR')
 surfs['CR OR'] = openmc.ZCylinder(
-    x0=0., y0=0., R=0.48387, name='CR Clad OR')
+    R=0.48387, name='CR Clad OR')
 surfs['BA IR 1'] = openmc.ZCylinder(
-    x0=0., y0=0., R=0.21400, name='BA IR 1')
+    R=0.21400, name='BA IR 1')
 surfs['BA IR 2'] = openmc.ZCylinder(
-    x0=0., y0=0., R=0.23051, name='BA IR 2')
+    R=0.23051, name='BA IR 2')
 surfs['BA IR 3'] = openmc.ZCylinder(
-    x0=0., y0=0., R=0.24130, name='BA IR 3')
+    R=0.24130, name='BA IR 3')
 surfs['BA IR 4'] = openmc.ZCylinder(
-    x0=0., y0=0., R=0.42672, name='BA IR 4')
+    R=0.42672, name='BA IR 4')
 surfs['BA IR 5'] = openmc.ZCylinder(
-    x0=0., y0=0., R=0.43688, name='BA IR 5')
+    R=0.43688, name='BA IR 5')
 surfs['BA IR 6'] = openmc.ZCylinder(
-    x0=0., y0=0., R=0.48387, name='BA IR 6')
+    R=0.48387, name='BA IR 6')
 surfs['BA IR 7'] = openmc.ZCylinder(
-    x0=0., y0=0., R=0.56134, name='BA IR 7')
+    R=0.56134, name='BA IR 7')
 surfs['BA IR 8'] = openmc.ZCylinder(
-    x0=0., y0=0., R=0.60198, name='BA IR 8')
+    R=0.60198, name='BA IR 8')
 surfs['IT IR'] = copy.deepcopy(surfs['BA IR 5'])
 surfs['IT OR'] = copy.deepcopy(surfs['BA IR 6'])
 
-# Planes
-surfs['rod grid box xtop tb'] = openmc.XPlane(
-    x0=rod_grid_side_tb/2., name='X max for grid outside FR in top/bottom spacers')
-surfs['rod grid box xbot tb'] = openmc.XPlane(
-    x0=-rod_grid_side_tb/2., name='X min for grid outside FR in top/bottom spacers')
-surfs['rod grid box ytop tb'] = openmc.YPlane(
-    y0=rod_grid_side_tb/2., name='Y max for grid outside FR in top/bottom spacers')
-surfs['rod grid box ybot tb'] = openmc.YPlane(
-    y0=-rod_grid_side_tb/2., name='Y min for grid outside FR in top/bottom spacers')
+# Rectangular prisms for grid spacers
+surfs['rod grid box (top/bottom)'] = \
+    openmc.get_rectangular_prism(rod_grid_side_tb, rod_grid_side_tb)
+surfs['rod grid box (intermediate)'] = \
+    openmc.get_rectangular_prism(rod_grid_side_i, rod_grid_side_i)
 
-surfs['rod grid box xtop i'] = openmc.XPlane(
-    x0=rod_grid_side_i/2, name='X max for grid outside FR in intermediate spacers')
-surfs['rod grid box xbot i'] = openmc.XPlane(
-    x0=-rod_grid_side_i/2, name='X min for grid outside FR in intermediate spacers')
-surfs['rod grid box ytop i'] = openmc.YPlane(
-    y0=rod_grid_side_i/2, name='Y max for grid outside FR in intermediate spacers')
-surfs['rod grid box ybot i'] = openmc.YPlane(
-    y0=-rod_grid_side_i/2, name='Y min for grid outside FR in intermediate spacers')
-
-# FIXME: Can these be removed??? Use the get_rectangular_prism method instead???
-surfs['lat grid box xtop'] = openmc.XPlane(
-    x0=grid_strap_side/2, name='X max for grid outside FA')
-surfs['lat grid box xbot'] = openmc.XPlane(
-    x0=-grid_strap_side/2, name='Y min for grid outside FA')
-surfs['lat grid box ytop'] = openmc.YPlane(
-    y0=grid_strap_side/2, name='Y max for grid outside FA')
-surfs['lat grid box ybot'] = openmc.YPlane(
-    y0=-grid_strap_side/2, name='Y min for grid outside FA')
-
-surfs['lat box xtop'] = openmc.XPlane(
-    x0=17.*pin_pitch/2., name='lattice X max')
-surfs['lat box xbot'] = openmc.XPlane(
-    x0=-17.*pin_pitch/2., name='lattice X min')
-surfs['lat box ytop'] = openmc.YPlane(
-    y0=17.*pin_pitch/2., name='lattice Y max')
-surfs['lat box ybot'] = openmc.YPlane(
-    y0=-17.*pin_pitch/2., name='lattice Y min')
-
-# FIXME: rectangular prism for lattice grid sleeves
+# Rectangular prisms for lattice grid sleeves
 surfs['lat grid box inner'] = \
     openmc.get_rectangular_prism(17.*pin_pitch, 17.*pin_pitch)
 surfs['lat grid box outer'] = \
@@ -255,11 +217,11 @@ surfs['bankD bot'] = openmc.ZPlane(
 
 # outer radial surfaces
 surfs['core barrel IR'] = openmc.ZCylinder(
-    x0=0., y0=0., R=core_barrel_IR, name='core barrel IR')
+    R=core_barrel_IR, name='core barrel IR')
 surfs['core barrel OR'] = openmc.ZCylinder(
-    x0=0., y0=0., R=core_barrel_OR, name='core barrel OR')
+    R=core_barrel_OR, name='core barrel OR')
 surfs['neutron shield OR'] = openmc.ZCylinder(
-    x0=0., y0=0., R=neutron_shield_OR, name='neutron shield OR')
+    R=neutron_shield_OR, name='neutron shield OR')
 
 # neutron shield planes
 surfs['neutron shield NWbot SEtop'] = openmc.Plane(
@@ -277,9 +239,9 @@ surfs['neutron shield NEtop SWbot'] = openmc.Plane(
 
 # outer radial surfaces
 surfs['RPV IR'] = openmc.ZCylinder(
-    x0=0., y0=0., R=rpv_IR, name='RPV IR')
+    R=rpv_IR, name='RPV IR')
 surfs['RPV OR'] = openmc.ZCylinder(
-    x0=0., y0=0., R=rpv_OR, name='RPV OR', boundary_type='vacuum')
+    R=rpv_OR, name='RPV OR', boundary_type='vacuum')
 
 # outer axial surfaces
 surfs['upper bound'] = openmc.ZPlane(

@@ -23,8 +23,8 @@ multipole = input('Use multipole cross sections? (y/n): ').lower()
 multipole = True if multipole == 'y' else False
 
 # Construct uniform initial source distribution over fissionable zones
-lower_left = [-8.*lattice_pitch/2., -8.*lattice_pitch/2., bottom_fuel_stack]
-upper_right = [+8.*lattice_pitch/2., +8.*lattice_pitch/2., top_active_core]
+lower_left = [-7.*lattice_pitch/2., -7.*lattice_pitch/2., bottom_fuel_stack]
+upper_right = [+7.*lattice_pitch/2., +7.*lattice_pitch/2., top_active_core]
 source = openmc.source.Source(space=openmc.stats.Box(lower_left, upper_right))
 source.space.only_fissionable = True
 
@@ -52,7 +52,7 @@ plots.export_to_xml()
 # Create a pin-wise mesh
 mesh = openmc.Mesh(name='pin-wise mesh')
 mesh.type = 'regular'
-mesh.dimension = [15*17, 15*17]
+mesh.dimension = [7*17, 7*17]
 mesh.lower_left = lower_left[:2]
 mesh.width = np.array(upper_right[:2]) - np.array(lower_left[:2])
 mesh_filter = openmc.MeshFilter(mesh)
