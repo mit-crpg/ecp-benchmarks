@@ -1,11 +1,12 @@
+"""Instantiate the OpenMC Surfaces needed by the core model.
+
+The geometric parameters defining the core model are tabulated here.
+"""
+
 import copy
 import math
 
 import openmc
-
-# FIXME: Add back parameters for pin cell radial surfaces
-# FIXME: Cleanup parameters
-# FIXME: Add docstring explanation
 
 
 # Notation
@@ -19,67 +20,88 @@ import openmc
 # FA: Fuel Assembly
 # RPV: Reactor Pressure Vessel
 
-# Parameters
-rod_grid_side_tb  = 1.24416
-rod_grid_side_i   = 1.21962
+# pin cell parameters
+pellet_OR          = 0.39218
+clad_IR            = 0.40005
+clad_OR            = 0.45720
+rod_grid_side_tb   = 1.24416
+rod_grid_side_i    = 1.21962
+guide_tube_IR      = 0.56134
+guide_tube_OR      = 0.60198
+guide_tube_dash_IR = 0.50419
+guide_tube_dash_OR = 0.54610
+control_poison_OR  = 0.43310
+control_rod_IR     = 0.43688
+control_rod_OR     = 0.48387
+burn_abs_r1        = 0.21400
+burn_abs_r2        = 0.23051
+burn_abs_r3        = 0.24130
+burn_abs_r4        = 0.42672
+burn_abs_r5        = 0.43688
+burn_abs_r6        = 0.48387
+burn_abs_r7        = 0.56134
+burn_abs_r8        = 0.60198
+instr_tube_IR      = 0.43688
+instr_tube_OR      = 0.48387
+plenum_spring_OR   = 0.06459
 
-## lattice parameters
-pin_pitch         = 1.25984
-lattice_pitch     = 21.50364
-grid_strap_side   = 21.47270
+# grid spacer parameters
+rod_grid_side_tb   = 1.24416
+rod_grid_side_i    = 1.21962
 
-## radial paramters
-core_barrel_IR    = 85.0
-core_barrel_OR    = 90.0
-neutron_shield_OR = 92.0
-baffle_width      = 2.2225
-rpv_IR            = 120.0
-rpv_OR            = 135.0
+# lattice parameters
+pin_pitch          = 1.25984
+lattice_pitch      = 21.50364
+grid_strap_side    = 21.47270
 
-## axial paramters
-lowest_extent        =      0.000  #
-highest_extent       =    255.444  # arbitrary amount of water above core
-bottom_support_plate =     20.000  # arbitrary amount of water below core
-top_support_plate    =     25.000  # guessed
-bottom_lower_nozzle  =     25.000  # same as topSupportPlate
-top_lower_nozzle     =     35.160  # approx from seabrook NDR of 4.088in for lower nozzle height
-bottom_fuel_rod      =     35.160  # same as top_lower_nozzle
-top_lower_thimble    =     36.007  # approx as 1/3 of inch, this is exact seabrook NDR value for bottom thimble
-bottom_fuel_stack    =     36.007  # same as topLowerThimble
-active_core_height   =    182.880  # provided by D***
-top_active_core      =    218.887  # bottomFuelStack + activeCoreHeight
-bot_burn_abs         =     41.087  # approx from seabrook NDR of 1.987in for space between bot of BAs and bot of active fuel
+# core radial paramters
+core_barrel_IR     = 85.0
+core_barrel_OR     = 90.0
+neutron_shield_OR  = 92.0
+baffle_width       = 2.2225
+rpv_IR             = 120.0
+rpv_OR             = 135.0
 
-# grid z planes (heights 1.65 top/bottom, 2.25 intermediate)
-grid1_center          =     39.974  # bottomFuelStack + 1.562in
-grid1_bot             =     37.879  # grid1Center - 1.65/2
-grid1_top             =     42.070  # grid1Center + 1.65/2
-grid2_center          =    102.021  # bottomFuelStack + 25.990in
-grid2_bot             =     99.164  # grid2Center - 2.25/2
-grid2_top             =    104.879  # grid2Center + 2.25/2
-grid3_center          =    154.218  # bottomFuelStack + 46.540in
-grid3_bot             =    151.361  # grid3Center - 2.25/2
-grid3_top             =    157.076  # grid3Center + 2.25/2
-grid4_center          =    206.415  # bottomFuelStack + 67.090in
-grid4_bot             =    203.558  # grid4Center - 2.25/2
-grid4_top             =    209.273  # grid4Center + 2.25/2
+# axial paramters
+lowest_extent        =      0.000
+bottom_support_plate =     20.000
+top_support_plate    =     25.000
+bottom_lower_nozzle  =     25.000
+top_lower_nozzle     =     35.160
+bottom_fuel_rod      =     35.160
+top_lower_thimble    =     36.007
+bottom_fuel_stack    =     36.007
+bot_burn_abs         =     41.087
+active_core_height   =    182.880
+top_active_core      =    218.887
+top_plenum           =    221.223
+top_fuel_rod         =    223.272
+bottom_upper_nozzle  =    226.617
+top_upper_nozzle     =    235.444
+highest_extent       =    255.444
+
+# grid z planes
+grid1_center          =    39.974
+grid1_bot             =    37.879
+grid1_top             =    42.070
+grid2_center          =   102.021
+grid2_bot             =    99.164
+grid2_top             =   104.879
+grid3_center          =   154.218
+grid3_bot             =   151.361
+grid3_top             =   157.076
+grid4_center          =   206.415
+grid4_bot             =   203.558
+grid4_top             =   209.273
 
 # control rod step heights
-step0H               =     45.079  # chosen to match the step size calculated for intervals between other grids
-step36H              =    102.021  # grid2Center
-step69H              =    154.218  # grid3Center
-step102H             =    206.415  # grid4Center
-step228H             =    249.122  # set using calculated step width (27*stepWidth + step102H)
-step_width            =    1.58173  # calculated from grid center planes
-
-bank_bot  = 405.713
-bank_step = 228
-bank_top  = 766.348
-
-top_fuel_rod        =    223.272
-top_plenum          =    221.223
-bottom_upper_nozzle =    226.617
-top_upper_nozzle    =    235.444
+step0H                =    45.079
+step102H              =   206.415
+step228H              =   249.122
+step_width            =     1.58173
+bank_bot              =   405.713
+bank_step             =   228.
+bank_top              =   766.348
 
 neutron_shield_NWbot_SEtop = math.tan(math.pi/3)
 neutron_shield_NWtop_SEbot = math.tan(math.pi/6)
@@ -89,43 +111,44 @@ neutron_shield_NEtop_SWbot = math.tan(-math.pi/6)
 
 surfs = {}
 
-surfs['pellet OR'] = openmc.ZCylinder(R=0.39218)
+surfs['pellet OR'] = openmc.ZCylinder(
+    R=pellet_OR, name='Pellet OR')
 surfs['plenum spring OR'] = openmc.ZCylinder(
-    R=0.06459, name='FR Plenum Spring OR')
+    R=plenum_spring_OR, name='FR Plenum Spring OR')
 surfs['clad IR'] = openmc.ZCylinder(
-    R=0.40005, name='Clad IR')
+    R=clad_IR, name='Clad IR')
 surfs['clad OR'] = openmc.ZCylinder(
-    R=0.45720, name='Clad OR')
+    R=clad_OR, name='Clad OR')
 surfs['GT IR'] = openmc.ZCylinder(
-    R=0.56134, name='GT IR (above dashpot)')
+    R=guide_tube_IR, name='GT IR (above dashpot)')
 surfs['GT OR'] = openmc.ZCylinder(
-    R=0.60198, name='GT OR (above dashpot)')
+    R=guide_tube_OR, name='GT OR (above dashpot)')
 surfs['GT dashpot IR'] = openmc.ZCylinder(
-    R=0.50419, name='GT IR (at dashpot)')
+    R=guide_tube_dash_IR, name='GT IR (at dashpot)')
 surfs['GT dashpot OR'] = openmc.ZCylinder(
-    R=0.54610, name='GT OR (at dashpot)')
+    R=guide_tube_dash_OR, name='GT OR (at dashpot)')
 surfs['CP OR'] = openmc.ZCylinder(
-    R=0.43310, name='Control Poison OR')
+    R=control_poison_OR, name='Control Poison OR')
 surfs['CR IR'] = openmc.ZCylinder(
-    R=0.43688, name='CR Clad IR')
+    R=control_rod_IR, name='CR Clad IR')
 surfs['CR OR'] = openmc.ZCylinder(
-    R=0.48387, name='CR Clad OR')
+    R=control_rod_OR, name='CR Clad OR')
 surfs['BA IR 1'] = openmc.ZCylinder(
-    R=0.21400, name='BA IR 1')
+    R=burn_abs_r1, name='BA IR 1')
 surfs['BA IR 2'] = openmc.ZCylinder(
-    R=0.23051, name='BA IR 2')
+    R=burn_abs_r2, name='BA IR 2')
 surfs['BA IR 3'] = openmc.ZCylinder(
-    R=0.24130, name='BA IR 3')
+    R=burn_abs_r3, name='BA IR 3')
 surfs['BA IR 4'] = openmc.ZCylinder(
-    R=0.42672, name='BA IR 4')
+    R=burn_abs_r4, name='BA IR 4')
 surfs['BA IR 5'] = openmc.ZCylinder(
-    R=0.43688, name='BA IR 5')
+    R=burn_abs_r5, name='BA IR 5')
 surfs['BA IR 6'] = openmc.ZCylinder(
-    R=0.48387, name='BA IR 6')
+    R=burn_abs_r6, name='BA IR 6')
 surfs['BA IR 7'] = openmc.ZCylinder(
-    R=0.56134, name='BA IR 7')
+    R=burn_abs_r7, name='BA IR 7')
 surfs['BA IR 8'] = openmc.ZCylinder(
-    R=0.60198, name='BA IR 8')
+    R=burn_abs_r8, name='BA IR 8')
 surfs['IT IR'] = copy.deepcopy(surfs['BA IR 5'])
 surfs['IT OR'] = copy.deepcopy(surfs['BA IR 6'])
 

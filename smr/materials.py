@@ -1,9 +1,31 @@
+"""Instantiate the OpenMC Materials needed by the core model."""
+
 import openmc
 from openmc.data import atomic_weight, atomic_mass
 
-# FIXME: Write docstrings
 
 def get_fuel_aos(enr_U235):
+    """Get the atom percents of the nuclides in fresh UO2 fuel.
+
+    Parameters
+    ----------
+    enr_U235: float
+        The percent enrichment of U-235 in the fuel
+
+    Returns
+    -------
+    a_U234: float
+        The atom percent of U-234
+    a_U235: float
+        The atom percent of U-235
+    a_U238: float
+        The atom percent of U-238
+    a_U: float
+        The atom percent of Uranium
+    a_O: float
+        The atom percent of Oxygen
+    """
+
 
     # Calculate molar mass of Uranium
     enr_U234 = 0.008 * enr_U235
@@ -107,7 +129,7 @@ mats['AIC'].add_element('Ag', 0.80, 'wo')
 mats['AIC'].add_element('In', 0.15, 'wo')
 
 
-########## Borated Water #################
+#### Borated Water
 
 boron_ppm = 975
 
@@ -147,7 +169,7 @@ mats['H2O'].add_element('O', aho_Bh2o, 'ao')
 mats['H2O'].add_s_alpha_beta(name='lwtr')
 
 
-########## Borosilicate Glass #################
+#### Borosilicate Glass
 
 # CASMO weight fractions
 wO_bsg = 0.5481
@@ -184,7 +206,7 @@ mats['BSG'].add_nuclide('B10', aB10_B, 'ao')
 mats['BSG'].add_nuclide('B11', aB11_B, 'ao')
 
 
-########## Enriched UO2 Fuel #################
+#### Enriched UO2 Fuel
 
 # Create 1.6% enriched UO2 fuel material
 a_U234, a_U235, a_U238, a_U, a_O = get_fuel_aos(0.0161006)

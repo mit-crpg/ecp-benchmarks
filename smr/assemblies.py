@@ -6,7 +6,6 @@ from materials import mats
 from surfaces import surfs, pin_pitch
 from pins import univs
 
-# FIXME: Remove name and name everything based on the keys
 
 def make_assembly(name, universes):
 
