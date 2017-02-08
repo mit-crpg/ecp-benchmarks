@@ -141,8 +141,6 @@ surfs['lat grid box inner'] = \
 surfs['lat grid box outer'] = \
     openmc.get_rectangular_prism(grid_strap_side, grid_strap_side)
 
-surfs['lowest extent'] = openmc.ZPlane(
-    z0=lowest_extent, name='lowest extent')
 surfs['bot support plate'] = openmc.ZPlane(
     z0=bottom_support_plate, name='bot support plate')
 surfs['top support plate'] = openmc.ZPlane(
@@ -188,8 +186,6 @@ surfs['bot upper nozzle'] = openmc.ZPlane(
     z0=bottom_upper_nozzle, name='bottom upper nozzle')
 surfs['top upper nozzle'] = openmc.ZPlane(
     z0=top_upper_nozzle, name='top upper nozzle')
-surfs['highest extent'] = openmc.ZPlane(
-    z0=highest_extent, name='highest extent')
 
 # Control rod bank surfaces for ARO configuration
 for bank in ['A','B','C','D','E',]:

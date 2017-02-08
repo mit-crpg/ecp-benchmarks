@@ -25,7 +25,7 @@ plots = openmc.Plots()
 plot = openmc.Plot(name='radial core map ')
 plot.basis = 'xy'
 plot.color = 'mat'
-plot.origin = [0., 0., (highest_extent-lowest_extent)/2.]
+plot.origin = [0., 0., 200.] #(highest_extent-lowest_extent)/2.]
 plot.width = [25*lattice_pitch/2, 25*lattice_pitch/2.]
 plot.filename = 'radial_core_map'
 plot.col_spec = col_spec

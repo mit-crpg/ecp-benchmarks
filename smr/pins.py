@@ -80,10 +80,9 @@ def make_stack(name, surfaces, universes):
     return universe
 
 
-# FIXME: Is this a good idea???
 univs = {}
 
-cell = openmc.Cell(name='water pin 1')
+cell = openmc.Cell(name='water pin')
 cell.fill = mats['H2O']
 univs['water pin'] = openmc.Universe(name='Empty water pin cell universe')
 univs['water pin'].add_cell(cell)
