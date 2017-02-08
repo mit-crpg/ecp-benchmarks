@@ -1,7 +1,6 @@
 import openmc
 
-from surfaces import lowest_extent, highest_extent, lattice_pitch,\
-    top_lower_nozzle, top_upper_nozzle, bottom_support_plate, top_fuel_rod
+from surfaces import lowest_extent, highest_extent, lattice_pitch
 from materials import mats
 
 
@@ -43,15 +42,4 @@ plot.filename = 'row_8_mats_axial'
 plot.col_spec = col_spec
 plot.background = [255, 255, 255]
 plot.pixels = [600, 600]
-plots += [plot]
-
-plot = openmc.Plot(name='mats J8 nozzle')
-plot.basis = 'xy'
-plot.color = 'mat'
-plot.width = [lattice_pitch, lattice_pitch]
-plot.origin = [0., lattice_pitch, bottom_support_plate]
-plot.filename = 'J8_mats_nozzle'
-plot.col_spec = col_spec
-plot.background = [255, 255, 255]
-plot.pixels = [400, 400]
 plots += [plot]
