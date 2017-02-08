@@ -424,49 +424,49 @@
     <cell id="11183" material="10003" name="Assembly (3.1\%) no BAs instr lattice axial (7)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10048 -10049" universe="10183" />
     <cell id="11184" material="10007" name="Assembly (3.1\%) no BAs instr lattice axial (last)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10049" universe="10183" />
     <cell id="11306" material="10003" name="baffle dummy SS" region="10083" universe="10206" />
-    <cell id="11307" material="10007" name="baffle north water" region="-10083" universe="10206" />
-    <cell fill="10207" id="11308" name="baffle north" universe="10208" />
+    <cell id="11307" material="10007" name="baffle south water" region="-10083" universe="10206" />
+    <cell fill="10207" id="11308" name="baffle south" universe="10208" />
     <cell id="11309" material="10007" name="baffle dummy SS" region="10084" universe="10209" />
-    <cell id="11310" material="10003" name="baffle south water" region="-10084" universe="10209" />
-    <cell fill="10210" id="11311" name="baffle south" universe="10211" />
+    <cell id="11310" material="10003" name="baffle north water" region="-10084" universe="10209" />
+    <cell fill="10210" id="11311" name="baffle north" universe="10211" />
     <cell id="11312" material="10003" name="baffle dummy SS" region="10085" universe="10212" />
-    <cell id="11313" material="10007" name="baffle east water" region="-10085" universe="10212" />
-    <cell fill="10213" id="11314" name="baffle east" universe="10214" />
+    <cell id="11313" material="10007" name="baffle west water" region="-10085" universe="10212" />
+    <cell fill="10213" id="11314" name="baffle west" universe="10214" />
     <cell id="11315" material="10007" name="baffle dummy SS" region="10086" universe="10215" />
-    <cell id="11316" material="10003" name="baffle west water" region="-10086" universe="10215" />
-    <cell fill="10216" id="11317" name="baffle west" universe="10217" />
-    <cell id="11318" material="10007" name="baffle northwest dummy 1" region="10086 -10083" universe="10218" />
-    <cell id="11319" material="10003" name="baffle northwest dummy 2" region="10086 10083" universe="10218" />
-    <cell id="11320" material="10003" name="baffle northwest dummy 3" region="-10086" universe="10218" />
-    <cell fill="10219" id="11321" name="baffle northwest" universe="10220" />
-    <cell id="11322" material="10007" name="baffle northeast dummy 1" region="-10083 -10085" universe="10221" />
-    <cell id="11323" material="10003" name="baffle northeast dummy 2" region="10083 -10085" universe="10221" />
-    <cell id="11324" material="10003" name="baffle northeast dummy 3" region="10085" universe="10221" />
-    <cell fill="10222" id="11325" name="baffle northeast" universe="10223" />
-    <cell id="11326" material="10007" name="baffle southwest dummy 1" region="10084 10086" universe="10224" />
-    <cell id="11327" material="10003" name="baffle southwest dummy 2" region="-10084 10086" universe="10224" />
-    <cell id="11328" material="10003" name="baffle southwest dummy 3" region="-10086" universe="10224" />
-    <cell fill="10225" id="11329" name="baffle southwest" universe="10226" />
-    <cell id="11330" material="10007" name="baffle southeast dummy 1" region="10084 -10085" universe="10227" />
-    <cell id="11331" material="10003" name="baffle southeast dummy 2" region="-10084 -10085" universe="10227" />
-    <cell id="11332" material="10003" name="baffle southeast dummy 3" region="10085" universe="10227" />
-    <cell fill="10228" id="11333" name="baffle southeast" universe="10229" />
-    <cell id="11334" material="10007" name="baffle northwest corner dummy 1" region="-10086 -10083" universe="10230" />
-    <cell id="11335" material="10007" name="baffle northwest corner dummy 2" region="10086" universe="10230" />
-    <cell id="11336" material="10003" name="baffle northwest corner dummy 3" region="10083 -10086" universe="10230" />
-    <cell fill="10231" id="11337" name="baffle northwest corner" universe="10232" />
-    <cell id="11338" material="10007" name="baffle northeast corner dummy 1" region="10085 -10083" universe="10233" />
-    <cell id="11339" material="10007" name="baffle northeast corner dummy 2" region="-10085" universe="10233" />
-    <cell id="11340" material="10003" name="baffle northeast corner dummy 3" region="10083 10085" universe="10233" />
-    <cell fill="10234" id="11341" name="baffle northeast corner" universe="10235" />
-    <cell id="11342" material="10007" name="baffle southeast corner dummy 1" region="10085 10084" universe="10236" />
-    <cell id="11343" material="10007" name="baffle southeast corner dummy 2" region="-10085" universe="10236" />
-    <cell id="11344" material="10003" name="baffle southeast corner dummy 3" region="-10084 10085" universe="10236" />
-    <cell fill="10237" id="11345" name="baffle southeast corner" universe="10238" />
-    <cell id="11346" material="10007" name="baffle southwest corner dummy 1" region="-10086 10084" universe="10239" />
-    <cell id="11347" material="10007" name="baffle southwest corner dummy 2" region="10086" universe="10239" />
-    <cell id="11348" material="10003" name="baffle southwest corner dummy 3" region="-10084 -10086" universe="10239" />
-    <cell fill="10240" id="11349" name="baffle southwest corner" universe="10241" />
+    <cell id="11316" material="10003" name="baffle east water" region="-10086" universe="10215" />
+    <cell fill="10216" id="11317" name="baffle east" universe="10217" />
+    <cell id="11318" material="10007" name="baffle southeast dummy 1" region="10086 -10083" universe="10218" />
+    <cell id="11319" material="10003" name="baffle southeast dummy 2" region="10086 10083" universe="10218" />
+    <cell id="11320" material="10003" name="baffle southeast dummy 3" region="-10086" universe="10218" />
+    <cell fill="10219" id="11321" name="baffle southeast" universe="10220" />
+    <cell id="11322" material="10007" name="baffle southwest dummy 1" region="-10083 -10085" universe="10221" />
+    <cell id="11323" material="10003" name="baffle southwest dummy 2" region="10083 -10085" universe="10221" />
+    <cell id="11324" material="10003" name="baffle southwest dummy 3" region="10085" universe="10221" />
+    <cell fill="10222" id="11325" name="baffle southwest" universe="10223" />
+    <cell id="11326" material="10007" name="baffle northeast dummy 1" region="10084 10086" universe="10224" />
+    <cell id="11327" material="10003" name="baffle northeast dummy 2" region="-10084 10086" universe="10224" />
+    <cell id="11328" material="10003" name="baffle northeast dummy 3" region="-10086" universe="10224" />
+    <cell fill="10225" id="11329" name="baffle northeast" universe="10226" />
+    <cell id="11330" material="10007" name="baffle northwest dummy 1" region="10084 -10085" universe="10227" />
+    <cell id="11331" material="10003" name="baffle northwest dummy 2" region="-10084 -10085" universe="10227" />
+    <cell id="11332" material="10003" name="baffle northwest dummy 3" region="10085" universe="10227" />
+    <cell fill="10228" id="11333" name="baffle northwest" universe="10229" />
+    <cell id="11334" material="10007" name="baffle southeast corner dummy 1" region="-10086 -10083" universe="10230" />
+    <cell id="11335" material="10007" name="baffle southeast corner dummy 2" region="10086" universe="10230" />
+    <cell id="11336" material="10003" name="baffle southeast corner dummy 3" region="10083 -10086" universe="10230" />
+    <cell fill="10231" id="11337" name="baffle southeast corner" universe="10232" />
+    <cell id="11338" material="10007" name="baffle southwest corner dummy 1" region="10085 -10083" universe="10233" />
+    <cell id="11339" material="10007" name="baffle southwest corner dummy 2" region="-10085" universe="10233" />
+    <cell id="11340" material="10003" name="baffle southwest corner dummy 3" region="10083 10085" universe="10233" />
+    <cell fill="10234" id="11341" name="baffle southwest corner" universe="10235" />
+    <cell id="11342" material="10007" name="baffle northwest corner dummy 1" region="10085 10084" universe="10236" />
+    <cell id="11343" material="10007" name="baffle northwest corner dummy 2" region="-10085" universe="10236" />
+    <cell id="11344" material="10003" name="baffle northwest corner dummy 3" region="-10084 10085" universe="10236" />
+    <cell fill="10237" id="11345" name="baffle northwest corner" universe="10238" />
+    <cell id="11346" material="10007" name="baffle northeast corner dummy 1" region="-10086 10084" universe="10239" />
+    <cell id="11347" material="10007" name="baffle northeast corner dummy 2" region="10086" universe="10239" />
+    <cell id="11348" material="10003" name="baffle northeast corner dummy 3" region="-10084 -10086" universe="10239" />
+    <cell fill="10240" id="11349" name="baffle northeast corner" universe="10241" />
     <cell fill="10242" id="11350" name="Main core" region="-10072 10082 -10081" universe="0" />
     <cell id="11351" material="10003" name="core barrel" region="10072 -10073 10082 -10081" universe="0" />
     <cell id="11352" material="10003" name="neutron shield panel NW" region="10073 -10074 10075 -10076 10082 -10081" universe="0" />
@@ -571,7 +571,7 @@
 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 
 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 </universes>
     </lattice>
-    <lattice id="10207" name="baffle north">
+    <lattice id="10207" name="baffle south">
         <pitch>10.75182 10.75182</pitch>
         <dimension>2 2</dimension>
         <lower_left>-10.75182 -10.75182</lower_left>
@@ -579,7 +579,7 @@
 10206 10206 
 10000 10000 </universes>
     </lattice>
-    <lattice id="10210" name="baffle south">
+    <lattice id="10210" name="baffle north">
         <pitch>10.75182 10.75182</pitch>
         <dimension>2 2</dimension>
         <lower_left>-10.75182 -10.75182</lower_left>
@@ -587,7 +587,7 @@
 10000 10000 
 10209 10209 </universes>
     </lattice>
-    <lattice id="10213" name="baffle east">
+    <lattice id="10213" name="baffle west">
         <pitch>10.75182 10.75182</pitch>
         <dimension>2 2</dimension>
         <lower_left>-10.75182 -10.75182</lower_left>
@@ -595,7 +595,7 @@
 10000 10212 
 10000 10212 </universes>
     </lattice>
-    <lattice id="10216" name="baffle west">
+    <lattice id="10216" name="baffle east">
         <pitch>10.75182 10.75182</pitch>
         <dimension>2 2</dimension>
         <lower_left>-10.75182 -10.75182</lower_left>
@@ -603,7 +603,7 @@
 10215 10000 
 10215 10000 </universes>
     </lattice>
-    <lattice id="10219" name="baffle northwest">
+    <lattice id="10219" name="baffle southeast">
         <pitch>10.75182 10.75182</pitch>
         <dimension>2 2</dimension>
         <lower_left>-10.75182 -10.75182</lower_left>
@@ -611,7 +611,7 @@
 10218 10206 
 10215 10000 </universes>
     </lattice>
-    <lattice id="10222" name="baffle northeast">
+    <lattice id="10222" name="baffle southwest">
         <pitch>10.75182 10.75182</pitch>
         <dimension>2 2</dimension>
         <lower_left>-10.75182 -10.75182</lower_left>
@@ -619,7 +619,7 @@
 10206 10221 
 10000 10212 </universes>
     </lattice>
-    <lattice id="10225" name="baffle southwest">
+    <lattice id="10225" name="baffle northeast">
         <pitch>10.75182 10.75182</pitch>
         <dimension>2 2</dimension>
         <lower_left>-10.75182 -10.75182</lower_left>
@@ -627,7 +627,7 @@
 10215 10000 
 10224 10209 </universes>
     </lattice>
-    <lattice id="10228" name="baffle southeast">
+    <lattice id="10228" name="baffle northwest">
         <pitch>10.75182 10.75182</pitch>
         <dimension>2 2</dimension>
         <lower_left>-10.75182 -10.75182</lower_left>
@@ -635,7 +635,7 @@
 10000 10212 
 10209 10227 </universes>
     </lattice>
-    <lattice id="10231" name="baffle northwest corner">
+    <lattice id="10231" name="baffle southeast corner">
         <pitch>10.75182 10.75182</pitch>
         <dimension>2 2</dimension>
         <lower_left>-10.75182 -10.75182</lower_left>
@@ -643,7 +643,7 @@
 10230 10000 
 10000 10000 </universes>
     </lattice>
-    <lattice id="10234" name="baffle northeast corner">
+    <lattice id="10234" name="baffle southwest corner">
         <pitch>10.75182 10.75182</pitch>
         <dimension>2 2</dimension>
         <lower_left>-10.75182 -10.75182</lower_left>
@@ -651,7 +651,7 @@
 10000 10233 
 10000 10000 </universes>
     </lattice>
-    <lattice id="10237" name="baffle southeast corner">
+    <lattice id="10237" name="baffle northwest corner">
         <pitch>10.75182 10.75182</pitch>
         <dimension>2 2</dimension>
         <lower_left>-10.75182 -10.75182</lower_left>
@@ -659,7 +659,7 @@
 10000 10000 
 10000 10236 </universes>
     </lattice>
-    <lattice id="10240" name="baffle southwest corner">
+    <lattice id="10240" name="baffle northeast corner">
         <pitch>10.75182 10.75182</pitch>
         <dimension>2 2</dimension>
         <lower_left>-10.75182 -10.75182</lower_left>
@@ -692,7 +692,7 @@
 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 
 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 </universes>
     </lattice>
-    <surface coeffs="0.0 0.0 0.39218" id="10000" type="z-cylinder" />
+    <surface coeffs="0.0 0.0 0.39218" id="10000" name="Pellet OR" type="z-cylinder" />
     <surface coeffs="0.0 0.0 0.06459" id="10001" name="FR Plenum Spring OR" type="z-cylinder" />
     <surface coeffs="0.0 0.0 0.40005" id="10002" name="Clad IR" type="z-cylinder" />
     <surface coeffs="0.0 0.0 0.4572" id="10003" name="Clad OR" type="z-cylinder" />

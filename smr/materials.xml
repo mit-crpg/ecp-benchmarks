@@ -149,6 +149,14 @@
         <nuclide name="Ag109" wo="0.3889905917214592" />
         <nuclide name="In113" wo="0.006327728141638555" />
         <nuclide name="In115" wo="0.14367227185836143" />
+        <nuclide name="Cd106" wo="0.0005888321338146614" />
+        <nuclide name="Cd108" wo="0.0004271568027625324" />
+        <nuclide name="Cd110" wo="0.006105637975143767" />
+        <nuclide name="Cd111" wo="0.006314179646316293" />
+        <nuclide name="Cd112" wo="0.012010391637811244" />
+        <nuclide name="Cd113" wo="0.0061367883079578595" />
+        <nuclide name="Cd114" wo="0.01455563708243845" />
+        <nuclide name="Cd116" wo="0.003861376413755194" />
     </material>
     <material id="10007" name="Borated Water">
         <temperature>300</temperature>
