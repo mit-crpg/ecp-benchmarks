@@ -4,7 +4,7 @@ The geometric parameters defining the core model are tabulated here.
 """
 
 import copy
-import math
+from math import tan, pi
 
 import openmc
 
@@ -21,15 +21,15 @@ import openmc
 # RPV: Reactor Pressure Vessel
 
 # pin cell parameters
-pellet_OR          = 0.39218
-clad_IR            = 0.40005
-clad_OR            = 0.45720
+pellet_OR          = 0.405765
+clad_IR            = 0.41402
+clad_OR            = 0.47498
 rod_grid_side_tb   = 1.24416
 rod_grid_side_i    = 1.21962
-guide_tube_IR      = 0.56134
-guide_tube_OR      = 0.60198
-guide_tube_dash_IR = 0.50419
-guide_tube_dash_OR = 0.54610
+guide_tube_IR      = 0.5715
+guide_tube_OR      = 0.61214
+guide_tube_dash_IR = 0.54019
+guide_tube_dash_OR = 0.61214
 control_poison_OR  = 0.43310
 control_rod_IR     = 0.43688
 control_rod_OR     = 0.48387
@@ -41,8 +41,8 @@ burn_abs_r5        = 0.43688
 burn_abs_r6        = 0.48387
 burn_abs_r7        = 0.56134
 burn_abs_r8        = 0.60198
-instr_tube_IR      = 0.43688
-instr_tube_OR      = 0.48387
+instr_tube_IR      = 0.5715
+instr_tube_OR      = 0.61214
 plenum_spring_OR   = 0.06459
 
 # grid spacer parameters
@@ -99,10 +99,10 @@ bank_bot              =   405.713
 bank_step             =   228.
 bank_top              =   766.348
 
-neutron_shield_NWbot_SEtop = math.tan(math.pi/3)
-neutron_shield_NWtop_SEbot = math.tan(math.pi/6)
-neutron_shield_NEbot_SWtop = math.tan(-math.pi/3)
-neutron_shield_NEtop_SWbot = math.tan(-math.pi/6)
+neutron_shield_NWbot_SEtop = tan(pi/3)
+neutron_shield_NWtop_SEbot = tan(pi/6)
+neutron_shield_NEbot_SWtop = tan(-pi/3)
+neutron_shield_NEtop_SWbot = tan(-pi/6)
 
 
 surfs = {}

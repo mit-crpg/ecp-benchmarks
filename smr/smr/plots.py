@@ -2,7 +2,7 @@
 
 import openmc
 
-from .surfaces import lowest_extent, highest_extent, lattice_pitch
+from .surfaces import lowest_extent, highest_extent, lattice_pitch, rpv_OR
 from .materials import mats
 
 
@@ -39,7 +39,7 @@ plot = openmc.Plot(name='axial slice')
 plot.basis = 'xz'
 plot.color = 'mat'
 plot.origin = [0., 0., (highest_extent-lowest_extent)/2.]
-plot.width = [(highest_extent-lowest_extent)/2.] * 2
+plot.width = [rpv_OR*2., (highest_extent-lowest_extent)]
 plot.filename = 'axial_xz_slice'
 plot.col_spec = col_spec
 plot.background = [255, 255, 255]

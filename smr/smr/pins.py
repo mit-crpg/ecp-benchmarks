@@ -33,9 +33,7 @@ def make_pin(name, surfaces, materials, grid=None):
 
     # Create cell for interior of innermost ZCylinder
     cell_name = name + ' (0)'
-    cell = openmc.Cell(name=cell_name)
-    cell.fill = materials[0]
-    cell.region = -surfaces[0]
+    cell = openmc.Cell(name=cell_name, fill=materials[0], region=-surfaces[0])
     universe.add_cell(cell)
 
     # Create cells between two ZCylinders
@@ -48,19 +46,16 @@ def make_pin(name, surfaces, materials, grid=None):
 
     # Create cell for exterior of outermost ZCylinder
     cell_name = name + ' (last)'
-    cell = openmc.Cell(name=cell_name)
-    cell.fill = materials[-1]
-    cell.region = +surfaces[-1]
+    cell = openmc.Cell(name=cell_name, fill=materials[-1], region=+surfaces[-1])
     universe.add_cell(cell)
 
     # Add spacer grid cells if specified
     if grid:
         grid_name = 'rod grid box {}'.format(grid)
-        cell.region = openmc.Intersection(cell.region, surfs[grid_name])
+        cell.region &= surfs[grid_name]
 
         cell_name = name + ' (grid)'
-        cell = openmc.Cell(name=cell_name)
-        cell.region = openmc.Complement(surfs[grid_name])
+        cell = openmc.Cell(name=cell_name, region=~surfs[grid_name])
 
         if grid == 'top/bottom':
             cell.fill = mats['In']
@@ -96,24 +91,20 @@ def make_stack(name, surfaces, universes):
 
     # Create cell for interior of innermost ZCylinder
     cell_name = name + ' (0)'
-    cell = openmc.Cell(name=cell_name)
-    cell.fill = universes[0]
-    cell.region = -surfaces[0]
+    cell = openmc.Cell(name=cell_name, fill=universes[0], region=-surfaces[0])
     universe.add_cell(cell)
 
     # Create cells between two ZCylinders
     for i, (univ, surf) in enumerate(zip(universes[1:-1], surfaces[:-1])):
         cell_name = name + ' ({})'.format(i+1)
-        cell = openmc.Cell(name=cell_name)
-        cell.fill = univ
-        cell.region = +surf & -surfaces[i+1]
+        cell = openmc.Cell(name=cell_name, fill=univ,
+                           region=+surf & -surfaces[i+1])
         universe.add_cell(cell)
 
     # Create cell for exterior of outermost ZCylinder
     cell_name = name + ' (last)'
-    cell = openmc.Cell(name=cell_name)
-    cell.fill = universes[-1]
-    cell.region = +surfaces[-1]
+    cell = openmc.Cell(name=cell_name, fill=universes[-1],
+                       region=+surfaces[-1])
     universe.add_cell(cell)
 
     return universe
@@ -321,7 +312,7 @@ univs['CR bare'] = make_pin(
 
 # Stack all axial pieces of control rod tubes together for each bank
 
-banks = ['A','B','C','D','SA','SB','SC','SD','SE']
+banks = ['A', 'B', 'C', 'D', 'SA', 'SB', 'SC', 'SD', 'SE']
 
 for b in banks:
 
@@ -663,8 +654,8 @@ univs['pin plenum grid (top/bottom)'] = make_pin(
 
 #### 1.6% ENRICHED FUEL PIN CELL
 
-univs['Fuel (1.6\%)'] = make_pin(
-    'Fuel (1.6\%)',
+univs['Fuel (1.6%)'] = make_pin(
+    'Fuel (1.6%)',
     surfaces=[surfs['pellet OR'],
               surfs['clad IR'],
               surfs['clad OR']],
@@ -673,8 +664,8 @@ univs['Fuel (1.6\%)'] = make_pin(
                mats['Zr'],
                mats['H2O']])
 
-univs['Fuel (1.6\%) grid (top/bottom)'] = make_pin(
-    'Fuel (1.6\%) grid (top/bottom)',
+univs['Fuel (1.6%) grid (top/bottom)'] = make_pin(
+    'Fuel (1.6%) grid (top/bottom)',
     surfaces=[surfs['pellet OR'],
               surfs['clad IR'],
               surfs['clad OR']],
@@ -684,8 +675,8 @@ univs['Fuel (1.6\%) grid (top/bottom)'] = make_pin(
                mats['H2O']],
     grid='(top/bottom)')
 
-univs['Fuel (1.6\%) grid (intermediate)'] = make_pin(
-    'Fuel (1.6\%) grid (intermediate)',
+univs['Fuel (1.6%) grid (intermediate)'] = make_pin(
+    'Fuel (1.6%) grid (intermediate)',
     surfaces=[surfs['pellet OR'],
               surfs['clad IR'],
               surfs['clad OR']],
@@ -697,21 +688,21 @@ univs['Fuel (1.6\%) grid (intermediate)'] = make_pin(
 
 # Stack all axial pieces of 1.6% enriched fuel pin cell
 
-univs['Fuel (1.6\%) stack'] = make_stack(
-    'Fuel (1.6\%) stack',
+univs['Fuel (1.6%) stack'] = make_stack(
+    'Fuel (1.6%) stack',
     surfaces=stack_surfs,
     universes=[univs['water pin'],
                univs['SS pin'],
                univs['SS pin'],
                univs['end plug'],
-               univs['Fuel (1.6\%)'],
-               univs['Fuel (1.6\%) grid (top/bottom)'],
-               univs['Fuel (1.6\%)'],
-               univs['Fuel (1.6\%)'],
-               univs['Fuel (1.6\%) grid (intermediate)'],
-               univs['Fuel (1.6\%)'],
-               univs['Fuel (1.6\%) grid (intermediate)'],
-               univs['Fuel (1.6\%)'],
+               univs['Fuel (1.6%)'],
+               univs['Fuel (1.6%) grid (top/bottom)'],
+               univs['Fuel (1.6%)'],
+               univs['Fuel (1.6%)'],
+               univs['Fuel (1.6%) grid (intermediate)'],
+               univs['Fuel (1.6%)'],
+               univs['Fuel (1.6%) grid (intermediate)'],
+               univs['Fuel (1.6%)'],
                univs['pin plenum'],
                univs['pin plenum grid (top/bottom)'],
                univs['pin plenum'],
@@ -723,8 +714,8 @@ univs['Fuel (1.6\%) stack'] = make_stack(
 
 #### 2.4% ENRICHED FUEL PIN CELL
 
-univs['Fuel (2.4\%)'] = make_pin(
-    'Fuel (2.4\%)',
+univs['Fuel (2.4%)'] = make_pin(
+    'Fuel (2.4%)',
     surfaces=[surfs['pellet OR'],
               surfs['clad IR'],
               surfs['clad OR']],
@@ -733,8 +724,8 @@ univs['Fuel (2.4\%)'] = make_pin(
                mats['Zr'],
                mats['H2O']])
 
-univs['Fuel (2.4\%) grid (top/bottom)'] = make_pin(
-    'Fuel (2.4\%) grid (top/bottom)',
+univs['Fuel (2.4%) grid (top/bottom)'] = make_pin(
+    'Fuel (2.4%) grid (top/bottom)',
     surfaces=[surfs['pellet OR'],
               surfs['clad IR'],
               surfs['clad OR']],
@@ -744,8 +735,8 @@ univs['Fuel (2.4\%) grid (top/bottom)'] = make_pin(
                mats['H2O']],
     grid='(top/bottom)')
 
-univs['Fuel (2.4\%) grid (intermediate)'] = make_pin(
-    'Fuel (2.4\%) grid (intermediate)',
+univs['Fuel (2.4%) grid (intermediate)'] = make_pin(
+    'Fuel (2.4%) grid (intermediate)',
     surfaces=[surfs['pellet OR'],
               surfs['clad IR'],
               surfs['clad OR']],
@@ -757,21 +748,21 @@ univs['Fuel (2.4\%) grid (intermediate)'] = make_pin(
 
 # Stack all axial pieces of 2.4% enriched fuel pin cell
 
-univs['Fuel (2.4\%) stack'] = make_stack(
-    'Fuel (2.4\%) stack',
+univs['Fuel (2.4%) stack'] = make_stack(
+    'Fuel (2.4%) stack',
     surfaces=stack_surfs,
     universes=[univs['water pin'],
                univs['SS pin'],
                univs['SS pin'],
                univs['end plug'],
-               univs['Fuel (2.4\%)'],
-               univs['Fuel (2.4\%) grid (top/bottom)'],
-               univs['Fuel (2.4\%)'],
-               univs['Fuel (2.4\%)'],
-               univs['Fuel (2.4\%) grid (intermediate)'],
-               univs['Fuel (2.4\%)'],
-               univs['Fuel (2.4\%) grid (intermediate)'],
-               univs['Fuel (2.4\%)'],
+               univs['Fuel (2.4%)'],
+               univs['Fuel (2.4%) grid (top/bottom)'],
+               univs['Fuel (2.4%)'],
+               univs['Fuel (2.4%)'],
+               univs['Fuel (2.4%) grid (intermediate)'],
+               univs['Fuel (2.4%)'],
+               univs['Fuel (2.4%) grid (intermediate)'],
+               univs['Fuel (2.4%)'],
                univs['pin plenum'],
                univs['pin plenum grid (top/bottom)'],
                univs['pin plenum'],
@@ -783,8 +774,8 @@ univs['Fuel (2.4\%) stack'] = make_stack(
 
 #### 3.1% ENRICHED FUEL PIN CELL
 
-univs['Fuel (3.1\%)'] = make_pin(
-    'Fuel (3.1\%)',
+univs['Fuel (3.1%)'] = make_pin(
+    'Fuel (3.1%)',
     surfaces=[surfs['pellet OR'],
               surfs['clad IR'],
               surfs['clad OR']],
@@ -793,8 +784,8 @@ univs['Fuel (3.1\%)'] = make_pin(
                mats['Zr'],
                mats['H2O']])
 
-univs['Fuel (3.1\%) grid (top/bottom)'] = make_pin(
-    'Fuel (3.1\%) grid (top/bottom)',
+univs['Fuel (3.1%) grid (top/bottom)'] = make_pin(
+    'Fuel (3.1%) grid (top/bottom)',
     surfaces=[surfs['pellet OR'],
               surfs['clad IR'],
               surfs['clad OR']],
@@ -804,8 +795,8 @@ univs['Fuel (3.1\%) grid (top/bottom)'] = make_pin(
                mats['H2O']],
     grid='(top/bottom)')
 
-univs['Fuel (3.1\%) grid (intermediate)'] = make_pin(
-    'Fuel (3.1\%) grid (intermediate)',
+univs['Fuel (3.1%) grid (intermediate)'] = make_pin(
+    'Fuel (3.1%) grid (intermediate)',
     surfaces=[surfs['pellet OR'],
               surfs['clad IR'],
               surfs['clad OR']],
@@ -817,21 +808,21 @@ univs['Fuel (3.1\%) grid (intermediate)'] = make_pin(
 
 # Stack all axial pieces of 3.1% enriched fuel pin cell
 
-univs['Fuel (3.1\%) stack'] = make_stack(
-    'Fuel (3.1\%) stack',
+univs['Fuel (3.1%) stack'] = make_stack(
+    'Fuel (3.1%) stack',
     surfaces=stack_surfs,
     universes=[univs['water pin'],
                univs['SS pin'],
                univs['SS pin'],
                univs['end plug'],
-               univs['Fuel (3.1\%)'],
-               univs['Fuel (3.1\%) grid (top/bottom)'],
-               univs['Fuel (3.1\%)'],
-               univs['Fuel (3.1\%)'],
-               univs['Fuel (3.1\%) grid (intermediate)'],
-               univs['Fuel (3.1\%)'],
-               univs['Fuel (3.1\%) grid (intermediate)'],
-               univs['Fuel (3.1\%)'],
+               univs['Fuel (3.1%)'],
+               univs['Fuel (3.1%) grid (top/bottom)'],
+               univs['Fuel (3.1%)'],
+               univs['Fuel (3.1%)'],
+               univs['Fuel (3.1%) grid (intermediate)'],
+               univs['Fuel (3.1%)'],
+               univs['Fuel (3.1%) grid (intermediate)'],
+               univs['Fuel (3.1%)'],
                univs['pin plenum'],
                univs['pin plenum grid (top/bottom)'],
                univs['pin plenum'],

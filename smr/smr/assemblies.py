@@ -34,9 +34,8 @@ def make_assembly(name, universes):
     lattice.pitch = [pin_pitch, pin_pitch]
     lattice.universes = universes
 
-    # Create rectangular prism cylinder for lattice grid box
-    lat_grid_box = (surfs['lat grid box outer'] &
-                    openmc.Complement(surfs['lat grid box inner']))
+    # Create rectangular prism for lattice grid box
+    lat_grid_box = (surfs['lat grid box outer'] & ~surfs['lat grid box inner'])
 
     # Add lattice to bounding cell
     univ_name = name + ' lattice'
@@ -49,7 +48,7 @@ def make_assembly(name, universes):
     # Add outer water cell
     cell = openmc.Cell(name=univ_name + ' outer water')
     cell.fill = univs['water pin']
-    cell.region = openmc.Complement(surfs['lat grid box outer'])
+    cell.region = ~surfs['lat grid box outer']
     universe.add_cell(cell)
 
     # Make bottom axial cell for outside of assembly (without sleeve)
@@ -139,7 +138,7 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
 
     # NO BURNABLE ABSORBERS
     universes = np.empty((17,17), dtype=openmc.Universe)
-    universes[:,:] = univs['Fuel (1.6\%) stack']
+    universes[:,:] = univs['Fuel (1.6%) stack']
     universes[nonfuel_y, nonfuel_x] = [    gtu,   gtu,   gtu,
                                          gtu,              gtu,
                                        gtu, gtu,  gtu,  gtu, gtu,
@@ -147,15 +146,15 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                                        gtu, gtu,  gtu,  gtu, gtu,
                                          gtu,              gtu,
                                            gtu,   gtu,   gtu     ]
-    univs['Assembly (1.6\%)' + comment] = \
-        make_assembly('Assembly (1.6\%) no BAs' + comment, universes)
+    univs['Assembly (1.6%)' + comment] = \
+        make_assembly('Assembly (1.6%) no BAs' + comment, universes)
 
     # WITH EACH CONTROL ROD BANK
     for bank, comment2 in [(crA, 'A'), (crB, 'B'), (crC, 'C'), (crD, 'D'),
                  (crSB, 'SB'), (crSC, 'SC'), (crSD, 'SD'), (crSE, 'SE')]:
 
         universes = np.empty((17,17), dtype=openmc.Universe)
-        universes[:,:] = univs['Fuel (1.6\%) stack']
+        universes[:,:] = univs['Fuel (1.6%) stack']
         universes[nonfuel_y, nonfuel_x] = [    bank,    bank,   bank,
                                              bank,                 bank,
                                            bank, bank,  bank,  bank, bank,
@@ -163,8 +162,8 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                                            bank, bank,  bank,  bank, bank,
                                              bank,                 bank,
                                                bank,    bank,   bank     ]
-        univs['Assembly (1.6\%) CR {}'.format(comment2) + comment] = \
-            make_assembly('Assembly (1.6\%) CR {}'.format(comment2) + comment, universes)
+        univs['Assembly (1.6%) CR {}'.format(comment2) + comment] = \
+            make_assembly('Assembly (1.6%) CR {}'.format(comment2) + comment, universes)
 
 
 #### 2.4% ENRICHED ASSEMBLIES
@@ -173,7 +172,7 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
 
     # NO BURNABLE ABSORBERS
     universes = np.empty((17,17), dtype=openmc.Universe)
-    universes[:,:] = univs['Fuel (2.4\%) stack']
+    universes[:,:] = univs['Fuel (2.4%) stack']
     universes[nonfuel_y, nonfuel_x] = [    gtu,   gtu,   gtu,
                                          gtu,              gtu,
                                        gtu, gtu,  gtu,  gtu, gtu,
@@ -181,12 +180,12 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                                        gtu, gtu,  gtu,  gtu, gtu,
                                          gtu,              gtu,
                                            gtu,   gtu,   gtu     ]
-    univs['Assembly (2.4\%) no BAs' + comment] = \
-        make_assembly('Assembly (2.4\%) no BAs' + comment, universes)
+    univs['Assembly (2.4%) no BAs' + comment] = \
+        make_assembly('Assembly (2.4%) no BAs' + comment, universes)
 
     # WITH CONTROL ROD D BANK
     universes = np.empty((17,17), dtype=openmc.Universe)
-    universes[:,:] = univs['Fuel (2.4\%) stack']
+    universes[:,:] = univs['Fuel (2.4%) stack']
     universes[nonfuel_y, nonfuel_x] = [    crD,   crD,   crD,
                                          crD,              crD,
                                        crD, crD,  crD,  crD, crD,
@@ -194,12 +193,12 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                                        crD, crD,  crD,  crD, crD,
                                          crD,              crD,
                                            crD,   crD,   crD     ]
-    univs['Assembly (2.4\%) CR D' + comment] = \
-        make_assembly('Assembly (2.4\%) CR D' + comment, universes)
+    univs['Assembly (2.4%) CR D' + comment] = \
+        make_assembly('Assembly (2.4%) CR D' + comment, universes)
 
     # WITH 12 BURNABLE ABSORBERS
     universes = np.empty((17,17), dtype=openmc.Universe)
-    universes[:,:] = univs['Fuel (2.4\%) stack']
+    universes[:,:] = univs['Fuel (2.4%) stack']
     universes[nonfuel_y, nonfuel_x] = [    bas,   gtu,   bas,
                                          bas,              bas,
                                        bas, gtu,  gtu,  gtu, bas,
@@ -207,12 +206,12 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                                        bas, gtu,  gtu,  gtu, bas,
                                          bas,              bas,
                                            bas,   gtu,   bas     ]
-    univs['Assembly (2.4\%) 12BA' + comment] = \
-        make_assembly('Assembly (2.4\%) 12BA' + comment, universes)
+    univs['Assembly (2.4%) 12BA' + comment] = \
+        make_assembly('Assembly (2.4%) 12BA' + comment, universes)
 
     # WITH 16 BURNABLE ABSORBERS
     universes = np.empty((17,17), dtype=openmc.Universe)
-    universes[:,:] = univs['Fuel (2.4\%) stack']
+    universes[:,:] = univs['Fuel (2.4%) stack']
     universes[nonfuel_y, nonfuel_x] = [    bas,   bas,   bas,
                                          bas,              bas,
                                        bas, gtu,  gtu,  gtu, bas,
@@ -220,8 +219,8 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                                        bas, gtu,  gtu,  gtu, bas,
                                          bas,              bas,
                                            bas,   bas,   bas     ]
-    univs['Assembly (2.4\%) 16BA' + comment] = \
-        make_assembly('Assembly (2.4\%) 16BA' + comment, universes)
+    univs['Assembly (2.4%) 16BA' + comment] = \
+        make_assembly('Assembly (2.4%) 16BA' + comment, universes)
 
 
 #### 3.1% ENRICHED ASSEMBLIES
@@ -230,7 +229,7 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
 
     # NO BURNABLE ABSORBERS
     universes = np.empty((17,17), dtype=openmc.Universe)
-    universes[:,:] = univs['Fuel (3.1\%) stack']
+    universes[:,:] = univs['Fuel (3.1%) stack']
     universes[nonfuel_y, nonfuel_x] = [    gtu,   gtu,   gtu,
                                          gtu,              gtu,
                                        gtu, gtu,  gtu,  gtu, gtu,
@@ -238,12 +237,12 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                                        gtu, gtu,  gtu,  gtu, gtu,
                                          gtu,              gtu,
                                            gtu,   gtu,   gtu     ]
-    univs['Assembly (3.1\%)' + comment] = \
-        make_assembly('Assembly (3.1\%) no BAs' + comment, universes)
+    univs['Assembly (3.1%)' + comment] = \
+        make_assembly('Assembly (3.1%) no BAs' + comment, universes)
 
     # WITH CONTROL ROD SA BANK
     universes = np.empty((17,17), dtype=openmc.Universe)
-    universes[:,:] = univs['Fuel (3.1\%) stack']
+    universes[:,:] = univs['Fuel (3.1%) stack']
     universes[nonfuel_y, nonfuel_x] = [     crSA,    crSA,   crSA,
                                           crSA,                crSA,
                                        crSA,  crSA,  crSA,  crSA,  crSA,
@@ -251,12 +250,12 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                                        crSA,  crSA,  crSA,  crSA,  crSA,
                                           crSA,                crSA,
                                             crSA,    crSA,   crSA     ]
-    univs['Assembly (3.1\%) CR SA' + comment] = \
-        make_assembly('Assembly (3.1\%) CR SA' + comment, universes)
+    univs['Assembly (3.1%) CR SA' + comment] = \
+        make_assembly('Assembly (3.1%) CR SA' + comment, universes)
 
     # WITH 20 BURNABLE ABSORBERS
     universes = np.empty((17,17), dtype=openmc.Universe)
-    universes[:,:] = univs['Fuel (3.1\%) stack']
+    universes[:,:] = univs['Fuel (3.1%) stack']
     universes[nonfuel_y, nonfuel_x] = [    bas,   bas,   bas,
                                          bas,              bas,
                                        bas, bas,  gtu,  bas, bas,
@@ -264,12 +263,12 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                                        bas, bas,  gtu,  bas, bas,
                                          bas,              bas,
                                            bas,   bas,   bas     ]
-    univs['Assembly (3.1\%) 20BA' + comment] = \
-        make_assembly('Assembly (3.1\%) 20BA' + comment, universes)
+    univs['Assembly (3.1%) 20BA' + comment] = \
+        make_assembly('Assembly (3.1%) 20BA' + comment, universes)
 
     # WITH 16 BURNABLE ABSORBERS
     universes = np.empty((17,17), dtype=openmc.Universe)
-    universes[:,:] = univs['Fuel (3.1\%) stack']
+    universes[:,:] = univs['Fuel (3.1%) stack']
     universes[nonfuel_y, nonfuel_x] = [    bas,   bas,   bas,
                                          bas,              bas,
                                        bas, gtu,  gtu,  gtu, bas,
@@ -277,12 +276,12 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                                        bas, gtu,  gtu,  gtu, bas,
                                          bas,              bas,
                                            bas,   bas,   bas     ]
-    univs['Assembly (3.1\%) 16BA' + comment] = \
-        make_assembly('Assembly (3.1\%) 16BA' + comment, universes)
+    univs['Assembly (3.1%) 16BA' + comment] = \
+        make_assembly('Assembly (3.1%) 16BA' + comment, universes)
 
     # WITH 15 BURNABLE ABSORBERS NW
     universes = np.empty((17,17), dtype=openmc.Universe)
-    universes[:,:] = univs['Fuel (3.1\%) stack']
+    universes[:,:] = univs['Fuel (3.1%) stack']
     universes[nonfuel_y, nonfuel_x] = [    gtu,   gtu,   gtu,
                                          gtu,              gtu,
                                        gtu, bas,  bas,  bas, bas,
@@ -290,12 +289,12 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                                        gtu, bas,  bas,  bas, bas,
                                          gtu,              bas,
                                            bas,   bas,   bas     ]
-    univs['Assembly (3.1\%) 15BANW' + comment] = \
-        make_assembly('Assembly (3.1\%) 15BANW' + comment, universes)
+    univs['Assembly (3.1%) 15BANW' + comment] = \
+        make_assembly('Assembly (3.1%) 15BANW' + comment, universes)
 
     # WITH 15 BURNABLE ABSORBERS NE
     universes = np.empty((17,17), dtype=openmc.Universe)
-    universes[:,:] = univs['Fuel (3.1\%) stack']
+    universes[:,:] = univs['Fuel (3.1%) stack']
     universes[nonfuel_y, nonfuel_x] = [    gtu,   gtu,   gtu,
                                          gtu,              gtu,
                                        gtu, bas,  bas,  bas, gtu,
@@ -303,12 +302,12 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                                        bas, bas,  bas,  bas, gtu,
                                          bas,              gtu,
                                            bas,   bas,   bas     ]
-    univs['Assembly (3.1\%) 15BANE' + comment] = \
-        make_assembly('Assembly (3.1\%) 15BANE' + comment, universes)
+    univs['Assembly (3.1%) 15BANE' + comment] = \
+        make_assembly('Assembly (3.1%) 15BANE' + comment, universes)
 
     # WITH 15 BURNABLE ABSORBERS SW
     universes = np.empty((17,17), dtype=openmc.Universe)
-    universes[:,:] = univs['Fuel (3.1\%) stack']
+    universes[:,:] = univs['Fuel (3.1%) stack']
     universes[nonfuel_y, nonfuel_x] = [    bas,   bas,   bas,
                                          gtu,              bas,
                                        gtu, bas,  bas,  bas, bas,
@@ -316,12 +315,12 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                                        gtu, bas,  bas,  bas, bas,
                                          gtu,              gtu,
                                            gtu,   gtu,   gtu     ]
-    univs['Assembly (3.1\%) 15BASW' + comment] = \
-        make_assembly('Assembly (3.1\%) 15BASW' + comment, universes)
+    univs['Assembly (3.1%) 15BASW' + comment] = \
+        make_assembly('Assembly (3.1%) 15BASW' + comment, universes)
 
     # WITH 15 BURNABLE ABSORBERS SE
     universes = np.empty((17,17), dtype=openmc.Universe)
-    universes[:,:] = univs['Fuel (3.1\%) stack']
+    universes[:,:] = univs['Fuel (3.1%) stack']
     universes[nonfuel_y, nonfuel_x] = [    bas,   bas,   bas,
                                          bas,              gtu,
                                        bas, bas,  bas,  bas, gtu,
@@ -329,12 +328,12 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                                        bas, bas,  bas,  bas, gtu,
                                          gtu,              gtu,
                                            gtu,   gtu,   gtu     ]
-    univs['Assembly (3.1\%) 15BASE' + comment] = \
-        make_assembly('Assembly (3.1\%) 15BASE' + comment, universes)
+    univs['Assembly (3.1%) 15BASE' + comment] = \
+        make_assembly('Assembly (3.1%) 15BASE' + comment, universes)
 
     # WITH 6 BURNABLE ABSORBERS N
     universes = np.empty((17,17), dtype=openmc.Universe)
-    universes[:,:] = univs['Fuel (3.1\%) stack']
+    universes[:,:] = univs['Fuel (3.1%) stack']
     universes[nonfuel_y, nonfuel_x] = [    gtu,   gtu,   gtu,
                                          gtu,              gtu,
                                        gtu, gtu,  gtu,  gtu, gtu,
@@ -342,12 +341,12 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                                        bas, gtu,  gtu,  gtu, bas,
                                          bas,              bas,
                                            bas,   gtu,   bas     ]
-    univs['Assembly (3.1\%) 6BAN' + comment] = \
-        make_assembly('Assembly (3.1\%) 6BAN' + comment, universes)
+    univs['Assembly (3.1%) 6BAN' + comment] = \
+        make_assembly('Assembly (3.1%) 6BAN' + comment, universes)
 
     # WITH 6 BURNABLE ABSORBERS S
     universes = np.empty((17,17), dtype=openmc.Universe)
-    universes[:,:] = univs['Fuel (3.1\%) stack']
+    universes[:,:] = univs['Fuel (3.1%) stack']
     universes[nonfuel_y, nonfuel_x] = [    bas,   gtu,   bas,
                                          bas,              bas,
                                        bas, gtu,  gtu,  gtu, bas,
@@ -355,12 +354,12 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                                        gtu, gtu,  gtu,  gtu, gtu,
                                          gtu,              gtu,
                                            gtu,   gtu,   gtu     ]
-    univs['Assembly (3.1\%) 6BAS' + comment] = \
-        make_assembly('Assembly (3.1\%) 6BAS' + comment, universes)
+    univs['Assembly (3.1%) 6BAS' + comment] = \
+        make_assembly('Assembly (3.1%) 6BAS' + comment, universes)
 
     # WITH 6 BURNABLE ABSORBERS W
     universes = np.empty((17,17), dtype=openmc.Universe)
-    universes[:,:] = univs['Fuel (3.1\%) stack']
+    universes[:,:] = univs['Fuel (3.1%) stack']
     universes[nonfuel_y, nonfuel_x] = [    gtu,   gtu,   bas,
                                          gtu,              bas,
                                        gtu, gtu,  gtu,  gtu, bas,
@@ -368,12 +367,12 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                                        gtu, gtu,  gtu,  gtu, bas,
                                          gtu,              bas,
                                            gtu,   gtu,   bas     ]
-    univs['Assembly (3.1\%) 6BAW' + comment] = \
-        make_assembly('Assembly (3.1\%) 6BAW' + comment, universes)
+    univs['Assembly (3.1%) 6BAW' + comment] = \
+        make_assembly('Assembly (3.1%) 6BAW' + comment, universes)
 
     # WITH 6 BURNABLE ABSORBERS E
     universes = np.empty((17,17), dtype=openmc.Universe)
-    universes[:,:] = univs['Fuel (3.1\%) stack']
+    universes[:,:] = univs['Fuel (3.1%) stack']
     universes[nonfuel_y, nonfuel_x] = [    bas,   gtu,   gtu,
                                          bas,              gtu,
                                        bas, gtu,  gtu,  gtu, gtu,
@@ -381,5 +380,5 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
                                        bas, gtu,  gtu,  gtu, gtu,
                                          bas,              gtu,
                                            bas,   gtu,   gtu     ]
-    univs['Assembly (3.1\%) 6BAE' + comment] = \
-        make_assembly('Assembly (3.1\%) 6BAE' + comment, universes)
+    univs['Assembly (3.1%) 6BAE' + comment] = \
+        make_assembly('Assembly (3.1%) 6BAE' + comment, universes)

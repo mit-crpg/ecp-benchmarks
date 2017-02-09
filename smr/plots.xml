@@ -22,7 +22,7 @@
     <!--axial slice-->
     <plot basis="xz" color="mat" filename="axial_xz_slice" id="10001" type="slice">
         <origin>0.0 0.0 127.722</origin>
-        <width>127.722 127.722</width>
+        <width>270.0 255.444</width>
         <pixels>1000 1000</pixels>
         <background>255 255 255</background>
         <col_spec id="10000" rgb="255 218 185" />

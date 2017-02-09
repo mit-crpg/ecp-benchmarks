@@ -19,7 +19,7 @@ materials.export_to_xml()
 
 # Query the user on whether to use multipole cross sections
 multipole = input('Use multipole cross sections? (y/n): ').lower()
-multipole = True if multipole == 'y' else False
+multipole = (multipole == 'y')
 
 # Construct uniform initial source distribution over fissionable zones
 lower_left = [-7.*lattice_pitch/2., -7.*lattice_pitch/2., bottom_fuel_stack]
@@ -27,19 +27,18 @@ upper_right = [+7.*lattice_pitch/2., +7.*lattice_pitch/2., top_active_core]
 source = openmc.source.Source(space=openmc.stats.Box(lower_left, upper_right))
 source.space.only_fissionable = True
 
-settings_file = openmc.Settings()
-settings_file.batches = 200
-settings_file.inactive = 100
-settings_file.particles = 10000
-settings_file.ptables = True
-settings_file.output = {'tallies': False}
-settings_file.source = source
-settings_file.sourcepoint_write = False
+settings = openmc.Settings()
+settings.batches = 200
+settings.inactive = 100
+settings.particles = 10000
+settings.output = {'tallies': False}
+settings.source = source
+settings.sourcepoint_write = False
 
 if multipole:
-    settings_file.temperature = {'multipole': True, 'tolerance': 1000}
+    settings.temperature = {'multipole': True, 'tolerance': 1000}
 
-settings_file.export_to_xml()
+settings.export_to_xml()
 
 
 #### Create OpenMC "plots.xml" file

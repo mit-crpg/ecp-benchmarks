@@ -142,7 +142,7 @@
         <nuclide name="Sn122" wo="0.0006894094798456136" />
         <nuclide name="Sn124" wo="0.000876291604244001" />
     </material>
-    <material id="10006" name="aic_rod">
+    <material id="10006" name="Ag-In-Cd">
         <temperature>300</temperature>
         <density units="g/cc" value="10.16" />
         <nuclide name="Ag107" wo="0.4110094082785408" />
@@ -181,7 +181,7 @@
         <nuclide ao="0.007925516821765233" name="Si30" />
         <nuclide ao="0.02423631977691551" name="Al27" />
     </material>
-    <material id="10009" name="1.6\% Enr. UO2 Fuel">
+    <material id="10009" name="1.6% Enr. UO2 Fuel">
         <temperature>300</temperature>
         <density units="g/cc" value="10.31341" />
         <nuclide ao="1.9998012531906832" name="O16" />
@@ -190,7 +190,7 @@
         <nuclide ao="0.016303176995310382" name="U235" />
         <nuclide ao="0.9835658386532131" name="U238" />
     </material>
-    <material id="10010" name="2.4\% Enr. UO2 Fuel">
+    <material id="10010" name="2.4% Enr. UO2 Fuel">
         <temperature>300</temperature>
         <density units="g/cc" value="10.29748" />
         <nuclide ao="1.9998012531906837" name="O16" />
@@ -199,7 +199,7 @@
         <nuclide ao="0.024298776982208982" name="U235" />
         <nuclide ao="0.9755059997465472" name="U238" />
     </material>
-    <material id="10011" name="3.1\% Enr. UO2 Fuel">
+    <material id="10011" name="3.1% Enr. UO2 Fuel">
         <temperature>300</temperature>
         <density units="g/cc" value="10.30166" />
         <nuclide ao="1.9998012531906824" name="O16" />

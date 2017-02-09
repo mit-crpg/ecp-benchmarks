@@ -13,7 +13,6 @@
     <output>
         <tallies>false</tallies>
     </output>
-    <ptables>true</ptables>
     <temperature_multipole>True</temperature_multipole>
     <temperature_tolerance>1000</temperature_tolerance>
 </settings>

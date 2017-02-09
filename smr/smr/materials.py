@@ -122,7 +122,7 @@ mats['Zr'].add_element('Zr', 0.98115, 'wo')
 mats['Zr'].add_element('Sn', 0.0145, 'wo')
 
 # Create Ag-In-Cd control rod material
-mats['AIC'] = openmc.Material(name='aic_rod')
+mats['AIC'] = openmc.Material(name='Ag-In-Cd')
 mats['AIC'].temperature = 300
 mats['AIC'].set_density('g/cc', 10.16)
 mats['AIC'].add_element('Ag', 0.80, 'wo')
@@ -167,7 +167,7 @@ mats['H2O'].set_density('g/cc', rho_Bh2o)
 mats['H2O'].add_element('B', aB_Bh2o, 'ao')
 mats['H2O'].add_element('H', ah_Bh2o, 'ao')
 mats['H2O'].add_element('O', aho_Bh2o, 'ao')
-mats['H2O'].add_s_alpha_beta(name='lwtr')
+mats['H2O'].add_s_alpha_beta(name='c_H_in_H2O')
 
 
 #### Borosilicate Glass
@@ -211,7 +211,7 @@ mats['BSG'].add_nuclide('B11', aB11_B, 'ao')
 
 # Create 1.6% enriched UO2 fuel material
 a_U234, a_U235, a_U238, a_U, a_O = get_fuel_aos(0.0161006)
-mats['UO2 1.6'] = openmc.Material(name='1.6\% Enr. UO2 Fuel')
+mats['UO2 1.6'] = openmc.Material(name='1.6% Enr. UO2 Fuel')
 mats['UO2 1.6'].temperature = 300
 mats['UO2 1.6'].set_density('g/cc', 10.31341)
 mats['UO2 1.6'].add_element('O', a_O, 'ao')
@@ -219,7 +219,7 @@ mats['UO2 1.6'].add_element('U', a_U, 'ao', enrichment=1.61006)
 
 # Create 2.4% enriched UO2 fuel material
 a_U234, a_U235, a_U238, a_U, a_O = get_fuel_aos(0.0239993)
-mats['UO2 2.4'] = openmc.Material(name='2.4\% Enr. UO2 Fuel')
+mats['UO2 2.4'] = openmc.Material(name='2.4% Enr. UO2 Fuel')
 mats['UO2 2.4'].temperature = 300
 mats['UO2 2.4'].set_density('g/cc', 10.29748)
 mats['UO2 2.4'].add_element('O', a_O, 'ao')
@@ -227,7 +227,7 @@ mats['UO2 2.4'].add_element('U', a_U, 'ao', enrichment=2.39993)
 
 # Create 3.1% enriched UO2 fuel material
 a_U234, a_U235, a_U238, a_U, a_O = get_fuel_aos(0.0310221)
-mats['UO2 3.1'] = openmc.Material(name='3.1\% Enr. UO2 Fuel')
+mats['UO2 3.1'] = openmc.Material(name='3.1% Enr. UO2 Fuel')
 mats['UO2 3.1'].temperature = 300
 mats['UO2 3.1'].set_density('g/cc', 10.30166)
 mats['UO2 3.1'].add_element('O', a_O, 'ao')
@@ -236,5 +236,4 @@ mats['UO2 3.1'].add_element('U', a_U, 'ao', enrichment=3.10221)
 
 # Construct a collection of Materials to export to XML
 
-materials = openmc.Materials()
-materials.add_materials(mats.values())
+materials = openmc.Materials(mats.values())

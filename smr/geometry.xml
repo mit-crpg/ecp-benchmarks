@@ -6,11 +6,11 @@
     <cell id="10003" material="10007" name="GT empty (last)" region="10005" universe="10001" />
     <cell id="10004" material="10007" name="GT empty grid (top/bottom) (0)" region="-10004" universe="10002" />
     <cell id="10005" material="10005" name="GT empty grid (top/bottom) (1)" region="10004 -10005" universe="10002" />
-    <cell id="10006" material="10007" name="GT empty grid (top/bottom) (last)" region="10005 (10019 -10020 10021 -10022)" universe="10002" />
+    <cell id="10006" material="10007" name="GT empty grid (top/bottom) (last)" region="10005 10019 -10020 10021 -10022" universe="10002" />
     <cell id="10007" material="10005" name="GT empty grid (top/bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10002" />
     <cell id="10008" material="10007" name="GT empty grid (intermediate) (0)" region="-10004" universe="10003" />
     <cell id="10009" material="10005" name="GT empty grid (intermediate) (1)" region="10004 -10005" universe="10003" />
-    <cell id="10010" material="10007" name="GT empty grid (intermediate) (last)" region="10005 (10023 -10024 10025 -10026)" universe="10003" />
+    <cell id="10010" material="10007" name="GT empty grid (intermediate) (last)" region="10005 10023 -10024 10025 -10026" universe="10003" />
     <cell id="10011" material="10005" name="GT empty grid (intermediate) (grid)" region="~(10023 -10024 10025 -10026)" universe="10003" />
     <cell id="10012" material="10007" name="GT empty nozzle (0)" region="-10004" universe="10004" />
     <cell id="10013" material="10005" name="GT empty nozzle (1)" region="10004 -10005" universe="10004" />
@@ -20,11 +20,11 @@
     <cell id="10017" material="10007" name="GT empty at dashpot (last)" region="10007" universe="10005" />
     <cell id="10018" material="10007" name="GT empty at dashpot grid (top/bottom) (0)" region="-10006" universe="10006" />
     <cell id="10019" material="10005" name="GT empty at dashpot grid (top/bottom) (1)" region="10006 -10007" universe="10006" />
-    <cell id="10020" material="10007" name="GT empty at dashpot grid (top/bottom) (last)" region="10007 (10019 -10020 10021 -10022)" universe="10006" />
+    <cell id="10020" material="10007" name="GT empty at dashpot grid (top/bottom) (last)" region="10007 10019 -10020 10021 -10022" universe="10006" />
     <cell id="10021" material="10005" name="GT empty at dashpot grid (top/bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10006" />
     <cell id="10022" material="10007" name="GT empty at dashpot grid (intermediate) (0)" region="-10006" universe="10007" />
     <cell id="10023" material="10005" name="GT empty at dashpot grid (intermediate) (1)" region="10006 -10007" universe="10007" />
-    <cell id="10024" material="10007" name="GT empty at dashpot grid (intermediate) (last)" region="10007 (10023 -10024 10025 -10026)" universe="10007" />
+    <cell id="10024" material="10007" name="GT empty at dashpot grid (intermediate) (last)" region="10007 10023 -10024 10025 -10026" universe="10007" />
     <cell id="10025" material="10005" name="GT empty at dashpot grid (intermediate) (grid)" region="~(10023 -10024 10025 -10026)" universe="10007" />
     <cell id="10026" material="10007" name="GT empty nozzle (0)" region="-10006" universe="10008" />
     <cell id="10027" material="10005" name="GT empty nozzle (1)" region="10006 -10007" universe="10008" />
@@ -76,13 +76,13 @@
     <cell id="10073" material="10005" name="IT grid (top/bottom) (1)" region="10015 -10016" universe="10012" />
     <cell id="10074" material="10007" name="IT grid (top/bottom) (2)" region="10016 -10004" universe="10012" />
     <cell id="10075" material="10005" name="IT grid (top/bottom) (3)" region="10004 -10005" universe="10012" />
-    <cell id="10076" material="10007" name="IT grid (top/bottom) (last)" region="10005 (10019 -10020 10021 -10022)" universe="10012" />
+    <cell id="10076" material="10007" name="IT grid (top/bottom) (last)" region="10005 10019 -10020 10021 -10022" universe="10012" />
     <cell id="10077" material="10005" name="IT grid (top/bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10012" />
     <cell id="10078" material="10001" name="IT grid (intermediate) (0)" region="-10015" universe="10013" />
     <cell id="10079" material="10005" name="IT grid (intermediate) (1)" region="10015 -10016" universe="10013" />
     <cell id="10080" material="10007" name="IT grid (intermediate) (2)" region="10016 -10004" universe="10013" />
     <cell id="10081" material="10005" name="IT grid (intermediate) (3)" region="10004 -10005" universe="10013" />
-    <cell id="10082" material="10007" name="IT grid (intermediate) (last)" region="10005 (10023 -10024 10025 -10026)" universe="10013" />
+    <cell id="10082" material="10007" name="IT grid (intermediate) (last)" region="10005 10023 -10024 10025 -10026" universe="10013" />
     <cell id="10083" material="10005" name="IT grid (intermediate) (grid)" region="~(10023 -10024 10025 -10026)" universe="10013" />
     <cell id="10089" material="10001" name="IT dashpot (0)" region="-10015" universe="10015" />
     <cell id="10090" material="10005" name="IT dashpot (1)" region="10015 -10016" universe="10015" />
@@ -115,13 +115,13 @@
     <cell id="10117" material="10001" name="CR grid (top/bottom) (1)" region="10008 -10009" universe="10018" />
     <cell id="10118" material="10003" name="CR grid (top/bottom) (2)" region="10009 -10004" universe="10018" />
     <cell id="10119" material="10007" name="CR grid (top/bottom) (3)" region="10004 -10005" universe="10018" />
-    <cell id="10120" material="10007" name="CR grid (top/bottom) (last)" region="10005 (10019 -10020 10021 -10022)" universe="10018" />
+    <cell id="10120" material="10007" name="CR grid (top/bottom) (last)" region="10005 10019 -10020 10021 -10022" universe="10018" />
     <cell id="10121" material="10005" name="CR grid (top/bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10018" />
     <cell id="10122" material="10006" name="CR grid (intermediate) (0)" region="-10008" universe="10019" />
     <cell id="10123" material="10001" name="CR grid (intermediate) (1)" region="10008 -10009" universe="10019" />
     <cell id="10124" material="10003" name="CR grid (intermediate) (2)" region="10009 -10004" universe="10019" />
     <cell id="10125" material="10007" name="CR grid (intermediate) (3)" region="10004 -10005" universe="10019" />
-    <cell id="10126" material="10007" name="CR grid (intermediate) (last)" region="10005 (10023 -10024 10025 -10026)" universe="10019" />
+    <cell id="10126" material="10007" name="CR grid (intermediate) (last)" region="10005 10023 -10024 10025 -10026" universe="10019" />
     <cell id="10127" material="10005" name="CR grid (intermediate) (grid)" region="~(10023 -10024 10025 -10026)" universe="10019" />
     <cell id="10128" material="10006" name="CR nozzle (0)" region="-10008" universe="10020" />
     <cell id="10129" material="10001" name="CR nozzle (1)" region="10008 -10009" universe="10020" />
@@ -138,14 +138,14 @@
     <cell id="10140" material="10003" name="CR blank grid (top/bottom) (2)" region="10009 -10010" universe="10022" />
     <cell id="10141" material="10007" name="CR blank grid (top/bottom) (3)" region="10010 -10004" universe="10022" />
     <cell id="10142" material="10005" name="CR blank grid (top/bottom) (4)" region="10004 -10005" universe="10022" />
-    <cell id="10143" material="10007" name="CR blank grid (top/bottom) (last)" region="10005 (10019 -10020 10021 -10022)" universe="10022" />
+    <cell id="10143" material="10007" name="CR blank grid (top/bottom) (last)" region="10005 10019 -10020 10021 -10022" universe="10022" />
     <cell id="10144" material="10005" name="CR blank grid (top/bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10022" />
     <cell id="10145" material="10003" name="CR blank grid (intermediate) (0)" region="-10008" universe="10023" />
     <cell id="10146" material="10001" name="CR blank grid (intermediate) (1)" region="10008 -10009" universe="10023" />
     <cell id="10147" material="10003" name="CR blank grid (intermediate) (2)" region="10009 -10010" universe="10023" />
     <cell id="10148" material="10007" name="CR blank grid (intermediate) (3)" region="10010 -10004" universe="10023" />
     <cell id="10149" material="10005" name="CR blank grid (intermediate) (4)" region="10004 -10005" universe="10023" />
-    <cell id="10150" material="10007" name="CR blank grid (intermediate) (last)" region="10005 (10023 -10024 10025 -10026)" universe="10023" />
+    <cell id="10150" material="10007" name="CR blank grid (intermediate) (last)" region="10005 10023 -10024 10025 -10026" universe="10023" />
     <cell id="10151" material="10005" name="CR blank grid (intermediate) (grid)" region="~(10023 -10024 10025 -10026)" universe="10023" />
     <cell id="10152" material="10003" name="CR blank nozzle (0)" region="-10008" universe="10024" />
     <cell id="10153" material="10001" name="CR blank nozzle (1)" region="10008 -10009" universe="10024" />
@@ -220,7 +220,7 @@
     <cell id="10584" material="10003" name="BA grid (intermediate) (5)" region="10015 -10016" universe="10083" />
     <cell id="10585" material="10007" name="BA grid (intermediate) (6)" region="10016 -10017" universe="10083" />
     <cell id="10586" material="10005" name="BA grid (intermediate) (7)" region="10017 -10018" universe="10083" />
-    <cell id="10587" material="10007" name="BA grid (intermediate) (last)" region="10018 (10023 -10024 10025 -10026)" universe="10083" />
+    <cell id="10587" material="10007" name="BA grid (intermediate) (last)" region="10018 10023 -10024 10025 -10026" universe="10083" />
     <cell id="10588" material="10005" name="BA grid (intermediate) (grid)" region="~(10023 -10024 10025 -10026)" universe="10083" />
     <cell id="10589" material="10001" name="BA dashpot (0)" region="-10011" universe="10084" />
     <cell id="10590" material="10003" name="BA dashpot (1)" region="10011 -10012" universe="10084" />
@@ -239,7 +239,7 @@
     <cell id="10603" material="10003" name="BA dashpot grid (top/bottom) (5)" region="10015 -10016" universe="10085" />
     <cell id="10604" material="10007" name="BA dashpot grid (top/bottom) (6)" region="10016 -10006" universe="10085" />
     <cell id="10605" material="10005" name="BA dashpot grid (top/bottom) (7)" region="10006 -10007" universe="10085" />
-    <cell id="10606" material="10007" name="BA dashpot grid (top/bottom) (last)" region="10007 (10019 -10020 10021 -10022)" universe="10085" />
+    <cell id="10606" material="10007" name="BA dashpot grid (top/bottom) (last)" region="10007 10019 -10020 10021 -10022" universe="10085" />
     <cell id="10607" material="10005" name="BA dashpot grid (top/bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10085" />
     <cell id="10618" material="10003" name="BA blank SS (0)" region="-10016" universe="10087" />
     <cell id="10619" material="10007" name="BA blank SS (1)" region="10016 -10017" universe="10087" />
@@ -278,151 +278,151 @@
     <cell id="10652" material="10002" name="pin plenum grid (top/bottom) (0)" region="-10001" universe="10093" />
     <cell id="10653" material="10000" name="pin plenum grid (top/bottom) (1)" region="10001 -10002" universe="10093" />
     <cell id="10654" material="10005" name="pin plenum grid (top/bottom) (2)" region="10002 -10003" universe="10093" />
-    <cell id="10655" material="10007" name="pin plenum grid (top/bottom) (last)" region="10003 (10019 -10020 10021 -10022)" universe="10093" />
+    <cell id="10655" material="10007" name="pin plenum grid (top/bottom) (last)" region="10003 10019 -10020 10021 -10022" universe="10093" />
     <cell id="10656" material="10005" name="pin plenum grid (top/bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10093" />
-    <cell id="10657" material="10009" name="Fuel (1.6\%) (0)" region="-10000" universe="10094" />
-    <cell id="10658" material="10000" name="Fuel (1.6\%) (1)" region="10000 -10002" universe="10094" />
-    <cell id="10659" material="10005" name="Fuel (1.6\%) (2)" region="10002 -10003" universe="10094" />
-    <cell id="10660" material="10007" name="Fuel (1.6\%) (last)" region="10003" universe="10094" />
-    <cell id="10661" material="10009" name="Fuel (1.6\%) grid (top/bottom) (0)" region="-10000" universe="10095" />
-    <cell id="10662" material="10000" name="Fuel (1.6\%) grid (top/bottom) (1)" region="10000 -10002" universe="10095" />
-    <cell id="10663" material="10005" name="Fuel (1.6\%) grid (top/bottom) (2)" region="10002 -10003" universe="10095" />
-    <cell id="10664" material="10007" name="Fuel (1.6\%) grid (top/bottom) (last)" region="10003 (10019 -10020 10021 -10022)" universe="10095" />
-    <cell id="10665" material="10005" name="Fuel (1.6\%) grid (top/bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10095" />
-    <cell id="10666" material="10009" name="Fuel (1.6\%) grid (intermediate) (0)" region="-10000" universe="10096" />
-    <cell id="10667" material="10000" name="Fuel (1.6\%) grid (intermediate) (1)" region="10000 -10002" universe="10096" />
-    <cell id="10668" material="10005" name="Fuel (1.6\%) grid (intermediate) (2)" region="10002 -10003" universe="10096" />
-    <cell id="10669" material="10007" name="Fuel (1.6\%) grid (intermediate) (last)" region="10003 (10023 -10024 10025 -10026)" universe="10096" />
-    <cell id="10670" material="10005" name="Fuel (1.6\%) grid (intermediate) (grid)" region="~(10023 -10024 10025 -10026)" universe="10096" />
-    <cell fill="10000" id="10671" name="Fuel (1.6\%) stack (0)" region="-10035" universe="10097" />
-    <cell fill="10090" id="10672" name="Fuel (1.6\%) stack (1)" region="10035 -10036" universe="10097" />
-    <cell fill="10090" id="10673" name="Fuel (1.6\%) stack (2)" region="10036 -10037" universe="10097" />
-    <cell fill="10091" id="10674" name="Fuel (1.6\%) stack (3)" region="10037 -10038" universe="10097" />
-    <cell fill="10094" id="10675" name="Fuel (1.6\%) stack (4)" region="10038 -10041" universe="10097" />
-    <cell fill="10095" id="10676" name="Fuel (1.6\%) stack (5)" region="10041 -10042" universe="10097" />
-    <cell fill="10094" id="10677" name="Fuel (1.6\%) stack (6)" region="10042 -10043" universe="10097" />
-    <cell fill="10094" id="10678" name="Fuel (1.6\%) stack (7)" region="10043 -10044" universe="10097" />
-    <cell fill="10096" id="10679" name="Fuel (1.6\%) stack (8)" region="10044 -10045" universe="10097" />
-    <cell fill="10094" id="10680" name="Fuel (1.6\%) stack (9)" region="10045 -10046" universe="10097" />
-    <cell fill="10096" id="10681" name="Fuel (1.6\%) stack (10)" region="10046 -10047" universe="10097" />
-    <cell fill="10094" id="10682" name="Fuel (1.6\%) stack (11)" region="10047 -10048" universe="10097" />
-    <cell fill="10092" id="10683" name="Fuel (1.6\%) stack (12)" region="10048 -10049" universe="10097" />
-    <cell fill="10093" id="10684" name="Fuel (1.6\%) stack (13)" region="10049 -10039" universe="10097" />
-    <cell fill="10092" id="10685" name="Fuel (1.6\%) stack (14)" region="10039 -10050" universe="10097" />
-    <cell fill="10091" id="10686" name="Fuel (1.6\%) stack (15)" region="10050 -10051" universe="10097" />
-    <cell fill="10000" id="10687" name="Fuel (1.6\%) stack (16)" region="10051 -10052" universe="10097" />
-    <cell fill="10090" id="10688" name="Fuel (1.6\%) stack (17)" region="10052 -10053" universe="10097" />
-    <cell fill="10000" id="10689" name="Fuel (1.6\%) stack (last)" region="10053" universe="10097" />
-    <cell id="10690" material="10010" name="Fuel (2.4\%) (0)" region="-10000" universe="10098" />
-    <cell id="10691" material="10000" name="Fuel (2.4\%) (1)" region="10000 -10002" universe="10098" />
-    <cell id="10692" material="10005" name="Fuel (2.4\%) (2)" region="10002 -10003" universe="10098" />
-    <cell id="10693" material="10007" name="Fuel (2.4\%) (last)" region="10003" universe="10098" />
-    <cell id="10694" material="10010" name="Fuel (2.4\%) grid (top/bottom) (0)" region="-10000" universe="10099" />
-    <cell id="10695" material="10000" name="Fuel (2.4\%) grid (top/bottom) (1)" region="10000 -10002" universe="10099" />
-    <cell id="10696" material="10005" name="Fuel (2.4\%) grid (top/bottom) (2)" region="10002 -10003" universe="10099" />
-    <cell id="10697" material="10007" name="Fuel (2.4\%) grid (top/bottom) (last)" region="10003 (10019 -10020 10021 -10022)" universe="10099" />
-    <cell id="10698" material="10005" name="Fuel (2.4\%) grid (top/bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10099" />
-    <cell id="10699" material="10010" name="Fuel (2.4\%) grid (intermediate) (0)" region="-10000" universe="10100" />
-    <cell id="10700" material="10000" name="Fuel (2.4\%) grid (intermediate) (1)" region="10000 -10002" universe="10100" />
-    <cell id="10701" material="10005" name="Fuel (2.4\%) grid (intermediate) (2)" region="10002 -10003" universe="10100" />
-    <cell id="10702" material="10007" name="Fuel (2.4\%) grid (intermediate) (last)" region="10003 (10023 -10024 10025 -10026)" universe="10100" />
-    <cell id="10703" material="10005" name="Fuel (2.4\%) grid (intermediate) (grid)" region="~(10023 -10024 10025 -10026)" universe="10100" />
-    <cell fill="10000" id="10704" name="Fuel (2.4\%) stack (0)" region="-10035" universe="10101" />
-    <cell fill="10090" id="10705" name="Fuel (2.4\%) stack (1)" region="10035 -10036" universe="10101" />
-    <cell fill="10090" id="10706" name="Fuel (2.4\%) stack (2)" region="10036 -10037" universe="10101" />
-    <cell fill="10091" id="10707" name="Fuel (2.4\%) stack (3)" region="10037 -10038" universe="10101" />
-    <cell fill="10098" id="10708" name="Fuel (2.4\%) stack (4)" region="10038 -10041" universe="10101" />
-    <cell fill="10099" id="10709" name="Fuel (2.4\%) stack (5)" region="10041 -10042" universe="10101" />
-    <cell fill="10098" id="10710" name="Fuel (2.4\%) stack (6)" region="10042 -10043" universe="10101" />
-    <cell fill="10098" id="10711" name="Fuel (2.4\%) stack (7)" region="10043 -10044" universe="10101" />
-    <cell fill="10100" id="10712" name="Fuel (2.4\%) stack (8)" region="10044 -10045" universe="10101" />
-    <cell fill="10098" id="10713" name="Fuel (2.4\%) stack (9)" region="10045 -10046" universe="10101" />
-    <cell fill="10100" id="10714" name="Fuel (2.4\%) stack (10)" region="10046 -10047" universe="10101" />
-    <cell fill="10098" id="10715" name="Fuel (2.4\%) stack (11)" region="10047 -10048" universe="10101" />
-    <cell fill="10092" id="10716" name="Fuel (2.4\%) stack (12)" region="10048 -10049" universe="10101" />
-    <cell fill="10093" id="10717" name="Fuel (2.4\%) stack (13)" region="10049 -10039" universe="10101" />
-    <cell fill="10092" id="10718" name="Fuel (2.4\%) stack (14)" region="10039 -10050" universe="10101" />
-    <cell fill="10091" id="10719" name="Fuel (2.4\%) stack (15)" region="10050 -10051" universe="10101" />
-    <cell fill="10000" id="10720" name="Fuel (2.4\%) stack (16)" region="10051 -10052" universe="10101" />
-    <cell fill="10090" id="10721" name="Fuel (2.4\%) stack (17)" region="10052 -10053" universe="10101" />
-    <cell fill="10000" id="10722" name="Fuel (2.4\%) stack (last)" region="10053" universe="10101" />
-    <cell id="10723" material="10011" name="Fuel (3.1\%) (0)" region="-10000" universe="10102" />
-    <cell id="10724" material="10000" name="Fuel (3.1\%) (1)" region="10000 -10002" universe="10102" />
-    <cell id="10725" material="10005" name="Fuel (3.1\%) (2)" region="10002 -10003" universe="10102" />
-    <cell id="10726" material="10007" name="Fuel (3.1\%) (last)" region="10003" universe="10102" />
-    <cell id="10727" material="10011" name="Fuel (3.1\%) grid (top/bottom) (0)" region="-10000" universe="10103" />
-    <cell id="10728" material="10000" name="Fuel (3.1\%) grid (top/bottom) (1)" region="10000 -10002" universe="10103" />
-    <cell id="10729" material="10005" name="Fuel (3.1\%) grid (top/bottom) (2)" region="10002 -10003" universe="10103" />
-    <cell id="10730" material="10007" name="Fuel (3.1\%) grid (top/bottom) (last)" region="10003 (10019 -10020 10021 -10022)" universe="10103" />
-    <cell id="10731" material="10005" name="Fuel (3.1\%) grid (top/bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10103" />
-    <cell id="10732" material="10011" name="Fuel (3.1\%) grid (intermediate) (0)" region="-10000" universe="10104" />
-    <cell id="10733" material="10000" name="Fuel (3.1\%) grid (intermediate) (1)" region="10000 -10002" universe="10104" />
-    <cell id="10734" material="10005" name="Fuel (3.1\%) grid (intermediate) (2)" region="10002 -10003" universe="10104" />
-    <cell id="10735" material="10007" name="Fuel (3.1\%) grid (intermediate) (last)" region="10003 (10023 -10024 10025 -10026)" universe="10104" />
-    <cell id="10736" material="10005" name="Fuel (3.1\%) grid (intermediate) (grid)" region="~(10023 -10024 10025 -10026)" universe="10104" />
-    <cell fill="10000" id="10737" name="Fuel (3.1\%) stack (0)" region="-10035" universe="10105" />
-    <cell fill="10090" id="10738" name="Fuel (3.1\%) stack (1)" region="10035 -10036" universe="10105" />
-    <cell fill="10090" id="10739" name="Fuel (3.1\%) stack (2)" region="10036 -10037" universe="10105" />
-    <cell fill="10091" id="10740" name="Fuel (3.1\%) stack (3)" region="10037 -10038" universe="10105" />
-    <cell fill="10102" id="10741" name="Fuel (3.1\%) stack (4)" region="10038 -10041" universe="10105" />
-    <cell fill="10103" id="10742" name="Fuel (3.1\%) stack (5)" region="10041 -10042" universe="10105" />
-    <cell fill="10102" id="10743" name="Fuel (3.1\%) stack (6)" region="10042 -10043" universe="10105" />
-    <cell fill="10102" id="10744" name="Fuel (3.1\%) stack (7)" region="10043 -10044" universe="10105" />
-    <cell fill="10104" id="10745" name="Fuel (3.1\%) stack (8)" region="10044 -10045" universe="10105" />
-    <cell fill="10102" id="10746" name="Fuel (3.1\%) stack (9)" region="10045 -10046" universe="10105" />
-    <cell fill="10104" id="10747" name="Fuel (3.1\%) stack (10)" region="10046 -10047" universe="10105" />
-    <cell fill="10102" id="10748" name="Fuel (3.1\%) stack (11)" region="10047 -10048" universe="10105" />
-    <cell fill="10092" id="10749" name="Fuel (3.1\%) stack (12)" region="10048 -10049" universe="10105" />
-    <cell fill="10093" id="10750" name="Fuel (3.1\%) stack (13)" region="10049 -10039" universe="10105" />
-    <cell fill="10092" id="10751" name="Fuel (3.1\%) stack (14)" region="10039 -10050" universe="10105" />
-    <cell fill="10091" id="10752" name="Fuel (3.1\%) stack (15)" region="10050 -10051" universe="10105" />
-    <cell fill="10000" id="10753" name="Fuel (3.1\%) stack (16)" region="10051 -10052" universe="10105" />
-    <cell fill="10090" id="10754" name="Fuel (3.1\%) stack (17)" region="10052 -10053" universe="10105" />
-    <cell fill="10000" id="10755" name="Fuel (3.1\%) stack (last)" region="10053" universe="10105" />
-    <cell fill="10124" id="10855" name="Assembly (1.6\%) no BAs instr lattice" region="10027 -10028 10029 -10030" universe="10125" />
-    <cell fill="10000" id="10856" name="Assembly (1.6\%) no BAs instr lattice outer water" region="~(10031 -10032 10033 -10034)" universe="10125" />
-    <cell id="10857" material="10007" name="Assembly (1.6\%) no BAs instr lattice axial (0)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) -10041" universe="10125" />
-    <cell id="10858" material="10003" name="Assembly (1.6\%) no BAs instr lattice axial (1)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10041 -10042" universe="10125" />
-    <cell id="10859" material="10007" name="Assembly (1.6\%) no BAs instr lattice axial (2)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10042 -10044" universe="10125" />
-    <cell id="10860" material="10005" name="Assembly (1.6\%) no BAs instr lattice axial (3)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10044 -10045" universe="10125" />
-    <cell id="10861" material="10007" name="Assembly (1.6\%) no BAs instr lattice axial (4)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10045 -10046" universe="10125" />
-    <cell id="10862" material="10005" name="Assembly (1.6\%) no BAs instr lattice axial (5)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10046 -10047" universe="10125" />
-    <cell id="10863" material="10007" name="Assembly (1.6\%) no BAs instr lattice axial (6)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10047 -10048" universe="10125" />
-    <cell id="10864" material="10003" name="Assembly (1.6\%) no BAs instr lattice axial (7)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10048 -10049" universe="10125" />
-    <cell id="10865" material="10007" name="Assembly (1.6\%) no BAs instr lattice axial (last)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10049" universe="10125" />
-    <cell fill="10144" id="10965" name="Assembly (2.4\%) CR D lattice" region="10027 -10028 10029 -10030" universe="10145" />
-    <cell fill="10000" id="10966" name="Assembly (2.4\%) CR D lattice outer water" region="~(10031 -10032 10033 -10034)" universe="10145" />
-    <cell id="10967" material="10007" name="Assembly (2.4\%) CR D lattice axial (0)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) -10041" universe="10145" />
-    <cell id="10968" material="10003" name="Assembly (2.4\%) CR D lattice axial (1)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10041 -10042" universe="10145" />
-    <cell id="10969" material="10007" name="Assembly (2.4\%) CR D lattice axial (2)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10042 -10044" universe="10145" />
-    <cell id="10970" material="10005" name="Assembly (2.4\%) CR D lattice axial (3)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10044 -10045" universe="10145" />
-    <cell id="10971" material="10007" name="Assembly (2.4\%) CR D lattice axial (4)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10045 -10046" universe="10145" />
-    <cell id="10972" material="10005" name="Assembly (2.4\%) CR D lattice axial (5)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10046 -10047" universe="10145" />
-    <cell id="10973" material="10007" name="Assembly (2.4\%) CR D lattice axial (6)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10047 -10048" universe="10145" />
-    <cell id="10974" material="10003" name="Assembly (2.4\%) CR D lattice axial (7)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10048 -10049" universe="10145" />
-    <cell id="10975" material="10007" name="Assembly (2.4\%) CR D lattice axial (last)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10049" universe="10145" />
-    <cell fill="10164" id="11075" name="Assembly (3.1\%) 16BA lattice" region="10027 -10028 10029 -10030" universe="10165" />
-    <cell fill="10000" id="11076" name="Assembly (3.1\%) 16BA lattice outer water" region="~(10031 -10032 10033 -10034)" universe="10165" />
-    <cell id="11077" material="10007" name="Assembly (3.1\%) 16BA lattice axial (0)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) -10041" universe="10165" />
-    <cell id="11078" material="10003" name="Assembly (3.1\%) 16BA lattice axial (1)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10041 -10042" universe="10165" />
-    <cell id="11079" material="10007" name="Assembly (3.1\%) 16BA lattice axial (2)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10042 -10044" universe="10165" />
-    <cell id="11080" material="10005" name="Assembly (3.1\%) 16BA lattice axial (3)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10044 -10045" universe="10165" />
-    <cell id="11081" material="10007" name="Assembly (3.1\%) 16BA lattice axial (4)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10045 -10046" universe="10165" />
-    <cell id="11082" material="10005" name="Assembly (3.1\%) 16BA lattice axial (5)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10046 -10047" universe="10165" />
-    <cell id="11083" material="10007" name="Assembly (3.1\%) 16BA lattice axial (6)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10047 -10048" universe="10165" />
-    <cell id="11084" material="10003" name="Assembly (3.1\%) 16BA lattice axial (7)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10048 -10049" universe="10165" />
-    <cell id="11085" material="10007" name="Assembly (3.1\%) 16BA lattice axial (last)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10049" universe="10165" />
-    <cell fill="10182" id="11174" name="Assembly (3.1\%) no BAs instr lattice" region="10027 -10028 10029 -10030" universe="10183" />
-    <cell fill="10000" id="11175" name="Assembly (3.1\%) no BAs instr lattice outer water" region="~(10031 -10032 10033 -10034)" universe="10183" />
-    <cell id="11176" material="10007" name="Assembly (3.1\%) no BAs instr lattice axial (0)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) -10041" universe="10183" />
-    <cell id="11177" material="10003" name="Assembly (3.1\%) no BAs instr lattice axial (1)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10041 -10042" universe="10183" />
-    <cell id="11178" material="10007" name="Assembly (3.1\%) no BAs instr lattice axial (2)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10042 -10044" universe="10183" />
-    <cell id="11179" material="10005" name="Assembly (3.1\%) no BAs instr lattice axial (3)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10044 -10045" universe="10183" />
-    <cell id="11180" material="10007" name="Assembly (3.1\%) no BAs instr lattice axial (4)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10045 -10046" universe="10183" />
-    <cell id="11181" material="10005" name="Assembly (3.1\%) no BAs instr lattice axial (5)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10046 -10047" universe="10183" />
-    <cell id="11182" material="10007" name="Assembly (3.1\%) no BAs instr lattice axial (6)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10047 -10048" universe="10183" />
-    <cell id="11183" material="10003" name="Assembly (3.1\%) no BAs instr lattice axial (7)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10048 -10049" universe="10183" />
-    <cell id="11184" material="10007" name="Assembly (3.1\%) no BAs instr lattice axial (last)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10049" universe="10183" />
+    <cell id="10657" material="10009" name="Fuel (1.6%) (0)" region="-10000" universe="10094" />
+    <cell id="10658" material="10000" name="Fuel (1.6%) (1)" region="10000 -10002" universe="10094" />
+    <cell id="10659" material="10005" name="Fuel (1.6%) (2)" region="10002 -10003" universe="10094" />
+    <cell id="10660" material="10007" name="Fuel (1.6%) (last)" region="10003" universe="10094" />
+    <cell id="10661" material="10009" name="Fuel (1.6%) grid (top/bottom) (0)" region="-10000" universe="10095" />
+    <cell id="10662" material="10000" name="Fuel (1.6%) grid (top/bottom) (1)" region="10000 -10002" universe="10095" />
+    <cell id="10663" material="10005" name="Fuel (1.6%) grid (top/bottom) (2)" region="10002 -10003" universe="10095" />
+    <cell id="10664" material="10007" name="Fuel (1.6%) grid (top/bottom) (last)" region="10003 10019 -10020 10021 -10022" universe="10095" />
+    <cell id="10665" material="10005" name="Fuel (1.6%) grid (top/bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10095" />
+    <cell id="10666" material="10009" name="Fuel (1.6%) grid (intermediate) (0)" region="-10000" universe="10096" />
+    <cell id="10667" material="10000" name="Fuel (1.6%) grid (intermediate) (1)" region="10000 -10002" universe="10096" />
+    <cell id="10668" material="10005" name="Fuel (1.6%) grid (intermediate) (2)" region="10002 -10003" universe="10096" />
+    <cell id="10669" material="10007" name="Fuel (1.6%) grid (intermediate) (last)" region="10003 10023 -10024 10025 -10026" universe="10096" />
+    <cell id="10670" material="10005" name="Fuel (1.6%) grid (intermediate) (grid)" region="~(10023 -10024 10025 -10026)" universe="10096" />
+    <cell fill="10000" id="10671" name="Fuel (1.6%) stack (0)" region="-10035" universe="10097" />
+    <cell fill="10090" id="10672" name="Fuel (1.6%) stack (1)" region="10035 -10036" universe="10097" />
+    <cell fill="10090" id="10673" name="Fuel (1.6%) stack (2)" region="10036 -10037" universe="10097" />
+    <cell fill="10091" id="10674" name="Fuel (1.6%) stack (3)" region="10037 -10038" universe="10097" />
+    <cell fill="10094" id="10675" name="Fuel (1.6%) stack (4)" region="10038 -10041" universe="10097" />
+    <cell fill="10095" id="10676" name="Fuel (1.6%) stack (5)" region="10041 -10042" universe="10097" />
+    <cell fill="10094" id="10677" name="Fuel (1.6%) stack (6)" region="10042 -10043" universe="10097" />
+    <cell fill="10094" id="10678" name="Fuel (1.6%) stack (7)" region="10043 -10044" universe="10097" />
+    <cell fill="10096" id="10679" name="Fuel (1.6%) stack (8)" region="10044 -10045" universe="10097" />
+    <cell fill="10094" id="10680" name="Fuel (1.6%) stack (9)" region="10045 -10046" universe="10097" />
+    <cell fill="10096" id="10681" name="Fuel (1.6%) stack (10)" region="10046 -10047" universe="10097" />
+    <cell fill="10094" id="10682" name="Fuel (1.6%) stack (11)" region="10047 -10048" universe="10097" />
+    <cell fill="10092" id="10683" name="Fuel (1.6%) stack (12)" region="10048 -10049" universe="10097" />
+    <cell fill="10093" id="10684" name="Fuel (1.6%) stack (13)" region="10049 -10039" universe="10097" />
+    <cell fill="10092" id="10685" name="Fuel (1.6%) stack (14)" region="10039 -10050" universe="10097" />
+    <cell fill="10091" id="10686" name="Fuel (1.6%) stack (15)" region="10050 -10051" universe="10097" />
+    <cell fill="10000" id="10687" name="Fuel (1.6%) stack (16)" region="10051 -10052" universe="10097" />
+    <cell fill="10090" id="10688" name="Fuel (1.6%) stack (17)" region="10052 -10053" universe="10097" />
+    <cell fill="10000" id="10689" name="Fuel (1.6%) stack (last)" region="10053" universe="10097" />
+    <cell id="10690" material="10010" name="Fuel (2.4%) (0)" region="-10000" universe="10098" />
+    <cell id="10691" material="10000" name="Fuel (2.4%) (1)" region="10000 -10002" universe="10098" />
+    <cell id="10692" material="10005" name="Fuel (2.4%) (2)" region="10002 -10003" universe="10098" />
+    <cell id="10693" material="10007" name="Fuel (2.4%) (last)" region="10003" universe="10098" />
+    <cell id="10694" material="10010" name="Fuel (2.4%) grid (top/bottom) (0)" region="-10000" universe="10099" />
+    <cell id="10695" material="10000" name="Fuel (2.4%) grid (top/bottom) (1)" region="10000 -10002" universe="10099" />
+    <cell id="10696" material="10005" name="Fuel (2.4%) grid (top/bottom) (2)" region="10002 -10003" universe="10099" />
+    <cell id="10697" material="10007" name="Fuel (2.4%) grid (top/bottom) (last)" region="10003 10019 -10020 10021 -10022" universe="10099" />
+    <cell id="10698" material="10005" name="Fuel (2.4%) grid (top/bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10099" />
+    <cell id="10699" material="10010" name="Fuel (2.4%) grid (intermediate) (0)" region="-10000" universe="10100" />
+    <cell id="10700" material="10000" name="Fuel (2.4%) grid (intermediate) (1)" region="10000 -10002" universe="10100" />
+    <cell id="10701" material="10005" name="Fuel (2.4%) grid (intermediate) (2)" region="10002 -10003" universe="10100" />
+    <cell id="10702" material="10007" name="Fuel (2.4%) grid (intermediate) (last)" region="10003 10023 -10024 10025 -10026" universe="10100" />
+    <cell id="10703" material="10005" name="Fuel (2.4%) grid (intermediate) (grid)" region="~(10023 -10024 10025 -10026)" universe="10100" />
+    <cell fill="10000" id="10704" name="Fuel (2.4%) stack (0)" region="-10035" universe="10101" />
+    <cell fill="10090" id="10705" name="Fuel (2.4%) stack (1)" region="10035 -10036" universe="10101" />
+    <cell fill="10090" id="10706" name="Fuel (2.4%) stack (2)" region="10036 -10037" universe="10101" />
+    <cell fill="10091" id="10707" name="Fuel (2.4%) stack (3)" region="10037 -10038" universe="10101" />
+    <cell fill="10098" id="10708" name="Fuel (2.4%) stack (4)" region="10038 -10041" universe="10101" />
+    <cell fill="10099" id="10709" name="Fuel (2.4%) stack (5)" region="10041 -10042" universe="10101" />
+    <cell fill="10098" id="10710" name="Fuel (2.4%) stack (6)" region="10042 -10043" universe="10101" />
+    <cell fill="10098" id="10711" name="Fuel (2.4%) stack (7)" region="10043 -10044" universe="10101" />
+    <cell fill="10100" id="10712" name="Fuel (2.4%) stack (8)" region="10044 -10045" universe="10101" />
+    <cell fill="10098" id="10713" name="Fuel (2.4%) stack (9)" region="10045 -10046" universe="10101" />
+    <cell fill="10100" id="10714" name="Fuel (2.4%) stack (10)" region="10046 -10047" universe="10101" />
+    <cell fill="10098" id="10715" name="Fuel (2.4%) stack (11)" region="10047 -10048" universe="10101" />
+    <cell fill="10092" id="10716" name="Fuel (2.4%) stack (12)" region="10048 -10049" universe="10101" />
+    <cell fill="10093" id="10717" name="Fuel (2.4%) stack (13)" region="10049 -10039" universe="10101" />
+    <cell fill="10092" id="10718" name="Fuel (2.4%) stack (14)" region="10039 -10050" universe="10101" />
+    <cell fill="10091" id="10719" name="Fuel (2.4%) stack (15)" region="10050 -10051" universe="10101" />
+    <cell fill="10000" id="10720" name="Fuel (2.4%) stack (16)" region="10051 -10052" universe="10101" />
+    <cell fill="10090" id="10721" name="Fuel (2.4%) stack (17)" region="10052 -10053" universe="10101" />
+    <cell fill="10000" id="10722" name="Fuel (2.4%) stack (last)" region="10053" universe="10101" />
+    <cell id="10723" material="10011" name="Fuel (3.1%) (0)" region="-10000" universe="10102" />
+    <cell id="10724" material="10000" name="Fuel (3.1%) (1)" region="10000 -10002" universe="10102" />
+    <cell id="10725" material="10005" name="Fuel (3.1%) (2)" region="10002 -10003" universe="10102" />
+    <cell id="10726" material="10007" name="Fuel (3.1%) (last)" region="10003" universe="10102" />
+    <cell id="10727" material="10011" name="Fuel (3.1%) grid (top/bottom) (0)" region="-10000" universe="10103" />
+    <cell id="10728" material="10000" name="Fuel (3.1%) grid (top/bottom) (1)" region="10000 -10002" universe="10103" />
+    <cell id="10729" material="10005" name="Fuel (3.1%) grid (top/bottom) (2)" region="10002 -10003" universe="10103" />
+    <cell id="10730" material="10007" name="Fuel (3.1%) grid (top/bottom) (last)" region="10003 10019 -10020 10021 -10022" universe="10103" />
+    <cell id="10731" material="10005" name="Fuel (3.1%) grid (top/bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10103" />
+    <cell id="10732" material="10011" name="Fuel (3.1%) grid (intermediate) (0)" region="-10000" universe="10104" />
+    <cell id="10733" material="10000" name="Fuel (3.1%) grid (intermediate) (1)" region="10000 -10002" universe="10104" />
+    <cell id="10734" material="10005" name="Fuel (3.1%) grid (intermediate) (2)" region="10002 -10003" universe="10104" />
+    <cell id="10735" material="10007" name="Fuel (3.1%) grid (intermediate) (last)" region="10003 10023 -10024 10025 -10026" universe="10104" />
+    <cell id="10736" material="10005" name="Fuel (3.1%) grid (intermediate) (grid)" region="~(10023 -10024 10025 -10026)" universe="10104" />
+    <cell fill="10000" id="10737" name="Fuel (3.1%) stack (0)" region="-10035" universe="10105" />
+    <cell fill="10090" id="10738" name="Fuel (3.1%) stack (1)" region="10035 -10036" universe="10105" />
+    <cell fill="10090" id="10739" name="Fuel (3.1%) stack (2)" region="10036 -10037" universe="10105" />
+    <cell fill="10091" id="10740" name="Fuel (3.1%) stack (3)" region="10037 -10038" universe="10105" />
+    <cell fill="10102" id="10741" name="Fuel (3.1%) stack (4)" region="10038 -10041" universe="10105" />
+    <cell fill="10103" id="10742" name="Fuel (3.1%) stack (5)" region="10041 -10042" universe="10105" />
+    <cell fill="10102" id="10743" name="Fuel (3.1%) stack (6)" region="10042 -10043" universe="10105" />
+    <cell fill="10102" id="10744" name="Fuel (3.1%) stack (7)" region="10043 -10044" universe="10105" />
+    <cell fill="10104" id="10745" name="Fuel (3.1%) stack (8)" region="10044 -10045" universe="10105" />
+    <cell fill="10102" id="10746" name="Fuel (3.1%) stack (9)" region="10045 -10046" universe="10105" />
+    <cell fill="10104" id="10747" name="Fuel (3.1%) stack (10)" region="10046 -10047" universe="10105" />
+    <cell fill="10102" id="10748" name="Fuel (3.1%) stack (11)" region="10047 -10048" universe="10105" />
+    <cell fill="10092" id="10749" name="Fuel (3.1%) stack (12)" region="10048 -10049" universe="10105" />
+    <cell fill="10093" id="10750" name="Fuel (3.1%) stack (13)" region="10049 -10039" universe="10105" />
+    <cell fill="10092" id="10751" name="Fuel (3.1%) stack (14)" region="10039 -10050" universe="10105" />
+    <cell fill="10091" id="10752" name="Fuel (3.1%) stack (15)" region="10050 -10051" universe="10105" />
+    <cell fill="10000" id="10753" name="Fuel (3.1%) stack (16)" region="10051 -10052" universe="10105" />
+    <cell fill="10090" id="10754" name="Fuel (3.1%) stack (17)" region="10052 -10053" universe="10105" />
+    <cell fill="10000" id="10755" name="Fuel (3.1%) stack (last)" region="10053" universe="10105" />
+    <cell fill="10124" id="10855" name="Assembly (1.6%) no BAs instr lattice" region="10027 -10028 10029 -10030" universe="10125" />
+    <cell fill="10000" id="10856" name="Assembly (1.6%) no BAs instr lattice outer water" region="~(10031 -10032 10033 -10034)" universe="10125" />
+    <cell id="10857" material="10007" name="Assembly (1.6%) no BAs instr lattice axial (0)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) -10041" universe="10125" />
+    <cell id="10858" material="10003" name="Assembly (1.6%) no BAs instr lattice axial (1)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10041 -10042" universe="10125" />
+    <cell id="10859" material="10007" name="Assembly (1.6%) no BAs instr lattice axial (2)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10042 -10044" universe="10125" />
+    <cell id="10860" material="10005" name="Assembly (1.6%) no BAs instr lattice axial (3)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10044 -10045" universe="10125" />
+    <cell id="10861" material="10007" name="Assembly (1.6%) no BAs instr lattice axial (4)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10045 -10046" universe="10125" />
+    <cell id="10862" material="10005" name="Assembly (1.6%) no BAs instr lattice axial (5)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10046 -10047" universe="10125" />
+    <cell id="10863" material="10007" name="Assembly (1.6%) no BAs instr lattice axial (6)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10047 -10048" universe="10125" />
+    <cell id="10864" material="10003" name="Assembly (1.6%) no BAs instr lattice axial (7)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10048 -10049" universe="10125" />
+    <cell id="10865" material="10007" name="Assembly (1.6%) no BAs instr lattice axial (last)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10049" universe="10125" />
+    <cell fill="10144" id="10965" name="Assembly (2.4%) CR D lattice" region="10027 -10028 10029 -10030" universe="10145" />
+    <cell fill="10000" id="10966" name="Assembly (2.4%) CR D lattice outer water" region="~(10031 -10032 10033 -10034)" universe="10145" />
+    <cell id="10967" material="10007" name="Assembly (2.4%) CR D lattice axial (0)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) -10041" universe="10145" />
+    <cell id="10968" material="10003" name="Assembly (2.4%) CR D lattice axial (1)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10041 -10042" universe="10145" />
+    <cell id="10969" material="10007" name="Assembly (2.4%) CR D lattice axial (2)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10042 -10044" universe="10145" />
+    <cell id="10970" material="10005" name="Assembly (2.4%) CR D lattice axial (3)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10044 -10045" universe="10145" />
+    <cell id="10971" material="10007" name="Assembly (2.4%) CR D lattice axial (4)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10045 -10046" universe="10145" />
+    <cell id="10972" material="10005" name="Assembly (2.4%) CR D lattice axial (5)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10046 -10047" universe="10145" />
+    <cell id="10973" material="10007" name="Assembly (2.4%) CR D lattice axial (6)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10047 -10048" universe="10145" />
+    <cell id="10974" material="10003" name="Assembly (2.4%) CR D lattice axial (7)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10048 -10049" universe="10145" />
+    <cell id="10975" material="10007" name="Assembly (2.4%) CR D lattice axial (last)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10049" universe="10145" />
+    <cell fill="10164" id="11075" name="Assembly (3.1%) 16BA lattice" region="10027 -10028 10029 -10030" universe="10165" />
+    <cell fill="10000" id="11076" name="Assembly (3.1%) 16BA lattice outer water" region="~(10031 -10032 10033 -10034)" universe="10165" />
+    <cell id="11077" material="10007" name="Assembly (3.1%) 16BA lattice axial (0)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) -10041" universe="10165" />
+    <cell id="11078" material="10003" name="Assembly (3.1%) 16BA lattice axial (1)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10041 -10042" universe="10165" />
+    <cell id="11079" material="10007" name="Assembly (3.1%) 16BA lattice axial (2)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10042 -10044" universe="10165" />
+    <cell id="11080" material="10005" name="Assembly (3.1%) 16BA lattice axial (3)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10044 -10045" universe="10165" />
+    <cell id="11081" material="10007" name="Assembly (3.1%) 16BA lattice axial (4)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10045 -10046" universe="10165" />
+    <cell id="11082" material="10005" name="Assembly (3.1%) 16BA lattice axial (5)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10046 -10047" universe="10165" />
+    <cell id="11083" material="10007" name="Assembly (3.1%) 16BA lattice axial (6)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10047 -10048" universe="10165" />
+    <cell id="11084" material="10003" name="Assembly (3.1%) 16BA lattice axial (7)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10048 -10049" universe="10165" />
+    <cell id="11085" material="10007" name="Assembly (3.1%) 16BA lattice axial (last)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10049" universe="10165" />
+    <cell fill="10182" id="11174" name="Assembly (3.1%) no BAs instr lattice" region="10027 -10028 10029 -10030" universe="10183" />
+    <cell fill="10000" id="11175" name="Assembly (3.1%) no BAs instr lattice outer water" region="~(10031 -10032 10033 -10034)" universe="10183" />
+    <cell id="11176" material="10007" name="Assembly (3.1%) no BAs instr lattice axial (0)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) -10041" universe="10183" />
+    <cell id="11177" material="10003" name="Assembly (3.1%) no BAs instr lattice axial (1)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10041 -10042" universe="10183" />
+    <cell id="11178" material="10007" name="Assembly (3.1%) no BAs instr lattice axial (2)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10042 -10044" universe="10183" />
+    <cell id="11179" material="10005" name="Assembly (3.1%) no BAs instr lattice axial (3)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10044 -10045" universe="10183" />
+    <cell id="11180" material="10007" name="Assembly (3.1%) no BAs instr lattice axial (4)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10045 -10046" universe="10183" />
+    <cell id="11181" material="10005" name="Assembly (3.1%) no BAs instr lattice axial (5)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10046 -10047" universe="10183" />
+    <cell id="11182" material="10007" name="Assembly (3.1%) no BAs instr lattice axial (6)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10047 -10048" universe="10183" />
+    <cell id="11183" material="10003" name="Assembly (3.1%) no BAs instr lattice axial (7)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10048 -10049" universe="10183" />
+    <cell id="11184" material="10007" name="Assembly (3.1%) no BAs instr lattice axial (last)" region="10031 -10032 10033 -10034 ~(10027 -10028 10029 -10030) 10049" universe="10183" />
     <cell id="11306" material="10003" name="baffle dummy SS" region="10083" universe="10206" />
     <cell id="11307" material="10007" name="baffle south water" region="-10083" universe="10206" />
     <cell fill="10207" id="11308" name="baffle south" universe="10208" />
@@ -479,7 +479,7 @@
     <cell id="11359" material="10007" name="neutron shield panel W" region="10073 -10074 -10075 -10077 10082 -10081" universe="0" />
     <cell id="11360" material="10007" name="downcomer" region="10074 -10079 10082 -10081" universe="0" />
     <cell id="11361" material="10004" name="reactor pressure vessel" region="10079 -10080 10082 -10081" universe="0" />
-    <lattice id="10124" name="Assembly (1.6\%) no BAs instr">
+    <lattice id="10124" name="Assembly (1.6%) no BAs instr">
         <pitch>1.25984 1.25984</pitch>
         <dimension>17 17</dimension>
         <lower_left>-10.70864 -10.70864</lower_left>
@@ -502,7 +502,7 @@
 10097 10097 10097 10097 10097 10097 10097 10097 10097 10097 10097 10097 10097 10097 10097 10097 10097 
 10097 10097 10097 10097 10097 10097 10097 10097 10097 10097 10097 10097 10097 10097 10097 10097 10097 </universes>
     </lattice>
-    <lattice id="10144" name="Assembly (2.4\%) CR D">
+    <lattice id="10144" name="Assembly (2.4%) CR D">
         <pitch>1.25984 1.25984</pitch>
         <dimension>17 17</dimension>
         <lower_left>-10.70864 -10.70864</lower_left>
@@ -525,7 +525,7 @@
 10101 10101 10101 10101 10101 10101 10101 10101 10101 10101 10101 10101 10101 10101 10101 10101 10101 
 10101 10101 10101 10101 10101 10101 10101 10101 10101 10101 10101 10101 10101 10101 10101 10101 10101 </universes>
     </lattice>
-    <lattice id="10164" name="Assembly (3.1\%) 16BA">
+    <lattice id="10164" name="Assembly (3.1%) 16BA">
         <pitch>1.25984 1.25984</pitch>
         <dimension>17 17</dimension>
         <lower_left>-10.70864 -10.70864</lower_left>
@@ -548,7 +548,7 @@
 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 
 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 10105 </universes>
     </lattice>
-    <lattice id="10182" name="Assembly (3.1\%) no BAs instr">
+    <lattice id="10182" name="Assembly (3.1%) no BAs instr">
         <pitch>1.25984 1.25984</pitch>
         <dimension>17 17</dimension>
         <lower_left>-10.70864 -10.70864</lower_left>
@@ -692,14 +692,14 @@
 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 
 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 10000 </universes>
     </lattice>
-    <surface coeffs="0.0 0.0 0.39218" id="10000" name="Pellet OR" type="z-cylinder" />
+    <surface coeffs="0.0 0.0 0.405765" id="10000" name="Pellet OR" type="z-cylinder" />
     <surface coeffs="0.0 0.0 0.06459" id="10001" name="FR Plenum Spring OR" type="z-cylinder" />
-    <surface coeffs="0.0 0.0 0.40005" id="10002" name="Clad IR" type="z-cylinder" />
-    <surface coeffs="0.0 0.0 0.4572" id="10003" name="Clad OR" type="z-cylinder" />
-    <surface coeffs="0.0 0.0 0.56134" id="10004" name="GT IR (above dashpot)" type="z-cylinder" />
-    <surface coeffs="0.0 0.0 0.60198" id="10005" name="GT OR (above dashpot)" type="z-cylinder" />
-    <surface coeffs="0.0 0.0 0.50419" id="10006" name="GT IR (at dashpot)" type="z-cylinder" />
-    <surface coeffs="0.0 0.0 0.5461" id="10007" name="GT OR (at dashpot)" type="z-cylinder" />
+    <surface coeffs="0.0 0.0 0.41402" id="10002" name="Clad IR" type="z-cylinder" />
+    <surface coeffs="0.0 0.0 0.47498" id="10003" name="Clad OR" type="z-cylinder" />
+    <surface coeffs="0.0 0.0 0.5715" id="10004" name="GT IR (above dashpot)" type="z-cylinder" />
+    <surface coeffs="0.0 0.0 0.61214" id="10005" name="GT OR (above dashpot)" type="z-cylinder" />
+    <surface coeffs="0.0 0.0 0.54019" id="10006" name="GT IR (at dashpot)" type="z-cylinder" />
+    <surface coeffs="0.0 0.0 0.61214" id="10007" name="GT OR (at dashpot)" type="z-cylinder" />
     <surface coeffs="0.0 0.0 0.4331" id="10008" name="Control Poison OR" type="z-cylinder" />
     <surface coeffs="0.0 0.0 0.43688" id="10009" name="CR Clad IR" type="z-cylinder" />
     <surface coeffs="0.0 0.0 0.48387" id="10010" name="CR Clad OR" type="z-cylinder" />
