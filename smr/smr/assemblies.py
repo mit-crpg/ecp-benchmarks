@@ -297,7 +297,7 @@ for cent, comment in [(gti, ''), (ins, ' instr')]:
     universes[:,:] = univs['Fuel (3.1%) stack']
     universes[nonfuel_y, nonfuel_x] = [    gtu,   gtu,   gtu,
                                          gtu,              gtu,
-                                       gtu, bas,  bas,  bas, gtu,
+                                       bas, bas,  bas,  bas, gtu,
                                        bas, bas,  cent, bas, gtu,
                                        bas, bas,  bas,  bas, gtu,
                                          bas,              gtu,

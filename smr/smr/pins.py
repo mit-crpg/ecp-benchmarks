@@ -18,7 +18,7 @@ def make_pin(name, surfaces, materials, grid=None):
         to comprise the radially layered pin cell Universe.
     materials: Iterable of openmc.Material
         The Materials used within each radial layer. This collection
-        collection must be one unit longer than the collection of surfaces.
+        must be one unit longer than the collection of surfaces.
     grid: str, optional
         The type of grid spacer to wrap around the pin cell universe.
         Accepted types include 'bottom' and 'intermediate'.
@@ -79,7 +79,7 @@ def make_stack(name, surfaces, universes):
         filled to comprise an axially stacked pin cell
     universes: Iterable of openmc.Universe
         The Universes used within each axial layer. This collection
-        collection must be one unit longer than the collection of surfaces.
+        must be one unit longer than the collection of surfaces.
 
     Returns
     -------
@@ -89,19 +89,19 @@ def make_stack(name, surfaces, universes):
 
     universe = openmc.Universe(name=name)
 
-    # Create cell for interior of innermost ZCylinder
+    # Create cell for region below lowest ZPlane
     cell_name = name + ' (0)'
     cell = openmc.Cell(name=cell_name, fill=universes[0], region=-surfaces[0])
     universe.add_cell(cell)
 
-    # Create cells between two ZCylinders
+    # Create cells between two ZPlanes
     for i, (univ, surf) in enumerate(zip(universes[1:-1], surfaces[:-1])):
         cell_name = name + ' ({})'.format(i+1)
         cell = openmc.Cell(name=cell_name, fill=univ,
                            region=+surf & -surfaces[i+1])
         universe.add_cell(cell)
 
-    # Create cell for exterior of outermost ZCylinder
+    # Create cell for region above highest ZPlane
     cell_name = name + ' (last)'
     cell = openmc.Cell(name=cell_name, fill=universes[-1],
                        region=+surfaces[-1])

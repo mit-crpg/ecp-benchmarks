@@ -60,7 +60,7 @@ pin_pitch          = 1.25984
 lattice_pitch      = 21.50364
 grid_strap_side    = 21.47270
 
-# core radial paramters
+# core radial parameters
 core_barrel_IR     = 85.0
 core_barrel_OR     = 90.0
 neutron_shield_OR  = 92.0
@@ -68,7 +68,7 @@ baffle_width       = 2.2225
 rpv_IR             = 120.0
 rpv_OR             = 135.0
 
-# axial paramters
+# axial parameters
 lowest_extent        =      0.000
 bottom_support_plate =     20.000
 top_support_plate    =     25.000
@@ -79,7 +79,6 @@ top_lower_thimble    =     36.007
 bottom_fuel_stack    =     36.007
 bot_burn_abs         =     41.087
 active_core_height   =    200.
-
 top_active_core      =    236.007
 top_plenum           =    238.343
 top_fuel_rod         =    240.392
