@@ -78,32 +78,37 @@ bottom_fuel_rod      =     35.160
 top_lower_thimble    =     36.007
 bottom_fuel_stack    =     36.007
 bot_burn_abs         =     41.087
-active_core_height   =    182.880
-top_active_core      =    218.887
-top_plenum           =    221.223
-top_fuel_rod         =    223.272
-bottom_upper_nozzle  =    226.617
-top_upper_nozzle     =    235.444
-highest_extent       =    255.444
+active_core_height   =    200.
 
-# grid z planes
-grid1_bot             =    37.879
-grid1_top             =    42.070
-grid2_bot             =    99.164
-grid2_top             =   104.879
-grid3_bot             =   151.361
-grid3_top             =   157.076
-grid4_bot             =   203.558
-grid4_top             =   209.273
+top_active_core      =    236.007
+top_plenum           =    238.343
+top_fuel_rod         =    240.392
+bottom_upper_nozzle  =    243.737
+top_upper_nozzle     =    252.564
+highest_extent       =    272.564
 
-# control rod step heights
+# The grid spacer locations are eyeball estimated from Figure 3-1 in NuScale's
+# FA design certification doc. This assumes 6cm and 2cm spacings between the
+# bottom and top of the fuel rods and the bottom and top grid spacers.
+grid1_bot             =     39.7845
+grid1_top             =     44.2295
+grid2_bot             =     86.67325
+grid2_top             =     91.11825
+grid3_bot             =    133.562
+grid3_top             =    138.007
+grid4_bot             =    180.45075
+grid4_top             =    184.89575
+grid5_bot             =    227.3395
+grid5_top             =    231.7845
+
+# control rod step heights - taken from BEAVRS, use with caution for NuScale
 step0H                =    45.079
 step102H              =   206.415
-step228H              =   249.122
+step248H              =   269.122
 step_width            =     1.58173
 bank_bot              =   405.713
-bank_step             =   228.
-bank_top              =   766.348
+bank_step             =   248.
+bank_top              =   786.348
 
 neutron_shield_NWbot_SEtop = tan(pi/3)
 neutron_shield_NWtop_SEbot = tan(pi/6)
@@ -202,6 +207,10 @@ surfs['grid4bot'] = openmc.ZPlane(
     z0=grid4_bot, name='bottom of grid 4')
 surfs['grid4top'] = openmc.ZPlane(
     z0=grid4_top, name='top grid 4')
+surfs['grid5bot'] = openmc.ZPlane(
+    z0=grid5_bot, name='bottom of grid 5')
+surfs['grid5top'] = openmc.ZPlane(
+    z0=grid5_top, name='top grid 5')
 
 surfs['top pin plenum'] = openmc.ZPlane(
     z0=top_plenum, name='top pin plenum')
@@ -215,9 +224,9 @@ surfs['top upper nozzle'] = openmc.ZPlane(
 # Control rod bank surfaces for ARO configuration
 for bank in ['A','B','C','D','E',]:
     surfs['bankS{} top'.format(bank)] = openmc.ZPlane(
-        z0=step228H+step_width*228, name='CR bankS{} top'.format(bank))
+        z0=step248H+step_width*228, name='CR bankS{} top'.format(bank))
     surfs['bankS{} bot'.format(bank)] = openmc.ZPlane(
-        z0=step228H, name='CR bankS{} bottom'.format(bank))
+        z0=step248H, name='CR bankS{} bottom'.format(bank))
 
 surfs['bankA top'] = openmc.ZPlane(
     z0=bank_top, name='CR bank A top')
