@@ -4,10 +4,10 @@
     <cell id="10001" material="10007" name="GT empty (0)" region="-10004" universe="10001" />
     <cell id="10002" material="10005" name="GT empty (1)" region="10004 -10005" universe="10001" />
     <cell id="10003" material="10007" name="GT empty (last)" region="10005" universe="10001" />
-    <cell id="10004" material="10007" name="GT empty grid (top/bottom) (0)" region="-10004" universe="10002" />
-    <cell id="10005" material="10005" name="GT empty grid (top/bottom) (1)" region="10004 -10005" universe="10002" />
-    <cell id="10006" material="10007" name="GT empty grid (top/bottom) (last)" region="10005 10019 -10020 10021 -10022" universe="10002" />
-    <cell id="10007" material="10005" name="GT empty grid (top/bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10002" />
+    <cell id="10004" material="10007" name="GT empty grid (bottom) (0)" region="-10004" universe="10002" />
+    <cell id="10005" material="10005" name="GT empty grid (bottom) (1)" region="10004 -10005" universe="10002" />
+    <cell id="10006" material="10007" name="GT empty grid (bottom) (last)" region="10005 10019 -10020 10021 -10022" universe="10002" />
+    <cell id="10007" material="10005" name="GT empty grid (bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10002" />
     <cell id="10008" material="10007" name="GT empty grid (intermediate) (0)" region="-10004" universe="10003" />
     <cell id="10009" material="10005" name="GT empty grid (intermediate) (1)" region="10004 -10005" universe="10003" />
     <cell id="10010" material="10007" name="GT empty grid (intermediate) (last)" region="10005 10023 -10024 10025 -10026" universe="10003" />
@@ -18,10 +18,10 @@
     <cell id="10015" material="10007" name="GT empty at dashpot (0)" region="-10006" universe="10005" />
     <cell id="10016" material="10005" name="GT empty at dashpot (1)" region="10006 -10007" universe="10005" />
     <cell id="10017" material="10007" name="GT empty at dashpot (last)" region="10007" universe="10005" />
-    <cell id="10018" material="10007" name="GT empty at dashpot grid (top/bottom) (0)" region="-10006" universe="10006" />
-    <cell id="10019" material="10005" name="GT empty at dashpot grid (top/bottom) (1)" region="10006 -10007" universe="10006" />
-    <cell id="10020" material="10007" name="GT empty at dashpot grid (top/bottom) (last)" region="10007 10019 -10020 10021 -10022" universe="10006" />
-    <cell id="10021" material="10005" name="GT empty at dashpot grid (top/bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10006" />
+    <cell id="10018" material="10007" name="GT empty at dashpot grid (bottom) (0)" region="-10006" universe="10006" />
+    <cell id="10019" material="10005" name="GT empty at dashpot grid (bottom) (1)" region="10006 -10007" universe="10006" />
+    <cell id="10020" material="10007" name="GT empty at dashpot grid (bottom) (last)" region="10007 10019 -10020 10021 -10022" universe="10006" />
+    <cell id="10021" material="10005" name="GT empty at dashpot grid (bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10006" />
     <cell id="10022" material="10007" name="GT empty at dashpot grid (intermediate) (0)" region="-10006" universe="10007" />
     <cell id="10023" material="10005" name="GT empty at dashpot grid (intermediate) (1)" region="10006 -10007" universe="10007" />
     <cell id="10024" material="10007" name="GT empty at dashpot grid (intermediate) (last)" region="10007 10023 -10024 10025 -10026" universe="10007" />
@@ -76,12 +76,12 @@
     <cell id="10073" material="10007" name="IT (2)" region="10016 -10004" universe="10011" />
     <cell id="10074" material="10005" name="IT (3)" region="10004 -10005" universe="10011" />
     <cell id="10075" material="10007" name="IT (last)" region="10005" universe="10011" />
-    <cell id="10076" material="10001" name="IT grid (top/bottom) (0)" region="-10015" universe="10012" />
-    <cell id="10077" material="10005" name="IT grid (top/bottom) (1)" region="10015 -10016" universe="10012" />
-    <cell id="10078" material="10007" name="IT grid (top/bottom) (2)" region="10016 -10004" universe="10012" />
-    <cell id="10079" material="10005" name="IT grid (top/bottom) (3)" region="10004 -10005" universe="10012" />
-    <cell id="10080" material="10007" name="IT grid (top/bottom) (last)" region="10005 10019 -10020 10021 -10022" universe="10012" />
-    <cell id="10081" material="10005" name="IT grid (top/bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10012" />
+    <cell id="10076" material="10001" name="IT grid (bottom) (0)" region="-10015" universe="10012" />
+    <cell id="10077" material="10005" name="IT grid (bottom) (1)" region="10015 -10016" universe="10012" />
+    <cell id="10078" material="10007" name="IT grid (bottom) (2)" region="10016 -10004" universe="10012" />
+    <cell id="10079" material="10005" name="IT grid (bottom) (3)" region="10004 -10005" universe="10012" />
+    <cell id="10080" material="10007" name="IT grid (bottom) (last)" region="10005 10019 -10020 10021 -10022" universe="10012" />
+    <cell id="10081" material="10005" name="IT grid (bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10012" />
     <cell id="10082" material="10001" name="IT grid (intermediate) (0)" region="-10015" universe="10013" />
     <cell id="10083" material="10005" name="IT grid (intermediate) (1)" region="10015 -10016" universe="10013" />
     <cell id="10084" material="10007" name="IT grid (intermediate) (2)" region="10016 -10004" universe="10013" />
@@ -117,12 +117,12 @@
     <cell id="10119" material="10003" name="CR (2)" region="10009 -10004" universe="10017" />
     <cell id="10120" material="10007" name="CR (3)" region="10004 -10005" universe="10017" />
     <cell id="10121" material="10007" name="CR (last)" region="10005" universe="10017" />
-    <cell id="10122" material="10006" name="CR grid (top/bottom) (0)" region="-10008" universe="10018" />
-    <cell id="10123" material="10001" name="CR grid (top/bottom) (1)" region="10008 -10009" universe="10018" />
-    <cell id="10124" material="10003" name="CR grid (top/bottom) (2)" region="10009 -10004" universe="10018" />
-    <cell id="10125" material="10007" name="CR grid (top/bottom) (3)" region="10004 -10005" universe="10018" />
-    <cell id="10126" material="10007" name="CR grid (top/bottom) (last)" region="10005 10019 -10020 10021 -10022" universe="10018" />
-    <cell id="10127" material="10005" name="CR grid (top/bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10018" />
+    <cell id="10122" material="10006" name="CR grid (bottom) (0)" region="-10008" universe="10018" />
+    <cell id="10123" material="10001" name="CR grid (bottom) (1)" region="10008 -10009" universe="10018" />
+    <cell id="10124" material="10003" name="CR grid (bottom) (2)" region="10009 -10004" universe="10018" />
+    <cell id="10125" material="10007" name="CR grid (bottom) (3)" region="10004 -10005" universe="10018" />
+    <cell id="10126" material="10007" name="CR grid (bottom) (last)" region="10005 10019 -10020 10021 -10022" universe="10018" />
+    <cell id="10127" material="10005" name="CR grid (bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10018" />
     <cell id="10128" material="10006" name="CR grid (intermediate) (0)" region="-10008" universe="10019" />
     <cell id="10129" material="10001" name="CR grid (intermediate) (1)" region="10008 -10009" universe="10019" />
     <cell id="10130" material="10003" name="CR grid (intermediate) (2)" region="10009 -10004" universe="10019" />
@@ -139,13 +139,13 @@
     <cell id="10141" material="10007" name="CR blank (3)" region="10010 -10004" universe="10021" />
     <cell id="10142" material="10005" name="CR blank (4)" region="10004 -10005" universe="10021" />
     <cell id="10143" material="10007" name="CR blank (last)" region="10005" universe="10021" />
-    <cell id="10144" material="10003" name="CR blank grid (top/bottom) (0)" region="-10008" universe="10022" />
-    <cell id="10145" material="10001" name="CR blank grid (top/bottom) (1)" region="10008 -10009" universe="10022" />
-    <cell id="10146" material="10003" name="CR blank grid (top/bottom) (2)" region="10009 -10010" universe="10022" />
-    <cell id="10147" material="10007" name="CR blank grid (top/bottom) (3)" region="10010 -10004" universe="10022" />
-    <cell id="10148" material="10005" name="CR blank grid (top/bottom) (4)" region="10004 -10005" universe="10022" />
-    <cell id="10149" material="10007" name="CR blank grid (top/bottom) (last)" region="10005 10019 -10020 10021 -10022" universe="10022" />
-    <cell id="10150" material="10005" name="CR blank grid (top/bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10022" />
+    <cell id="10144" material="10003" name="CR blank grid (bottom) (0)" region="-10008" universe="10022" />
+    <cell id="10145" material="10001" name="CR blank grid (bottom) (1)" region="10008 -10009" universe="10022" />
+    <cell id="10146" material="10003" name="CR blank grid (bottom) (2)" region="10009 -10010" universe="10022" />
+    <cell id="10147" material="10007" name="CR blank grid (bottom) (3)" region="10010 -10004" universe="10022" />
+    <cell id="10148" material="10005" name="CR blank grid (bottom) (4)" region="10004 -10005" universe="10022" />
+    <cell id="10149" material="10007" name="CR blank grid (bottom) (last)" region="10005 10019 -10020 10021 -10022" universe="10022" />
+    <cell id="10150" material="10005" name="CR blank grid (bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10022" />
     <cell id="10151" material="10003" name="CR blank grid (intermediate) (0)" region="-10008" universe="10023" />
     <cell id="10152" material="10001" name="CR blank grid (intermediate) (1)" region="10008 -10009" universe="10023" />
     <cell id="10153" material="10003" name="CR blank grid (intermediate) (2)" region="10009 -10010" universe="10023" />
@@ -170,11 +170,11 @@
     <cell fill="10009" id="10310" name="GT CR bank D dummy (2)" region="10043 -10073" universe="10045" />
     <cell fill="10017" id="10311" name="GT CR bank D dummy (3)" region="10073 -10072" universe="10045" />
     <cell fill="10021" id="10312" name="GT CR bank D dummy (last)" region="10072" universe="10045" />
-    <cell fill="10000" id="10313" name="GT CR bank D dummy grid (top/bottom) (0)" region="-10037" universe="10046" />
-    <cell fill="10006" id="10314" name="GT CR bank D dummy grid (top/bottom) (1)" region="10037 -10043" universe="10046" />
-    <cell fill="10002" id="10315" name="GT CR bank D dummy grid (top/bottom) (2)" region="10043 -10073" universe="10046" />
-    <cell fill="10018" id="10316" name="GT CR bank D dummy grid (top/bottom) (3)" region="10073 -10072" universe="10046" />
-    <cell fill="10022" id="10317" name="GT CR bank D dummy grid (top/bottom) (last)" region="10072" universe="10046" />
+    <cell fill="10000" id="10313" name="GT CR bank D dummy grid (bottom) (0)" region="-10037" universe="10046" />
+    <cell fill="10006" id="10314" name="GT CR bank D dummy grid (bottom) (1)" region="10037 -10043" universe="10046" />
+    <cell fill="10002" id="10315" name="GT CR bank D dummy grid (bottom) (2)" region="10043 -10073" universe="10046" />
+    <cell fill="10018" id="10316" name="GT CR bank D dummy grid (bottom) (3)" region="10073 -10072" universe="10046" />
+    <cell fill="10022" id="10317" name="GT CR bank D dummy grid (bottom) (last)" region="10072" universe="10046" />
     <cell fill="10000" id="10318" name="GT CR bank D dummy grid (intermediate) (0)" region="-10037" universe="10047" />
     <cell fill="10007" id="10319" name="GT CR bank D dummy grid (intermediate) (1)" region="10037 -10043" universe="10047" />
     <cell fill="10003" id="10320" name="GT CR bank D dummy grid (intermediate) (2)" region="10043 -10073" universe="10047" />
@@ -239,16 +239,16 @@
     <cell id="10619" material="10007" name="BA dashpot (6)" region="10016 -10006" universe="10084" />
     <cell id="10620" material="10005" name="BA dashpot (7)" region="10006 -10007" universe="10084" />
     <cell id="10621" material="10007" name="BA dashpot (last)" region="10007" universe="10084" />
-    <cell id="10622" material="10001" name="BA dashpot grid (top/bottom) (0)" region="-10011" universe="10085" />
-    <cell id="10623" material="10003" name="BA dashpot grid (top/bottom) (1)" region="10011 -10012" universe="10085" />
-    <cell id="10624" material="10001" name="BA dashpot grid (top/bottom) (2)" region="10012 -10013" universe="10085" />
-    <cell id="10625" material="10008" name="BA dashpot grid (top/bottom) (3)" region="10013 -10014" universe="10085" />
-    <cell id="10626" material="10001" name="BA dashpot grid (top/bottom) (4)" region="10014 -10015" universe="10085" />
-    <cell id="10627" material="10003" name="BA dashpot grid (top/bottom) (5)" region="10015 -10016" universe="10085" />
-    <cell id="10628" material="10007" name="BA dashpot grid (top/bottom) (6)" region="10016 -10006" universe="10085" />
-    <cell id="10629" material="10005" name="BA dashpot grid (top/bottom) (7)" region="10006 -10007" universe="10085" />
-    <cell id="10630" material="10007" name="BA dashpot grid (top/bottom) (last)" region="10007 10019 -10020 10021 -10022" universe="10085" />
-    <cell id="10631" material="10005" name="BA dashpot grid (top/bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10085" />
+    <cell id="10622" material="10001" name="BA dashpot grid (bottom) (0)" region="-10011" universe="10085" />
+    <cell id="10623" material="10003" name="BA dashpot grid (bottom) (1)" region="10011 -10012" universe="10085" />
+    <cell id="10624" material="10001" name="BA dashpot grid (bottom) (2)" region="10012 -10013" universe="10085" />
+    <cell id="10625" material="10008" name="BA dashpot grid (bottom) (3)" region="10013 -10014" universe="10085" />
+    <cell id="10626" material="10001" name="BA dashpot grid (bottom) (4)" region="10014 -10015" universe="10085" />
+    <cell id="10627" material="10003" name="BA dashpot grid (bottom) (5)" region="10015 -10016" universe="10085" />
+    <cell id="10628" material="10007" name="BA dashpot grid (bottom) (6)" region="10016 -10006" universe="10085" />
+    <cell id="10629" material="10005" name="BA dashpot grid (bottom) (7)" region="10006 -10007" universe="10085" />
+    <cell id="10630" material="10007" name="BA dashpot grid (bottom) (last)" region="10007 10019 -10020 10021 -10022" universe="10085" />
+    <cell id="10631" material="10005" name="BA dashpot grid (bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10085" />
     <cell id="10642" material="10003" name="BA blank SS (0)" region="-10016" universe="10087" />
     <cell id="10643" material="10007" name="BA blank SS (1)" region="10016 -10017" universe="10087" />
     <cell id="10644" material="10005" name="BA blank SS (2)" region="10017 -10018" universe="10087" />
@@ -285,20 +285,20 @@
     <cell id="10675" material="10000" name="pin plenum (1)" region="10001 -10002" universe="10092" />
     <cell id="10676" material="10005" name="pin plenum (2)" region="10002 -10003" universe="10092" />
     <cell id="10677" material="10007" name="pin plenum (last)" region="10003" universe="10092" />
-    <cell id="10678" material="10002" name="pin plenum grid (top/bottom) (0)" region="-10001" universe="10093" />
-    <cell id="10679" material="10000" name="pin plenum grid (top/bottom) (1)" region="10001 -10002" universe="10093" />
-    <cell id="10680" material="10005" name="pin plenum grid (top/bottom) (2)" region="10002 -10003" universe="10093" />
-    <cell id="10681" material="10007" name="pin plenum grid (top/bottom) (last)" region="10003 10019 -10020 10021 -10022" universe="10093" />
-    <cell id="10682" material="10005" name="pin plenum grid (top/bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10093" />
+    <cell id="10678" material="10002" name="pin plenum grid (bottom) (0)" region="-10001" universe="10093" />
+    <cell id="10679" material="10000" name="pin plenum grid (bottom) (1)" region="10001 -10002" universe="10093" />
+    <cell id="10680" material="10005" name="pin plenum grid (bottom) (2)" region="10002 -10003" universe="10093" />
+    <cell id="10681" material="10007" name="pin plenum grid (bottom) (last)" region="10003 10019 -10020 10021 -10022" universe="10093" />
+    <cell id="10682" material="10005" name="pin plenum grid (bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10093" />
     <cell id="10683" material="10009" name="Fuel (1.6%) (0)" region="-10000" universe="10094" />
     <cell id="10684" material="10000" name="Fuel (1.6%) (1)" region="10000 -10002" universe="10094" />
     <cell id="10685" material="10005" name="Fuel (1.6%) (2)" region="10002 -10003" universe="10094" />
     <cell id="10686" material="10007" name="Fuel (1.6%) (last)" region="10003" universe="10094" />
-    <cell id="10687" material="10009" name="Fuel (1.6%) grid (top/bottom) (0)" region="-10000" universe="10095" />
-    <cell id="10688" material="10000" name="Fuel (1.6%) grid (top/bottom) (1)" region="10000 -10002" universe="10095" />
-    <cell id="10689" material="10005" name="Fuel (1.6%) grid (top/bottom) (2)" region="10002 -10003" universe="10095" />
-    <cell id="10690" material="10007" name="Fuel (1.6%) grid (top/bottom) (last)" region="10003 10019 -10020 10021 -10022" universe="10095" />
-    <cell id="10691" material="10005" name="Fuel (1.6%) grid (top/bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10095" />
+    <cell id="10687" material="10009" name="Fuel (1.6%) grid (bottom) (0)" region="-10000" universe="10095" />
+    <cell id="10688" material="10000" name="Fuel (1.6%) grid (bottom) (1)" region="10000 -10002" universe="10095" />
+    <cell id="10689" material="10005" name="Fuel (1.6%) grid (bottom) (2)" region="10002 -10003" universe="10095" />
+    <cell id="10690" material="10007" name="Fuel (1.6%) grid (bottom) (last)" region="10003 10019 -10020 10021 -10022" universe="10095" />
+    <cell id="10691" material="10005" name="Fuel (1.6%) grid (bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10095" />
     <cell id="10692" material="10009" name="Fuel (1.6%) grid (intermediate) (0)" region="-10000" universe="10096" />
     <cell id="10693" material="10000" name="Fuel (1.6%) grid (intermediate) (1)" region="10000 -10002" universe="10096" />
     <cell id="10694" material="10005" name="Fuel (1.6%) grid (intermediate) (2)" region="10002 -10003" universe="10096" />
@@ -329,11 +329,11 @@
     <cell id="10719" material="10000" name="Fuel (2.4%) (1)" region="10000 -10002" universe="10098" />
     <cell id="10720" material="10005" name="Fuel (2.4%) (2)" region="10002 -10003" universe="10098" />
     <cell id="10721" material="10007" name="Fuel (2.4%) (last)" region="10003" universe="10098" />
-    <cell id="10722" material="10010" name="Fuel (2.4%) grid (top/bottom) (0)" region="-10000" universe="10099" />
-    <cell id="10723" material="10000" name="Fuel (2.4%) grid (top/bottom) (1)" region="10000 -10002" universe="10099" />
-    <cell id="10724" material="10005" name="Fuel (2.4%) grid (top/bottom) (2)" region="10002 -10003" universe="10099" />
-    <cell id="10725" material="10007" name="Fuel (2.4%) grid (top/bottom) (last)" region="10003 10019 -10020 10021 -10022" universe="10099" />
-    <cell id="10726" material="10005" name="Fuel (2.4%) grid (top/bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10099" />
+    <cell id="10722" material="10010" name="Fuel (2.4%) grid (bottom) (0)" region="-10000" universe="10099" />
+    <cell id="10723" material="10000" name="Fuel (2.4%) grid (bottom) (1)" region="10000 -10002" universe="10099" />
+    <cell id="10724" material="10005" name="Fuel (2.4%) grid (bottom) (2)" region="10002 -10003" universe="10099" />
+    <cell id="10725" material="10007" name="Fuel (2.4%) grid (bottom) (last)" region="10003 10019 -10020 10021 -10022" universe="10099" />
+    <cell id="10726" material="10005" name="Fuel (2.4%) grid (bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10099" />
     <cell id="10727" material="10010" name="Fuel (2.4%) grid (intermediate) (0)" region="-10000" universe="10100" />
     <cell id="10728" material="10000" name="Fuel (2.4%) grid (intermediate) (1)" region="10000 -10002" universe="10100" />
     <cell id="10729" material="10005" name="Fuel (2.4%) grid (intermediate) (2)" region="10002 -10003" universe="10100" />
@@ -364,11 +364,11 @@
     <cell id="10754" material="10000" name="Fuel (3.1%) (1)" region="10000 -10002" universe="10102" />
     <cell id="10755" material="10005" name="Fuel (3.1%) (2)" region="10002 -10003" universe="10102" />
     <cell id="10756" material="10007" name="Fuel (3.1%) (last)" region="10003" universe="10102" />
-    <cell id="10757" material="10011" name="Fuel (3.1%) grid (top/bottom) (0)" region="-10000" universe="10103" />
-    <cell id="10758" material="10000" name="Fuel (3.1%) grid (top/bottom) (1)" region="10000 -10002" universe="10103" />
-    <cell id="10759" material="10005" name="Fuel (3.1%) grid (top/bottom) (2)" region="10002 -10003" universe="10103" />
-    <cell id="10760" material="10007" name="Fuel (3.1%) grid (top/bottom) (last)" region="10003 10019 -10020 10021 -10022" universe="10103" />
-    <cell id="10761" material="10005" name="Fuel (3.1%) grid (top/bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10103" />
+    <cell id="10757" material="10011" name="Fuel (3.1%) grid (bottom) (0)" region="-10000" universe="10103" />
+    <cell id="10758" material="10000" name="Fuel (3.1%) grid (bottom) (1)" region="10000 -10002" universe="10103" />
+    <cell id="10759" material="10005" name="Fuel (3.1%) grid (bottom) (2)" region="10002 -10003" universe="10103" />
+    <cell id="10760" material="10007" name="Fuel (3.1%) grid (bottom) (last)" region="10003 10019 -10020 10021 -10022" universe="10103" />
+    <cell id="10761" material="10005" name="Fuel (3.1%) grid (bottom) (grid)" region="~(10019 -10020 10021 -10022)" universe="10103" />
     <cell id="10762" material="10011" name="Fuel (3.1%) grid (intermediate) (0)" region="-10000" universe="10104" />
     <cell id="10763" material="10000" name="Fuel (3.1%) grid (intermediate) (1)" region="10000 -10002" universe="10104" />
     <cell id="10764" material="10005" name="Fuel (3.1%) grid (intermediate) (2)" region="10002 -10003" universe="10104" />
