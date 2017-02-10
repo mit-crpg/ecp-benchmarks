@@ -1,6 +1,12 @@
 """Instantiate the OpenMC Surfaces needed by the core model.
 
 The geometric parameters defining the core model are tabulated here.
+The geometric specifications are loosely based upon NuScale's Small
+Modular Pressurized Water Reactor concept as detailed here in their
+NRC design certification documentation:
+
+https://www.nrc.gov/docs/ML1618/ML16187A017.pdf
+https://www.nrc.gov/docs/ML1700/ML17007A001.pdf
 """
 
 import copy

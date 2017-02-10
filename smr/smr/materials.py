@@ -3,56 +3,6 @@
 import openmc
 from openmc.data import atomic_weight, atomic_mass
 
-
-def get_fuel_aos(enr_U235):
-    """Get the atom percents of the nuclides in fresh UO2 fuel.
-
-    Parameters
-    ----------
-    enr_U235: float
-        The percent enrichment of U-235 in the fuel
-
-    Returns
-    -------
-    a_U234: float
-        The atom percent of U-234
-    a_U235: float
-        The atom percent of U-235
-    a_U238: float
-        The atom percent of U-238
-    a_U: float
-        The atom percent of Uranium
-    a_O: float
-        The atom percent of Oxygen
-    """
-
-
-    # Calculate molar mass of Uranium
-    enr_U234 = 0.008 * enr_U235
-    enr_U238 = 1.0 - (enr_U234 + enr_U235)
-    MU = 1.0 / (enr_U234 / atomic_mass('U234') +
-                enr_U235 / atomic_mass('U235') +
-                enr_U238 / atomic_mass('U238'))
-
-    # Determine molar mass of UO2
-    MUO2 = MU + 2.0 * atomic_weight('O')
-
-    # Compute weight percent of U in UO2
-    wUpUO2 = MU/MUO2
-
-    # Calculate Uranium isotopic atom fractions
-    a_U234 = wUpUO2 * enr_U234 * MUO2 / atomic_mass('U234')
-    a_U235 = wUpUO2 * enr_U235 * MUO2 / atomic_mass('U234')
-    a_U238 = wUpUO2 * enr_U238 * MUO2 / atomic_mass('U234')
-
-    # Calculate Uranium atom fraction
-    a_U = wUpUO2 * MUO2 / MU
-
-    # Calculate Oxygen atom fraction
-    a_O = (1.0 - wUpUO2) * MUO2 / atomic_mass('O16')
-
-    return a_U234, a_U235, a_U238, a_U, a_O
-
 mats = {}
 
 # Create He gas material for fuel pin gap
@@ -192,10 +142,6 @@ aB10_bsg = wB10_bsg * M_bsg / atomic_mass('B11')
 aB11_bsg = wB11_bsg * M_bsg / atomic_mass('B10')
 aB_bsg = aB10_bsg + aB11_bsg
 
-# Compute atom fractions for boron
-aB10_B = aB10_bsg / (aB10_bsg + aB11_bsg)
-aB11_B = 1.0 - aB10_B
-
 # Create borosilicate glass material
 mats['BSG'] = openmc.Material(name='Borosilicate Glass')
 mats['BSG'].temperature = 300
@@ -203,35 +149,32 @@ mats['BSG'].set_density('g/cc', 2.26)
 mats['BSG'].add_element('O', aO_bsg, 'ao')
 mats['BSG'].add_element('Si', aSi_bsg, 'ao')
 mats['BSG'].add_element('Al', aAl_bsg, 'ao')
-mats['BSG'].add_nuclide('B10', aB10_B, 'ao')
-mats['BSG'].add_nuclide('B11', aB11_B, 'ao')
+mats['BSG'].add_nuclide('B10', aB10_bsg, 'ao')
+mats['BSG'].add_nuclide('B11', aB11_bsg, 'ao')
 
 
 #### Enriched UO2 Fuel
 
 # Create 1.6% enriched UO2 fuel material
-a_U234, a_U235, a_U238, a_U, a_O = get_fuel_aos(0.0161006)
 mats['UO2 1.6'] = openmc.Material(name='1.6% Enr. UO2 Fuel')
 mats['UO2 1.6'].temperature = 300
 mats['UO2 1.6'].set_density('g/cc', 10.31341)
-mats['UO2 1.6'].add_element('O', a_O, 'ao')
-mats['UO2 1.6'].add_element('U', a_U, 'ao', enrichment=1.61006)
+mats['UO2 1.6'].add_element('O', 2., 'ao')
+mats['UO2 1.6'].add_element('U', 1., 'ao', enrichment=1.61006)
 
 # Create 2.4% enriched UO2 fuel material
-a_U234, a_U235, a_U238, a_U, a_O = get_fuel_aos(0.0239993)
 mats['UO2 2.4'] = openmc.Material(name='2.4% Enr. UO2 Fuel')
 mats['UO2 2.4'].temperature = 300
 mats['UO2 2.4'].set_density('g/cc', 10.29748)
-mats['UO2 2.4'].add_element('O', a_O, 'ao')
-mats['UO2 2.4'].add_element('U', a_U, 'ao', enrichment=2.39993)
+mats['UO2 2.4'].add_element('O', 2., 'ao')
+mats['UO2 2.4'].add_element('U', 1., 'ao', enrichment=2.39993)
 
 # Create 3.1% enriched UO2 fuel material
-a_U234, a_U235, a_U238, a_U, a_O = get_fuel_aos(0.0310221)
 mats['UO2 3.1'] = openmc.Material(name='3.1% Enr. UO2 Fuel')
 mats['UO2 3.1'].temperature = 300
 mats['UO2 3.1'].set_density('g/cc', 10.30166)
-mats['UO2 3.1'].add_element('O', a_O, 'ao')
-mats['UO2 3.1'].add_element('U', a_U, 'ao', enrichment=3.10221)
+mats['UO2 3.1'].add_element('O', 2., 'ao')
+mats['UO2 3.1'].add_element('U', 1., 'ao', enrichment=3.10221)
 
 
 # Construct a collection of Materials to export to XML
