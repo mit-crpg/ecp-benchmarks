@@ -2,21 +2,17 @@
 <settings>
     <eigenvalue>
         <particles>10000</particles>
-        <batches>10</batches>
-        <inactive>5</inactive>
+        <batches>200</batches>
+        <inactive>100</inactive>
     </eigenvalue>
     <source strength="1.0">
         <space type="fission">
-            <parameters>-0.62992 -0.62992 -10.0 0.62992 0.62992 10.0</parameters>
+            <parameters>-75.26274000000001 -75.26274000000001 36.007 75.26274000000001 75.26274000000001 236.007</parameters>
         </space>
     </source>
     <output>
         <tallies>false</tallies>
     </output>
-    <source_point>
-        <write>false</write>
-    </source_point>
-    <ptables>true</ptables>
     <temperature_multipole>True</temperature_multipole>
     <temperature_tolerance>1000</temperature_tolerance>
 </settings>

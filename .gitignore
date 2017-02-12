@@ -99,8 +99,11 @@ ENV/
 
 # Temp files
 *.xml~
+*~
 
 # Cobalt
 *.output
 *.error
 *.cobaltlog
+
+*.csv
