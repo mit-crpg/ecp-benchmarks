@@ -51,11 +51,10 @@ def make_pin(name, surfaces, materials, grid=None):
 
     # Add spacer grid cells if specified
     if grid:
-        grid_name = 'rod grid box {}'.format(grid)
-        cell.region &= surfs[grid_name]
+        cell.region &= surfs['rod grid box']
 
         cell_name = name + ' (grid)'
-        cell = openmc.Cell(name=cell_name, region=~surfs[grid_name])
+        cell = openmc.Cell(name=cell_name, region=~surfs['rod grid box'])
 
         if grid == 'bottom':
             cell.fill = mats['In']

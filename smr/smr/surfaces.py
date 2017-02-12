@@ -30,8 +30,6 @@ import openmc
 pellet_OR          = 0.405765
 clad_IR            = 0.41402
 clad_OR            = 0.47498
-rod_grid_side_b    = 1.24416
-rod_grid_side_i    = 1.21962
 guide_tube_IR      = 0.5715
 guide_tube_OR      = 0.61214
 guide_tube_dash_IR = 0.54019
@@ -52,8 +50,7 @@ instr_tube_OR      = 0.61214
 plenum_spring_OR   = 0.06459
 
 # grid spacer parameters
-rod_grid_side_b    = 1.24416
-rod_grid_side_i    = 1.21962
+rod_grid_side    = 1.24416
 
 # lattice parameters
 pin_pitch          = 1.25984
@@ -159,10 +156,8 @@ surfs['IT IR'] = copy.deepcopy(surfs['BA IR 5'])
 surfs['IT OR'] = copy.deepcopy(surfs['BA IR 6'])
 
 # Rectangular prisms for grid spacers
-surfs['rod grid box (bottom)'] = \
-    openmc.get_rectangular_prism(rod_grid_side_b, rod_grid_side_b)
-surfs['rod grid box (intermediate)'] = \
-    openmc.get_rectangular_prism(rod_grid_side_i, rod_grid_side_i)
+surfs['rod grid box'] = \
+    openmc.get_rectangular_prism(rod_grid_side, rod_grid_side)
 
 # Rectangular prisms for lattice grid sleeves
 surfs['lat grid box inner'] = \

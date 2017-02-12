@@ -42,7 +42,7 @@
     <plot basis="xy" color="mat" filename="assm_grid_spacer" id="10002" type="slice">
         <origin>0.0 0.0 102.021</origin>
         <width>32.25546 32.25546</width>
-        <pixels>1000 1000</pixels>
+        <pixels>2000 2000</pixels>
         <background>255 255 255</background>
         <col_spec id="10000" rgb="255 218 185" />
         <col_spec id="10001" rgb="255 255 255" />
@@ -61,7 +61,7 @@
     <plot basis="xy" color="mat" filename="assm_no_spacer" id="10003" type="slice">
         <origin>0.0 0.0 90.0</origin>
         <width>32.25546 32.25546</width>
-        <pixels>1000 1000</pixels>
+        <pixels>2000 2000</pixels>
         <background>255 255 255</background>
         <col_spec id="10000" rgb="255 218 185" />
         <col_spec id="10001" rgb="255 255 255" />

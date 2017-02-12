@@ -54,7 +54,7 @@ plot.width = [lattice_pitch*1.5, lattice_pitch*1.5]
 plot.filename = 'assm_grid_spacer'
 plot.col_spec = col_spec
 plot.background = [255, 255, 255]
-plot.pixels = [1000, 1000]
+plot.pixels = [2000, 2000]
 plots += [plot]
 
 plot = openmc.Plot(name='assembly no spacer')
@@ -65,5 +65,5 @@ plot.width = [lattice_pitch*1.5, lattice_pitch*1.5]
 plot.filename = 'assm_no_spacer'
 plot.col_spec = col_spec
 plot.background = [255, 255, 255]
-plot.pixels = [1000, 1000]
+plot.pixels = [2000, 2000]
 plots += [plot]
