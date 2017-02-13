@@ -1,4 +1,4 @@
-from collections import OrderedDict
+from collections import OrderedDict, defaultdict
 import copy
 import os
 
@@ -13,52 +13,60 @@ import opendeplete
 
 su = openmc.Summary('summary.h5')
 
-geometry = su.openmc_geometry
-
-fuel_cells = geometry.get_cells_by_name(name='radial 0: fuel', case_sensitive=True)
-
-temperatures = OrderedDict()
-sab = OrderedDict()
-burn = OrderedDict()
-
-for cell in geometry.get_all_material_cells():
-    temperatures[cell.name] = cell.temperature[0]
-    if len(cell.fill._sab) > 0:
-        sab[cell.name] = cell.fill._sab[0]
-    burn[cell.name] = 'fuel' in cell.fill.name.lower()
-
-# FIXME: Get initial densities
-initial_densities = OrderedDict()
-for cell in geometry.get_all_material_cells():
-    densities = cell.fill.get_nuclide_atom_densities()
-    initial_densities[cell.fill.name] = OrderedDict()
-
-    # Convert atom densities from at/b-cm to at/cc
-    for nuclide in densities:
-        initial_densities[cell.fill.name][nuclide.name] = \
-            densities[nuclide][1] * 1e24
+# Extract all cells filled with a fuel material
+fuel_cells = su.openmc_geometry.get_cells_by_name(
+    name='radial 0: fuel', case_sensitive=True)
 
 # Setup OpenDeplete Materials wrapper
 materials = opendeplete.Materials()
-materials.temperature = temperatures
-materials.sab = sab
-materials.initial_density = initial_densities
-materials.burn = burn
+materials.temperature = OrderedDict()
+materials.sab = OrderedDict()
+materials.initial_density = OrderedDict()
+materials.burn = OrderedDict()
 materials.cross_sections = os.environ["OPENMC_CROSS_SECTIONS"]
 
-# FIXME: Assign distribmats for each material
-volumes = OrderedDict()
+for cell in su.openmc_geometry.get_all_material_cells():
+    materials.burn[cell.name] = 'fuel' in cell.fill.name.lower()
+    materials.temperatures[cell.name] = cell.temperature[0]
+    if len(cell.fill._sab) > 0:
+        materials.sab[cell.name] = cell.fill._sab[0]
+
+# Extract initial fuel nuclide densities in units of at/cc
+for cell in fuel_cells:
+    densities = cell.fill.get_nuclide_atom_densities()
+    materials.initial_densities[cell.fill.name] = OrderedDict()
+
+    # Convert atom densities from at/b-cm to at/cc
+    for nuclide in densities:
+        materials.initial_densities[cell.fill.name][nuclide.name] = \
+            densities[nuclide][1] * 1e24
+
+# Determine the maximum material ID
+all_mats = su.opencg_geometry.get_all_materials()
+max_material_id = 0
+for material in all_mats:
+    max_material_id = max(max_material_id, material.id)
+
+# Fuel rod geometric parameters
+radius = 0.39218
+height = 5.
+
+# Use defaultdict since OpenDeplete assumes volumes specified for all cells
+volumes = defaultdict(lambda: 1)
+
+# Assign distribmats for each material
 for cell in fuel_cells:
     new_materials = []
     num_instances = len(cell.distribcell_paths)
 
     for i in range(num_instances):
         new_material = copy.deepcopy(cell.fill)
-        new_material.id = None
+        new_material.id = max_material_id + 1
+        max_material_id += 1
         new_materials.append(new_material)
 
-        # FIXME: Compute volumes of burnable cells
-        volumes[new_material.id] =  np.pi * 0.39218**2 * 5.
+        # Store volume of burnable fuel rods cells
+        volumes[new_material.id] =  np.pi * radius**2 * height
 
     cell.fill = new_materials
 
@@ -71,9 +79,9 @@ dt = np.repeat([dt1], N)
 # Create settings variable
 settings = opendeplete.Settings()
 
-settings.chain_file = "/home/wboyd/Documents/NSE-CRPG-Codes/opendeplete/chains/chain_simple.xml"
+settings.chain_file = "/home/wboyd/Documents/NSE-CRPG-Codes/opendeplete/chains/chain_full.xml"
 settings.openmc_call = ["mpirun", "openmc"]
-settings.particles = 1000
+settings.particles = 10000
 settings.batches = 100
 settings.inactive = 10
 settings.lower_left = [-10.70864, -10.70864, 192.5]
@@ -84,7 +92,7 @@ settings.power = 2.337e15 * (17.**2 / 1.5**2)  # MeV/second cm from CASMO
 settings.dt_vec = dt
 settings.output_dir = 'test'
 
-op = opendeplete.Operator(geometry, volumes, materials, settings)
+op = opendeplete.Operator(su.opencg_geometry, volumes, materials, settings)
 
 # Perform simulation using the MCNPX/MCNP6 algorithm
 opendeplete.integrate(op, opendeplete.ce_cm_c1)
