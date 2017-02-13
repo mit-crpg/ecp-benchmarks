@@ -97,7 +97,6 @@ volumes = defaultdict(lambda: 1)
 
 # Assign distribmats for each material
 for cell in fuel_cells:
-    print(cell)
     new_materials = []
     num_instances = len(cell.distribcell_paths)
 
