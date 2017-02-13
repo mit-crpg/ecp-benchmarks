@@ -55,6 +55,7 @@ su = openmc.Summary('summary.h5')
 fuel_cells = su.openmc_geometry.get_cells_by_name(
     name='radial 0: fuel', case_sensitive=True)
 
+
 #### Setup OpenDeplete Materials wrapper
 
 materials = opendeplete.Materials()
@@ -127,9 +128,9 @@ settings.batches = 50
 settings.inactive = 10
 settings.lower_left = lower_left
 settings.upper_right = upper_right
-settings.entropy_dimension = [17, 17, 1]
+settings.entropy_dimension = [17*2, 17*2, 1]
 
-settings.power = 2.337e15 * (17.**2 / 1.5**2)  # MeV/second cm from CASMO
+settings.power = 2.337e15 * ((17.*17.*2.) / 1.5**2)  # MeV/second cm from CASMO
 settings.dt_vec = dt
 settings.output_dir = 'test'
 

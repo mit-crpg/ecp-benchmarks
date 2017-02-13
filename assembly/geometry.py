@@ -1,5 +1,4 @@
 import opencg
-import openmc
 import openmc.opencg_compatible as opencg_compatible
 from beavrs.builder import BEAVRS
 

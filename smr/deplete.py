@@ -6,35 +6,37 @@ import numpy as np
 import openmc
 import opendeplete
 
-from geometry import beavrs, openmc_geometry, opencg_geometry
+from smr.materials import materials
+from smr.surfaces import lattice_pitch, bottom_fuel_stack, top_active_core
+from smr.core import geometry
 
 #### Create "dummy" inputs to export distribcell paths for burnable cells
 
-# Create OpenMC "materials.xml" file
-beavrs.write_openmc_materials()
-
 # Create OpenMC "geometry.xml" file
-openmc_geometry.export_to_xml()
+geometry.export_to_xml()
+
+# Create OpenMC "materials.xml" file
+materials.export_to_xml()
 
 # Construct uniform initial source distribution over fissionable zones
-lower_left = opencg_geometry.bounds[:3]
-upper_right = opencg_geometry.bounds[3:]
+lower_left = [-7.*lattice_pitch/2., -7.*lattice_pitch/2., bottom_fuel_stack]
+upper_right = [+7.*lattice_pitch/2., +7.*lattice_pitch/2., top_active_core]
 source = openmc.source.Source(space=openmc.stats.Box(lower_left, upper_right))
 source.space.only_fissionable = True
 
 # Create OpenMC "settings.xml" file
-settings_file = openmc.Settings()
-settings_file.batches = 2
-settings_file.inactive = 1
-settings_file.particles = 10
-settings_file.output = {'tallies': False}
-settings_file.source = source
-settings_file.sourcepoint_write = False
-settings_file.export_to_xml()
+settings = openmc.Settings()
+settings.batches = 2
+settings.inactive = 1
+settings.particles = 10
+settings.output = {'tallies': False}
+settings.source = source
+settings.sourcepoint_write = False
+settings.export_to_xml()
 
 #  Create OpenMC "tallies.xml" file
 tallies = openmc.Tallies()
-fuel_cells = openmc_geometry.get_cells_by_name(
+fuel_cells = geometry.get_cells_by_name(
     name='radial 0: fuel', case_sensitive=True)
 
 # Instantiate a "dummy" distribcell tally for each cell we wish to deplete
@@ -54,6 +56,7 @@ openmc.run()
 su = openmc.Summary('summary.h5')
 fuel_cells = su.openmc_geometry.get_cells_by_name(
     name='radial 0: fuel', case_sensitive=True)
+
 
 #### Setup OpenDeplete Materials wrapper
 
@@ -127,9 +130,9 @@ settings.batches = 50
 settings.inactive = 10
 settings.lower_left = lower_left
 settings.upper_right = upper_right
-settings.entropy_dimension = [17, 17, 1]
+settings.entropy_dimension = [15, 15, 1]
 
-settings.power = 2.337e15 * (17.**2 / 1.5**2)  # MeV/second cm from CASMO
+settings.power = 2.337e15 * ((17.*17.*37.) / 1.5**2)  # MeV/second cm from CASMO
 settings.dt_vec = dt
 settings.output_dir = 'test'
 
