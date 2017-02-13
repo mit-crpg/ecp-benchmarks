@@ -16,22 +16,20 @@ su = openmc.Summary('summary.h5')
 geometry = su.openmc_geometry
 
 fuel_cells = geometry.get_cells_by_name(name='radial 0: fuel', case_sensitive=True)
-print(fuel_cells)
 
 temperatures = OrderedDict()
 sab = OrderedDict()
 burn = OrderedDict()
 
-mat_cells = geometry.get_all_material_cells()
-for cell in mat_cells:
-    temperatures[cell.fill.name] = cell.temperature
+for cell in geometry.get_all_material_cells():
+    temperatures[cell.name] = cell.temperature[0]
     if len(cell.fill._sab) > 0:
-        sab[cell.fill.name] = cell.fill._sab[0]
-    burn[cell.fill.name] = 'fuel' in cell.fill.name.lower()
+        sab[cell.name] = cell.fill._sab[0]
+    burn[cell.name] = 'fuel' in cell.fill.name.lower()
 
 # FIXME: Get initial densities
 initial_densities = OrderedDict()
-for cell in mat_cells:
+for cell in geometry.get_all_material_cells():
     densities = cell.fill.get_nuclide_atom_densities()
     initial_densities[cell.fill.name] = OrderedDict()
 
