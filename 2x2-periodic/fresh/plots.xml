@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plots>
+    <plot basis="xy" color="mat" filename="2x2-periodic" id="10020" type="slice">
+        <origin>0.0 0.0 195.0</origin>
+        <width>42.83456 42.83456</width>
+        <pixels>1000 1000</pixels>
+        <col_spec id="10016" rgb="112 128 144" />
+        <col_spec id="10000" rgb="255 255 255" />
+        <col_spec id="10001" rgb="0 0 0" />
+        <col_spec id="10002" rgb="255 0 0" />
+        <col_spec id="10003" rgb="200 50 50" />
+        <col_spec id="10004" rgb="255 218 185" />
+        <col_spec id="10005" rgb="101 101 101" />
+        <col_spec id="10006" rgb="111 111 111" />
+        <col_spec id="10007" rgb="50 50 50" />
+        <col_spec id="10008" rgb="142 35 35" />
+        <col_spec id="10009" rgb="255 215 0" />
+        <col_spec id="10010" rgb="0 0 128" />
+        <col_spec id="10013" rgb="0 255 0" />
+        <col_spec id="10014" rgb="198 226 255" />
+        <col_spec id="10015" rgb="176 196 222" />
+    </plot>
+</plots>

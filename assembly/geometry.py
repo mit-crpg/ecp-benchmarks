@@ -69,7 +69,7 @@ def find_assembly(assembly_name, wrap_geometry=True):
 
 
 # Instantiate a BEAVRS object
-beavrs = BEAVRS(nndc_xs=True)
+beavrs = BEAVRS()
 
 # Extract fuel assembly of interest from BEAVRS model
 assm_name = 'Fuel 1.6% enr instr no BAs'

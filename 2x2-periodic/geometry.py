@@ -151,7 +151,7 @@ def build_two_by_two(assembly1_name, assembly2_name):
 #### Create OpenMC "materials.xml" and "geometry.xml" files
 
 # Instantiate a BEAVRS object
-beavrs = BEAVRS(nndc_xs=True)
+beavrs = BEAVRS()
 
 # Write all BEAVRS materials to materials.xml file
 beavrs.write_openmc_materials()

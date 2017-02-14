@@ -95,7 +95,7 @@ def build_reflector(assembly1_name, assembly2_name):
     # Find the water material
     all_cells = beavrs.main_universe.get_all_cells()
     for cell_uuid, cell in all_cells.items():
-        if cell.type == 'material' and cell.fill.name == 'water':
+        if cell.type == 'material' and cell.fill.name == 'Borated Water':
             water = cell.fill
 
     # Create a Cell/Universe around the first fuel assembly
@@ -159,7 +159,7 @@ def build_reflector(assembly1_name, assembly2_name):
 #### Create OpenMC "materials.xml" and "geometry.xml" files
 
 # Instantiate a BEAVRS object
-beavrs = BEAVRS(nndc_xs=True)
+beavrs = BEAVRS()
 
 # Write all BEAVRS materials to materials.xml file
 beavrs.write_openmc_materials()
