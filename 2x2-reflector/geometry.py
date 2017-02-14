@@ -1,12 +1,11 @@
-import opencg
-import openmc.opencg_compatible as opencg_compatible
+import openmc
 from beavrs.builder import BEAVRS
 
 
 def find_assembly(assembly_name, wrap_geometry=True):
-    """Find a fuel assembly with some string name in the BEAVRS OpenCG model.
+    """Find a fuel assembly with some string name in the BEAVRS OpenMC model.
 
-    This method extracts the fuel assembly and wraps it in an OpenCG Geometry.
+    This method extracts the fuel assembly and wraps it in an OpenMC Geometry.
     The returned geometry has reflective boundary conditions along all
     boundaries. The z-axis is bounded between z=200 and z=210 cm.
 
@@ -16,38 +15,33 @@ def find_assembly(assembly_name, wrap_geometry=True):
         The name of the fuel assembly lattice
     wrap_geometry : bool
         If false, the fuel assembly Lattice is returned. If true, the fuel
-        assembly Lattice is wrapped in an OpenCG Geometry and returned (default).
+        assembly Lattice is wrapped in an OpenMC Geometry and returned (default).
 
     Returns
     -------
     fuel_assembly
-        The OpenCG Lattice or Geometry for the assembly or None if not found
+        The OpenMC Lattice or Geometry for the assembly or None if not found
 
     """
 
-    # Get all OpenCG Universes
-    all_univ = beavrs.main_universe.get_all_universes()
-
-    # Iterate over all Universes
-    fuel_assembly = None
-    for univ_id, univ in all_univ.items():
-        if univ.name == assembly_name:
-            fuel_assembly = univ
+    # Get OpenMC Lattices for the fuel assembly
+    fuel_assembly = \
+        beavrs.openmc_geometry.get_lattices_by_name(assembly_name)[0]
 
     # Wrap lattice in a Geometry if requested by the user
     if wrap_geometry:
 
         # Create a root Cell
-        root_cell = opencg.Cell(name='root cell')
+        root_cell = openmc.Cell(name='root cell')
         root_cell.fill = fuel_assembly
 
         # Make mixed reflective / vacuum boundaries
-        min_x = opencg.XPlane(x0=root_cell.fill.min_x, boundary='reflective')
-        max_x = opencg.XPlane(x0=root_cell.fill.max_x, boundary='reflective')
-        min_y = opencg.YPlane(y0=root_cell.fill.min_y, boundary='reflective')
-        max_y = opencg.YPlane(y0=root_cell.fill.max_y, boundary='reflective')
-        max_z = opencg.ZPlane(z0=197.5, boundary='reflective')
-        min_z = opencg.ZPlane(z0=192.5, boundary='reflective')
+        min_x = openmc.XPlane(x0=-10.70864, boundary_type='reflective')
+        max_x = openmc.XPlane(x0=+-10.70864, boundary_type='reflective')
+        min_y = openmc.YPlane(y0=-10.70864, boundary_type='reflective')
+        max_y = openmc.YPlane(y0=+-10.70864, boundary_type='reflective')
+        max_z = openmc.ZPlane(z0=197.5, boundary_type='reflective')
+        min_z = openmc.ZPlane(z0=192.5, boundary_type='reflective')
 
         # Add boundaries to the root Cell
         root_cell.add_surface(surface=min_x, halfspace=+1)
@@ -58,11 +52,11 @@ def find_assembly(assembly_name, wrap_geometry=True):
         root_cell.add_surface(surface=max_z, halfspace=-1)
 
         # Create a root Universe
-        root_univ = opencg.Universe(universe_id=0, name='root universe')
+        root_univ = openmc.Universe(universe_id=0, name='root universe')
         root_univ.add_cell(root_cell)
 
         # Create a Geometry
-        fuel_assembly = opencg.Geometry()
+        fuel_assembly = openmc.Geometry()
         fuel_assembly.root_universe = root_univ
 
     return fuel_assembly
@@ -84,8 +78,8 @@ def build_reflector(assembly1_name, assembly2_name):
 
     Returns
     -------
-    opencg.Geometry
-        A 2x2 fuel assembly and reflector OpenCG Geometry
+    openmc.Geometry
+        A 2x2 fuel assembly and reflector OpenMC Geometry
 
     """
 
@@ -95,47 +89,45 @@ def build_reflector(assembly1_name, assembly2_name):
     # Find the water material
     all_cells = beavrs.main_universe.get_all_cells()
     for cell_uuid, cell in all_cells.items():
-        if cell.type == 'material' and cell.fill.name == 'Borated Water':
+        if cell.fill_type == 'material' and cell.fill.name == 'Borated Water':
             water = cell.fill
 
     # Create a Cell/Universe around the first fuel assembly
-    fuel_cell1 = opencg.Cell(name='assm1 cell')
+    fuel_cell1 = openmc.Cell(name='assm1 cell')
     fuel_cell1.fill = fuel_assembly1
-    fuel_univ1 = opencg.Universe(name='assm1 universe')
+    fuel_univ1 = openmc.Universe(name='assm1 universe')
     fuel_univ1.add_cell(fuel_cell1)
 
     # Create a Cell/Universe around the second fuel assembly
-    fuel_cell2 = opencg.Cell(name='assm2 cell')
+    fuel_cell2 = openmc.Cell(name='assm2 cell')
     fuel_cell2.fill = fuel_assembly2
-    fuel_univ2 = opencg.Universe(name='assm2 universe')
+    fuel_univ2 = openmc.Universe(name='assm2 universe')
     fuel_univ2.add_cell(fuel_cell2)
 
     # Create a Cell/Universe with water
-    water_cell = opencg.Cell(name='water cell', fill=water)
-    water_univ = opencg.Universe(name='water universe')
+    water_cell = openmc.Cell(name='water cell', fill=water)
+    water_univ = openmc.Universe(name='water universe')
     water_univ.add_cell(water_cell)
 
     # Create a 3x3 lattice two fuel assemblies surrounded by a water reflector
-    reflector_lattice = opencg.Lattice(name='reflector')
-    lat_width = fuel_assembly1.max_x - fuel_assembly1.min_x
-    reflector_lattice.width = [lat_width, lat_width, 1000.]
-    reflector_lattice.dimension = [3, 3, 1]
-    reflector_lattice.offset = [0., 0., 0.]
-    reflector_lattice.universes = [[fuel_univ1, fuel_univ2, water_univ],
+    reflector_lattice = openmc.RectLattice(name='reflector')
+    reflector_lattice.lower_left = [-32.12592, -32.12592, -500.]
+    reflector_lattice.pitch = [21.41728, 21.41728, 1000.]
+    reflector_lattice.universes = [[[fuel_univ1, fuel_univ2, water_univ],
                                    [fuel_univ2, fuel_univ1, water_univ],
-                                   [water_univ, water_univ, water_univ]]
+                                   [water_univ, water_univ, water_univ]]]
 
     # Create a Geometry around the reflected lattice
-    root_cell = opencg.Cell(name='root cell')
+    root_cell = openmc.Cell(name='root cell')
     root_cell.fill = reflector_lattice
 
     # Make mixed reflective / vacuum boundaries
-    min_x = opencg.XPlane(x0=root_cell.fill.min_x, boundary='reflective')
-    max_x = opencg.XPlane(x0=root_cell.fill.max_x, boundary='vacuum')
-    min_y = opencg.YPlane(y0=root_cell.fill.min_y, boundary='vacuum')
-    max_y = opencg.YPlane(y0=root_cell.fill.max_y, boundary='reflective')
-    min_z = opencg.ZPlane(z0=192.5, boundary='reflective')
-    max_z = opencg.ZPlane(z0=197.5, boundary='reflective')
+    min_x = openmc.XPlane(x0=-32.12592, boundary_type='reflective')
+    max_x = openmc.XPlane(x0=+32.12592, boundary_type='vacuum')
+    min_y = openmc.YPlane(y0=-32.12592, boundary_type='vacuum')
+    max_y = openmc.YPlane(y0=+32.12592, boundary_type='reflective')
+    min_z = openmc.ZPlane(z0=192.5, boundary_type='reflective')
+    max_z = openmc.ZPlane(z0=197.5, boundary_type='reflective')
 
     # Add boundaries to the root Cell
     root_cell.add_surface(surface=min_x, halfspace=+1)
@@ -146,11 +138,11 @@ def build_reflector(assembly1_name, assembly2_name):
     root_cell.add_surface(surface=max_z, halfspace=-1)
 
     # Create a root Universe for this fuel assembly
-    root_univ = opencg.Universe(universe_id=0, name='root universe')
+    root_univ = openmc.Universe(universe_id=0, name='root universe')
     root_univ.add_cell(root_cell)
 
-    # Create an OpenCG Geometry for this fuel assembly
-    reflector = opencg.Geometry()
+    # Create an OpenMC Geometry for this fuel assembly
+    reflector = openmc.Geometry()
     reflector.root_universe = root_univ
 
     return reflector
@@ -165,6 +157,5 @@ beavrs = BEAVRS()
 beavrs.write_openmc_materials()
 
 # Extract fuel assemblies of interest from BEAVRS model
-opencg_geometry = build_reflector('Fuel 1.6% enr instr no BAs',
+openmc_geometry = build_reflector('Fuel 1.6% enr instr no BAs',
                                   'Fuel 3.1% enr instr 20')
-openmc_geometry = opencg_compatible.get_openmc_geometry(opencg_geometry)

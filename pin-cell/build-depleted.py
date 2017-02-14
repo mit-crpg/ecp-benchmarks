@@ -18,8 +18,8 @@ beavrs.write_openmc_materials()
 openmc_geometry.export_to_xml()
 
 # Construct uniform initial source distribution over fissionable zones
-lower_left = [-32.12592, -32.12592, 192.5]
-upper_right = [32.12592, 32.12592, 197.5]
+lower_left = [-0.62992, -0.62992, -10.0]
+upper_right = [+0.62992, +0.62992, +10.0]
 source = openmc.source.Source(space=openmc.stats.Box(lower_left, upper_right))
 source.space.only_fissionable = True
 
@@ -55,7 +55,6 @@ openmc.run()
 su = openmc.Summary('summary.h5')
 fuel_cells = su.openmc_geometry.get_cells_by_name(
     name='radial 0: fuel', case_sensitive=True)
-
 
 #### Setup OpenDeplete Materials wrapper
 
@@ -122,16 +121,16 @@ dt = np.repeat([dt1], N)
 # Create settings variable
 settings = opendeplete.Settings()
 
-settings.chain_file = "/home/wboyd/Documents/NSE-CRPG-Codes/opendeplete/chains/chain_full.xml"
+settings.chain_file = "/home/wbinventor/Documents/NSE-CRPG-Codes/opendeplete/chains/chain_full.xml"
 settings.openmc_call = ["mpirun", "openmc"]
 settings.particles = 1000
 settings.batches = 50
 settings.inactive = 10
 settings.lower_left = lower_left
 settings.upper_right = upper_right
-settings.entropy_dimension = [17*3, 17*3, 1]
+settings.entropy_dimension = [1, 1, 1]
 
-settings.power = 2.337e15 * ((17.*17.*2.) / 1.5**2)  # MeV/second cm from CASMO
+settings.power = 2.337e15 * (1.**2 / 1.5**2)  # MeV/second cm from CASMO
 settings.dt_vec = dt
 settings.output_dir = 'depleted'
 

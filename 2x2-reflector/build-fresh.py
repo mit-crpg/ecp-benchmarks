@@ -6,7 +6,7 @@ import shutil
 import numpy as np
 import openmc
 
-from geometry import beavrs, openmc_geometry, opencg_geometry
+from geometry import beavrs, openmc_geometry
 
 
 #### Create OpenMC "materials.xml" file
@@ -24,9 +24,8 @@ multipole = input('Use multipole cross sections? (y/n): ').lower()
 multipole = True if multipole == 'y' else False
 
 # Construct uniform initial source distribution over fissionable zones
-lower_left = opencg_geometry.bounds[:3]
-upper_right = opencg_geometry.bounds[3:]
-
+lower_left = [-32.12592, -32.12592, 192.5]
+upper_right = [32.12592, 32.12592, 197.5]
 lat_width = (np.array(upper_right) - np.array(lower_left))
 lat_width[:2] /= 3.
 
@@ -54,12 +53,8 @@ beavrs.write_openmc_plots()
 
 # Create a plot colored by materials
 plot = openmc.Plot()
-bounds = opencg_geometry.bounds
-plot.width = [opencg_geometry.max_x - opencg_geometry.min_x,
-              opencg_geometry.max_y - opencg_geometry.min_y]
-plot.origin = [bounds[0] + (bounds[3] - bounds[0]) / 2.,
-               bounds[1] + (bounds[4] - bounds[1]) / 2.,
-               bounds[2] + (bounds[5] - bounds[2]) / 2.]
+plot.width = [64.25184, 64.25184]
+plot.origin = [0., 0., 195.]
 plot.color = 'mat'
 plot.filename = '2x2-reflector'
 plot.col_spec = beavrs.plots.colspec_mat
@@ -146,6 +141,6 @@ if not os.path.exists('fresh'):
     
 shutil.move('materials.xml', 'fresh/materials.xml')
 shutil.move('geometry.xml', 'fresh/geometry.xml')
-shutil.move('settings.xml', 'fresh/setting.xml')
+shutil.move('settings.xml', 'fresh/settings.xml')
 shutil.move('tallies.xml', 'fresh/tallies.xml')
 shutil.move('plots.xml', 'fresh/plots.xml')

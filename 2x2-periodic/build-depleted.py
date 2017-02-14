@@ -6,7 +6,8 @@ import numpy as np
 import openmc
 import opendeplete
 
-from geometry import beavrs, openmc_geometry, opencg_geometry
+from geometry import beavrs, openmc_geometry
+
 
 #### Create "dummy" inputs to export distribcell paths for burnable cells
 
@@ -17,8 +18,8 @@ beavrs.write_openmc_materials()
 openmc_geometry.export_to_xml()
 
 # Construct uniform initial source distribution over fissionable zones
-lower_left = opencg_geometry.bounds[:3]
-upper_right = opencg_geometry.bounds[3:]
+lower_left = [-21.41728, -21.41728, +192.5]
+upper_right = [+21.41728, +21.41728, +197.5]
 source = openmc.source.Source(space=openmc.stats.Box(lower_left, upper_right))
 source.space.only_fissionable = True
 
