@@ -52,7 +52,6 @@ Dependencies
 These scripts depend on the following Python packages:
 
 * mit-crpg/openmc (develop branch)
-* mit-crpg/OpenCG
 * mit-crpg/PWR_benchmarks
 
 Of particular note, The Python ``beavrs`` package must be installed from the
