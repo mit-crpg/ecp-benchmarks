@@ -121,10 +121,9 @@ dt = np.repeat([dt1], N)
 # Create settings variable
 settings = opendeplete.Settings()
 
-settings.chain_file = "/home/wbinventor/Documents/NSE-CRPG-Codes/opendeplete/chains/chain_full.xml"
 settings.openmc_call = ["mpirun", "openmc"]
-settings.particles = 1000
-settings.batches = 50
+settings.particles = 10000
+settings.batches = 20
 settings.inactive = 10
 settings.lower_left = lower_left
 settings.upper_right = upper_right
@@ -134,7 +133,8 @@ settings.power = 2.337e15 * (1.**2 / 1.5**2)  # MeV/second cm from CASMO
 settings.dt_vec = dt
 settings.output_dir = 'depleted'
 
-op = opendeplete.Operator(su.openmc_geometry, volumes, materials, settings)
+op = opendeplete.Operator()
+op.geometry_fill(su.openmc_geometry, volumes, materials, settings)
 
 # Perform simulation using the MCNPX/MCNP6 algorithm
 opendeplete.integrate(op, opendeplete.ce_cm_c1)
