@@ -36,7 +36,7 @@ settings_file.export_to_xml()
 #  Create OpenMC "tallies.xml" file
 tallies = openmc.Tallies()
 fuel_cells = openmc_geometry.get_cells_by_name(
-    name='radial 0: fuel', case_sensitive=True)
+    name='radial 0: Fuel', case_sensitive=True)
 
 # Instantiate a "dummy" distribcell tally for each cell we wish to deplete
 for cell in fuel_cells:
@@ -54,7 +54,7 @@ openmc.run()
 # Open "summary.h5" file
 su = openmc.Summary('summary.h5')
 fuel_cells = su.openmc_geometry.get_cells_by_name(
-    name='radial 0: fuel', case_sensitive=True)
+    name='radial 0: Fuel', case_sensitive=True)
 
 
 #### Setup OpenDeplete Materials wrapper
