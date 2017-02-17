@@ -123,8 +123,8 @@ dt = np.repeat([dt1], N)
 settings = opendeplete.Settings()
 
 settings.openmc_call = ["mpirun", "openmc"]
-settings.particles = 1000
-settings.batches = 50
+settings.particles = 120000
+settings.batches = 20
 settings.inactive = 10
 settings.lower_left = lower_left
 settings.upper_right = upper_right

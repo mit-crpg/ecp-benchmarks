@@ -37,7 +37,14 @@ settings.export_to_xml()
 #  Create OpenMC "tallies.xml" file
 tallies = openmc.Tallies()
 fuel_cells = geometry.get_cells_by_name(
-    name='radial 0: fuel', case_sensitive=True)
+    name='(1.6%) (0)', case_sensitive=True)
+fuel_cells.append(geometry.get_cells_by_name(
+    name='(2.4%) (0)', case_sensitive=True))
+fuel_cells.append(geometry.get_cells_by_name(
+    name='(3.1%) (0)', case_sensitive=True))
+
+print(fuel_cells)
+exit()
 
 # Instantiate a "dummy" distribcell tally for each cell we wish to deplete
 for cell in fuel_cells:
@@ -55,7 +62,11 @@ openmc.run()
 # Open "summary.h5" file
 su = openmc.Summary('summary.h5')
 fuel_cells = su.openmc_geometry.get_cells_by_name(
-    name='radial 0: fuel', case_sensitive=True)
+    name='(1.6%) (0)', case_sensitive=True)
+fuel_cells.append(su.openmc_geometry.get_cells_by_name(
+    name='(2.4%) (0)', case_sensitive=True))
+fuel_cells.append(su.openmc_geometry.get_cells_by_name(
+    name='(3.1%) (0)', case_sensitive=True))
 
 
 #### Setup OpenDeplete Materials wrapper
@@ -124,9 +135,9 @@ dt = np.repeat([dt1], N)
 settings = opendeplete.Settings()
 
 settings.openmc_call = ["mpirun", "openmc"]
-settings.particles = 1000
-settings.batches = 50
-settings.inactive = 10
+settings.particles = 1000000
+settings.batches = 200
+settings.inactive = 100
 settings.lower_left = lower_left
 settings.upper_right = upper_right
 settings.entropy_dimension = [15, 15, 1]

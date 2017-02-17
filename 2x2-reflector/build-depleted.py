@@ -123,9 +123,9 @@ dt = np.repeat([dt1], N)
 settings = opendeplete.Settings()
 
 settings.openmc_call = ["mpirun", "openmc"]
-settings.particles = 1000
-settings.batches = 50
-settings.inactive = 10
+settings.particles = 120000
+settings.batches = 30
+settings.inactive = 20
 settings.lower_left = lower_left
 settings.upper_right = upper_right
 settings.entropy_dimension = [17*3, 17*3, 1]
