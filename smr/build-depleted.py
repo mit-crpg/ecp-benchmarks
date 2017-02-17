@@ -43,9 +43,6 @@ fuel_cells.append(geometry.get_cells_by_name(
 fuel_cells.append(geometry.get_cells_by_name(
     name='(3.1%) (0)', case_sensitive=True))
 
-print(fuel_cells)
-exit()
-
 # Instantiate a "dummy" distribcell tally for each cell we wish to deplete
 for cell in fuel_cells:
     tally = openmc.Tally(name='dummy distribcell tally')
