@@ -38,9 +38,9 @@ settings.export_to_xml()
 tallies = openmc.Tallies()
 fuel_cells = geometry.get_cells_by_name(
     name='(1.6%) (0)', case_sensitive=True)
-fuel_cells.append(geometry.get_cells_by_name(
+fuel_cells.extend(geometry.get_cells_by_name(
     name='(2.4%) (0)', case_sensitive=True))
-fuel_cells.append(geometry.get_cells_by_name(
+fuel_cells.extend(geometry.get_cells_by_name(
     name='(3.1%) (0)', case_sensitive=True))
 
 # Instantiate a "dummy" distribcell tally for each cell we wish to deplete
@@ -60,9 +60,9 @@ openmc.run()
 su = openmc.Summary('summary.h5')
 fuel_cells = su.openmc_geometry.get_cells_by_name(
     name='(1.6%) (0)', case_sensitive=True)
-fuel_cells.append(su.openmc_geometry.get_cells_by_name(
+fuel_cells.extend(su.openmc_geometry.get_cells_by_name(
     name='(2.4%) (0)', case_sensitive=True))
-fuel_cells.append(su.openmc_geometry.get_cells_by_name(
+fuel_cells.extend(su.openmc_geometry.get_cells_by_name(
     name='(3.1%) (0)', case_sensitive=True))
 
 
