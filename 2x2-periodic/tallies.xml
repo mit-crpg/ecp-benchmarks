@@ -1,2 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<tallies />
+<tallies>
+    <tally id="10000" name="dummy distribcell tally">
+        <filter bins="10053" type="distribcell" />
+        <scores>fission</scores>
+    </tally>
+    <tally id="10001" name="dummy distribcell tally">
+        <filter bins="10061" type="distribcell" />
+        <scores>fission</scores>
+    </tally>
+</tallies>
