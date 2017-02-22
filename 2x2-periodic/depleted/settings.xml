@@ -1,16 +1,14 @@
 <?xml version='1.0' encoding='utf-8'?>
 <settings>
     <eigenvalue>
-        <particles>10</particles>
-        <batches>2</batches>
-        <inactive>1</inactive>
+        <particles>120000</particles>
+        <batches>20</batches>
+        <inactive>10</inactive>
     </eigenvalue>
     <source strength="1.0">
-        <space type="fission">
+        <space type="box">
             <parameters>-21.41728 -21.41728 192.5 21.41728 21.41728 197.5</parameters>
         </space>
     </source>
-    <output>
-        <tallies>false</tallies>
-    </output>
+    <seed>5852361122284461941</seed>
 </settings>

@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <settings>
     <eigenvalue>
-        <particles>10</particles>
-        <batches>2</batches>
-        <inactive>1</inactive>
+        <particles>10000</particles>
+        <batches>10</batches>
+        <inactive>5</inactive>
     </eigenvalue>
     <source strength="1.0">
         <space type="fission">
@@ -13,4 +13,6 @@
     <output>
         <tallies>false</tallies>
     </output>
+    <temperature_multipole>True</temperature_multipole>
+    <temperature_tolerance>1000</temperature_tolerance>
 </settings>
