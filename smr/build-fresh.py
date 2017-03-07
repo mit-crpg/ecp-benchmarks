@@ -51,9 +51,8 @@ plots.export_to_xml()
 #### Create OpenMC MGXS libraries
 
 # Get all cells filled with a "fuel" material
-mat_cells = geometry.get_all_material_cells()
 fuel_cells = []
-for cell in mat_cells:
+for cell in geometry.get_all_material_cells().values():
     if 'fuel' in cell.fill.name.lower():
         fuel_cells.append(cell)
 
