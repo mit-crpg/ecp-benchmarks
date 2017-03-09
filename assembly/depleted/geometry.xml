@@ -1,85 +1,85 @@
 <?xml version='1.0' encoding='utf-8'?>
 <geometry>
-    <cell id="10001" material="10014" name="Intermediate grid pincell radial 0: Borated Water" region="10010 -10011 10012 -10013" temperature="300.0" universe="10001" />
-    <cell id="10002" material="10006" name="Intermediate grid pincell radial outer: Zircaloy 4" region="~(10010 -10011 10012 -10013)" temperature="300.0" universe="10001" />
-    <cell id="10003" material="10014" name="Top/Bottom grid pincell radial 0: Borated Water" region="10006 -10007 10008 -10009" temperature="300.0" universe="10002" />
-    <cell id="10004" material="10005" name="Top/Bottom grid pincell radial outer: Inconel 718" region="~(10006 -10007 10008 -10009)" temperature="300.0" universe="10002" />
-    <cell id="10009" material="10014" name="Grids axial universe axial 0: Borated Water" region="-10000" temperature="300.0" universe="10005" />
-    <cell id="10010" material="10015" name="Grids axial universe axial 1: Water SPN" region="-10003 10000" temperature="293.6" universe="10005" />
-    <cell id="10011" material="10014" name="Grids axial universe axial 2: Borated Water" region="-10018 10003" temperature="300.0" universe="10005" />
+    <cell id="10001" material="10014" name="Intermediate grid pincell radial 0: Borated Water" region="10010 -10011 10012 -10013" universe="10001" />
+    <cell id="10002" material="10006" name="Intermediate grid pincell radial outer: Zircaloy 4" region="~(10010 -10011 10012 -10013)" universe="10001" />
+    <cell id="10003" material="10014" name="Top/Bottom grid pincell radial 0: Borated Water" region="10006 -10007 10008 -10009" universe="10002" />
+    <cell id="10004" material="10005" name="Top/Bottom grid pincell radial outer: Inconel 718" region="~(10006 -10007 10008 -10009)" universe="10002" />
+    <cell id="10009" material="10014" name="Grids axial universe axial 0: Borated Water" region="-10000" universe="10005" />
+    <cell id="10010" material="10015" name="Grids axial universe axial 1: Water SPN" region="-10003 10000" universe="10005" />
+    <cell id="10011" material="10014" name="Grids axial universe axial 2: Borated Water" region="-10018 10003" universe="10005" />
     <cell fill="10002" id="10012" name="Grids axial universe axial 3: Top/Bottom grid pincell" region="-10019 10018" universe="10005" />
-    <cell id="10013" material="10014" name="Grids axial universe axial 4: Borated Water" region="-10020 10019" temperature="300.0" universe="10005" />
+    <cell id="10013" material="10014" name="Grids axial universe axial 4: Borated Water" region="-10020 10019" universe="10005" />
     <cell fill="10001" id="10014" name="Grids axial universe axial 5: Intermediate grid pincell" region="-10021 10020" universe="10005" />
-    <cell id="10015" material="10014" name="Grids axial universe axial 6: Borated Water" region="-10022 10021" temperature="300.0" universe="10005" />
+    <cell id="10015" material="10014" name="Grids axial universe axial 6: Borated Water" region="-10022 10021" universe="10005" />
     <cell fill="10001" id="10016" name="Grids axial universe axial 7: Intermediate grid pincell" region="-10023 10022" universe="10005" />
-    <cell id="10017" material="10014" name="Grids axial universe axial 8: Borated Water" region="-10024 10023" temperature="300.0" universe="10005" />
+    <cell id="10017" material="10014" name="Grids axial universe axial 8: Borated Water" region="-10024 10023" universe="10005" />
     <cell fill="10001" id="10018" name="Grids axial universe axial 9: Intermediate grid pincell" region="-10025 10024" universe="10005" />
-    <cell id="10019" material="10014" name="Grids axial universe axial 10: Borated Water" region="-10026 10025" temperature="300.0" universe="10005" />
+    <cell id="10019" material="10014" name="Grids axial universe axial 10: Borated Water" region="-10026 10025" universe="10005" />
     <cell fill="10001" id="10020" name="Grids axial universe axial 11: Intermediate grid pincell" region="-10027 10026" universe="10005" />
-    <cell id="10021" material="10014" name="Grids axial universe axial 12: Borated Water" region="-10028 10027" temperature="300.0" universe="10005" />
+    <cell id="10021" material="10014" name="Grids axial universe axial 12: Borated Water" region="-10028 10027" universe="10005" />
     <cell fill="10001" id="10022" name="Grids axial universe axial 13: Intermediate grid pincell" region="-10029 10028" universe="10005" />
-    <cell id="10023" material="10014" name="Grids axial universe axial 14: Borated Water" region="-10030 10029" temperature="300.0" universe="10005" />
+    <cell id="10023" material="10014" name="Grids axial universe axial 14: Borated Water" region="-10030 10029" universe="10005" />
     <cell fill="10001" id="10024" name="Grids axial universe axial 15: Intermediate grid pincell" region="-10031 10030" universe="10005" />
-    <cell id="10025" material="10014" name="Grids axial universe axial 16: Borated Water" region="-10032 10031" temperature="300.0" universe="10005" />
+    <cell id="10025" material="10014" name="Grids axial universe axial 16: Borated Water" region="-10032 10031" universe="10005" />
     <cell fill="10002" id="10026" name="Grids axial universe axial 17: Top/Bottom grid pincell" region="-10033 10032" universe="10005" />
-    <cell id="10027" material="10014" name="Grids axial universe axial 18: Borated Water" region="-10004 10033" temperature="300.0" universe="10005" />
-    <cell id="10028" material="10015" name="Grids axial universe axial 19: Water SPN" region="-10005 10004" temperature="293.6" universe="10005" />
-    <cell id="10029" material="10014" name="Grids axial universe axial top: Borated Water" region="10005" temperature="300.0" universe="10005" />
-    <cell id="10051" material="10006" name="Fuel rod lower/upper fitting radial 0: Zircaloy 4" region="-10036" temperature="300.0" universe="10007" />
-    <cell id="10052" material="10014" name="Fuel rod lower/upper fitting radial outer: Borated Water" region="10036" temperature="300.0" universe="10007" />
-    <cell id="10053" material="10017 10018 10019 10020 10021 10022 10023 10024 10025 10026 10027 10028 10029 10030 10031 10032 10033 10034 10035 10036 10037 10038 10039 10040 10041 10042 10043 10044 10045 10046 10047 10048 10049 10050 10051 10052 10053 10054 10055 10056 10057 10058 10059 10060 10061 10062 10063 10064 10065 10066 10067 10068 10069 10070 10071 10072 10073 10074 10075 10076 10077 10078 10079 10080 10081 10082 10083 10084 10085 10086 10087 10088 10089 10090 10091 10092 10093 10094 10095 10096 10097 10098 10099 10100 10101 10102 10103 10104 10105 10106 10107 10108 10109 10110 10111 10112 10113 10114 10115 10116 10117 10118 10119 10120 10121 10122 10123 10124 10125 10126 10127 10128 10129 10130 10131 10132 10133 10134 10135 10136 10137 10138 10139 10140 10141 10142 10143 10144 10145 10146 10147 10148 10149 10150 10151 10152 10153 10154 10155 10156 10157 10158 10159 10160 10161 10162 10163 10164 10165 10166 10167 10168 10169 10170 10171 10172 10173 10174 10175 10176 10177 10178 10179 10180 10181 10182 10183 10184 10185 10186 10187 10188 10189 10190 10191 10192 10193 10194 10195 10196 10197 10198 10199 10200 10201 10202 10203 10204 10205 10206 10207 10208 10209 10210 10211 10212 10213 10214 10215 10216 10217 10218 10219 10220 10221 10222 10223 10224 10225 10226 10227 10228 10229 10230 10231 10232 10233 10234 10235 10236 10237 10238 10239 10240 10241 10242 10243 10244 10245 10246 10247 10248 10249 10250 10251 10252 10253 10254 10255 10256 10257 10258 10259 10260 10261 10262 10263 10264 10265 10266 10267 10268 10269 10270 10271 10272 10273 10274 10275 10276 10277 10278 10279 10280" name="Fuel rod active region - 1.6% enr radial 0: Fuel 1.6%" region="-10034" temperature="300.0" universe="10008" />
-    <cell id="10054" material="10004" name="Fuel rod active region - 1.6% enr radial 1: Helium" region="10034 -10035" temperature="300.0" universe="10008" />
-    <cell id="10055" material="10006" name="Fuel rod active region - 1.6% enr radial 2: Zircaloy 4" region="10035 -10036" temperature="300.0" universe="10008" />
-    <cell id="10056" material="10014" name="Fuel rod active region - 1.6% enr radial outer: Borated Water" region="10036" temperature="300.0" universe="10008" />
-    <cell id="10073" material="10005" name="Fuel rod plenum radial 0: Inconel 718" region="-10037" temperature="300.0" universe="10013" />
-    <cell id="10074" material="10004" name="Fuel rod plenum radial 1: Helium" region="10037 -10035" temperature="300.0" universe="10013" />
-    <cell id="10075" material="10006" name="Fuel rod plenum radial 2: Zircaloy 4" region="10035 -10036" temperature="300.0" universe="10013" />
-    <cell id="10076" material="10014" name="Fuel rod plenum radial outer: Borated Water" region="10036" temperature="300.0" universe="10013" />
-    <cell id="10077" material="10014" name="Fuel rod - 1.6% enr axial 0: Borated Water" region="-10000" temperature="300.0" universe="10014" />
-    <cell id="10078" material="10016" name="Fuel rod - 1.6% enr axial 1: SS SPN" region="-10038 10000" temperature="300.0" universe="10014" />
+    <cell id="10027" material="10014" name="Grids axial universe axial 18: Borated Water" region="-10004 10033" universe="10005" />
+    <cell id="10028" material="10015" name="Grids axial universe axial 19: Water SPN" region="-10005 10004" universe="10005" />
+    <cell id="10029" material="10014" name="Grids axial universe axial top: Borated Water" region="10005" universe="10005" />
+    <cell id="10051" material="10006" name="Fuel rod lower/upper fitting radial 0: Zircaloy 4" region="-10036" universe="10007" />
+    <cell id="10052" material="10014" name="Fuel rod lower/upper fitting radial outer: Borated Water" region="10036" universe="10007" />
+    <cell id="10053" material="10017 10018 10019 10020 10021 10022 10023 10024 10025 10026 10027 10028 10029 10030 10031 10032 10033 10034 10035 10036 10037 10038 10039 10040 10041 10042 10043 10044 10045 10046 10047 10048 10049 10050 10051 10052 10053 10054 10055 10056 10057 10058 10059 10060 10061 10062 10063 10064 10065 10066 10067 10068 10069 10070 10071 10072 10073 10074 10075 10076 10077 10078 10079 10080 10081 10082 10083 10084 10085 10086 10087 10088 10089 10090 10091 10092 10093 10094 10095 10096 10097 10098 10099 10100 10101 10102 10103 10104 10105 10106 10107 10108 10109 10110 10111 10112 10113 10114 10115 10116 10117 10118 10119 10120 10121 10122 10123 10124 10125 10126 10127 10128 10129 10130 10131 10132 10133 10134 10135 10136 10137 10138 10139 10140 10141 10142 10143 10144 10145 10146 10147 10148 10149 10150 10151 10152 10153 10154 10155 10156 10157 10158 10159 10160 10161 10162 10163 10164 10165 10166 10167 10168 10169 10170 10171 10172 10173 10174 10175 10176 10177 10178 10179 10180 10181 10182 10183 10184 10185 10186 10187 10188 10189 10190 10191 10192 10193 10194 10195 10196 10197 10198 10199 10200 10201 10202 10203 10204 10205 10206 10207 10208 10209 10210 10211 10212 10213 10214 10215 10216 10217 10218 10219 10220 10221 10222 10223 10224 10225 10226 10227 10228 10229 10230 10231 10232 10233 10234 10235 10236 10237 10238 10239 10240 10241 10242 10243 10244 10245 10246 10247 10248 10249 10250 10251 10252 10253 10254 10255 10256 10257 10258 10259 10260 10261 10262 10263 10264 10265 10266 10267 10268 10269 10270 10271 10272 10273 10274 10275 10276 10277 10278 10279 10280" name="Fuel rod active region - 1.6% enr radial 0: Fuel 1.6%" region="-10034" universe="10008" />
+    <cell id="10054" material="10004" name="Fuel rod active region - 1.6% enr radial 1: Helium" region="10034 -10035" universe="10008" />
+    <cell id="10055" material="10006" name="Fuel rod active region - 1.6% enr radial 2: Zircaloy 4" region="10035 -10036" universe="10008" />
+    <cell id="10056" material="10014" name="Fuel rod active region - 1.6% enr radial outer: Borated Water" region="10036" universe="10008" />
+    <cell id="10073" material="10005" name="Fuel rod plenum radial 0: Inconel 718" region="-10037" universe="10013" />
+    <cell id="10074" material="10004" name="Fuel rod plenum radial 1: Helium" region="10037 -10035" universe="10013" />
+    <cell id="10075" material="10006" name="Fuel rod plenum radial 2: Zircaloy 4" region="10035 -10036" universe="10013" />
+    <cell id="10076" material="10014" name="Fuel rod plenum radial outer: Borated Water" region="10036" universe="10013" />
+    <cell id="10077" material="10014" name="Fuel rod - 1.6% enr axial 0: Borated Water" region="-10000" universe="10014" />
+    <cell id="10078" material="10016" name="Fuel rod - 1.6% enr axial 1: SS SPN" region="-10038 10000" universe="10014" />
     <cell fill="10007" id="10079" name="Fuel rod - 1.6% enr axial 2: Fuel rod lower/upper fitting" region="-10039 10038" universe="10014" />
     <cell fill="10008" id="10080" name="Fuel rod - 1.6% enr axial 3: Fuel rod active region - 1.6% enr" region="-10040 10039" universe="10014" />
     <cell fill="10013" id="10081" name="Fuel rod - 1.6% enr axial 4: Fuel rod plenum" region="-10041 10040" universe="10014" />
     <cell fill="10007" id="10082" name="Fuel rod - 1.6% enr axial 5: Fuel rod lower/upper fitting" region="-10042 10041" universe="10014" />
-    <cell id="10083" material="10014" name="Fuel rod - 1.6% enr axial 6: Borated Water" region="-10004 10042" temperature="300.0" universe="10014" />
-    <cell id="10084" material="10016" name="Fuel rod - 1.6% enr axial 7: SS SPN" region="-10005 10004" temperature="300.0" universe="10014" />
-    <cell id="10085" material="10014" name="Fuel rod - 1.6% enr axial top: Borated Water" region="10005" temperature="300.0" universe="10014" />
+    <cell id="10083" material="10014" name="Fuel rod - 1.6% enr axial 6: Borated Water" region="-10004 10042" universe="10014" />
+    <cell id="10084" material="10016" name="Fuel rod - 1.6% enr axial 7: SS SPN" region="-10005 10004" universe="10014" />
+    <cell id="10085" material="10014" name="Fuel rod - 1.6% enr axial top: Borated Water" region="10005" universe="10014" />
     <cell fill="10014" id="10086" name="(Fuel rod - 1.6% enr) wrapped by (Grids axial universe) radial 0: Fuel rod - 1.6% enr" region="-10036" universe="10015" />
     <cell fill="10005" id="10087" name="(Fuel rod - 1.6% enr) wrapped by (Grids axial universe) radial outer: Grids axial universe" region="10036" universe="10015" />
-    <cell id="10132" material="10014" name="Empty GT below the dashpot radial 0: Borated Water" region="-10045" temperature="300.0" universe="10024" />
-    <cell id="10133" material="10006" name="Empty GT below the dashpot radial 1: Zircaloy 4" region="10045 -10046" temperature="300.0" universe="10024" />
-    <cell id="10134" material="10014" name="Empty GT below the dashpot radial outer: Borated Water" region="10046" temperature="300.0" universe="10024" />
-    <cell id="10135" material="10014" name="Empty GT above the dashpot radial 0: Borated Water" region="-10043" temperature="300.0" universe="10025" />
-    <cell id="10136" material="10006" name="Empty GT above the dashpot radial 1: Zircaloy 4" region="10043 -10044" temperature="300.0" universe="10025" />
-    <cell id="10137" material="10014" name="Empty GT above the dashpot radial outer: Borated Water" region="10044" temperature="300.0" universe="10025" />
-    <cell id="10138" material="10014" name="Empty Guide Tube axial 0: Borated Water" region="-10000" temperature="300.0" universe="10026" />
-    <cell id="10139" material="10015" name="Empty Guide Tube axial 1: Water SPN" region="-10047 10000" temperature="293.6" universe="10026" />
+    <cell id="10132" material="10014" name="Empty GT below the dashpot radial 0: Borated Water" region="-10045" universe="10024" />
+    <cell id="10133" material="10006" name="Empty GT below the dashpot radial 1: Zircaloy 4" region="10045 -10046" universe="10024" />
+    <cell id="10134" material="10014" name="Empty GT below the dashpot radial outer: Borated Water" region="10046" universe="10024" />
+    <cell id="10135" material="10014" name="Empty GT above the dashpot radial 0: Borated Water" region="-10043" universe="10025" />
+    <cell id="10136" material="10006" name="Empty GT above the dashpot radial 1: Zircaloy 4" region="10043 -10044" universe="10025" />
+    <cell id="10137" material="10014" name="Empty GT above the dashpot radial outer: Borated Water" region="10044" universe="10025" />
+    <cell id="10138" material="10014" name="Empty Guide Tube axial 0: Borated Water" region="-10000" universe="10026" />
+    <cell id="10139" material="10015" name="Empty Guide Tube axial 1: Water SPN" region="-10047 10000" universe="10026" />
     <cell fill="10024" id="10140" name="Empty Guide Tube axial 2: Empty GT below the dashpot" region="-10048 10047" universe="10026" />
     <cell fill="10025" id="10141" name="Empty Guide Tube axial 3: Empty GT above the dashpot" region="-10049 10048" universe="10026" />
-    <cell id="10142" material="10015" name="Empty Guide Tube axial 4: Water SPN" region="-10005 10049" temperature="293.6" universe="10026" />
-    <cell id="10143" material="10014" name="Empty Guide Tube axial top: Borated Water" region="10005" temperature="300.0" universe="10026" />
+    <cell id="10142" material="10015" name="Empty Guide Tube axial 4: Water SPN" region="-10005 10049" universe="10026" />
+    <cell id="10143" material="10014" name="Empty Guide Tube axial top: Borated Water" region="10005" universe="10026" />
     <cell fill="10026" id="10144" name="(Empty Guide Tube) wrapped by (Grids axial universe) radial 0: Empty Guide Tube" region="-10044" universe="10027" />
     <cell fill="10005" id="10145" name="(Empty Guide Tube) wrapped by (Grids axial universe) radial outer: Grids axial universe" region="10044" universe="10027" />
-    <cell id="10146" material="10014" name="Empty Guide Tube in Center Position axial 0: Borated Water" region="-10000" temperature="300.0" universe="10028" />
-    <cell id="10147" material="10015" name="Empty Guide Tube in Center Position axial 1: Water SPN" region="-10047 10000" temperature="293.6" universe="10028" />
+    <cell id="10146" material="10014" name="Empty Guide Tube in Center Position axial 0: Borated Water" region="-10000" universe="10028" />
+    <cell id="10147" material="10015" name="Empty Guide Tube in Center Position axial 1: Water SPN" region="-10047 10000" universe="10028" />
     <cell fill="10025" id="10148" name="Empty Guide Tube in Center Position axial 2: Empty GT above the dashpot" region="-10049 10047" universe="10028" />
-    <cell id="10149" material="10015" name="Empty Guide Tube in Center Position axial 3: Water SPN" region="-10005 10049" temperature="293.6" universe="10028" />
-    <cell id="10150" material="10014" name="Empty Guide Tube in Center Position axial top: Borated Water" region="10005" temperature="300.0" universe="10028" />
-    <cell fill="10028" id="10151" name="(Empty Guide Tube in Center Position) wrapped by (Grids axial universe) radial 0: Empty Guide Tube in Ce" region="-10044" universe="10029" />
-    <cell fill="10005" id="10152" name="(Empty Guide Tube in Center Position) wrapped by (Grids axial universe) radial outer: Grids axial univer" region="10044" universe="10029" />
-    <cell id="10153" material="10000" name="Instrument tube thimble radial 0: Air" region="-10050" temperature="300.0" universe="10030" />
-    <cell id="10154" material="10006" name="Instrument tube thimble radial 1: Zircaloy 4" region="10050 -10051" temperature="300.0" universe="10030" />
-    <cell id="10155" material="10014" name="Instrument tube thimble radial outer: Borated Water" region="10051" temperature="300.0" universe="10030" />
-    <cell id="10156" material="10000" name="Instrument tube thimble support plane radial 0: Air" region="-10050" temperature="300.0" universe="10031" />
-    <cell id="10157" material="10006" name="Instrument tube thimble support plane radial 1: Zircaloy 4" region="10050 -10051" temperature="300.0" universe="10031" />
-    <cell id="10158" material="10015" name="Instrument tube thimble support plane radial outer: Water SPN" region="10051" temperature="293.6" universe="10031" />
+    <cell id="10149" material="10015" name="Empty Guide Tube in Center Position axial 3: Water SPN" region="-10005 10049" universe="10028" />
+    <cell id="10150" material="10014" name="Empty Guide Tube in Center Position axial top: Borated Water" region="10005" universe="10028" />
+    <cell fill="10028" id="10151" name="(Empty Guide Tube in Center Position) wrapped by (Grids axial universe) radial 0: Empty Guide Tube in Center Position" region="-10044" universe="10029" />
+    <cell fill="10005" id="10152" name="(Empty Guide Tube in Center Position) wrapped by (Grids axial universe) radial outer: Grids axial universe" region="10044" universe="10029" />
+    <cell id="10153" material="10000" name="Instrument tube thimble radial 0: Air" region="-10050" universe="10030" />
+    <cell id="10154" material="10006" name="Instrument tube thimble radial 1: Zircaloy 4" region="10050 -10051" universe="10030" />
+    <cell id="10155" material="10014" name="Instrument tube thimble radial outer: Borated Water" region="10051" universe="10030" />
+    <cell id="10156" material="10000" name="Instrument tube thimble support plane radial 0: Air" region="-10050" universe="10031" />
+    <cell id="10157" material="10006" name="Instrument tube thimble support plane radial 1: Zircaloy 4" region="10050 -10051" universe="10031" />
+    <cell id="10158" material="10015" name="Instrument tube thimble support plane radial outer: Water SPN" region="10051" universe="10031" />
     <cell fill="10030" id="10159" name="Instrument tube axial stack axial 0: Instrument tube thimble" region="-10000" universe="10032" />
     <cell fill="10031" id="10160" name="Instrument tube axial stack axial 1: Instrument tube thimble support plane" region="-10038 10000" universe="10032" />
     <cell fill="10030" id="10161" name="Instrument tube axial stack axial 2: Instrument tube thimble" region="-10004 10038" universe="10032" />
-    <cell id="10162" material="10015" name="Instrument tube axial stack axial 3: Water SPN" region="-10005 10004" temperature="293.6" universe="10032" />
-    <cell id="10163" material="10014" name="Instrument tube axial stack axial top: Borated Water" region="10005" temperature="300.0" universe="10032" />
-    <cell fill="10032" id="10164" name="(Instrument tube axial stack) wrapped by ((Empty Guide Tube in Center Position) wrapped by (Grids axial" region="-10051" universe="10033" />
-    <cell fill="10029" id="10165" name="(Instrument tube axial stack) wrapped by ((Empty Guide Tube in Center Position) wrapped by (Grids axial" region="10051" universe="10033" />
+    <cell id="10162" material="10015" name="Instrument tube axial stack axial 3: Water SPN" region="-10005 10004" universe="10032" />
+    <cell id="10163" material="10014" name="Instrument tube axial stack axial top: Borated Water" region="10005" universe="10032" />
+    <cell fill="10032" id="10164" name="(Instrument tube axial stack) wrapped by ((Empty Guide Tube in Center Position) wrapped by (Grids axial universe)) radial 0: Instrument tube axial stack" region="-10051" universe="10033" />
+    <cell fill="10029" id="10165" name="(Instrument tube axial stack) wrapped by ((Empty Guide Tube in Center Position) wrapped by (Grids axial universe)) radial outer: (Empty Guide Tube in Center Position) wrapped by (Grids axial universe)" region="10051" universe="10033" />
     <cell fill="10065" id="11273" name="root cell" region="10149 -10150 10151 -10152 10154 -10153" universe="0" />
     <lattice id="10065" name="Fuel 1.6% enr instr no BAs">
         <pitch>1.25984 1.25984</pitch>
