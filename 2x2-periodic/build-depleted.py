@@ -9,47 +9,22 @@ import opendeplete
 from geometry import beavrs, openmc_geometry
 
 
-# Setup OpenDeplete Materials wrapper
-materials = opendeplete.Materials()
-materials.temperature = OrderedDict()
-materials.sab = OrderedDict()
-materials.initial_density = OrderedDict()
-materials.burn = OrderedDict()
-materials.cross_sections = os.environ["OPENMC_CROSS_SECTIONS"]
+# FIXME: Automatically extract info needed to calculate burnable cell volumes
+# Fuel rod geometric parameters
+radius = 0.39218
+height = 5.
 
 # Count the number of instances for each cell and material
 openmc_geometry.determine_paths()
-
-# Extract all cells filled by a fuel material
-fuel_cells = openmc_geometry.get_cells_by_name(
-    name='enr radial 0: Fuel', case_sensitive=True)
-
-# Extract cell materials, temperatures and sab
-for cell in openmc_geometry.get_all_material_cells().values():
-    materials.burn[cell.name] = 'fuel' in cell.fill.name.lower()
-    materials.temperature[cell.name] = 300
-    if len(cell.fill._sab) > 0:
-        materials.sab[cell.name] = cell.fill._sab[0]
-
-# Extract initial fuel nuclide densities in units of at/cc
-for cell in fuel_cells:
-    densities = cell.fill.get_nuclide_atom_densities()
-    materials.initial_density[cell.fill.name] = OrderedDict()
-
-    # Convert atom densities from at/b-cm to at/cc
-    for nuclide in densities:
-        materials.initial_density[cell.fill.name][nuclide.name] = \
-            densities[nuclide][1] * 1e24
 
 # Determine the maximum material ID
 max_material_id = 0
 for material in openmc_geometry.get_all_materials().values():
     max_material_id = max(max_material_id, material.id)
 
-# FIXME: Automatically extract info needed to calculate burnable cell volumes
-# Fuel rod geometric parameters
-radius = 0.39218
-height = 5.
+# Extract all cells filled by a fuel material
+fuel_cells = openmc_geometry.get_cells_by_name(
+    name='enr radial 0: Fuel', case_sensitive=True)
 
 # Assign distribmats for each material
 for cell in fuel_cells:
