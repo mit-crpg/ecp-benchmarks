@@ -28,9 +28,21 @@ for material in geometry.get_all_materials().values():
 fuel_cells = geometry.get_cells_by_name(
     name='(1.6%) (0)', case_sensitive=True)
 fuel_cells.extend(geometry.get_cells_by_name(
+    name='(1.6%) grid (bottom) (0)', case_sensitive=True))
+fuel_cells.extend(geometry.get_cells_by_name(
+    name='(1.6%) grid (intermediate) (0)', case_sensitive=True))
+fuel_cells.extend(geometry.get_cells_by_name(
     name='(2.4%) (0)', case_sensitive=True))
 fuel_cells.extend(geometry.get_cells_by_name(
+    name='(2.4%) grid (bottom) (0)', case_sensitive=True))
+fuel_cells.extend(geometry.get_cells_by_name(
+    name='(2.4%) grid (intermediate) (0)', case_sensitive=True))
+fuel_cells.extend(geometry.get_cells_by_name(
     name='(3.1%) (0)', case_sensitive=True))
+fuel_cells.extend(geometry.get_cells_by_name(
+    name='(3.1%) grid (bottom) (0)', case_sensitive=True))
+fuel_cells.extend(geometry.get_cells_by_name(
+    name='(3.1%) grid (intermediate) (0)', case_sensitive=True))
 
 # Assign distribmats for each material
 for cell in fuel_cells:
