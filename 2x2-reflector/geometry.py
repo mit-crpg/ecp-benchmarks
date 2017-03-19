@@ -44,20 +44,15 @@ def find_assembly(assembly_name, wrap_geometry=True):
         min_z = openmc.ZPlane(z0=192.5, boundary_type='reflective')
 
         # Add boundaries to the root Cell
-        root_cell.add_surface(surface=min_x, halfspace=+1)
-        root_cell.add_surface(surface=max_x, halfspace=-1)
-        root_cell.add_surface(surface=min_y, halfspace=+1)
-        root_cell.add_surface(surface=max_y, halfspace=-1)
-        root_cell.add_surface(surface=min_z, halfspace=+1)
-        root_cell.add_surface(surface=max_z, halfspace=-1)
+        root_cell.region = \
+            +min_x & -max_x & +min_y & -max_y & +min_z & -max_z
 
         # Create a root Universe
         root_univ = openmc.Universe(universe_id=0, name='root universe')
         root_univ.add_cell(root_cell)
 
         # Create a Geometry
-        fuel_assembly = openmc.Geometry()
-        fuel_assembly.root_universe = root_univ
+        fuel_assembly = openmc.Geometry(root_univ)
 
     return fuel_assembly
 
@@ -130,12 +125,7 @@ def build_reflector(assembly1_name, assembly2_name):
     max_z = openmc.ZPlane(z0=197.5, boundary_type='reflective')
 
     # Add boundaries to the root Cell
-    root_cell.add_surface(surface=min_x, halfspace=+1)
-    root_cell.add_surface(surface=max_x, halfspace=-1)
-    root_cell.add_surface(surface=min_y, halfspace=+1)
-    root_cell.add_surface(surface=max_y, halfspace=-1)
-    root_cell.add_surface(surface=min_z, halfspace=+1)
-    root_cell.add_surface(surface=max_z, halfspace=-1)
+    root_cell.region = +min_x & -max_x & +min_y & -max_y & +min_z & -max_z
 
     # Create a root Universe for this fuel assembly
     root_univ = openmc.Universe(universe_id=0, name='root universe')

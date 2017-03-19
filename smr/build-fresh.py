@@ -87,7 +87,7 @@ mesh.type = 'regular'
 mesh.dimension = [7*17, 7*17, 100]
 mesh.lower_left = lower_left
 mesh.width = (np.array(upper_right) - np.array(lower_left))
-mesh.width[:2] /= (7*17)
+mesh.width[:2] /= mesh.dimension
 mesh_filter = openmc.MeshFilter(mesh)
 
 # Instantiate energy-integrated fission rate mesh Tally

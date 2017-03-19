@@ -52,18 +52,14 @@ def find_pin(pin_name, wrap_geometry=True):
         root_cell.fill = fuel_pin
 
         # Add boundaries to the root Cell
-        root_cell.add_surface(surface=min_x, halfspace=+1)
-        root_cell.add_surface(surface=max_x, halfspace=-1)
-        root_cell.add_surface(surface=min_y, halfspace=+1)
-        root_cell.add_surface(surface=max_y, halfspace=-1)
+        root_cell.region = +min_x & -max_x & +min_y & -max_y
 
         # Create a root Universe
         root_univ = openmc.Universe(universe_id=0, name='root universe')
         root_univ.add_cell(root_cell)
 
         # Create a Geometry
-        fuel_pin = openmc.Geometry()
-        fuel_pin.root_universe = root_univ
+        fuel_pin = openmc.Geometry(root_univ)
 
     return fuel_pin
 

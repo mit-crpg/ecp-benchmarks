@@ -21,7 +21,7 @@ openmc_geometry.export_to_xml()
 
 # Query the user on whether to use multipole cross sections
 multipole = input('Use multipole cross sections? (y/n): ').lower()
-multipole = True if multipole == 'y' else False
+multipole = (multipole == 'y')
 
 # Construct uniform initial source distribution over fissionable zones
 lower_left = [-32.12592, -32.12592, 192.5]
@@ -55,9 +55,9 @@ beavrs.write_openmc_plots()
 plot = openmc.Plot()
 plot.width = [64.25184, 64.25184]
 plot.origin = [0., 0., 195.]
-plot.color = 'mat'
+plot.color_by = 'material'
 plot.filename = '2x2-reflector'
-plot.col_spec = beavrs.plots.colspec_mat
+plot.colors = beavrs.plots.colors_mat
 plot.pixels = [1000, 1000]
 
 plot_file = openmc.Plots([plot])
@@ -109,7 +109,7 @@ mesh.type = 'regular'
 mesh.dimension = [34, 34, 1]
 mesh.lower_left = [lower_left[0], lower_left[1] + lat_width[1], lower_left[2]]
 mesh.width = np.array(lat_width)
-mesh.width[:2] /= 17.
+mesh.width[:2] /= mesh.dimension
 mesh_filter = openmc.MeshFilter(mesh)
 
 # Instantiate energy-integrated fission rate mesh Tally

@@ -21,7 +21,7 @@ openmc_geometry.export_to_xml()
 
 # Query the user on whether to use multipole cross sections
 multipole = input('Use multipole cross sections? (y/n): ').lower()
-multipole = True if multipole == 'y' else False
+multipole = (multipole == 'y')
 
 # Construct uniform initial source distribution over fissionable zones
 lower_left = [-0.62992, -0.62992, -10.0]
@@ -52,9 +52,9 @@ beavrs.write_openmc_plots()
 plot = openmc.Plot()
 plot.width = [1.25984, 1.25984]
 plot.origin = [0., 0., np.inf]
-plot.color = 'mat'
+plot.color_by = 'material'
 plot.filename = 'fuel-pin'
-plot.col_spec = beavrs.plots.colspec_mat
+plot.colors = beavrs.plots.colors_mat
 plot.pixels = [1000, 1000]
 
 plot_file = openmc.Plots([plot])

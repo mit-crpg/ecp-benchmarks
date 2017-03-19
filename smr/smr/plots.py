@@ -26,7 +26,7 @@ plots = openmc.Plots()
 
 plot = openmc.Plot(name='radial slice ')
 plot.basis = 'xy'
-plot.color = 'mat'
+plot.color_by = 'material'
 plot.origin = [0., 0., (highest_extent-lowest_extent)/2.]
 plot.width = [25*lattice_pitch/2, 25*lattice_pitch/2.]
 plot.filename = 'radial_xy_slice'
@@ -37,7 +37,7 @@ plots += [plot]
 
 plot = openmc.Plot(name='axial slice')
 plot.basis = 'xz'
-plot.color = 'mat'
+plot.color_by = 'material'
 plot.origin = [0., 0., (highest_extent-lowest_extent)/2.]
 plot.width = [rpv_OR*2., (highest_extent-lowest_extent)]
 plot.filename = 'axial_xz_slice'
@@ -48,7 +48,7 @@ plots += [plot]
 
 plot = openmc.Plot(name='assembly grid spacer')
 plot.basis = 'xy'
-plot.color = 'mat'
+plot.color_by = 'material'
 plot.origin = [0., 0., 102.021]
 plot.width = [lattice_pitch*1.5, lattice_pitch*1.5]
 plot.filename = 'assm_grid_spacer'
@@ -59,7 +59,7 @@ plots += [plot]
 
 plot = openmc.Plot(name='assembly no spacer')
 plot.basis = 'xy'
-plot.color = 'mat'
+plot.color_by = 'material'
 plot.origin = [0., 0., 90.]
 plot.width = [lattice_pitch*1.5, lattice_pitch*1.5]
 plot.filename = 'assm_no_spacer'
