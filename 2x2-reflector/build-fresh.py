@@ -109,7 +109,7 @@ mesh.type = 'regular'
 mesh.dimension = [34, 34, 1]
 mesh.lower_left = [lower_left[0], lower_left[1] + lat_width[1], lower_left[2]]
 mesh.width = np.array(lat_width)
-mesh.width[:2] /= mesh.dimension
+mesh.width /= mesh.dimension
 mesh_filter = openmc.MeshFilter(mesh)
 
 # Instantiate energy-integrated fission rate mesh Tally

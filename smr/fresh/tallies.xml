@@ -4,7 +4,7 @@
     <mesh id="10000" type="regular">
         <dimension>119 119 100</dimension>
         <lower_left>-75.26274000000001 -75.26274000000001 36.007</lower_left>
-        <width>1.26492 1.26492 200.0</width>
+        <width>1.26492 1.26492 2.0</width>
     </mesh>
     <tally id="10000" name="fission rates">
         <filter bins="10000" type="mesh" />
@@ -16,129 +16,129 @@
         <scores>absorption fission</scores>
     </tally>
     <tally id="10006">
-        <filter bins="10683" type="distribcell" />
+        <filter bins="10753" type="distribcell" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
         <nuclides>total</nuclides>
         <scores>flux</scores>
         <estimator>tracklength</estimator>
     </tally>
     <tally id="10007">
-        <filter bins="10683" type="distribcell" />
+        <filter bins="10753" type="distribcell" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
         <nuclides>O16 O17 U234 U235 U238</nuclides>
         <scores>total nu-fission</scores>
         <estimator>tracklength</estimator>
     </tally>
     <tally id="10008">
-        <filter bins="10683" type="distribcell" />
+        <filter bins="10753" type="distribcell" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
         <nuclides>total</nuclides>
         <scores>flux</scores>
         <estimator>analog</estimator>
     </tally>
     <tally id="10009">
-        <filter bins="10683" type="distribcell" />
+        <filter bins="10753" type="distribcell" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
         <nuclides>O16 O17 U234 U235 U238</nuclides>
-        <scores>nu-scatter-P0</scores>
+        <scores>nu-scatter-0</scores>
         <estimator>analog</estimator>
     </tally>
     <tally id="10010">
-        <filter bins="10683" type="distribcell" />
+        <filter bins="10753" type="distribcell" />
         <filter bins="0.0 20.0" type="energy" />
         <nuclides>O16 O17 U234 U235 U238</nuclides>
         <scores>nu-fission</scores>
         <estimator>analog</estimator>
     </tally>
     <tally id="10011">
-        <filter bins="10683" type="distribcell" />
+        <filter bins="10753" type="distribcell" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
         <nuclides>O16 O17 U234 U235 U238</nuclides>
         <scores>nu-fission</scores>
         <estimator>analog</estimator>
     </tally>
     <tally id="10016">
-        <filter bins="10687" type="distribcell" />
+        <filter bins="10757" type="distribcell" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
         <nuclides>total</nuclides>
         <scores>flux</scores>
         <estimator>tracklength</estimator>
     </tally>
     <tally id="10017">
-        <filter bins="10687" type="distribcell" />
+        <filter bins="10757" type="distribcell" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
         <nuclides>O16 O17 U234 U235 U238</nuclides>
         <scores>total nu-fission</scores>
         <estimator>tracklength</estimator>
     </tally>
     <tally id="10018">
-        <filter bins="10687" type="distribcell" />
+        <filter bins="10757" type="distribcell" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
         <nuclides>total</nuclides>
         <scores>flux</scores>
         <estimator>analog</estimator>
     </tally>
     <tally id="10019">
-        <filter bins="10687" type="distribcell" />
+        <filter bins="10757" type="distribcell" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
         <nuclides>O16 O17 U234 U235 U238</nuclides>
-        <scores>nu-scatter-P0</scores>
+        <scores>nu-scatter-0</scores>
         <estimator>analog</estimator>
     </tally>
     <tally id="10020">
-        <filter bins="10687" type="distribcell" />
+        <filter bins="10757" type="distribcell" />
         <filter bins="0.0 20.0" type="energy" />
         <nuclides>O16 O17 U234 U235 U238</nuclides>
         <scores>nu-fission</scores>
         <estimator>analog</estimator>
     </tally>
     <tally id="10021">
-        <filter bins="10687" type="distribcell" />
+        <filter bins="10757" type="distribcell" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
         <nuclides>O16 O17 U234 U235 U238</nuclides>
         <scores>nu-fission</scores>
         <estimator>analog</estimator>
     </tally>
     <tally id="10026">
-        <filter bins="10692" type="distribcell" />
+        <filter bins="10762" type="distribcell" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
         <nuclides>total</nuclides>
         <scores>flux</scores>
         <estimator>tracklength</estimator>
     </tally>
     <tally id="10027">
-        <filter bins="10692" type="distribcell" />
+        <filter bins="10762" type="distribcell" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
         <nuclides>O16 O17 U234 U235 U238</nuclides>
         <scores>total nu-fission</scores>
         <estimator>tracklength</estimator>
     </tally>
     <tally id="10028">
-        <filter bins="10692" type="distribcell" />
+        <filter bins="10762" type="distribcell" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
         <nuclides>total</nuclides>
         <scores>flux</scores>
         <estimator>analog</estimator>
     </tally>
     <tally id="10029">
-        <filter bins="10692" type="distribcell" />
+        <filter bins="10762" type="distribcell" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
         <nuclides>O16 O17 U234 U235 U238</nuclides>
-        <scores>nu-scatter-P0</scores>
+        <scores>nu-scatter-0</scores>
         <estimator>analog</estimator>
     </tally>
     <tally id="10030">
-        <filter bins="10692" type="distribcell" />
+        <filter bins="10762" type="distribcell" />
         <filter bins="0.0 20.0" type="energy" />
         <nuclides>O16 O17 U234 U235 U238</nuclides>
         <scores>nu-fission</scores>
         <estimator>analog</estimator>
     </tally>
     <tally id="10031">
-        <filter bins="10692" type="distribcell" />
+        <filter bins="10762" type="distribcell" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
         <nuclides>O16 O17 U234 U235 U238</nuclides>
         <scores>nu-fission</scores>
@@ -170,7 +170,7 @@
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
         <nuclides>O16 O17 U234 U235 U238</nuclides>
-        <scores>nu-scatter-P0</scores>
+        <scores>nu-scatter-0</scores>
         <estimator>analog</estimator>
     </tally>
     <tally id="10040">
@@ -213,7 +213,7 @@
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
         <nuclides>O16 O17 U234 U235 U238</nuclides>
-        <scores>nu-scatter-P0</scores>
+        <scores>nu-scatter-0</scores>
         <estimator>analog</estimator>
     </tally>
     <tally id="10050">
@@ -256,7 +256,7 @@
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
         <nuclides>O16 O17 U234 U235 U238</nuclides>
-        <scores>nu-scatter-P0</scores>
+        <scores>nu-scatter-0</scores>
         <estimator>analog</estimator>
     </tally>
     <tally id="10060">
@@ -274,129 +274,129 @@
         <estimator>analog</estimator>
     </tally>
     <tally id="10066">
-        <filter bins="10753" type="distribcell" />
+        <filter bins="10683" type="distribcell" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
         <nuclides>total</nuclides>
         <scores>flux</scores>
         <estimator>tracklength</estimator>
     </tally>
     <tally id="10067">
-        <filter bins="10753" type="distribcell" />
+        <filter bins="10683" type="distribcell" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
         <nuclides>O16 O17 U234 U235 U238</nuclides>
         <scores>total nu-fission</scores>
         <estimator>tracklength</estimator>
     </tally>
     <tally id="10068">
-        <filter bins="10753" type="distribcell" />
+        <filter bins="10683" type="distribcell" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
         <nuclides>total</nuclides>
         <scores>flux</scores>
         <estimator>analog</estimator>
     </tally>
     <tally id="10069">
-        <filter bins="10753" type="distribcell" />
+        <filter bins="10683" type="distribcell" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
         <nuclides>O16 O17 U234 U235 U238</nuclides>
-        <scores>nu-scatter-P0</scores>
+        <scores>nu-scatter-0</scores>
         <estimator>analog</estimator>
     </tally>
     <tally id="10070">
-        <filter bins="10753" type="distribcell" />
+        <filter bins="10683" type="distribcell" />
         <filter bins="0.0 20.0" type="energy" />
         <nuclides>O16 O17 U234 U235 U238</nuclides>
         <scores>nu-fission</scores>
         <estimator>analog</estimator>
     </tally>
     <tally id="10071">
-        <filter bins="10753" type="distribcell" />
+        <filter bins="10683" type="distribcell" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
         <nuclides>O16 O17 U234 U235 U238</nuclides>
         <scores>nu-fission</scores>
         <estimator>analog</estimator>
     </tally>
     <tally id="10076">
-        <filter bins="10757" type="distribcell" />
+        <filter bins="10687" type="distribcell" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
         <nuclides>total</nuclides>
         <scores>flux</scores>
         <estimator>tracklength</estimator>
     </tally>
     <tally id="10077">
-        <filter bins="10757" type="distribcell" />
+        <filter bins="10687" type="distribcell" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
         <nuclides>O16 O17 U234 U235 U238</nuclides>
         <scores>total nu-fission</scores>
         <estimator>tracklength</estimator>
     </tally>
     <tally id="10078">
-        <filter bins="10757" type="distribcell" />
+        <filter bins="10687" type="distribcell" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
         <nuclides>total</nuclides>
         <scores>flux</scores>
         <estimator>analog</estimator>
     </tally>
     <tally id="10079">
-        <filter bins="10757" type="distribcell" />
+        <filter bins="10687" type="distribcell" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
         <nuclides>O16 O17 U234 U235 U238</nuclides>
-        <scores>nu-scatter-P0</scores>
+        <scores>nu-scatter-0</scores>
         <estimator>analog</estimator>
     </tally>
     <tally id="10080">
-        <filter bins="10757" type="distribcell" />
+        <filter bins="10687" type="distribcell" />
         <filter bins="0.0 20.0" type="energy" />
         <nuclides>O16 O17 U234 U235 U238</nuclides>
         <scores>nu-fission</scores>
         <estimator>analog</estimator>
     </tally>
     <tally id="10081">
-        <filter bins="10757" type="distribcell" />
+        <filter bins="10687" type="distribcell" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
         <nuclides>O16 O17 U234 U235 U238</nuclides>
         <scores>nu-fission</scores>
         <estimator>analog</estimator>
     </tally>
     <tally id="10086">
-        <filter bins="10762" type="distribcell" />
+        <filter bins="10692" type="distribcell" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
         <nuclides>total</nuclides>
         <scores>flux</scores>
         <estimator>tracklength</estimator>
     </tally>
     <tally id="10087">
-        <filter bins="10762" type="distribcell" />
+        <filter bins="10692" type="distribcell" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
         <nuclides>O16 O17 U234 U235 U238</nuclides>
         <scores>total nu-fission</scores>
         <estimator>tracklength</estimator>
     </tally>
     <tally id="10088">
-        <filter bins="10762" type="distribcell" />
+        <filter bins="10692" type="distribcell" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
         <nuclides>total</nuclides>
         <scores>flux</scores>
         <estimator>analog</estimator>
     </tally>
     <tally id="10089">
-        <filter bins="10762" type="distribcell" />
+        <filter bins="10692" type="distribcell" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
         <nuclides>O16 O17 U234 U235 U238</nuclides>
-        <scores>nu-scatter-P0</scores>
+        <scores>nu-scatter-0</scores>
         <estimator>analog</estimator>
     </tally>
     <tally id="10090">
-        <filter bins="10762" type="distribcell" />
+        <filter bins="10692" type="distribcell" />
         <filter bins="0.0 20.0" type="energy" />
         <nuclides>O16 O17 U234 U235 U238</nuclides>
         <scores>nu-fission</scores>
         <estimator>analog</estimator>
     </tally>
     <tally id="10091">
-        <filter bins="10762" type="distribcell" />
+        <filter bins="10692" type="distribcell" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
         <nuclides>O16 O17 U234 U235 U238</nuclides>
         <scores>nu-fission</scores>
@@ -409,199 +409,206 @@
         <scores>flux</scores>
         <estimator>tracklength</estimator>
     </tally>
-    <tally id="10172">
-        <filter bins="10000 10001 10002 10006" type="material" />
+    <tally id="10199">
+        <filter bins="10000 10003 10006 10007" type="material" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
-        <nuclides>He3 He4 O16 O17 N14 N15 Ar36 Ar38 Ar40 C0 Si28 Si29 Si30 Cr50 Cr52 Cr53 Cr54 Mn55 Fe54 Fe56 Fe57 Fe58 Ni58 Ni60 Ni61 Ni62 Ni64 Ag107 Ag109 In113 In115 Cd106 Cd108 Cd110 Cd111 Cd112 Cd113 Cd114 Cd116</nuclides>
+        <nuclides>B10 B11 H1 H2 O16 O17 Si28 Si29 Si30 Cr50 Cr52 Cr53 Cr54 Mn55 Fe54 Fe56 Fe57 Fe58 Ni58 Ni60 Ni61 Ni62 Ni64 He3 He4 Ag107 Ag109 In113 In115 Cd106 Cd108 Cd110 Cd111 Cd112 Cd113 Cd114 Cd116</nuclides>
         <scores>total nu-fission</scores>
         <estimator>tracklength</estimator>
     </tally>
-    <tally id="10250">
+    <tally id="10249">
         <filter bins="10000 10001 10002 10003 10004 10005 10006 10007 10008 10009 10010 10011" type="material" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
         <nuclides>total</nuclides>
         <scores>flux</scores>
         <estimator>analog</estimator>
     </tally>
-    <tally id="10180">
-        <filter bins="10000 10001 10002 10006" type="material" />
+    <tally id="10207">
+        <filter bins="10000 10003 10006 10007" type="material" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
-        <nuclides>He3 He4 O16 O17 N14 N15 Ar36 Ar38 Ar40 C0 Si28 Si29 Si30 Cr50 Cr52 Cr53 Cr54 Mn55 Fe54 Fe56 Fe57 Fe58 Ni58 Ni60 Ni61 Ni62 Ni64 Ag107 Ag109 In113 In115 Cd106 Cd108 Cd110 Cd111 Cd112 Cd113 Cd114 Cd116</nuclides>
-        <scores>nu-scatter-P0</scores>
-        <estimator>analog</estimator>
-    </tally>
-    <tally id="10183">
-        <filter bins="10000 10001 10002 10006" type="material" />
-        <filter bins="0.0 20.0" type="energy" />
-        <nuclides>He3 He4 O16 O17 N14 N15 Ar36 Ar38 Ar40 C0 Si28 Si29 Si30 Cr50 Cr52 Cr53 Cr54 Mn55 Fe54 Fe56 Fe57 Fe58 Ni58 Ni60 Ni61 Ni62 Ni64 Ag107 Ag109 In113 In115 Cd106 Cd108 Cd110 Cd111 Cd112 Cd113 Cd114 Cd116</nuclides>
-        <scores>nu-fission</scores>
-        <estimator>analog</estimator>
-    </tally>
-    <tally id="10184">
-        <filter bins="10000 10001 10002 10006" type="material" />
-        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
-        <nuclides>He3 He4 O16 O17 N14 N15 Ar36 Ar38 Ar40 C0 Si28 Si29 Si30 Cr50 Cr52 Cr53 Cr54 Mn55 Fe54 Fe56 Fe57 Fe58 Ni58 Ni60 Ni61 Ni62 Ni64 Ag107 Ag109 In113 In115 Cd106 Cd108 Cd110 Cd111 Cd112 Cd113 Cd114 Cd116</nuclides>
-        <scores>nu-fission</scores>
-        <estimator>analog</estimator>
-    </tally>
-    <tally id="10176">
-        <filter bins="10001 10002 10006" type="material" />
-        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
-        <nuclides>O16 O17 N14 N15 Ar36 Ar38 Ar40 C0 Si28 Si29 Si30 Cr50 Cr52 Cr53 Cr54 Mn55 Fe54 Fe56 Fe57 Fe58 Ni58 Ni60 Ni61 Ni62 Ni64 Ag107 Ag109 In113 In115 Cd106 Cd108 Cd110 Cd111 Cd112 Cd113 Cd114 Cd116</nuclides>
-        <scores>nu-fission</scores>
-        <estimator>tracklength</estimator>
-    </tally>
-    <tally id="10188">
-        <filter bins="10003 10007" type="material" />
-        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
-        <nuclides>Si28 Si29 Si30 Cr50 Cr52 Cr53 Cr54 Mn55 Fe54 Fe56 Fe57 Fe58 Ni58 Ni60 Ni61 Ni62 Ni64 B10 B11 H1 H2 O16 O17</nuclides>
-        <scores>total nu-fission</scores>
-        <estimator>tracklength</estimator>
-    </tally>
-    <tally id="10195">
-        <filter bins="10003 10007" type="material" />
-        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
-        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
-        <nuclides>Si28 Si29 Si30 Cr50 Cr52 Cr53 Cr54 Mn55 Fe54 Fe56 Fe57 Fe58 Ni58 Ni60 Ni61 Ni62 Ni64 B10 B11 H1 H2 O16 O17</nuclides>
-        <scores>nu-scatter-P0</scores>
-        <estimator>analog</estimator>
-    </tally>
-    <tally id="10198">
-        <filter bins="10003 10007" type="material" />
-        <filter bins="0.0 20.0" type="energy" />
-        <nuclides>Si28 Si29 Si30 Cr50 Cr52 Cr53 Cr54 Mn55 Fe54 Fe56 Fe57 Fe58 Ni58 Ni60 Ni61 Ni62 Ni64 B10 B11 H1 H2 O16 O17</nuclides>
-        <scores>nu-fission</scores>
-        <estimator>analog</estimator>
-    </tally>
-    <tally id="10199">
-        <filter bins="10003 10007" type="material" />
-        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
-        <nuclides>Si28 Si29 Si30 Cr50 Cr52 Cr53 Cr54 Mn55 Fe54 Fe56 Fe57 Fe58 Ni58 Ni60 Ni61 Ni62 Ni64 B10 B11 H1 H2 O16 O17</nuclides>
-        <scores>nu-fission</scores>
-        <estimator>analog</estimator>
-    </tally>
-    <tally id="10215">
-        <filter bins="10004 10009" type="material" />
-        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
-        <nuclides>C0 Mn55 P31 S32 S33 S34 S36 Si28 Si29 Si30 Ni58 Ni60 Ni61 Ni62 Ni64 Cr50 Cr52 Cr53 Cr54 Mo100 Mo92 Mo94 Mo95 Mo96 Mo97 Mo98 V50 V51 Nb93 Cu63 Cu65 Ca40 Ca42 Ca43 Ca44 Ca46 Ca48 B10 B11 Ti46 Ti47 Ti48 Ti49 Ti50 Al27 Fe54 Fe56 Fe57 Fe58 O16 O17 U234 U235 U238</nuclides>
-        <scores>total nu-fission</scores>
-        <estimator>tracklength</estimator>
-    </tally>
-    <tally id="10222">
-        <filter bins="10004 10009" type="material" />
-        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
-        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
-        <nuclides>C0 Mn55 P31 S32 S33 S34 S36 Si28 Si29 Si30 Ni58 Ni60 Ni61 Ni62 Ni64 Cr50 Cr52 Cr53 Cr54 Mo100 Mo92 Mo94 Mo95 Mo96 Mo97 Mo98 V50 V51 Nb93 Cu63 Cu65 Ca40 Ca42 Ca43 Ca44 Ca46 Ca48 B10 B11 Ti46 Ti47 Ti48 Ti49 Ti50 Al27 Fe54 Fe56 Fe57 Fe58 O16 O17 U234 U235 U238</nuclides>
-        <scores>nu-scatter-P0</scores>
-        <estimator>analog</estimator>
-    </tally>
-    <tally id="10225">
-        <filter bins="10004 10009" type="material" />
-        <filter bins="0.0 20.0" type="energy" />
-        <nuclides>C0 Mn55 P31 S32 S33 S34 S36 Si28 Si29 Si30 Ni58 Ni60 Ni61 Ni62 Ni64 Cr50 Cr52 Cr53 Cr54 Mo100 Mo92 Mo94 Mo95 Mo96 Mo97 Mo98 V50 V51 Nb93 Cu63 Cu65 Ca40 Ca42 Ca43 Ca44 Ca46 Ca48 B10 B11 Ti46 Ti47 Ti48 Ti49 Ti50 Al27 Fe54 Fe56 Fe57 Fe58 O16 O17 U234 U235 U238</nuclides>
-        <scores>nu-fission</scores>
-        <estimator>analog</estimator>
-    </tally>
-    <tally id="10226">
-        <filter bins="10004 10009" type="material" />
-        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
-        <nuclides>C0 Mn55 P31 S32 S33 S34 S36 Si28 Si29 Si30 Ni58 Ni60 Ni61 Ni62 Ni64 Cr50 Cr52 Cr53 Cr54 Mo100 Mo92 Mo94 Mo95 Mo96 Mo97 Mo98 V50 V51 Nb93 Cu63 Cu65 Ca40 Ca42 Ca43 Ca44 Ca46 Ca48 B10 B11 Ti46 Ti47 Ti48 Ti49 Ti50 Al27 Fe54 Fe56 Fe57 Fe58 O16 O17 U234 U235 U238</nuclides>
-        <scores>nu-fission</scores>
-        <estimator>analog</estimator>
-    </tally>
-    <tally id="10163">
-        <filter bins="10005" type="material" />
-        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
-        <nuclides>O16 O17 Cr50 Cr52 Cr53 Cr54 Fe54 Fe56 Fe57 Fe58 Zr90 Zr91 Zr92 Zr94 Zr96 Sn112 Sn114 Sn115 Sn116 Sn117 Sn118 Sn119 Sn120 Sn122 Sn124</nuclides>
-        <scores>total nu-fission</scores>
-        <estimator>tracklength</estimator>
-    </tally>
-    <tally id="10165">
-        <filter bins="10005" type="material" />
-        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
-        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
-        <nuclides>O16 O17 Cr50 Cr52 Cr53 Cr54 Fe54 Fe56 Fe57 Fe58 Zr90 Zr91 Zr92 Zr94 Zr96 Sn112 Sn114 Sn115 Sn116 Sn117 Sn118 Sn119 Sn120 Sn122 Sn124</nuclides>
-        <scores>nu-scatter-P0</scores>
-        <estimator>analog</estimator>
-    </tally>
-    <tally id="10167">
-        <filter bins="10005" type="material" />
-        <filter bins="0.0 20.0" type="energy" />
-        <nuclides>O16 O17 Cr50 Cr52 Cr53 Cr54 Fe54 Fe56 Fe57 Fe58 Zr90 Zr91 Zr92 Zr94 Zr96 Sn112 Sn114 Sn115 Sn116 Sn117 Sn118 Sn119 Sn120 Sn122 Sn124</nuclides>
-        <scores>nu-fission</scores>
-        <estimator>analog</estimator>
-    </tally>
-    <tally id="10168">
-        <filter bins="10005" type="material" />
-        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
-        <nuclides>O16 O17 Cr50 Cr52 Cr53 Cr54 Fe54 Fe56 Fe57 Fe58 Zr90 Zr91 Zr92 Zr94 Zr96 Sn112 Sn114 Sn115 Sn116 Sn117 Sn118 Sn119 Sn120 Sn122 Sn124</nuclides>
-        <scores>nu-fission</scores>
-        <estimator>analog</estimator>
-    </tally>
-    <tally id="10190">
-        <filter bins="10007" type="material" />
-        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
-        <nuclides>B10 B11 H1 H2 O16 O17</nuclides>
-        <scores>nu-fission</scores>
-        <estimator>tracklength</estimator>
-    </tally>
-    <tally id="10206">
-        <filter bins="10008" type="material" />
-        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
-        <nuclides>B10 B11 O16 O17 Si28 Si29 Si30 Al27</nuclides>
-        <scores>total nu-fission</scores>
-        <estimator>tracklength</estimator>
-    </tally>
-    <tally id="10208">
-        <filter bins="10008" type="material" />
-        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
-        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
-        <nuclides>B10 B11 O16 O17 Si28 Si29 Si30 Al27</nuclides>
-        <scores>nu-scatter-P0</scores>
+        <nuclides>B10 B11 H1 H2 O16 O17 Si28 Si29 Si30 Cr50 Cr52 Cr53 Cr54 Mn55 Fe54 Fe56 Fe57 Fe58 Ni58 Ni60 Ni61 Ni62 Ni64 He3 He4 Ag107 Ag109 In113 In115 Cd106 Cd108 Cd110 Cd111 Cd112 Cd113 Cd114 Cd116</nuclides>
+        <scores>nu-scatter-0</scores>
         <estimator>analog</estimator>
     </tally>
     <tally id="10210">
-        <filter bins="10008" type="material" />
+        <filter bins="10000 10003 10006 10007" type="material" />
         <filter bins="0.0 20.0" type="energy" />
-        <nuclides>B10 B11 O16 O17 Si28 Si29 Si30 Al27</nuclides>
+        <nuclides>B10 B11 H1 H2 O16 O17 Si28 Si29 Si30 Cr50 Cr52 Cr53 Cr54 Mn55 Fe54 Fe56 Fe57 Fe58 Ni58 Ni60 Ni61 Ni62 Ni64 He3 He4 Ag107 Ag109 In113 In115 Cd106 Cd108 Cd110 Cd111 Cd112 Cd113 Cd114 Cd116</nuclides>
         <scores>nu-fission</scores>
         <estimator>analog</estimator>
     </tally>
     <tally id="10211">
+        <filter bins="10000 10003 10006 10007" type="material" />
+        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
+        <nuclides>B10 B11 H1 H2 O16 O17 Si28 Si29 Si30 Cr50 Cr52 Cr53 Cr54 Mn55 Fe54 Fe56 Fe57 Fe58 Ni58 Ni60 Ni61 Ni62 Ni64 He3 He4 Ag107 Ag109 In113 In115 Cd106 Cd108 Cd110 Cd111 Cd112 Cd113 Cd114 Cd116</nuclides>
+        <scores>nu-fission</scores>
+        <estimator>analog</estimator>
+    </tally>
+    <tally id="10203">
+        <filter bins="10000 10003 10006 10011" type="material" />
+        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
+        <nuclides>Si28 Si29 Si30 Cr50 Cr52 Cr53 Cr54 Mn55 Fe54 Fe56 Fe57 Fe58 Ni58 Ni60 Ni61 Ni62 Ni64 O16 O17 U234 U235 U238 He3 He4 Ag107 Ag109 In113 In115 Cd106 Cd108 Cd110 Cd111 Cd112 Cd113 Cd114 Cd116</nuclides>
+        <scores>nu-fission total</scores>
+        <estimator>tracklength</estimator>
+    </tally>
+    <tally id="10123">
+        <filter bins="10005" type="material" />
+        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
+        <nuclides>O16 O17 Cr50 Cr52 Cr53 Cr54 Fe54 Fe56 Fe57 Fe58 Zr90 Zr91 Zr92 Zr94 Zr96 Sn112 Sn114 Sn115 Sn116 Sn117 Sn118 Sn119 Sn120 Sn122 Sn124</nuclides>
+        <scores>total nu-fission</scores>
+        <estimator>tracklength</estimator>
+    </tally>
+    <tally id="10125">
+        <filter bins="10005" type="material" />
+        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
+        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
+        <nuclides>O16 O17 Cr50 Cr52 Cr53 Cr54 Fe54 Fe56 Fe57 Fe58 Zr90 Zr91 Zr92 Zr94 Zr96 Sn112 Sn114 Sn115 Sn116 Sn117 Sn118 Sn119 Sn120 Sn122 Sn124</nuclides>
+        <scores>nu-scatter-0</scores>
+        <estimator>analog</estimator>
+    </tally>
+    <tally id="10127">
+        <filter bins="10005" type="material" />
+        <filter bins="0.0 20.0" type="energy" />
+        <nuclides>O16 O17 Cr50 Cr52 Cr53 Cr54 Fe54 Fe56 Fe57 Fe58 Zr90 Zr91 Zr92 Zr94 Zr96 Sn112 Sn114 Sn115 Sn116 Sn117 Sn118 Sn119 Sn120 Sn122 Sn124</nuclides>
+        <scores>nu-fission</scores>
+        <estimator>analog</estimator>
+    </tally>
+    <tally id="10128">
+        <filter bins="10005" type="material" />
+        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
+        <nuclides>O16 O17 Cr50 Cr52 Cr53 Cr54 Fe54 Fe56 Fe57 Fe58 Zr90 Zr91 Zr92 Zr94 Zr96 Sn112 Sn114 Sn115 Sn116 Sn117 Sn118 Sn119 Sn120 Sn122 Sn124</nuclides>
+        <scores>nu-fission</scores>
+        <estimator>analog</estimator>
+    </tally>
+    <tally id="10160">
+        <filter bins="10002 10011" type="material" />
+        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
+        <nuclides>O16 O17 U234 U235 U238 Si28 Si29 Si30 Cr50 Cr52 Cr53 Cr54 Mn55 Fe54 Fe56 Fe57 Fe58 Ni58 Ni60 Ni61 Ni62 Ni64</nuclides>
+        <scores>nu-fission total</scores>
+        <estimator>tracklength</estimator>
+    </tally>
+    <tally id="10167">
+        <filter bins="10002 10011" type="material" />
+        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
+        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
+        <nuclides>O16 O17 U234 U235 U238 Si28 Si29 Si30 Cr50 Cr52 Cr53 Cr54 Mn55 Fe54 Fe56 Fe57 Fe58 Ni58 Ni60 Ni61 Ni62 Ni64</nuclides>
+        <scores>nu-scatter-0</scores>
+        <estimator>analog</estimator>
+    </tally>
+    <tally id="10170">
+        <filter bins="10002 10011" type="material" />
+        <filter bins="0.0 20.0" type="energy" />
+        <nuclides>O16 O17 U234 U235 U238 Si28 Si29 Si30 Cr50 Cr52 Cr53 Cr54 Mn55 Fe54 Fe56 Fe57 Fe58 Ni58 Ni60 Ni61 Ni62 Ni64</nuclides>
+        <scores>nu-fission</scores>
+        <estimator>analog</estimator>
+    </tally>
+    <tally id="10171">
+        <filter bins="10002 10011" type="material" />
+        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
+        <nuclides>O16 O17 U234 U235 U238 Si28 Si29 Si30 Cr50 Cr52 Cr53 Cr54 Mn55 Fe54 Fe56 Fe57 Fe58 Ni58 Ni60 Ni61 Ni62 Ni64</nuclides>
+        <scores>nu-fission</scores>
+        <estimator>analog</estimator>
+    </tally>
+    <tally id="10175">
+        <filter bins="10001 10002" type="material" />
+        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
+        <nuclides>Si28 Si29 Si30 Cr50 Cr52 Cr53 Cr54 Mn55 Fe54 Fe56 Fe57 Fe58 Ni58 Ni60 Ni61 Ni62 Ni64 O16 O17 N14 N15 Ar36 Ar38 Ar40 C0</nuclides>
+        <scores>nu-fission total</scores>
+        <estimator>tracklength</estimator>
+    </tally>
+    <tally id="10177">
+        <filter bins="10001" type="material" />
+        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
+        <nuclides>O16 O17 N14 N15 Ar36 Ar38 Ar40 C0</nuclides>
+        <scores>nu-fission</scores>
+        <estimator>tracklength</estimator>
+    </tally>
+    <tally id="10180">
+        <filter bins="10001" type="material" />
+        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
+        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
+        <nuclides>O16 O17 N14 N15 Ar36 Ar38 Ar40 C0</nuclides>
+        <scores>nu-scatter-0</scores>
+        <estimator>analog</estimator>
+    </tally>
+    <tally id="10182">
+        <filter bins="10001" type="material" />
+        <filter bins="0.0 20.0" type="energy" />
+        <nuclides>O16 O17 N14 N15 Ar36 Ar38 Ar40 C0</nuclides>
+        <scores>nu-fission</scores>
+        <estimator>analog</estimator>
+    </tally>
+    <tally id="10183">
+        <filter bins="10001" type="material" />
+        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
+        <nuclides>O16 O17 N14 N15 Ar36 Ar38 Ar40 C0</nuclides>
+        <scores>nu-fission</scores>
+        <estimator>analog</estimator>
+    </tally>
+    <tally id="10243">
+        <filter bins="10004 10009 10010" type="material" />
+        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
+        <nuclides>O16 O17 U234 U235 U238 C0 Mn55 P31 S32 S33 S34 S36 Si28 Si29 Si30 Ni58 Ni60 Ni61 Ni62 Ni64 Cr50 Cr52 Cr53 Cr54 Mo100 Mo92 Mo94 Mo95 Mo96 Mo97 Mo98 V50 V51 Nb93 Cu63 Cu65 Ca40 Ca42 Ca43 Ca44 Ca46 Ca48 B10 B11 Ti46 Ti47 Ti48 Ti49 Ti50 Al27 Fe54 Fe56 Fe57 Fe58</nuclides>
+        <scores>total nu-fission</scores>
+        <estimator>tracklength</estimator>
+    </tally>
+    <tally id="10250">
+        <filter bins="10004 10009 10010" type="material" />
+        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
+        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
+        <nuclides>O16 O17 U234 U235 U238 C0 Mn55 P31 S32 S33 S34 S36 Si28 Si29 Si30 Ni58 Ni60 Ni61 Ni62 Ni64 Cr50 Cr52 Cr53 Cr54 Mo100 Mo92 Mo94 Mo95 Mo96 Mo97 Mo98 V50 V51 Nb93 Cu63 Cu65 Ca40 Ca42 Ca43 Ca44 Ca46 Ca48 B10 B11 Ti46 Ti47 Ti48 Ti49 Ti50 Al27 Fe54 Fe56 Fe57 Fe58</nuclides>
+        <scores>nu-scatter-0</scores>
+        <estimator>analog</estimator>
+    </tally>
+    <tally id="10253">
+        <filter bins="10004 10009 10010" type="material" />
+        <filter bins="0.0 20.0" type="energy" />
+        <nuclides>O16 O17 U234 U235 U238 C0 Mn55 P31 S32 S33 S34 S36 Si28 Si29 Si30 Ni58 Ni60 Ni61 Ni62 Ni64 Cr50 Cr52 Cr53 Cr54 Mo100 Mo92 Mo94 Mo95 Mo96 Mo97 Mo98 V50 V51 Nb93 Cu63 Cu65 Ca40 Ca42 Ca43 Ca44 Ca46 Ca48 B10 B11 Ti46 Ti47 Ti48 Ti49 Ti50 Al27 Fe54 Fe56 Fe57 Fe58</nuclides>
+        <scores>nu-fission</scores>
+        <estimator>analog</estimator>
+    </tally>
+    <tally id="10254">
+        <filter bins="10004 10009 10010" type="material" />
+        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
+        <nuclides>O16 O17 U234 U235 U238 C0 Mn55 P31 S32 S33 S34 S36 Si28 Si29 Si30 Ni58 Ni60 Ni61 Ni62 Ni64 Cr50 Cr52 Cr53 Cr54 Mo100 Mo92 Mo94 Mo95 Mo96 Mo97 Mo98 V50 V51 Nb93 Cu63 Cu65 Ca40 Ca42 Ca43 Ca44 Ca46 Ca48 B10 B11 Ti46 Ti47 Ti48 Ti49 Ti50 Al27 Fe54 Fe56 Fe57 Fe58</nuclides>
+        <scores>nu-fission</scores>
+        <estimator>analog</estimator>
+    </tally>
+    <tally id="10218">
+        <filter bins="10008" type="material" />
+        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
+        <nuclides>B10 B11 O16 O17 Si28 Si29 Si30 Al27</nuclides>
+        <scores>total nu-fission</scores>
+        <estimator>tracklength</estimator>
+    </tally>
+    <tally id="10220">
+        <filter bins="10008" type="material" />
+        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
+        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
+        <nuclides>B10 B11 O16 O17 Si28 Si29 Si30 Al27</nuclides>
+        <scores>nu-scatter-0</scores>
+        <estimator>analog</estimator>
+    </tally>
+    <tally id="10222">
+        <filter bins="10008" type="material" />
+        <filter bins="0.0 20.0" type="energy" />
+        <nuclides>B10 B11 O16 O17 Si28 Si29 Si30 Al27</nuclides>
+        <scores>nu-fission</scores>
+        <estimator>analog</estimator>
+    </tally>
+    <tally id="10223">
         <filter bins="10008" type="material" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
         <nuclides>B10 B11 O16 O17 Si28 Si29 Si30 Al27</nuclides>
         <scores>nu-fission</scores>
         <estimator>analog</estimator>
     </tally>
-    <tally id="10247">
-        <filter bins="10009 10010 10011" type="material" />
+    <tally id="10245">
+        <filter bins="10004" type="material" />
         <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
-        <nuclides>O16 O17 U234 U235 U238</nuclides>
-        <scores>nu-fission total</scores>
+        <nuclides>C0 Mn55 P31 S32 S33 S34 S36 Si28 Si29 Si30 Ni58 Ni60 Ni61 Ni62 Ni64 Cr50 Cr52 Cr53 Cr54 Mo100 Mo92 Mo94 Mo95 Mo96 Mo97 Mo98 V50 V51 Nb93 Cu63 Cu65 Ca40 Ca42 Ca43 Ca44 Ca46 Ca48 B10 B11 Ti46 Ti47 Ti48 Ti49 Ti50 Al27 Fe54 Fe56 Fe57 Fe58</nuclides>
+        <scores>nu-fission</scores>
         <estimator>tracklength</estimator>
-    </tally>
-    <tally id="10251">
-        <filter bins="10010 10011" type="material" />
-        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energy" />
-        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
-        <nuclides>O16 O17 U234 U235 U238</nuclides>
-        <scores>nu-scatter-P0</scores>
-        <estimator>analog</estimator>
-    </tally>
-    <tally id="10254">
-        <filter bins="10010 10011" type="material" />
-        <filter bins="0.0 20.0" type="energy" />
-        <nuclides>O16 O17 U234 U235 U238</nuclides>
-        <scores>nu-fission</scores>
-        <estimator>analog</estimator>
-    </tally>
-    <tally id="10255">
-        <filter bins="10010 10011" type="material" />
-        <filter bins="0.0 5.8e-08 1.4e-07 2.8e-07 6.25e-07 4e-06 0.00553 0.821 20.0" type="energyout" />
-        <nuclides>O16 O17 U234 U235 U238</nuclides>
-        <scores>nu-fission</scores>
-        <estimator>analog</estimator>
     </tally>
 </tallies>
