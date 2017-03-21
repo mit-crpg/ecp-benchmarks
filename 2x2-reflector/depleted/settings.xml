@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<settings>
+    <run_mode>eigenvalue</run_mode>
+    <particles>120000</particles>
+    <batches>30</batches>
+    <inactive>20</inactive>
+    <source strength="1.0">
+        <space type="box">
+            <parameters>-32.12592 -32.12592 192.5 32.12592 32.12592 197.5</parameters>
+        </space>
+    </source>
+    <seed>4977247288261682019</seed>
+</settings>

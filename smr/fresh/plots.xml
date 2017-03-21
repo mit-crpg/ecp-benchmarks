@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plots>
+    <!--radial slice -->
+    <plot basis="xy" color_by="material" filename="radial_xy_slice" id="10000" type="slice">
+        <origin>0.0 0.0 136.282</origin>
+        <width>268.7955 268.7955</width>
+        <pixels>1000 1000</pixels>
+        <background>255 255 255</background>
+    </plot>
+    <!--axial slice-->
+    <plot basis="xz" color_by="material" filename="axial_xz_slice" id="10001" type="slice">
+        <origin>0.0 0.0 136.282</origin>
+        <width>270.0 272.564</width>
+        <pixels>1000 1000</pixels>
+        <background>255 255 255</background>
+    </plot>
+    <!--assembly grid spacer-->
+    <plot basis="xy" color_by="material" filename="assm_grid_spacer" id="10002" type="slice">
+        <origin>0.0 0.0 102.021</origin>
+        <width>32.25546 32.25546</width>
+        <pixels>2000 2000</pixels>
+        <background>255 255 255</background>
+    </plot>
+    <!--assembly no spacer-->
+    <plot basis="xy" color_by="material" filename="assm_no_spacer" id="10003" type="slice">
+        <origin>0.0 0.0 90.0</origin>
+        <width>32.25546 32.25546</width>
+        <pixels>2000 2000</pixels>
+        <background>255 255 255</background>
+    </plot>
+</plots>
