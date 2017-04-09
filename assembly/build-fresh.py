@@ -97,7 +97,6 @@ plot.width = [10.70864*2, 10.70864*2]
 plot.origin = [0., 0., 195.]
 plot.color_by = 'material'
 plot.filename = 'assembly'
-plot.colors = beavrs.plots.colors_mat
 plot.pixels = [1000, 1000]
 
 plot_file = openmc.Plots([plot])
@@ -105,30 +104,33 @@ plot_file.export_to_xml()
 
 
 ####  Create OpenMC "tallies.xml" file
-
 tallies = openmc.Tallies()
 
 # Extract all fuel materials
-materials = openmc_geometry.get_materials_by_name(name='Fuel 1.6%')
-
-# Create a single tally akin to that used by OpenDeplete
-tally = openmc.Tally(name='depletion tally')
-tally.scores = \
-    ['(n,p)', '(n,a)', '(n,gamma)', 'fission', '(n,2n)', '(n,3n)', '(n,4)']
-tally.nuclides = materials[0].get_nuclides()
+materials = openmc_geometry.get_materials_by_name(name='Fuel', matching=False)
 
 # If using distribcells, create distribcell tally needed for depletion
-if distrib == 'cell':    
+if distrib == 'cell':
     fuel_cells = openmc_geometry.get_cells_by_name(
-        name='enr radial 0: Fuel', case_sensitive=True)
-    tally.filters.append(openmc.DistribcellFilter([fuel_cells[0].id]))
+        name='enr radial 0: Fuel', case_sensitive=True, matching=False)
+    for cell in fuel_cells:
+        tally = openmc.Tally(name='depletion tally')
+        tally.scores = ['(n,p)', '(n,a)', '(n,gamma)',
+                        'fission', '(n,2n)', '(n,3n)', '(n,4n)']
+        tally.nuclides = cell.fill.get_nuclides()
+        tally.filters.append(openmc.DistribcellFilter([cell.id]))
+        tallies.append(tally)
 
 # If using distribmats, create material tally needed for depletion
 elif distrib == 'mat':
+    tally = openmc.Tally(name='depletion tally')
+    tally.scores = ['(n,p)', '(n,a)', '(n,gamma)',
+                    'fission', '(n,2n)', '(n,3n)', '(n,4n)']
+    tally.nuclides = materials[0].get_nuclides()
     material_ids = [material.id for material in materials]
     tally.filters.append(openmc.MaterialFilter(material_ids))
+    tallies.append(tally)
 
-tallies.append(tally)
 tallies.export_to_xml()
 
 

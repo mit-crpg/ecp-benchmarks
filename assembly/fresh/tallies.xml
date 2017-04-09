@@ -3,6 +3,6 @@
     <tally id="10000" name="depletion tally">
         <filter bins="10053" type="distribcell" />
         <nuclides>O16 O17 U234 U235 U238</nuclides>
-        <scores>(n,p) (n,a) (n,gamma) fission (n,2n) (n,3n) (n,4)</scores>
+        <scores>(n,p) (n,a) (n,gamma) fission (n,2n) (n,3n) (n,4n)</scores>
     </tally>
 </tallies>

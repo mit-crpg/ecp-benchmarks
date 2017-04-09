@@ -4,20 +4,5 @@
         <origin>0.0 0.0 195.0</origin>
         <width>21.41728 21.41728</width>
         <pixels>1000 1000</pixels>
-        <color id="10000" rgb="255 255 255" />
-        <color id="10001" rgb="0 0 0" />
-        <color id="10002" rgb="255 0 0" />
-        <color id="10003" rgb="200 50 50" />
-        <color id="10004" rgb="255 218 185" />
-        <color id="10005" rgb="101 101 101" />
-        <color id="10006" rgb="111 111 111" />
-        <color id="10007" rgb="50 50 50" />
-        <color id="10008" rgb="142 35 35" />
-        <color id="10009" rgb="255 215 0" />
-        <color id="10010" rgb="0 0 128" />
-        <color id="10013" rgb="0 255 0" />
-        <color id="10014" rgb="198 226 255" />
-        <color id="10015" rgb="176 196 222" />
-        <color id="10016" rgb="112 128 144" />
     </plot>
 </plots>
