@@ -1,5 +1,6 @@
 import os
 import shutil
+import copy
 
 import numpy as np
 
@@ -10,19 +11,77 @@ from smr.surfaces import lattice_pitch, bottom_fuel_stack, top_active_core
 from smr.core import geometry
 
 
-#### Create OpenMC "geometry.xml" file
-geometry.export_to_xml()
-
-
-#### Create OpenMC "materials.xml" file
-materials.export_to_xml()
-
-
-#### Create OpenMC "settings.xml" file
+#### Query the user for options
 
 # Query the user on whether to use multipole cross sections
 multipole = input('Use multipole cross sections? (y/n): ').lower()
 multipole = (multipole == 'y')
+
+# Query the user on whether to use distribmats or distribcells
+# If using distribmats, the geometry must be "differentiated" with unique
+# material instances for each instance of a fuel cell
+distrib = input('Use distribmat or distribcells? [mat/cell]: ').lower()
+
+if distrib not in ['cell', 'mat']:
+    raise InputError('Distrib type "{}" is unsupported'.format(distrib))
+
+
+#### "Differentiate" the geometry if using distribmats
+if distrib == 'mat':
+
+    # Count the number of instances for each cell and material
+    geometry.determine_paths()
+
+    # Determine the maximum material ID
+    max_material_id = 0
+    for material in geometry.get_all_materials().values():
+        max_material_id = max(max_material_id, material.id)
+
+    # Extract all cells filled by a fuel material
+    fuel_cells = geometry.get_cells_by_name(
+        name='(1.6%) (0)', case_sensitive=True)
+    fuel_cells.extend(geometry.get_cells_by_name(
+        name='(1.6%) grid (bottom) (0)', case_sensitive=True))
+    fuel_cells.extend(geometry.get_cells_by_name(
+        name='(1.6%) grid (intermediate) (0)', case_sensitive=True))
+    fuel_cells.extend(geometry.get_cells_by_name(
+        name='(2.4%) (0)', case_sensitive=True))
+    fuel_cells.extend(geometry.get_cells_by_name(
+        name='(2.4%) grid (bottom) (0)', case_sensitive=True))
+    fuel_cells.extend(geometry.get_cells_by_name(
+        name='(2.4%) grid (intermediate) (0)', case_sensitive=True))
+    fuel_cells.extend(geometry.get_cells_by_name(
+        name='(3.1%) (0)', case_sensitive=True))
+    fuel_cells.extend(geometry.get_cells_by_name(
+        name='(3.1%) grid (bottom) (0)', case_sensitive=True))
+    fuel_cells.extend(geometry.get_cells_by_name(
+        name='(3.1%) grid (intermediate) (0)', case_sensitive=True))
+
+    # Assign distribmats for each material
+    for cell in fuel_cells:
+        new_materials = []
+
+        for i in range(cell.num_instances):
+            new_material = copy.deepcopy(cell.fill)
+            new_material.id = max_material_id + 1
+            max_material_id += 1
+            new_materials.append(new_material)
+
+        # Fill cell with list of "differentiated" materials
+        cell.fill = new_materials
+
+
+#### Create OpenMC "materials.xml" file
+all_materials = geometry.get_all_materials()
+materials = openmc.Materials(all_materials.values())
+materials.export_to_xml()
+
+
+#### Create OpenMC "geometry.xml" file
+geometry.export_to_xml()
+
+
+#### Create OpenMC "settings.xml" file
 
 # Construct uniform initial source distribution over fissionable zones
 lower_left = [-7.*lattice_pitch/2., -7.*lattice_pitch/2., bottom_fuel_stack]
@@ -48,67 +107,54 @@ settings.export_to_xml()
 plots.export_to_xml()
 
 
-#### Create OpenMC MGXS libraries
-
-# Get all cells filled with a "fuel" material
-fuel_cells = []
-for cell in geometry.get_all_material_cells().values():
-    if 'fuel' in cell.fill.name.lower():
-        fuel_cells.append(cell)
-
-# CASMO 8-group structure
-energy_groups = openmc.mgxs.EnergyGroups()
-energy_groups.group_edges = np.array([0., 0.058e-6, 0.14e-6, 0.28e-6,
-                                      0.625e-6, 4.e-6, 5.53e-3, 821.e-3, 20.])
-
-# Initialize a 70-group "distribcell" MGXS library
-cell_mgxs_lib = openmc.mgxs.Library(geometry, by_nuclide=True)
-cell_mgxs_lib.energy_groups = energy_groups
-cell_mgxs_lib.mgxs_types = ['total', 'nu-fission', 'nu-scatter matrix', 'chi']
-cell_mgxs_lib.domain_type = 'distribcell'
-cell_mgxs_lib.domains = fuel_cells
-cell_mgxs_lib.correction = None
-cell_mgxs_lib.build_library()
-
-# Initialize a 70-group "material" MGXS library
-mat_mgxs_lib = openmc.mgxs.Library(geometry, by_nuclide=True)
-mat_mgxs_lib.energy_groups = energy_groups
-mat_mgxs_lib.mgxs_types = ['total', 'nu-fission', 'nu-scatter matrix', 'chi']
-mat_mgxs_lib.domain_type = 'material'
-mat_mgxs_lib.correction = None
-mat_mgxs_lib.build_library()
-
-
-####  Create mesh tallies for verification of pin-wise reaction rates
-
-# Instantiate a tally Mesh
-mesh = openmc.Mesh(name='assembly mesh')
-mesh.type = 'regular'
-mesh.dimension = [7*17, 7*17, 100]
-mesh.lower_left = lower_left
-mesh.width = (np.array(upper_right) - np.array(lower_left))
-mesh.width /= mesh.dimension
-mesh_filter = openmc.MeshFilter(mesh)
-
-# Instantiate energy-integrated fission rate mesh Tally
-fission_rates = openmc.Tally(name='fission rates')
-fission_rates.filters = [mesh_filter]
-fission_rates.scores = ['fission']
-
-# Instantiate energy-wise U-238 capture rate mesh Tally
-capture_rates = openmc.Tally(name='u-238 capture')
-capture_rates.filters = [mesh_filter]
-capture_rates.nuclides = ['U238']
-capture_rates.scores = ['absorption', 'fission']
-
-
 ####  Create OpenMC "tallies.xml" file
+tallies = openmc.Tallies()
 
-# Create a "tallies.xml" file for the mesh tallies
-tallies_file = openmc.Tallies([fission_rates, capture_rates])
-cell_mgxs_lib.add_to_tallies_file(tallies_file, merge=True)
-mat_mgxs_lib.add_to_tallies_file(tallies_file, merge=True)
-tallies_file.export_to_xml()
+# Extract all fuel materials
+materials = geometry.get_materials_by_name(name='Fuel', matching=False)
+
+# If using distribcells, create distribcell tally needed for depletion
+if distrib == 'cell':
+
+    # Extract all cells filled by a fuel material
+    fuel_cells = geometry.get_cells_by_name(
+        name='(1.6%) (0)', case_sensitive=True)
+    fuel_cells.extend(geometry.get_cells_by_name(
+        name='(1.6%) grid (bottom) (0)', case_sensitive=True))
+    fuel_cells.extend(geometry.get_cells_by_name(
+        name='(1.6%) grid (intermediate) (0)', case_sensitive=True))
+    fuel_cells.extend(geometry.get_cells_by_name(
+        name='(2.4%) (0)', case_sensitive=True))
+    fuel_cells.extend(geometry.get_cells_by_name(
+        name='(2.4%) grid (bottom) (0)', case_sensitive=True))
+    fuel_cells.extend(geometry.get_cells_by_name(
+        name='(2.4%) grid (intermediate) (0)', case_sensitive=True))
+    fuel_cells.extend(geometry.get_cells_by_name(
+        name='(3.1%) (0)', case_sensitive=True))
+    fuel_cells.extend(geometry.get_cells_by_name(
+        name='(3.1%) grid (bottom) (0)', case_sensitive=True))
+    fuel_cells.extend(geometry.get_cells_by_name(
+        name='(3.1%) grid (intermediate) (0)', case_sensitive=True))
+
+    for cell in fuel_cells:
+        tally = openmc.Tally(name='depletion tally')
+        tally.scores = ['(n,p)', '(n,a)', '(n,gamma)',
+                        'fission', '(n,2n)', '(n,3n)', '(n,4n)']
+        tally.nuclides = cell.fill.get_nuclides()
+        tally.filters.append(openmc.DistribcellFilter([cell.id]))
+        tallies.append(tally)
+
+# If using distribmats, create material tally needed for depletion
+elif distrib == 'mat':
+    tally = openmc.Tally(name='depletion tally')
+    tally.scores = ['(n,p)', '(n,a)', '(n,gamma)',
+                    'fission', '(n,2n)', '(n,3n)', '(n,4n)']
+    tally.nuclides = materials[0].get_nuclides()
+    material_ids = [material.id for material in materials]
+    tally.filters.append(openmc.MaterialFilter(material_ids))
+    tallies.append(tally)
+
+tallies.export_to_xml()
 
 
 #### Move all XML files to 'fresh' directory
@@ -118,6 +164,6 @@ if not os.path.exists('fresh'):
     
 shutil.move('materials.xml', 'fresh/materials.xml')
 shutil.move('geometry.xml', 'fresh/geometry.xml')
-shutil.move('settings.xml', 'fresh/setting.xml')
+shutil.move('settings.xml', 'fresh/settings.xml')
 shutil.move('tallies.xml', 'fresh/tallies.xml')
 shutil.move('plots.xml', 'fresh/plots.xml')

@@ -9,6 +9,13 @@ import openmc
 from geometry import beavrs, openmc_geometry
 
 
+#### Query the user for options
+
+# Query the user on whether to use multipole cross sections
+multipole = input('Use multipole cross sections? (y/n): ').lower()
+multipole = (multipole == 'y')
+
+
 #### Create OpenMC "materials.xml" file
 beavrs.write_openmc_materials()
 
@@ -18,10 +25,6 @@ openmc_geometry.export_to_xml()
 
 
 #### Create OpenMC "settings.xml" file
-
-# Query the user on whether to use multipole cross sections
-multipole = input('Use multipole cross sections? (y/n): ').lower()
-multipole = (multipole == 'y')
 
 # Construct uniform initial source distribution over fissionable zones
 lower_left = [-0.62992, -0.62992, -10.0]
@@ -61,31 +64,24 @@ plot_file = openmc.Plots([plot])
 plot_file.export_to_xml()
 
 
-#### Create OpenMC MGXS library and "tallies.xml" file
+#### Create a tally akin to that used by OpenDeplete for depletion
 
-# CASMO 70-group structure
-energy_groups = openmc.mgxs.EnergyGroups()
-energy_groups.group_edges = np.array([
-    0, 0.005, 0.01, 0.015, 0.02, 0.025, 0.03, 0.035, 0.042, 0.05, 0.058, 0.067,
-    0.08, 0.1, 0.14, 0.18, 0.22, 0.25, 0.28, 0.3, 0.32, 0.35, 0.4, 0.5, 0.625,
-    0.78, 0.85, 0.91, 0.95, 0.972, 0.996, 1.02, 1.045, 1.071, 1.097, 1.123,
-    1.15, 1.3, 1.5, 1.855, 2.1, 2.6, 3.3, 4., 9.877, 15.968, 27.7, 48.052,
-    75.501, 148.73, 367.26001, 906.90002, 1.4251e3, 2.2395e3, 3.5191e3, 5.53e3,
-    9.118e3, 15.03e3, 24.78e3, 40.85e3, 67.34e3, 111.e3, 183e3, 302.5e3, 500e3,
-    821e3, 1.353e6, 2.231e6, 3.679e6, 6.0655e6, 2e7])
+# Extract all fuel materials
+materials = openmc_geometry.get_materials_by_name(name='Fuel', matching=False)
 
-# Initialize a 70-group MGXS library
-mgxs_lib = openmc.mgxs.Library(openmc_geometry, by_nuclide=True)
-mgxs_lib.energy_groups = energy_groups
-mgxs_lib.mgxs_types = ['total', 'nu-fission', 'nu-scatter matrix', 'chi']
-mgxs_lib.domain_type = 'material'
-mgxs_lib.correction = None
-mgxs_lib.build_library()
+# If using distribmats, create material tally needed for depletion
+tally = openmc.Tally(name='depletion tally')
+tally.scores = ['(n,p)', '(n,a)', '(n,gamma)',
+                'fission', '(n,2n)', '(n,3n)', '(n,4n)']
+tally.nuclides = materials[0].get_nuclides()
+material_ids = [material.id for material in materials]
+tally.filters.append(openmc.MaterialFilter(material_ids))
 
-# Create a "tallies.xml" file for the MGXS Library
-tallies_file = openmc.Tallies()
-mgxs_lib.add_to_tallies_file(tallies_file, merge=True)
-tallies_file.export_to_xml()
+
+####  Create OpenMC "tallies.xml" file
+tallies = openmc.Tallies()
+tallies.append(tally)
+tallies.export_to_xml()
 
 
 #### Move all XML files to 'fresh' directory
