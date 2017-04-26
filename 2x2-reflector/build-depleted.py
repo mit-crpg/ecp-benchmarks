@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from collections import OrderedDict
 import copy
 import os
@@ -17,11 +19,6 @@ height = 5.
 # Count the number of instances for each cell and material
 openmc_geometry.determine_paths()
 
-# Determine the maximum material ID
-max_material_id = 0
-for material in openmc_geometry.get_all_materials().values():
-    max_material_id = max(max_material_id, material.id)
-
 # Extract all cells filled by a fuel material
 fuel_cells = openmc_geometry.get_cells_by_name(
     name='enr radial 0: Fuel', case_sensitive=True)
@@ -31,10 +28,7 @@ for cell in fuel_cells:
     new_materials = []
 
     for i in range(cell.num_instances):
-        new_material = copy.deepcopy(cell.fill)
-        new_material.id = max_material_id + 1
-        max_material_id += 1
-        new_materials.append(new_material)
+        new_materials.append(cell.fill.clone())
 
         # Store volume of burnable fuel rods cells
         new_material.volume = np.pi * radius**2 * height
