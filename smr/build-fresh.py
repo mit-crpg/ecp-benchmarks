@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import os
 import shutil
 import copy
@@ -32,11 +34,6 @@ if distrib == 'mat':
     # Count the number of instances for each cell and material
     geometry.determine_paths()
 
-    # Determine the maximum material ID
-    max_material_id = 0
-    for material in geometry.get_all_materials().values():
-        max_material_id = max(max_material_id, material.id)
-
     # Extract all cells filled by a fuel material
     fuel_cells = geometry.get_cells_by_name(
         name='(1.6%) (0)', case_sensitive=True)
@@ -62,10 +59,7 @@ if distrib == 'mat':
         new_materials = []
 
         for i in range(cell.num_instances):
-            new_material = copy.deepcopy(cell.fill)
-            new_material.id = max_material_id + 1
-            max_material_id += 1
-            new_materials.append(new_material)
+            new_materials.append(cell.fill.clone())
 
         # Fill cell with list of "differentiated" materials
         cell.fill = new_materials

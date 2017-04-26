@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 """Creates a 2D fuel pin with reflective BCs."""
 
 import os
