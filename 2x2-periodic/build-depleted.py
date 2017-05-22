@@ -1,14 +1,9 @@
 #!/usr/bin/env python3
 
-from collections import OrderedDict
-import copy
-import os
-
 import numpy as np
-import openmc
 import opendeplete
 
-from geometry import beavrs, openmc_geometry
+from geometry import openmc_geometry
 
 
 # FIXME: Automatically extract info needed to calculate burnable cell volumes
@@ -31,7 +26,7 @@ for cell in fuel_cells:
     cell.fill = [old_fill.clone() for i in range(n)]
 
     for i in range(n):
-        cell.fill[i].volume =  np.pi * radius**2 * height
+        cell.fill[i].volume = np.pi * radius**2 * height
         cell.fill[i].depletable = True
         cell.fill[i].temperature = 300.0
 

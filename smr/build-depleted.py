@@ -1,14 +1,8 @@
 #!/usr/bin/env python3
 
-from collections import OrderedDict
-import copy
-import os
-
 import numpy as np
-import openmc
 import opendeplete
 
-from smr.materials import materials
 from smr.surfaces import lattice_pitch, bottom_fuel_stack, top_active_core
 from smr.core import geometry
 
@@ -49,7 +43,7 @@ for cell in fuel_cells:
     cell.fill = [old_fill.clone() for i in range(n)]
 
     for i in range(n):
-        cell.fill[i].volume =  np.pi * radius**2 * height
+        cell.fill[i].volume = np.pi * radius**2 * height
         cell.fill[i].depletable = True
         cell.fill[i].temperature = 300.0
 
