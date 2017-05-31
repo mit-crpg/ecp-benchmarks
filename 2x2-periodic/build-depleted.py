@@ -12,7 +12,7 @@ radius = 0.39218
 height = 5.
 
 # Count the number of instances for each cell and material
-num_instances = opendeplete.lomem_num_instances(openmc_geometry)
+openmc_geometry.determine_paths(instances_only=True)
 
 # Extract all cells filled by a fuel material
 fuel_cells = openmc_geometry.get_cells_by_name(
@@ -20,15 +20,11 @@ fuel_cells = openmc_geometry.get_cells_by_name(
 
 # Assign distribmats for each material
 for cell in fuel_cells:
-    old_fill = cell.fill.clone()
+    cell.fill.volume = np.pi * radius**2 * height
+    cell.fill.depletable = True
+    cell.fill.temperature = 300.0
 
-    n = num_instances[cell.id]
-    cell.fill = [old_fill.clone() for i in range(n)]
-
-    for i in range(n):
-        cell.fill[i].volume = np.pi * radius**2 * height
-        cell.fill[i].depletable = True
-        cell.fill[i].temperature = 300.0
+    cell.fill = [cell.fill.clone() for i in range(cell.num_instances)]
 
 # Set temperature for all cells
 cells = openmc_geometry.get_all_cells()
