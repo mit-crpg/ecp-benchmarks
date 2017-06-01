@@ -1,14 +1,9 @@
 #!/usr/bin/env python3
 
-from collections import OrderedDict
-import copy
-import os
-
 import numpy as np
-import openmc
 import opendeplete
 
-from geometry import beavrs, openmc_geometry
+from geometry import openmc_geometry
 
 
 # FIXME: Automatically extract info needed to calculate burnable cell volumes
@@ -17,7 +12,7 @@ radius = 0.39218
 height = 5.
 
 # Count the number of instances for each cell and material
-openmc_geometry.determine_paths()
+openmc_geometry.determine_paths(instances_only=True)
 
 # Extract all cells filled by a fuel material
 fuel_cells = openmc_geometry.get_cells_by_name(
@@ -25,17 +20,17 @@ fuel_cells = openmc_geometry.get_cells_by_name(
 
 # Assign distribmats for each material
 for cell in fuel_cells:
-    new_materials = []
+    cell.fill.volume = np.pi * radius**2 * height
+    cell.fill.depletable = True
+    cell.fill.temperature = 300.0
 
-    for i in range(cell.num_instances):
-        new_materials.append(cell.fill.clone())
+    cell.fill = [cell.fill.clone() for i in range(cell.num_instances)]
 
-        # Store volume of burnable fuel rods cells
-        new_material.volume = np.pi * radius**2 * height
-        new_material.depletable = True
-        new_material.temperature = 300
+# Set temperature for all cells
+cells = openmc_geometry.get_all_cells()
 
-    cell.fill = new_materials
+for cell_id in cells:
+    cells[cell_id].temperature = 300.0
 
 # Create dt vector for 1 month with 5 day timesteps
 dt1 = 5*24*60*60  # 5 days
@@ -45,7 +40,7 @@ dt = np.repeat([dt1], N)
 
 # Create settings variable
 settings = opendeplete.OpenMCSettings()
-settings.openmc_call = ["mpirun", "openmc"]
+settings.openmc_call = "openmc"
 settings.particles = 120000
 settings.batches = 30
 settings.inactive = 20
@@ -61,4 +56,4 @@ settings.output_dir = 'depleted'
 op = opendeplete.OpenMCOperator(openmc_geometry, settings)
 
 # Perform simulation using the MCNPX/MCNP6 algorithm
-opendeplete.integrate(op, opendeplete.ce_cm_c1)
+opendeplete.cecm(op)

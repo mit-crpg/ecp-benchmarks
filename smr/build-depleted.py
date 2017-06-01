@@ -1,14 +1,8 @@
 #!/usr/bin/env python3
 
-from collections import OrderedDict
-import copy
-import os
-
 import numpy as np
-import openmc
 import opendeplete
 
-from smr.materials import materials
 from smr.surfaces import lattice_pitch, bottom_fuel_stack, top_active_core
 from smr.core import geometry
 
@@ -19,7 +13,7 @@ radius = 0.39218
 height = 200.
 
 # Count the number of instances for each cell and material
-geometry.determine_paths()
+geometry.determine_paths(instances_only=True)
 
 # Extract all cells filled by a fuel material
 fuel_cells = geometry.get_cells_by_name(
@@ -43,17 +37,11 @@ fuel_cells.extend(geometry.get_cells_by_name(
 
 # Assign distribmats for each material
 for cell in fuel_cells:
-    new_materials = []
+    cell.fill.volume = np.pi * radius**2 * height
+    cell.fill.depletable = True
+    cell.fill.temperature = 300.0
 
-    for i in range(cell.num_instances):
-        new_materials.append(cell.fill.clone())
-
-        # Store volume of burnable fuel rods cells
-        new_material.volume = np.pi * radius**2 * height
-        new_material.depletable = True
-        new_material.temperature = 300
-
-    cell.fill = new_materials
+    cell.fill = [cell.fill.clone() for i in range(cell.num_instances)]
 
 # Create dt vector for 1 month with 5 day timesteps
 dt1 = 5*24*60*60  # 5 days
@@ -63,7 +51,7 @@ dt = np.repeat([dt1], N)
 
 # Create settings variable
 settings = opendeplete.OpenMCSettings()
-settings.openmc_call = ["mpirun", "openmc"]
+settings.openmc_call = "openmc"
 settings.particles = 1000000
 settings.batches = 200
 settings.inactive = 100
@@ -81,4 +69,4 @@ settings.output_dir = 'depleted'
 op = opendeplete.OpenMCOperator(geometry, settings)
 
 # Perform simulation using the MCNPX/MCNP6 algorithm
-opendeplete.integrate(op, opendeplete.ce_cm_c1)
+opendeplete.cecm(op)
