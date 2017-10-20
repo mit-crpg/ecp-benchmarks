@@ -3,7 +3,7 @@
 import openmc
 
 from .materials import mats
-from .surfaces import surfs
+from .surfaces import surfs, n_rings
 
 
 def make_pin(name, surfaces, materials, grid=None):
@@ -669,36 +669,26 @@ univs['pin plenum grid (intermediate)'] = make_pin(
 
 #### 1.6% ENRICHED FUEL PIN CELL
 
+rings = [surfs['fuel ring {}'.format(i)] for i in range(1, n_rings)]
+fuel_surfaces = rings + [surfs['pellet OR'], surfs['clad IR'],
+                         surfs['clad OR']]
+fuel_mats = [mats['UO2 1.6']]*10 + [mats['He'], mats['Zr'], mats['H2O']]
+
 univs['Fuel (1.6%)'] = make_pin(
     'Fuel (1.6%)',
-    surfaces=[surfs['pellet OR'],
-              surfs['clad IR'],
-              surfs['clad OR']],
-    materials=[mats['UO2 1.6'],
-               mats['He'],
-               mats['Zr'],
-               mats['H2O']])
+    surfaces=fuel_surfaces,
+    materials=fuel_mats)
 
 univs['Fuel (1.6%) grid (bottom)'] = make_pin(
     'Fuel (1.6%) grid (bottom)',
-    surfaces=[surfs['pellet OR'],
-              surfs['clad IR'],
-              surfs['clad OR']],
-    materials=[mats['UO2 1.6'],
-               mats['He'],
-               mats['Zr'],
-               mats['H2O']],
+    surfaces=fuel_surfaces,
+    materials=fuel_mats,
     grid='bottom')
 
 univs['Fuel (1.6%) grid (intermediate)'] = make_pin(
     'Fuel (1.6%) grid (intermediate)',
-    surfaces=[surfs['pellet OR'],
-              surfs['clad IR'],
-              surfs['clad OR']],
-    materials=[mats['UO2 1.6'],
-               mats['He'],
-               mats['Zr'],
-               mats['H2O']],
+    surfaces=fuel_surfaces,
+    materials=fuel_mats,
     grid='intermediate')
 
 # Stack all axial pieces of 1.6% enriched fuel pin cell
@@ -731,36 +721,23 @@ univs['Fuel (1.6%) stack'] = make_stack(
 
 #### 2.4% ENRICHED FUEL PIN CELL
 
+fuel_mats = [mats['UO2 2.4']]*10 + [mats['He'], mats['Zr'], mats['H2O']]
+
 univs['Fuel (2.4%)'] = make_pin(
     'Fuel (2.4%)',
-    surfaces=[surfs['pellet OR'],
-              surfs['clad IR'],
-              surfs['clad OR']],
-    materials=[mats['UO2 2.4'],
-               mats['He'],
-               mats['Zr'],
-               mats['H2O']])
+    surfaces=fuel_surfaces,
+    materials=fuel_mats)
 
 univs['Fuel (2.4%) grid (bottom)'] = make_pin(
     'Fuel (2.4%) grid (bottom)',
-    surfaces=[surfs['pellet OR'],
-              surfs['clad IR'],
-              surfs['clad OR']],
-    materials=[mats['UO2 2.4'],
-               mats['He'],
-               mats['Zr'],
-               mats['H2O']],
+    surfaces=fuel_surfaces,
+    materials=fuel_mats,
     grid='bottom')
 
 univs['Fuel (2.4%) grid (intermediate)'] = make_pin(
     'Fuel (2.4%) grid (intermediate)',
-    surfaces=[surfs['pellet OR'],
-              surfs['clad IR'],
-              surfs['clad OR']],
-    materials=[mats['UO2 2.4'],
-               mats['He'],
-               mats['Zr'],
-               mats['H2O']],
+    surfaces=fuel_surfaces,
+    materials=fuel_mats,
     grid='intermediate')
 
 # Stack all axial pieces of 2.4% enriched fuel pin cell
@@ -793,36 +770,23 @@ univs['Fuel (2.4%) stack'] = make_stack(
 
 #### 3.1% ENRICHED FUEL PIN CELL
 
+fuel_mats = [mats['UO2 3.1']]*10 + [mats['He'], mats['Zr'], mats['H2O']]
+
 univs['Fuel (3.1%)'] = make_pin(
     'Fuel (3.1%)',
-    surfaces=[surfs['pellet OR'],
-              surfs['clad IR'],
-              surfs['clad OR']],
-    materials=[mats['UO2 3.1'],
-               mats['He'],
-               mats['Zr'],
-               mats['H2O']])
+    surfaces=fuel_surfaces,
+    materials=fuel_mats)
 
 univs['Fuel (3.1%) grid (bottom)'] = make_pin(
     'Fuel (3.1%) grid (bottom)',
-    surfaces=[surfs['pellet OR'],
-              surfs['clad IR'],
-              surfs['clad OR']],
-    materials=[mats['UO2 3.1'],
-               mats['He'],
-               mats['Zr'],
-               mats['H2O']],
+    surfaces=fuel_surfaces,
+    materials=fuel_mats,
     grid='bottom')
 
 univs['Fuel (3.1%) grid (intermediate)'] = make_pin(
     'Fuel (3.1%) grid (intermediate)',
-    surfaces=[surfs['pellet OR'],
-              surfs['clad IR'],
-              surfs['clad OR']],
-    materials=[mats['UO2 3.1'],
-               mats['He'],
-               mats['Zr'],
-               mats['H2O']],
+    surfaces=fuel_surfaces,
+    materials=fuel_mats,
     grid='intermediate')
 
 # Stack all axial pieces of 3.1% enriched fuel pin cell
