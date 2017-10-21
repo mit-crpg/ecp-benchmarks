@@ -439,19 +439,36 @@
   <cell id="1215" material="8" name="Assembly (3.1%) no BAs instr lattice axial (6)" region="28 -29 30 -31 ~(24 -25 26 -27) 44 -45" universe="184" />
   <cell id="1216" material="4" name="Assembly (3.1%) no BAs instr lattice axial (7)" region="28 -29 30 -31 ~(24 -25 26 -27) 45 -46" universe="184" />
   <cell id="1217" material="8" name="Assembly (3.1%) no BAs instr lattice axial (last)" region="28 -29 30 -31 ~(24 -25 26 -27) 46" universe="184" />
-  <cell id="1339" material="4" name="heavy reflector SS" universe="207" />
-  <cell fill="244" id="1384" name="Main core" region="-71 81 -80" universe="0" />
-  <cell id="1385" material="4" name="core barrel" region="71 -72 81 -80" universe="0" />
-  <cell id="1386" material="4" name="neutron shield panel NW" region="72 -73 74 -75 81 -80" universe="0" />
-  <cell id="1387" material="8" name="neutron shield panel N" region="72 -73 75 -77 81 -80" universe="0" />
-  <cell id="1388" material="4" name="neutron shield panel SE" region="72 -73 -74 75 81 -80" universe="0" />
-  <cell id="1389" material="8" name="neutron shield panel E" region="72 -73 74 76 81 -80" universe="0" />
-  <cell id="1390" material="4" name="neutron shield panel NE" region="72 -73 76 -77 81 -80" universe="0" />
-  <cell id="1391" material="8" name="neutron shield panel S" region="72 -73 -75 77 81 -80" universe="0" />
-  <cell id="1392" material="4" name="neutron shield panel SW" region="72 -73 -76 77 81 -80" universe="0" />
-  <cell id="1393" material="8" name="neutron shield panel W" region="72 -73 -74 -76 81 -80" universe="0" />
-  <cell id="1394" material="8" name="downcomer" region="73 -78 81 -80" universe="0" />
-  <cell id="1395" material="5" name="reactor pressure vessel" region="78 -79 81 -80" universe="0" />
+  <cell id="1339" material="8" region="-82" universe="207" />
+  <cell id="1340" material="8" region="-83" universe="207" />
+  <cell id="1341" material="8" region="-84" universe="207" />
+  <cell id="1342" material="8" region="-85" universe="207" />
+  <cell id="1343" material="8" region="-86" universe="207" />
+  <cell id="1344" material="8" region="-87" universe="207" />
+  <cell id="1345" material="8" region="-88" universe="207" />
+  <cell id="1346" material="8" region="-89" universe="207" />
+  <cell id="1347" material="8" region="-90" universe="207" />
+  <cell id="1348" material="8" region="-91" universe="207" />
+  <cell id="1349" material="8" region="-92" universe="207" />
+  <cell id="1350" material="8" region="-93" universe="207" />
+  <cell id="1351" material="8" region="-94" universe="207" />
+  <cell id="1352" material="4" name="heavy reflector SS" region="82 83 84 85 86 87 88 89 90 91 92 93 94" universe="207" />
+  <cell fill="207" id="1353" name="heavy reflector NE" rotation="0 180 0" universe="208" />
+  <cell fill="207" id="1354" name="heavy reflector SW" rotation="180 0 0" universe="209" />
+  <cell fill="207" id="1355" name="heavy reflector SE" rotation="0 0 180" universe="210" />
+  <cell id="1356" material="4" name="heavy reflector" universe="211" />
+  <cell fill="212" id="1357" name="Main core" region="-71 81 -80" universe="0" />
+  <cell id="1358" material="4" name="core barrel" region="71 -72 81 -80" universe="0" />
+  <cell id="1359" material="4" name="neutron shield panel NW" region="72 -73 74 -75 81 -80" universe="0" />
+  <cell id="1360" material="8" name="neutron shield panel N" region="72 -73 75 -77 81 -80" universe="0" />
+  <cell id="1361" material="4" name="neutron shield panel SE" region="72 -73 -74 75 81 -80" universe="0" />
+  <cell id="1362" material="8" name="neutron shield panel E" region="72 -73 74 76 81 -80" universe="0" />
+  <cell id="1363" material="4" name="neutron shield panel NE" region="72 -73 76 -77 81 -80" universe="0" />
+  <cell id="1364" material="8" name="neutron shield panel S" region="72 -73 -75 77 81 -80" universe="0" />
+  <cell id="1365" material="4" name="neutron shield panel SW" region="72 -73 -76 77 81 -80" universe="0" />
+  <cell id="1366" material="8" name="neutron shield panel W" region="72 -73 -74 -76 81 -80" universe="0" />
+  <cell id="1367" material="8" name="downcomer" region="73 -78 81 -80" universe="0" />
+  <cell id="1368" material="5" name="reactor pressure vessel" region="78 -79 81 -80" universe="0" />
   <lattice id="125" name="Assembly (1.6%) no BAs instr">
     <pitch>1.25984 1.25984</pitch>
     <dimension>17 17</dimension>
@@ -544,20 +561,20 @@
 106 106 106 106 106 106 106 106 106 106 106 106 106 106 106 106 106 
 106 106 106 106 106 106 106 106 106 106 106 106 106 106 106 106 106 </universes>
   </lattice>
-  <lattice id="244" name="Main core">
+  <lattice id="212" name="Main core">
     <pitch>21.503639999999997 21.503639999999997</pitch>
     <dimension>9 9</dimension>
     <lower_left>-96.76637999999998 -96.76637999999998</lower_left>
     <universes>
-207 207 207 207 207 207 207 207 207 
-207 207 207 184 146 184 207 207 207 
-207 207 184 146 166 146 184 207 207 
-207 184 146 166 146 166 146 184 207 
-207 146 166 146 126 146 166 146 207 
-207 184 146 166 146 166 146 184 207 
-207 207 184 146 166 146 184 207 207 
-207 207 207 184 146 184 207 207 207 
-207 207 207 207 207 207 207 207 207 </universes>
+211 211 211 211 211 211 211 211 211 
+211 211 207 184 146 184 208 211 211 
+211 207 184 146 166 146 184 208 211 
+211 184 146 166 146 166 146 184 211 
+211 146 166 146 126 146 166 146 211 
+211 184 146 166 146 166 146 184 211 
+211 209 184 146 166 146 184 210 211 
+211 211 209 184 146 184 210 211 211 
+211 211 211 211 211 211 211 211 211 </universes>
   </lattice>
   <surface coeffs="0.0 0.0 0.405765" id="1" name="Pellet OR" type="z-cylinder" />
   <surface coeffs="0.0 0.0 0.06459" id="2" name="FR Plenum Spring OR" type="z-cylinder" />
@@ -624,4 +641,17 @@
   <surface boundary="vacuum" coeffs="0.0 0.0 135.0" id="79" name="RPV OR" type="z-cylinder" />
   <surface boundary="vacuum" coeffs="272.564" id="80" name="upper problem boundary" type="z-plane" />
   <surface boundary="vacuum" coeffs="0.0" id="81" name="lower problem boundary" type="z-plane" />
+  <surface coeffs="-9.816879130434781 -6.155027391304348 0.506426304347826" id="82" type="z-cylinder" />
+  <surface coeffs="-4.518880869565217 -6.155027391304348 0.506426304347826" id="83" type="z-cylinder" />
+  <surface coeffs="0.9349408695652173 -6.155027391304348 0.506426304347826" id="84" type="z-cylinder" />
+  <surface coeffs="6.155027391304348 -6.155027391304348 1.1686760869565216" id="85" type="z-cylinder" />
+  <surface coeffs="6.155027391304348 -0.9349408695652173 0.506426304347826" id="86" type="z-cylinder" />
+  <surface coeffs="6.155027391304348 4.518880869565216 0.506426304347826" id="87" type="z-cylinder" />
+  <surface coeffs="6.155027391304348 9.816879130434781 0.506426304347826" id="88" type="z-cylinder" />
+  <surface coeffs="2.5710873913043475 -2.5710873913043475 0.506426304347826" id="89" type="z-cylinder" />
+  <surface coeffs="-2.0257052173913053 -1.246587826086957 0.506426304347826" id="90" type="z-cylinder" />
+  <surface coeffs="1.2465878260869552 2.0257052173913035 0.506426304347826" id="91" type="z-cylinder" />
+  <surface coeffs="-6.544586086956521 0.0 0.506426304347826" id="92" type="z-cylinder" />
+  <surface coeffs="0.0 6.544586086956521 0.506426304347826" id="93" type="z-cylinder" />
+  <surface coeffs="-9.816879130434781 8.49237956521739 0.506426304347826" id="94" type="z-cylinder" />
 </geometry>

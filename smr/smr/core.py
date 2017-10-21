@@ -6,7 +6,7 @@ import openmc
 
 from .materials import mats
 from .surfaces import surfs, lattice_pitch
-from .baffle import univs
+from .reflector import univs
 
 
 #### CONSTRUCT MAIN CORE LATTICE
@@ -23,21 +23,21 @@ universes[0, 5] = univs['heavy reflector']
 universes[0, 6] = univs['heavy reflector']
 
 universes[1, 1] = univs['heavy reflector']
-universes[1, 2] = univs['heavy reflector']
+universes[1, 2] = univs['heavy reflector NW']
 universes[1, 3] = univs['Assembly (3.1%) instr']
 universes[1, 4] = univs['Assembly (2.4%) CR D']
 universes[1, 5] = univs['Assembly (3.1%) instr']
-universes[1, 6] = univs['heavy reflector']
+universes[1, 6] = univs['heavy reflector NE']
 universes[1, 7] = univs['heavy reflector']
 
 universes[2, 0] = univs['heavy reflector']
-universes[2, 1] = univs['heavy reflector']
+universes[2, 1] = univs['heavy reflector NW']
 universes[2, 2] = univs['Assembly (3.1%) instr']
 universes[2, 3] = univs['Assembly (2.4%) CR D']
 universes[2, 4] = univs['Assembly (3.1%) 16BA']
 universes[2, 5] = univs['Assembly (2.4%) CR D']
 universes[2, 6] = univs['Assembly (3.1%) instr']
-universes[2, 7] = univs['heavy reflector']
+universes[2, 7] = univs['heavy reflector NE']
 universes[2, 8] = univs['heavy reflector']
 
 universes[3, 0] = univs['heavy reflector']
@@ -71,21 +71,21 @@ universes[5, 7] = univs['Assembly (3.1%) instr']
 universes[5, 8] = univs['heavy reflector']
 
 universes[6, 0] = univs['heavy reflector']
-universes[6, 1] = univs['heavy reflector']
+universes[6, 1] = univs['heavy reflector SW']
 universes[6, 2] = univs['Assembly (3.1%) instr']
 universes[6, 3] = univs['Assembly (2.4%) CR D']
 universes[6, 4] = univs['Assembly (3.1%) 16BA']
 universes[6, 5] = univs['Assembly (2.4%) CR D']
 universes[6, 6] = univs['Assembly (3.1%) instr']
-universes[6, 7] = univs['heavy reflector']
+universes[6, 7] = univs['heavy reflector SE']
 universes[6, 8] = univs['heavy reflector']
 
 universes[7, 1] = univs['heavy reflector']
-universes[7, 2] = univs['heavy reflector']
+universes[7, 2] = univs['heavy reflector SW']
 universes[7, 3] = univs['Assembly (3.1%) instr']
 universes[7, 4] = univs['Assembly (2.4%) CR D']
 universes[7, 5] = univs['Assembly (3.1%) instr']
-universes[7, 6] = univs['heavy reflector']
+universes[7, 6] = univs['heavy reflector SE']
 universes[7, 7] = univs['heavy reflector']
 
 universes[8, 2] = univs['heavy reflector']
