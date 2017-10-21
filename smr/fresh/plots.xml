@@ -3,7 +3,7 @@
   <!--radial slice -->
   <plot basis="xy" color_by="material" filename="radial_xy_slice" id="1" type="slice">
     <origin>0.0 0.0 136.282</origin>
-    <width>268.7955 268.7955</width>
+    <width>268.79549999999995 268.79549999999995</width>
     <pixels>1000 1000</pixels>
     <background>255 255 255</background>
     <color id="1" rgb="255 218 185" />

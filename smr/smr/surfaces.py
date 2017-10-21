@@ -14,6 +14,7 @@ from math import tan, pi
 
 import openmc
 
+INCHES = 2.54
 
 # Notation
 # GT: Guide Tube
@@ -26,17 +27,24 @@ import openmc
 # FA: Fuel Assembly
 # RPV: Reactor Pressure Vessel
 
+# fuel rod parameters
+pellet_OR          = 0.3195*INCHES/2  # DC, Table 4.1-2
+clad_IR            = 0.326*INCHES/2   # DC, Table 4.1-2
+clad_OR            = 0.374*INCHES/2   # DC, Table 4.1-2
+active_fuel_length = 78.74*INCHES     # DC, Figure 4.2-10
+plenum_length      = 5.311*INCHES     # DC, Figure 4.2-10
+fuel_rod_length    = 85.00*INCHES     # Table 4.1-2
+lower_end_cap      = 0.575*INCHES     # ML17007A001, Table 3-2
+
 # pin cell parameters
-pellet_OR          = 0.405765
-clad_IR            = 0.41402
-clad_OR            = 0.47498
-guide_tube_IR      = 0.5715
-guide_tube_OR      = 0.61214
-guide_tube_dash_IR = 0.54019
-guide_tube_dash_OR = 0.61214
-control_poison_OR  = 0.43310
-control_rod_IR     = 0.43688
-control_rod_OR     = 0.48387
+guide_tube_IR      = 0.450*INCHES/2  # DC, Table 4.1-2
+guide_tube_OR      = 0.482*INCHES/2  # DC, Table 4.1-2
+guide_tube_dash_IR = 0.397*INCHES/2  # DC, Table 4.1-2
+guide_tube_dash_OR = guide_tube_OR
+boron_carbide_OR   = 0.333*INCHES/2  # DC, Table 4.1-3
+ag_in_cd_OR        = 0.336*INCHES/2  # DC, Table 4.1-3
+control_rod_IR     = 0.344*INCHES/2  # DC, Table 4.1-3
+control_rod_OR     = 0.381*INCHES/2  # DC, Table 4.1-3
 burn_abs_r1        = 0.21400
 burn_abs_r2        = 0.23051
 burn_abs_r3        = 0.24130
@@ -45,25 +53,29 @@ burn_abs_r5        = 0.43688
 burn_abs_r6        = 0.48387
 burn_abs_r7        = 0.56134
 burn_abs_r8        = 0.60198
-instr_tube_IR      = 0.5715
-instr_tube_OR      = 0.61214
-plenum_spring_OR   = 0.06459
+instr_tube_IR      = 0.450*INCHES/2  # ML17007A001, Table 3-1
+instr_tube_OR      = 0.482*INCHES/2  # ML17007A001, Table 3-1
+plenum_spring_OR   = 0.06459  # Estimate, actual is ECI
 
 # grid spacer parameters
 rod_grid_side    = 1.24416
+spacer_height = 1.750*INCHES  # DC, Figure 4.2-7
 
-# lattice parameters
-pin_pitch          = 1.25984
-lattice_pitch      = 21.50364
+# assembly parameters
+assembly_length = 95.89*INCHES  # DC, Table 4.1-2
+pin_pitch          = 0.496*INCHES  # DC, Table 4.1-2
+lattice_pitch      = 8.466*INCHES  # DC, Table 4.1-2
 grid_strap_side    = 21.47270
+top_nozzle_height   = 3.551*INCHES  # DC, Figure 4.2-2
+top_nozzle_width    = 8.406*INCHES  # DC, Figure 4.2-2
 
 # core radial parameters
-core_barrel_IR     = 85.0
-core_barrel_OR     = 90.0
-neutron_shield_OR  = 92.0
+core_barrel_IR     = 74*INCHES/2  # DC, Table 4.1-2
+core_barrel_OR     = 78*INCHES/2  # DC, Table 4.1-2
+neutron_shield_OR  = core_barrel_OR + 2.0
 baffle_width       = 2.2225
-rpv_IR             = 120.0
-rpv_OR             = 135.0
+rpv_IR             = 120.0  # Estimate?
+rpv_OR             = 135.0  # Estimate?
 
 # axial parameters
 lowest_extent        =      0.000
@@ -131,7 +143,7 @@ surfs['GT dashpot IR'] = openmc.ZCylinder(
 surfs['GT dashpot OR'] = openmc.ZCylinder(
     R=guide_tube_dash_OR, name='GT OR (at dashpot)')
 surfs['CP OR'] = openmc.ZCylinder(
-    R=control_poison_OR, name='Control Poison OR')
+    R=boron_carbide_OR, name='Control Poison OR')
 surfs['CR IR'] = openmc.ZCylinder(
     R=control_rod_IR, name='CR Clad IR')
 surfs['CR OR'] = openmc.ZCylinder(

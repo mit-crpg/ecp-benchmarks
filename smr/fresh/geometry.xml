@@ -588,105 +588,105 @@
 106 106 106 106 106 106 106 106 106 106 106 106 106 106 106 106 106 </universes>
   </lattice>
   <lattice id="208" name="baffle south">
-    <pitch>10.75182 10.75182</pitch>
+    <pitch>10.751819999999999 10.751819999999999</pitch>
     <dimension>2 2</dimension>
-    <lower_left>-10.75182 -10.75182</lower_left>
+    <lower_left>-10.751819999999999 -10.751819999999999</lower_left>
     <universes>
 207 207 
 1 1 </universes>
   </lattice>
   <lattice id="211" name="baffle north">
-    <pitch>10.75182 10.75182</pitch>
+    <pitch>10.751819999999999 10.751819999999999</pitch>
     <dimension>2 2</dimension>
-    <lower_left>-10.75182 -10.75182</lower_left>
+    <lower_left>-10.751819999999999 -10.751819999999999</lower_left>
     <universes>
 1 1 
 210 210 </universes>
   </lattice>
   <lattice id="214" name="baffle west">
-    <pitch>10.75182 10.75182</pitch>
+    <pitch>10.751819999999999 10.751819999999999</pitch>
     <dimension>2 2</dimension>
-    <lower_left>-10.75182 -10.75182</lower_left>
+    <lower_left>-10.751819999999999 -10.751819999999999</lower_left>
     <universes>
 1 213 
 1 213 </universes>
   </lattice>
   <lattice id="217" name="baffle east">
-    <pitch>10.75182 10.75182</pitch>
+    <pitch>10.751819999999999 10.751819999999999</pitch>
     <dimension>2 2</dimension>
-    <lower_left>-10.75182 -10.75182</lower_left>
+    <lower_left>-10.751819999999999 -10.751819999999999</lower_left>
     <universes>
 216 1 
 216 1 </universes>
   </lattice>
   <lattice id="220" name="baffle southeast">
-    <pitch>10.75182 10.75182</pitch>
+    <pitch>10.751819999999999 10.751819999999999</pitch>
     <dimension>2 2</dimension>
-    <lower_left>-10.75182 -10.75182</lower_left>
+    <lower_left>-10.751819999999999 -10.751819999999999</lower_left>
     <universes>
 219 207 
 216 1 </universes>
   </lattice>
   <lattice id="223" name="baffle southwest">
-    <pitch>10.75182 10.75182</pitch>
+    <pitch>10.751819999999999 10.751819999999999</pitch>
     <dimension>2 2</dimension>
-    <lower_left>-10.75182 -10.75182</lower_left>
+    <lower_left>-10.751819999999999 -10.751819999999999</lower_left>
     <universes>
 207 222 
 1 213 </universes>
   </lattice>
   <lattice id="226" name="baffle northeast">
-    <pitch>10.75182 10.75182</pitch>
+    <pitch>10.751819999999999 10.751819999999999</pitch>
     <dimension>2 2</dimension>
-    <lower_left>-10.75182 -10.75182</lower_left>
+    <lower_left>-10.751819999999999 -10.751819999999999</lower_left>
     <universes>
 216 1 
 225 210 </universes>
   </lattice>
   <lattice id="229" name="baffle northwest">
-    <pitch>10.75182 10.75182</pitch>
+    <pitch>10.751819999999999 10.751819999999999</pitch>
     <dimension>2 2</dimension>
-    <lower_left>-10.75182 -10.75182</lower_left>
+    <lower_left>-10.751819999999999 -10.751819999999999</lower_left>
     <universes>
 1 213 
 210 228 </universes>
   </lattice>
   <lattice id="232" name="baffle southeast corner">
-    <pitch>10.75182 10.75182</pitch>
+    <pitch>10.751819999999999 10.751819999999999</pitch>
     <dimension>2 2</dimension>
-    <lower_left>-10.75182 -10.75182</lower_left>
+    <lower_left>-10.751819999999999 -10.751819999999999</lower_left>
     <universes>
 231 1 
 1 1 </universes>
   </lattice>
   <lattice id="235" name="baffle southwest corner">
-    <pitch>10.75182 10.75182</pitch>
+    <pitch>10.751819999999999 10.751819999999999</pitch>
     <dimension>2 2</dimension>
-    <lower_left>-10.75182 -10.75182</lower_left>
+    <lower_left>-10.751819999999999 -10.751819999999999</lower_left>
     <universes>
 1 234 
 1 1 </universes>
   </lattice>
   <lattice id="238" name="baffle northwest corner">
-    <pitch>10.75182 10.75182</pitch>
+    <pitch>10.751819999999999 10.751819999999999</pitch>
     <dimension>2 2</dimension>
-    <lower_left>-10.75182 -10.75182</lower_left>
+    <lower_left>-10.751819999999999 -10.751819999999999</lower_left>
     <universes>
 1 1 
 1 237 </universes>
   </lattice>
   <lattice id="241" name="baffle northeast corner">
-    <pitch>10.75182 10.75182</pitch>
+    <pitch>10.751819999999999 10.751819999999999</pitch>
     <dimension>2 2</dimension>
-    <lower_left>-10.75182 -10.75182</lower_left>
+    <lower_left>-10.751819999999999 -10.751819999999999</lower_left>
     <universes>
 1 1 
 240 1 </universes>
   </lattice>
   <lattice id="243" name="Main core">
-    <pitch>21.50364 21.50364</pitch>
+    <pitch>21.503639999999997 21.503639999999997</pitch>
     <dimension>19 19</dimension>
-    <lower_left>-204.28458 -204.28458</lower_left>
+    <lower_left>-204.28457999999998 -204.28457999999998</lower_left>
     <universes>
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
@@ -714,9 +714,9 @@
   <surface coeffs="0.0 0.0 0.47498" id="4" name="Clad OR" type="z-cylinder" />
   <surface coeffs="0.0 0.0 0.5715" id="5" name="GT IR (above dashpot)" type="z-cylinder" />
   <surface coeffs="0.0 0.0 0.61214" id="6" name="GT OR (above dashpot)" type="z-cylinder" />
-  <surface coeffs="0.0 0.0 0.54019" id="7" name="GT IR (at dashpot)" type="z-cylinder" />
+  <surface coeffs="0.0 0.0 0.50419" id="7" name="GT IR (at dashpot)" type="z-cylinder" />
   <surface coeffs="0.0 0.0 0.61214" id="8" name="GT OR (at dashpot)" type="z-cylinder" />
-  <surface coeffs="0.0 0.0 0.4331" id="9" name="Control Poison OR" type="z-cylinder" />
+  <surface coeffs="0.0 0.0 0.42291" id="9" name="Control Poison OR" type="z-cylinder" />
   <surface coeffs="0.0 0.0 0.43688" id="10" name="CR Clad IR" type="z-cylinder" />
   <surface coeffs="0.0 0.0 0.48387" id="11" name="CR Clad OR" type="z-cylinder" />
   <surface coeffs="0.0 0.0 0.214" id="12" name="BA IR 1" type="z-cylinder" />
@@ -762,9 +762,9 @@
   <surface coeffs="252.564" id="52" name="top upper nozzle" type="z-plane" />
   <surface coeffs="786.348" id="69" name="CR bank D top" type="z-plane" />
   <surface coeffs="405.713" id="70" name="CR bank D bottom" type="z-plane" />
-  <surface coeffs="0.0 0.0 85.0" id="71" name="core barrel IR" type="z-cylinder" />
-  <surface coeffs="0.0 0.0 90.0" id="72" name="core barrel OR" type="z-cylinder" />
-  <surface coeffs="0.0 0.0 92.0" id="73" name="neutron shield OR" type="z-cylinder" />
+  <surface coeffs="0.0 0.0 93.98" id="71" name="core barrel IR" type="z-cylinder" />
+  <surface coeffs="0.0 0.0 99.06" id="72" name="core barrel OR" type="z-cylinder" />
+  <surface coeffs="0.0 0.0 101.06" id="73" name="neutron shield OR" type="z-cylinder" />
   <surface coeffs="1.0 1.7320508075688767 0.0 0.0" id="74" name="neutron shield NWbot SEtop" type="plane" />
   <surface coeffs="1.0 0.5773502691896257 0.0 0.0" id="75" name="neutron shield NWtop SEbot" type="plane" />
   <surface coeffs="1.0 -1.7320508075688767 0.0 0.0" id="76" name="neutron shield NEbot SWtop" type="plane" />
@@ -773,8 +773,8 @@
   <surface boundary="vacuum" coeffs="0.0 0.0 135.0" id="79" name="RPV OR" type="z-cylinder" />
   <surface boundary="vacuum" coeffs="272.564" id="80" name="upper problem boundary" type="z-plane" />
   <surface boundary="vacuum" coeffs="0.0" id="81" name="lower problem boundary" type="z-plane" />
-  <surface coeffs="3.15341" id="82" name="baffle north" type="y-plane" />
-  <surface coeffs="-3.15341" id="83" name="baffle south" type="y-plane" />
-  <surface coeffs="3.15341" id="84" name="baffle east" type="x-plane" />
-  <surface coeffs="-3.15341" id="85" name="baffle west" type="x-plane" />
+  <surface coeffs="3.153409999999999" id="82" name="baffle north" type="y-plane" />
+  <surface coeffs="-3.153409999999999" id="83" name="baffle south" type="y-plane" />
+  <surface coeffs="3.153409999999999" id="84" name="baffle east" type="x-plane" />
+  <surface coeffs="-3.153409999999999" id="85" name="baffle west" type="x-plane" />
 </geometry>
