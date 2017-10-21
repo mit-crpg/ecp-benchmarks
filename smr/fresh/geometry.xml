@@ -452,23 +452,82 @@
   <cell id="1349" material="8" region="-92" universe="207" />
   <cell id="1350" material="8" region="-93" universe="207" />
   <cell id="1351" material="8" region="-94" universe="207" />
-  <cell id="1352" material="4" name="heavy reflector SS" region="82 83 84 85 86 87 88 89 90 91 92 93 94" universe="207" />
-  <cell fill="207" id="1353" name="heavy reflector NE" rotation="0 180 0" universe="208" />
-  <cell fill="207" id="1354" name="heavy reflector SW" rotation="180 0 0" universe="209" />
-  <cell fill="207" id="1355" name="heavy reflector SE" rotation="0 0 180" universe="210" />
-  <cell id="1356" material="4" name="heavy reflector" universe="211" />
-  <cell fill="212" id="1357" name="Main core" region="-71 81 -80" universe="0" />
-  <cell id="1358" material="4" name="core barrel" region="71 -72 81 -80" universe="0" />
-  <cell id="1359" material="4" name="neutron shield panel NW" region="72 -73 74 -75 81 -80" universe="0" />
-  <cell id="1360" material="8" name="neutron shield panel N" region="72 -73 75 -77 81 -80" universe="0" />
-  <cell id="1361" material="4" name="neutron shield panel SE" region="72 -73 -74 75 81 -80" universe="0" />
-  <cell id="1362" material="8" name="neutron shield panel E" region="72 -73 74 76 81 -80" universe="0" />
-  <cell id="1363" material="4" name="neutron shield panel NE" region="72 -73 76 -77 81 -80" universe="0" />
-  <cell id="1364" material="8" name="neutron shield panel S" region="72 -73 -75 77 81 -80" universe="0" />
-  <cell id="1365" material="4" name="neutron shield panel SW" region="72 -73 -76 77 81 -80" universe="0" />
-  <cell id="1366" material="8" name="neutron shield panel W" region="72 -73 -74 -76 81 -80" universe="0" />
-  <cell id="1367" material="8" name="downcomer" region="73 -78 81 -80" universe="0" />
-  <cell id="1368" material="5" name="reactor pressure vessel" region="78 -79 81 -80" universe="0" />
+  <cell id="1352" material="4" name="heavy reflector NW SS" region="82 83 84 85 86 87 88 89 90 91 92 93 94" universe="207" />
+  <cell id="1353" material="8" region="-95" universe="208" />
+  <cell id="1354" material="8" region="-96" universe="208" />
+  <cell id="1355" material="8" region="-97" universe="208" />
+  <cell id="1356" material="4" name="heavy reflector 1,1 SS" region="95 96 97" universe="208" />
+  <cell id="1357" material="8" region="-98" universe="209" />
+  <cell id="1358" material="8" region="-99" universe="209" />
+  <cell id="1359" material="8" region="-100" universe="209" />
+  <cell id="1360" material="8" region="-101" universe="209" />
+  <cell id="1361" material="8" region="-102" universe="209" />
+  <cell id="1362" material="8" region="-103" universe="209" />
+  <cell id="1363" material="8" region="-104" universe="209" />
+  <cell id="1364" material="8" region="-105" universe="209" />
+  <cell id="1365" material="8" region="-106" universe="209" />
+  <cell id="1366" material="8" region="-107" universe="209" />
+  <cell id="1367" material="8" region="-108" universe="209" />
+  <cell id="1368" material="4" name="heavy reflector 4,0 SS" region="98 99 100 101 102 103 104 105 106 107 108" universe="209" />
+  <cell id="1369" material="8" region="-109" universe="210" />
+  <cell id="1370" material="8" region="-110" universe="210" />
+  <cell id="1371" material="8" region="-111" universe="210" />
+  <cell id="1372" material="8" region="-112" universe="210" />
+  <cell id="1373" material="8" region="-113" universe="210" />
+  <cell id="1374" material="8" region="-114" universe="210" />
+  <cell id="1375" material="8" region="-115" universe="210" />
+  <cell id="1376" material="8" region="-116" universe="210" />
+  <cell id="1377" material="8" region="-117" universe="210" />
+  <cell id="1378" material="8" region="-118" universe="210" />
+  <cell id="1379" material="4" name="heavy reflector 3,0 SS" region="109 110 111 112 113 114 115 116 117 118" universe="210" />
+  <cell id="1380" material="8" region="-119" universe="211" />
+  <cell id="1381" material="8" region="-120" universe="211" />
+  <cell id="1382" material="8" region="-121" universe="211" />
+  <cell id="1383" material="8" region="-122" universe="211" />
+  <cell id="1384" material="8" region="-123" universe="211" />
+  <cell id="1385" material="8" region="-124" universe="211" />
+  <cell id="1386" material="8" region="-125" universe="211" />
+  <cell id="1387" material="8" region="-126" universe="211" />
+  <cell id="1388" material="8" region="-127" universe="211" />
+  <cell id="1389" material="8" region="-128" universe="211" />
+  <cell id="1390" material="4" name="heavy reflector 5,0 SS" region="119 120 121 122 123 124 125 126 127 128" universe="211" />
+  <cell id="1391" material="8" region="-129" universe="212" />
+  <cell id="1392" material="4" name="heavy reflector 2,0 SS" region="129" universe="212" />
+  <cell fill="207" id="1393" name="heavy reflector NE" rotation="0 0 -90" universe="213" />
+  <cell fill="207" id="1394" name="heavy reflector SW" rotation="0 0 90" universe="214" />
+  <cell fill="207" id="1395" name="heavy reflector SE" rotation="0 0 180" universe="215" />
+  <cell fill="212" id="1396" name="heavy reflector 0,2" rotation="0 180 -90" universe="216" />
+  <cell fill="211" id="1397" name="heavy reflector 0,3" rotation="0 0 -90" universe="217" />
+  <cell fill="209" id="1398" name="heavy reflector 0,4" rotation="0 0 -90" universe="218" />
+  <cell fill="210" id="1399" name="heavy reflector 0,5" rotation="0 0 -90" universe="219" />
+  <cell fill="212" id="1400" name="heavy reflector 0,6" rotation="0 0 -90" universe="220" />
+  <cell fill="208" id="1401" name="heavy reflector 1,7" rotation="0 0 -90" universe="221" />
+  <cell fill="212" id="1402" name="heavy reflector 2,8" rotation="0 180 0" universe="222" />
+  <cell fill="210" id="1403" name="heavy reflector 3,8" rotation="0 180 0" universe="223" />
+  <cell fill="209" id="1404" name="heavy reflector 4,8" rotation="0 180 0" universe="224" />
+  <cell fill="210" id="1405" name="heavy reflector 5,8" rotation="0 0 180" universe="225" />
+  <cell fill="212" id="1406" name="heavy reflector 6,0" rotation="180 0 0" universe="226" />
+  <cell fill="212" id="1407" name="heavy reflector 6,8" rotation="0 0 180" universe="227" />
+  <cell fill="208" id="1408" name="heavy reflector 7,1" rotation="180 0 0" universe="228" />
+  <cell fill="208" id="1409" name="heavy reflector 7,7" rotation="0 0 180" universe="229" />
+  <cell fill="212" id="1410" name="heavy reflector 8,2" rotation="0 0 90" universe="230" />
+  <cell fill="210" id="1411" name="heavy reflector 8,3" rotation="0 0 90" universe="231" />
+  <cell fill="209" id="1412" name="heavy reflector 8,4" rotation="0 0 90" universe="232" />
+  <cell fill="211" id="1413" name="heavy reflector 8,5" rotation="0 0 90" universe="233" />
+  <cell fill="212" id="1414" name="heavy reflector 8,6" rotation="0 0 180" universe="234" />
+  <cell id="1415" material="4" name="heavy reflector" universe="235" />
+  <cell fill="236" id="1416" name="Main core" region="-71 81 -80" universe="0" />
+  <cell id="1417" material="4" name="core barrel" region="71 -72 81 -80" universe="0" />
+  <cell id="1418" material="4" name="neutron shield panel NW" region="72 -73 74 -75 81 -80" universe="0" />
+  <cell id="1419" material="8" name="neutron shield panel N" region="72 -73 75 -77 81 -80" universe="0" />
+  <cell id="1420" material="4" name="neutron shield panel SE" region="72 -73 -74 75 81 -80" universe="0" />
+  <cell id="1421" material="8" name="neutron shield panel E" region="72 -73 74 76 81 -80" universe="0" />
+  <cell id="1422" material="4" name="neutron shield panel NE" region="72 -73 76 -77 81 -80" universe="0" />
+  <cell id="1423" material="8" name="neutron shield panel S" region="72 -73 -75 77 81 -80" universe="0" />
+  <cell id="1424" material="4" name="neutron shield panel SW" region="72 -73 -76 77 81 -80" universe="0" />
+  <cell id="1425" material="8" name="neutron shield panel W" region="72 -73 -74 -76 81 -80" universe="0" />
+  <cell id="1426" material="8" name="downcomer" region="73 -78 81 -80" universe="0" />
+  <cell id="1427" material="5" name="reactor pressure vessel" region="78 -79 81 -80" universe="0" />
   <lattice id="125" name="Assembly (1.6%) no BAs instr">
     <pitch>1.25984 1.25984</pitch>
     <dimension>17 17</dimension>
@@ -561,20 +620,20 @@
 106 106 106 106 106 106 106 106 106 106 106 106 106 106 106 106 106 
 106 106 106 106 106 106 106 106 106 106 106 106 106 106 106 106 106 </universes>
   </lattice>
-  <lattice id="212" name="Main core">
+  <lattice id="236" name="Main core">
     <pitch>21.503639999999997 21.503639999999997</pitch>
     <dimension>9 9</dimension>
     <lower_left>-96.76637999999998 -96.76637999999998</lower_left>
     <universes>
-211 211 211 211 211 211 211 211 211 
-211 211 207 184 146 184 208 211 211 
-211 207 184 146 166 146 184 208 211 
-211 184 146 166 146 166 146 184 211 
-211 146 166 146 126 146 166 146 211 
-211 184 146 166 146 166 146 184 211 
-211 209 184 146 166 146 184 210 211 
-211 211 209 184 146 184 210 211 211 
-211 211 211 211 211 211 211 211 211 </universes>
+235 235 216 217 218 219 220 235 235 
+235 208 207 184 146 184 213 221 235 
+212 207 184 146 166 146 184 213 222 
+210 184 146 166 146 166 146 184 223 
+209 146 166 146 126 146 166 146 224 
+211 184 146 166 146 166 146 184 225 
+226 214 184 146 166 146 184 215 227 
+235 228 214 184 146 184 215 229 235 
+235 235 230 231 232 233 234 235 235 </universes>
   </lattice>
   <surface coeffs="0.0 0.0 0.405765" id="1" name="Pellet OR" type="z-cylinder" />
   <surface coeffs="0.0 0.0 0.06459" id="2" name="FR Plenum Spring OR" type="z-cylinder" />
@@ -654,4 +713,39 @@
   <surface coeffs="-6.544586086956521 0.0 0.506426304347826" id="92" type="z-cylinder" />
   <surface coeffs="0.0 6.544586086956521 0.506426304347826" id="93" type="z-cylinder" />
   <surface coeffs="-9.816879130434781 8.49237956521739 0.506426304347826" id="94" type="z-cylinder" />
+  <surface coeffs="6.155027391304348 -6.155027391304348 0.506426304347826" id="95" type="z-cylinder" />
+  <surface coeffs="2.726910869565218 1.402411304347826 0.506426304347826" id="96" type="z-cylinder" />
+  <surface coeffs="-1.5582347826086949 -2.726910869565218 0.506426304347826" id="97" type="z-cylinder" />
+  <surface coeffs="6.232939130434779 0 0.506426304347826" id="98" type="z-cylinder" />
+  <surface coeffs="6.232939130434779 5.2200865217391295 0.506426304347826" id="99" type="z-cylinder" />
+  <surface coeffs="6.232939130434779 10.440173043478259 0.506426304347826" id="100" type="z-cylinder" />
+  <surface coeffs="6.232939130434779 -5.2200865217391295 0.506426304347826" id="101" type="z-cylinder" />
+  <surface coeffs="6.232939130434779 -10.440173043478259 0.506426304347826" id="102" type="z-cylinder" />
+  <surface coeffs="1.5582347826086949 2.6100432608695647 0.506426304347826" id="103" type="z-cylinder" />
+  <surface coeffs="1.5582347826086949 7.830129782608694 0.506426304347826" id="104" type="z-cylinder" />
+  <surface coeffs="1.5582347826086949 -2.6100432608695647 0.506426304347826" id="105" type="z-cylinder" />
+  <surface coeffs="1.5582347826086949 -7.830129782608694 0.506426304347826" id="106" type="z-cylinder" />
+  <surface coeffs="-2.726910869565218 5.921292173913042 0.506426304347826" id="107" type="z-cylinder" />
+  <surface coeffs="-2.726910869565218 -5.921292173913042 0.506426304347826" id="108" type="z-cylinder" />
+  <surface coeffs="6.232939130434779 -11.063466956521738 0.506426304347826" id="109" type="z-cylinder" />
+  <surface coeffs="6.232939130434779 -5.84338043478261 0.506426304347826" id="110" type="z-cylinder" />
+  <surface coeffs="6.232939130434779 -0.6232939130434794 0.506426304347826" id="111" type="z-cylinder" />
+  <surface coeffs="6.232939130434779 4.596792608695651 0.506426304347826" id="112" type="z-cylinder" />
+  <surface coeffs="6.232939130434779 9.816879130434778 0.506426304347826" id="113" type="z-cylinder" />
+  <surface coeffs="1.5582347826086949 -8.453423695652173 0.506426304347826" id="114" type="z-cylinder" />
+  <surface coeffs="1.5582347826086949 -3.2333371739130428 0.506426304347826" id="115" type="z-cylinder" />
+  <surface coeffs="1.5582347826086949 7.206835869565214 0.506426304347826" id="116" type="z-cylinder" />
+  <surface coeffs="-0.15582347826087073 1.6361465217391302 0.506426304347826" id="117" type="z-cylinder" />
+  <surface coeffs="-3.5060282608695648 -7.089968260869565 0.506426304347826" id="118" type="z-cylinder" />
+  <surface coeffs="6.232939130434779 11.063466956521738 0.506426304347826" id="119" type="z-cylinder" />
+  <surface coeffs="6.232939130434779 5.84338043478261 0.506426304347826" id="120" type="z-cylinder" />
+  <surface coeffs="6.232939130434779 0.6232939130434794 0.506426304347826" id="121" type="z-cylinder" />
+  <surface coeffs="6.232939130434779 -4.596792608695651 0.506426304347826" id="122" type="z-cylinder" />
+  <surface coeffs="6.232939130434779 -9.816879130434778 0.506426304347826" id="123" type="z-cylinder" />
+  <surface coeffs="1.5582347826086949 8.453423695652173 0.506426304347826" id="124" type="z-cylinder" />
+  <surface coeffs="1.5582347826086949 3.2333371739130428 0.506426304347826" id="125" type="z-cylinder" />
+  <surface coeffs="1.5582347826086949 -7.206835869565214 0.506426304347826" id="126" type="z-cylinder" />
+  <surface coeffs="-0.15582347826087073 -1.6361465217391302 0.506426304347826" id="127" type="z-cylinder" />
+  <surface coeffs="-3.5060282608695648 7.089968260869565 0.506426304347826" id="128" type="z-cylinder" />
+  <surface coeffs="4.674704347826085 -3.1164695652173915 0.506426304347826" id="129" type="z-cylinder" />
 </geometry>
