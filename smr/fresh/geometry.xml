@@ -439,62 +439,19 @@
   <cell id="1215" material="8" name="Assembly (3.1%) no BAs instr lattice axial (6)" region="28 -29 30 -31 ~(24 -25 26 -27) 44 -45" universe="184" />
   <cell id="1216" material="4" name="Assembly (3.1%) no BAs instr lattice axial (7)" region="28 -29 30 -31 ~(24 -25 26 -27) 45 -46" universe="184" />
   <cell id="1217" material="8" name="Assembly (3.1%) no BAs instr lattice axial (last)" region="28 -29 30 -31 ~(24 -25 26 -27) 46" universe="184" />
-  <cell id="1339" material="4" name="baffle dummy SS" region="82" universe="207" />
-  <cell id="1340" material="8" name="baffle south water" region="-82" universe="207" />
-  <cell fill="208" id="1341" name="baffle south" universe="209" />
-  <cell id="1342" material="8" name="baffle dummy SS" region="83" universe="210" />
-  <cell id="1343" material="4" name="baffle north water" region="-83" universe="210" />
-  <cell fill="211" id="1344" name="baffle north" universe="212" />
-  <cell id="1345" material="4" name="baffle dummy SS" region="84" universe="213" />
-  <cell id="1346" material="8" name="baffle west water" region="-84" universe="213" />
-  <cell fill="214" id="1347" name="baffle west" universe="215" />
-  <cell id="1348" material="8" name="baffle dummy SS" region="85" universe="216" />
-  <cell id="1349" material="4" name="baffle east water" region="-85" universe="216" />
-  <cell fill="217" id="1350" name="baffle east" universe="218" />
-  <cell id="1351" material="8" name="baffle southeast dummy 1" region="85 -82" universe="219" />
-  <cell id="1352" material="4" name="baffle southeast dummy 2" region="85 82" universe="219" />
-  <cell id="1353" material="4" name="baffle southeast dummy 3" region="-85" universe="219" />
-  <cell fill="220" id="1354" name="baffle southeast" universe="221" />
-  <cell id="1355" material="8" name="baffle southwest dummy 1" region="-82 -84" universe="222" />
-  <cell id="1356" material="4" name="baffle southwest dummy 2" region="82 -84" universe="222" />
-  <cell id="1357" material="4" name="baffle southwest dummy 3" region="84" universe="222" />
-  <cell fill="223" id="1358" name="baffle southwest" universe="224" />
-  <cell id="1359" material="8" name="baffle northeast dummy 1" region="83 85" universe="225" />
-  <cell id="1360" material="4" name="baffle northeast dummy 2" region="-83 85" universe="225" />
-  <cell id="1361" material="4" name="baffle northeast dummy 3" region="-85" universe="225" />
-  <cell fill="226" id="1362" name="baffle northeast" universe="227" />
-  <cell id="1363" material="8" name="baffle northwest dummy 1" region="83 -84" universe="228" />
-  <cell id="1364" material="4" name="baffle northwest dummy 2" region="-83 -84" universe="228" />
-  <cell id="1365" material="4" name="baffle northwest dummy 3" region="84" universe="228" />
-  <cell fill="229" id="1366" name="baffle northwest" universe="230" />
-  <cell id="1367" material="8" name="baffle southeast corner dummy 1" region="-85 -82" universe="231" />
-  <cell id="1368" material="8" name="baffle southeast corner dummy 2" region="85" universe="231" />
-  <cell id="1369" material="4" name="baffle southeast corner dummy 3" region="82 -85" universe="231" />
-  <cell fill="232" id="1370" name="baffle southeast corner" universe="233" />
-  <cell id="1371" material="8" name="baffle southwest corner dummy 1" region="84 -82" universe="234" />
-  <cell id="1372" material="8" name="baffle southwest corner dummy 2" region="-84" universe="234" />
-  <cell id="1373" material="4" name="baffle southwest corner dummy 3" region="82 84" universe="234" />
-  <cell fill="235" id="1374" name="baffle southwest corner" universe="236" />
-  <cell id="1375" material="8" name="baffle northwest corner dummy 1" region="84 83" universe="237" />
-  <cell id="1376" material="8" name="baffle northwest corner dummy 2" region="-84" universe="237" />
-  <cell id="1377" material="4" name="baffle northwest corner dummy 3" region="-83 84" universe="237" />
-  <cell fill="238" id="1378" name="baffle northwest corner" universe="239" />
-  <cell id="1379" material="8" name="baffle northeast corner dummy 1" region="-85 83" universe="240" />
-  <cell id="1380" material="8" name="baffle northeast corner dummy 2" region="85" universe="240" />
-  <cell id="1381" material="4" name="baffle northeast corner dummy 3" region="-83 -85" universe="240" />
-  <cell fill="241" id="1382" name="baffle northeast corner" universe="242" />
-  <cell fill="243" id="1383" name="Main core" region="-71 81 -80" universe="0" />
-  <cell id="1384" material="4" name="core barrel" region="71 -72 81 -80" universe="0" />
-  <cell id="1385" material="4" name="neutron shield panel NW" region="72 -73 74 -75 81 -80" universe="0" />
-  <cell id="1386" material="8" name="neutron shield panel N" region="72 -73 75 -77 81 -80" universe="0" />
-  <cell id="1387" material="4" name="neutron shield panel SE" region="72 -73 -74 75 81 -80" universe="0" />
-  <cell id="1388" material="8" name="neutron shield panel E" region="72 -73 74 76 81 -80" universe="0" />
-  <cell id="1389" material="4" name="neutron shield panel NE" region="72 -73 76 -77 81 -80" universe="0" />
-  <cell id="1390" material="8" name="neutron shield panel S" region="72 -73 -75 77 81 -80" universe="0" />
-  <cell id="1391" material="4" name="neutron shield panel SW" region="72 -73 -76 77 81 -80" universe="0" />
-  <cell id="1392" material="8" name="neutron shield panel W" region="72 -73 -74 -76 81 -80" universe="0" />
-  <cell id="1393" material="8" name="downcomer" region="73 -78 81 -80" universe="0" />
-  <cell id="1394" material="5" name="reactor pressure vessel" region="78 -79 81 -80" universe="0" />
+  <cell id="1339" material="4" name="heavy reflector SS" universe="207" />
+  <cell fill="244" id="1384" name="Main core" region="-71 81 -80" universe="0" />
+  <cell id="1385" material="4" name="core barrel" region="71 -72 81 -80" universe="0" />
+  <cell id="1386" material="4" name="neutron shield panel NW" region="72 -73 74 -75 81 -80" universe="0" />
+  <cell id="1387" material="8" name="neutron shield panel N" region="72 -73 75 -77 81 -80" universe="0" />
+  <cell id="1388" material="4" name="neutron shield panel SE" region="72 -73 -74 75 81 -80" universe="0" />
+  <cell id="1389" material="8" name="neutron shield panel E" region="72 -73 74 76 81 -80" universe="0" />
+  <cell id="1390" material="4" name="neutron shield panel NE" region="72 -73 76 -77 81 -80" universe="0" />
+  <cell id="1391" material="8" name="neutron shield panel S" region="72 -73 -75 77 81 -80" universe="0" />
+  <cell id="1392" material="4" name="neutron shield panel SW" region="72 -73 -76 77 81 -80" universe="0" />
+  <cell id="1393" material="8" name="neutron shield panel W" region="72 -73 -74 -76 81 -80" universe="0" />
+  <cell id="1394" material="8" name="downcomer" region="73 -78 81 -80" universe="0" />
+  <cell id="1395" material="5" name="reactor pressure vessel" region="78 -79 81 -80" universe="0" />
   <lattice id="125" name="Assembly (1.6%) no BAs instr">
     <pitch>1.25984 1.25984</pitch>
     <dimension>17 17</dimension>
@@ -587,126 +544,20 @@
 106 106 106 106 106 106 106 106 106 106 106 106 106 106 106 106 106 
 106 106 106 106 106 106 106 106 106 106 106 106 106 106 106 106 106 </universes>
   </lattice>
-  <lattice id="208" name="baffle south">
-    <pitch>10.751819999999999 10.751819999999999</pitch>
-    <dimension>2 2</dimension>
-    <lower_left>-10.751819999999999 -10.751819999999999</lower_left>
-    <universes>
-207 207 
-1 1 </universes>
-  </lattice>
-  <lattice id="211" name="baffle north">
-    <pitch>10.751819999999999 10.751819999999999</pitch>
-    <dimension>2 2</dimension>
-    <lower_left>-10.751819999999999 -10.751819999999999</lower_left>
-    <universes>
-1 1 
-210 210 </universes>
-  </lattice>
-  <lattice id="214" name="baffle west">
-    <pitch>10.751819999999999 10.751819999999999</pitch>
-    <dimension>2 2</dimension>
-    <lower_left>-10.751819999999999 -10.751819999999999</lower_left>
-    <universes>
-1 213 
-1 213 </universes>
-  </lattice>
-  <lattice id="217" name="baffle east">
-    <pitch>10.751819999999999 10.751819999999999</pitch>
-    <dimension>2 2</dimension>
-    <lower_left>-10.751819999999999 -10.751819999999999</lower_left>
-    <universes>
-216 1 
-216 1 </universes>
-  </lattice>
-  <lattice id="220" name="baffle southeast">
-    <pitch>10.751819999999999 10.751819999999999</pitch>
-    <dimension>2 2</dimension>
-    <lower_left>-10.751819999999999 -10.751819999999999</lower_left>
-    <universes>
-219 207 
-216 1 </universes>
-  </lattice>
-  <lattice id="223" name="baffle southwest">
-    <pitch>10.751819999999999 10.751819999999999</pitch>
-    <dimension>2 2</dimension>
-    <lower_left>-10.751819999999999 -10.751819999999999</lower_left>
-    <universes>
-207 222 
-1 213 </universes>
-  </lattice>
-  <lattice id="226" name="baffle northeast">
-    <pitch>10.751819999999999 10.751819999999999</pitch>
-    <dimension>2 2</dimension>
-    <lower_left>-10.751819999999999 -10.751819999999999</lower_left>
-    <universes>
-216 1 
-225 210 </universes>
-  </lattice>
-  <lattice id="229" name="baffle northwest">
-    <pitch>10.751819999999999 10.751819999999999</pitch>
-    <dimension>2 2</dimension>
-    <lower_left>-10.751819999999999 -10.751819999999999</lower_left>
-    <universes>
-1 213 
-210 228 </universes>
-  </lattice>
-  <lattice id="232" name="baffle southeast corner">
-    <pitch>10.751819999999999 10.751819999999999</pitch>
-    <dimension>2 2</dimension>
-    <lower_left>-10.751819999999999 -10.751819999999999</lower_left>
-    <universes>
-231 1 
-1 1 </universes>
-  </lattice>
-  <lattice id="235" name="baffle southwest corner">
-    <pitch>10.751819999999999 10.751819999999999</pitch>
-    <dimension>2 2</dimension>
-    <lower_left>-10.751819999999999 -10.751819999999999</lower_left>
-    <universes>
-1 234 
-1 1 </universes>
-  </lattice>
-  <lattice id="238" name="baffle northwest corner">
-    <pitch>10.751819999999999 10.751819999999999</pitch>
-    <dimension>2 2</dimension>
-    <lower_left>-10.751819999999999 -10.751819999999999</lower_left>
-    <universes>
-1 1 
-1 237 </universes>
-  </lattice>
-  <lattice id="241" name="baffle northeast corner">
-    <pitch>10.751819999999999 10.751819999999999</pitch>
-    <dimension>2 2</dimension>
-    <lower_left>-10.751819999999999 -10.751819999999999</lower_left>
-    <universes>
-1 1 
-240 1 </universes>
-  </lattice>
-  <lattice id="243" name="Main core">
+  <lattice id="244" name="Main core">
     <pitch>21.503639999999997 21.503639999999997</pitch>
-    <dimension>19 19</dimension>
-    <lower_left>-204.28457999999998 -204.28457999999998</lower_left>
+    <dimension>9 9</dimension>
+    <lower_left>-96.76637999999998 -96.76637999999998</lower_left>
     <universes>
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 239 212 212 212 242 1 1 1 1 1 1 1 
-1 1 1 1 1 1 239 230 184 146 184 227 242 1 1 1 1 1 1 
-1 1 1 1 1 239 230 184 146 166 146 184 227 242 1 1 1 1 1 
-1 1 1 1 1 215 184 146 166 146 166 146 184 218 1 1 1 1 1 
-1 1 1 1 1 215 146 166 146 126 146 166 146 218 1 1 1 1 1 
-1 1 1 1 1 215 184 146 166 146 166 146 184 218 1 1 1 1 1 
-1 1 1 1 1 236 224 184 146 166 146 184 221 233 1 1 1 1 1 
-1 1 1 1 1 1 236 224 184 146 184 221 233 1 1 1 1 1 1 
-1 1 1 1 1 1 1 236 209 209 209 233 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 </universes>
+207 207 207 207 207 207 207 207 207 
+207 207 207 184 146 184 207 207 207 
+207 207 184 146 166 146 184 207 207 
+207 184 146 166 146 166 146 184 207 
+207 146 166 146 126 146 166 146 207 
+207 184 146 166 146 166 146 184 207 
+207 207 184 146 166 146 184 207 207 
+207 207 207 184 146 184 207 207 207 
+207 207 207 207 207 207 207 207 207 </universes>
   </lattice>
   <surface coeffs="0.0 0.0 0.405765" id="1" name="Pellet OR" type="z-cylinder" />
   <surface coeffs="0.0 0.0 0.06459" id="2" name="FR Plenum Spring OR" type="z-cylinder" />
@@ -773,8 +624,4 @@
   <surface boundary="vacuum" coeffs="0.0 0.0 135.0" id="79" name="RPV OR" type="z-cylinder" />
   <surface boundary="vacuum" coeffs="272.564" id="80" name="upper problem boundary" type="z-plane" />
   <surface boundary="vacuum" coeffs="0.0" id="81" name="lower problem boundary" type="z-plane" />
-  <surface coeffs="3.153409999999999" id="82" name="baffle north" type="y-plane" />
-  <surface coeffs="-3.153409999999999" id="83" name="baffle south" type="y-plane" />
-  <surface coeffs="3.153409999999999" id="84" name="baffle east" type="x-plane" />
-  <surface coeffs="-3.153409999999999" id="85" name="baffle west" type="x-plane" />
 </geometry>

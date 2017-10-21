@@ -7,6 +7,18 @@ from .surfaces import surfs, lattice_pitch
 from .assemblies import univs
 
 
+#### HEAVY REFLECTOR
+
+cell = openmc.Cell(
+    name='heavy reflector SS',
+    fill=mats['SS']
+)
+
+univs['heavy reflector'] = openmc.Universe(
+    name='heavy reflector',
+    cells=[cell]
+)
+
 #### SOUTH BAFFLE
 
 univs['baffle south dummy'] = openmc.Universe(name='baffle south dummy')
