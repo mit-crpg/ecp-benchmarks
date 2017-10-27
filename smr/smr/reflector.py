@@ -1,4 +1,13 @@
-"""Instantiate components to use for the stainless steel heavy reflector."""
+"""Stainless steel heavy reflector.
+
+None of the public NuScale documents give information about the dimensions and
+location of the water holes in the heavy neutron reflector. Thus, all the
+dimensions of the water holes in the heavy reflectors were eyeballed from the DC
+application, Figure 4.3-25. A screenshot was used to determine the size and
+location of the water holes which were then converted to actual dimensions by
+scaling according to the width of an assembly.
+
+"""
 
 import openmc
 
@@ -8,6 +17,17 @@ from .assemblies import univs
 
 
 def make_reflector(name, parameters):
+    """Make an assembly-sized heavy neutron reflector block with cooling holes.
+
+    Parameters
+    ----------
+    name : str
+        Name of the universe to create
+    parameters : iterable of 3-tuples
+        Iterable containing tuple with the (x,y) coordinates of the center and
+        the radius of a Z-cylinder and the
+
+    """
     water_holes = []
     for x, y, r in parameters:
         zcyl = openmc.ZCylinder(x0=x, y0=y, R=r)
@@ -23,12 +43,8 @@ def make_reflector(name, parameters):
     univs[name].add_cell(ss_cell)
 
 
-#### HEAVY REFLECTOR
+# Reflector at northwest corner (fuel assemblies to the right and below)
 
-# All the dimensions of the water holes in the heavy reflectors were eyeballed
-# from DC, Figure 4.3-25
-
-# Pixel widths from the Figure -- we'll convert these to actual coordinates
 width = 276
 p1 = 59
 p2 = 126
@@ -45,9 +61,13 @@ p9 = 222
 
 p10 = 247
 
+# There are 8 large water holes and all others appear to have the same, smaller
+# diameter
 d_small = 13
 d_large = 30
 
+# All pixel widths are scaled according to the actual width of an assembly
+# divided by the width of an assembly in pixels
 scale = lattice_pitch/width
 
 # Physical positions
@@ -62,21 +82,18 @@ y4 = -lattice_pitch/2 + scale*p4
 
 x5 = -lattice_pitch/2 + scale*(width - p5)
 y5 = -lattice_pitch/2 + scale*p5
-
 x6 = -lattice_pitch/2 + scale*(width - p7)
 y6 = -lattice_pitch/2 + scale*p6
-
 x7 = -lattice_pitch/2 + scale*(width - p6)
 y7 = -lattice_pitch/2 + scale*p7
-
 x8 = -lattice_pitch/2 + scale*(width - p9)
 y8 = -lattice_pitch/2 + scale*p8
-
 x9 = -lattice_pitch/2 + scale*(width - p8)
 y9 = -lattice_pitch/2 + scale*p9
 
 y10 = -lattice_pitch/2 + scale*p10
 
+# Radius of small/large water holes
 r1 = scale*d_small/2
 r2 = scale*d_large/2
 
@@ -119,7 +136,6 @@ params = [
 
 make_reflector('heavy reflector 4,0', params)
 
-
 # Reflector at (3,0)
 
 params = []
@@ -129,7 +145,7 @@ for i in (5, 7, 11):
     params.append((x2, i*d_y/2 - lattice_pitch, r1))
 
 left3 = 140
-left4 = 183  # Used in (3,0)
+left4 = 183
 up3 = 159
 up4 = 47
 
@@ -152,23 +168,23 @@ params = [(-lattice_pitch/2 + scale*(width - 78),
            -lattice_pitch/2 + scale*98, r1)]
 make_reflector('heavy reflector 2,0', params)
 
+################################################################################
+# Beyond this point, all universes are just copies of the ones previously
+# created with a rotation applied
 
 # NE corner
-
 cell = openmc.Cell(name='heavy reflector NE', fill=univs['heavy reflector NW'])
 cell.rotation = (0, 0, -90)
 univs['heavy reflector NE'] = openmc.Universe(name='heavy reflector NE')
 univs['heavy reflector NE'].add_cell(cell)
 
 # SW corner
-
 cell = openmc.Cell(name='heavy reflector SW', fill=univs['heavy reflector NW'])
 cell.rotation = (0, 0, 90)
 univs['heavy reflector SW'] = openmc.Universe(name='heavy reflector SW')
 univs['heavy reflector SW'].add_cell(cell)
 
 # SE corner
-
 cell = openmc.Cell(name='heavy reflector SE', fill=univs['heavy reflector NW'])
 cell.rotation = (0, 0, 180)
 univs['heavy reflector SE'] = openmc.Universe(name='heavy reflector SE')

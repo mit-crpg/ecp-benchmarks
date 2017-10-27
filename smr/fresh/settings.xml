@@ -6,7 +6,7 @@
   <inactive>100</inactive>
   <source strength="1.0">
     <space type="fission">
-      <parameters>-75.26274 -75.26274 36.007 75.26274 75.26274 236.007</parameters>
+      <parameters>-75.26274 -75.26274 36.007 75.26274 75.26274 236.0066</parameters>
     </space>
   </source>
   <output>

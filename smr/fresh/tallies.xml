@@ -29,47 +29,47 @@
   </filter>
   <tally id="1" name="depletion tally">
     <filters>1</filters>
-    <nuclides>O16 O17 U234 U235 U238</nuclides>
+    <nuclides>O16 O17 U234 U235 U238 U236</nuclides>
     <scores>(n,p) (n,a) (n,gamma) fission (n,2n) (n,3n) (n,4n)</scores>
   </tally>
   <tally id="2" name="depletion tally">
     <filters>2</filters>
-    <nuclides>O16 O17 U234 U235 U238</nuclides>
+    <nuclides>O16 O17 U234 U235 U238 U236</nuclides>
     <scores>(n,p) (n,a) (n,gamma) fission (n,2n) (n,3n) (n,4n)</scores>
   </tally>
   <tally id="3" name="depletion tally">
     <filters>3</filters>
-    <nuclides>O16 O17 U234 U235 U238</nuclides>
+    <nuclides>O16 O17 U234 U235 U238 U236</nuclides>
     <scores>(n,p) (n,a) (n,gamma) fission (n,2n) (n,3n) (n,4n)</scores>
   </tally>
   <tally id="4" name="depletion tally">
     <filters>4</filters>
-    <nuclides>O16 O17 U234 U235 U238</nuclides>
+    <nuclides>O16 O17 U234 U235 U238 U236</nuclides>
     <scores>(n,p) (n,a) (n,gamma) fission (n,2n) (n,3n) (n,4n)</scores>
   </tally>
   <tally id="5" name="depletion tally">
     <filters>5</filters>
-    <nuclides>O16 O17 U234 U235 U238</nuclides>
+    <nuclides>O16 O17 U234 U235 U238 U236</nuclides>
     <scores>(n,p) (n,a) (n,gamma) fission (n,2n) (n,3n) (n,4n)</scores>
   </tally>
   <tally id="6" name="depletion tally">
     <filters>6</filters>
-    <nuclides>O16 O17 U234 U235 U238</nuclides>
+    <nuclides>O16 O17 U234 U235 U238 U236</nuclides>
     <scores>(n,p) (n,a) (n,gamma) fission (n,2n) (n,3n) (n,4n)</scores>
   </tally>
   <tally id="7" name="depletion tally">
     <filters>7</filters>
-    <nuclides>O16 O17 U234 U235 U238</nuclides>
+    <nuclides>O16 O17 U234 U235 U238 U236</nuclides>
     <scores>(n,p) (n,a) (n,gamma) fission (n,2n) (n,3n) (n,4n)</scores>
   </tally>
   <tally id="8" name="depletion tally">
     <filters>8</filters>
-    <nuclides>O16 O17 U234 U235 U238</nuclides>
+    <nuclides>O16 O17 U234 U235 U238 U236</nuclides>
     <scores>(n,p) (n,a) (n,gamma) fission (n,2n) (n,3n) (n,4n)</scores>
   </tally>
   <tally id="9" name="depletion tally">
     <filters>9</filters>
-    <nuclides>O16 O17 U234 U235 U238</nuclides>
+    <nuclides>O16 O17 U234 U235 U238 U236</nuclides>
     <scores>(n,p) (n,a) (n,gamma) fission (n,2n) (n,3n) (n,4n)</scores>
   </tally>
 </tallies>

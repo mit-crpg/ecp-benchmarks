@@ -12,6 +12,7 @@ https://www.nrc.gov/docs/ML1700/ML17007A001.pdf
 import copy
 from math import tan, pi
 
+import numpy as np
 import openmc
 
 INCHES = 2.54
@@ -58,22 +59,21 @@ instr_tube_OR      = 0.482*INCHES/2  # ML17007A001, Table 3-1
 plenum_spring_OR   = 0.06459  # Estimate, actual is ECI
 
 # grid spacer parameters
-rod_grid_side    = 1.24416
+rod_grid_side = 1.24416
 spacer_height = 1.750*INCHES  # DC, Figure 4.2-7
 
 # assembly parameters
-assembly_length = 95.89*INCHES  # DC, Table 4.1-2
-pin_pitch          = 0.496*INCHES  # DC, Table 4.1-2
-lattice_pitch      = 8.466*INCHES  # DC, Table 4.1-2
-grid_strap_side    = 21.47270
-top_nozzle_height   = 3.551*INCHES  # DC, Figure 4.2-2
-top_nozzle_width    = 8.406*INCHES  # DC, Figure 4.2-2
+assembly_length   = 95.89*INCHES  # DC, Table 4.1-2
+pin_pitch         = 0.496*INCHES  # DC, Table 4.1-2
+lattice_pitch     = 8.466*INCHES  # DC, Table 4.1-2
+grid_strap_side   = 21.47270
+top_nozzle_height = 3.551*INCHES  # DC, Figure 4.2-2
+top_nozzle_width  = 8.406*INCHES  # DC, Figure 4.2-2
 
 # core radial parameters
 core_barrel_IR     = 74*INCHES/2  # DC, Table 4.1-2
 core_barrel_OR     = 78*INCHES/2  # DC, Table 4.1-2
 neutron_shield_OR  = core_barrel_OR + 2.0
-baffle_width       = 2.2225
 rpv_IR             = 120.0  # Estimate?
 rpv_OR             = 135.0  # Estimate?
 
@@ -87,30 +87,25 @@ bottom_fuel_rod      =     35.160
 top_lower_thimble    =     36.007
 bottom_fuel_stack    =     36.007
 bot_burn_abs         =     41.087
-active_core_height   =    200.
-top_active_core      =    236.007
-top_plenum           =    238.343
-top_fuel_rod         =    240.392
-bottom_upper_nozzle  =    243.737
-top_upper_nozzle     =    252.564
-highest_extent       =    272.564
+top_active_core = bottom_fuel_stack + active_fuel_length
+top_plenum = top_active_core + plenum_length
+top_fuel_rod = bottom_fuel_rod + fuel_rod_length
+bottom_upper_nozzle = top_fuel_rod + (423.049 - 419.704)     # BEAVRS, Fig. 32
+top_upper_nozzle = bottom_upper_nozzle + (431.876 - 423.049) # BEAVRS, Fig. 32
+highest_extent = top_upper_nozzle + 20.0
 
 # The grid spacer locations are eyeball estimated from Figure 3-1 in NuScale's
 # FA design certification doc. This assumes 6cm and 2cm spacings between the
 # bottom and top of the fuel rods and the bottom and top grid spacers.
-grid1_bot             =     39.7845
-grid1_top             =     44.2295
-grid2_bot             =     86.67325
-grid2_top             =     91.11825
-grid3_bot             =    133.562
-grid3_top             =    138.007
-grid4_bot             =    180.45075
-grid4_top             =    184.89575
-grid5_bot             =    227.3395
-grid5_top             =    231.7845
+first_grid_bot = bottom_fuel_rod + 6.0
+last_grid_top = top_fuel_rod - 2.0
+last_grid_bot = last_grid_top - spacer_height
+
+grid_bottom = np.linspace(first_grid_bot, last_grid_bot, 5)
+grid_top = grid_bottom + spacer_height
 
 # control rod step heights - taken from BEAVRS, use with caution for NuScale
-step0H                =    45.079
+step0H                =    46.079   # temporary value for now
 step102H              =   206.415
 step248H              =   269.122
 step_width            =     1.58173
@@ -195,28 +190,19 @@ surfs['top lower thimble'] = copy.deepcopy(surfs['bot active core'])
 surfs['BA bot'] = openmc.ZPlane(
     z0=bot_burn_abs, name='bottom of BA')
 
-surfs['grid1bot'] = openmc.ZPlane(
-    z0=grid1_bot, name='bottom grid 1')
-surfs['grid1top'] = openmc.ZPlane(
-    z0=grid1_top, name='top of grid 1')
+for i, (bottom, top) in enumerate(zip(grid_bottom, grid_top)):
+    # Create plane for bottom of spacer grid
+    key = 'grid{}bot'.format(i + 1)
+    name = 'bottom grid {}'.format(i + 1)
+    surfs[key] = openmc.ZPlane(z0=bottom, name=name)
+
+    # Create plane for top of spacer grid
+    key = 'grid{}top'.format(i + 1)
+    name = 'top of grid {}'.format(i + 1)
+    surfs[key] = openmc.ZPlane(z0=top, name=name)
+
 surfs['dashpot top'] = openmc.ZPlane(
     z0=step0H, name='top dashpot')
-surfs['grid2bot'] = openmc.ZPlane(
-    z0=grid2_bot, name='bottom grid 2')
-surfs['grid2top'] = openmc.ZPlane(
-    z0=grid2_top, name='top grid 2')
-surfs['grid3bot'] = openmc.ZPlane(
-    z0=grid3_bot, name='bottom of grid 3')
-surfs['grid3top'] = openmc.ZPlane(
-    z0=grid3_top, name='top of grid 3')
-surfs['grid4bot'] = openmc.ZPlane(
-    z0=grid4_bot, name='bottom of grid 4')
-surfs['grid4top'] = openmc.ZPlane(
-    z0=grid4_top, name='top grid 4')
-surfs['grid5bot'] = openmc.ZPlane(
-    z0=grid5_bot, name='bottom of grid 5')
-surfs['grid5top'] = openmc.ZPlane(
-    z0=grid5_top, name='top grid 5')
 
 surfs['top pin plenum'] = openmc.ZPlane(
     z0=top_plenum, name='top pin plenum')

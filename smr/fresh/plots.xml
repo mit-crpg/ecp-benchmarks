@@ -2,7 +2,7 @@
 <plots>
   <!--radial slice -->
   <plot basis="xy" color_by="material" filename="radial_xy_slice" id="1" type="slice">
-    <origin>0.0 0.0 136.282</origin>
+    <origin>0.0 0.0 141.61599999999999</origin>
     <width>268.79549999999995 268.79549999999995</width>
     <pixels>1000 1000</pixels>
     <background>255 255 255</background>
@@ -21,8 +21,8 @@
   </plot>
   <!--axial slice-->
   <plot basis="xz" color_by="material" filename="axial_xz_slice" id="2" type="slice">
-    <origin>0.0 0.0 136.282</origin>
-    <width>270.0 272.564</width>
+    <origin>0.0 0.0 141.61599999999999</origin>
+    <width>270.0 283.23199999999997</width>
     <pixels>1000 1000</pixels>
     <background>255 255 255</background>
     <color id="1" rgb="255 218 185" />
@@ -40,7 +40,7 @@
   </plot>
   <!--assembly grid spacer-->
   <plot basis="xy" color_by="material" filename="assm_grid_spacer" id="3" type="slice">
-    <origin>0.0 0.0 102.021</origin>
+    <origin>0.0 0.0 95.0</origin>
     <width>32.25546 32.25546</width>
     <pixels>2000 2000</pixels>
     <background>255 255 255</background>

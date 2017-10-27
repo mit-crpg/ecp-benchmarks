@@ -49,7 +49,7 @@ plots += [plot]
 plot = openmc.Plot(name='assembly grid spacer')
 plot.basis = 'xy'
 plot.color_by = 'material'
-plot.origin = [0., 0., 102.021]
+plot.origin = [0., 0., 95.0]
 plot.width = [lattice_pitch*1.5, lattice_pitch*1.5]
 plot.filename = 'assm_grid_spacer'
 plot.colors = colors
