@@ -2,10 +2,10 @@
 
 None of the public NuScale documents give information about the dimensions and
 location of the water holes in the heavy neutron reflector. Thus, all the
-dimensions of the water holes in the heavy reflectors were eyeballed from the DC
-application, Figure 4.3-25. A screenshot was used to determine the size and
-location of the water holes which were then converted to actual dimensions by
-scaling according to the width of an assembly.
+dimensions of the water holes in the heavy reflectors were eyeballed from the
+design certification application (ML17013A274), Figure 4.3-25. A screenshot was
+used to determine the size and location of the water holes which were then
+converted to actual dimensions by scaling according to the width of an assembly.
 
 """
 

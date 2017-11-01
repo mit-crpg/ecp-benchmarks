@@ -3,10 +3,14 @@
 The geometric parameters defining the core model are tabulated here.
 The geometric specifications are loosely based upon NuScale's Small
 Modular Pressurized Water Reactor concept as detailed here in their
-NRC design certification documentation:
+NRC design certification (DC) documentation:
 
 https://www.nrc.gov/docs/ML1618/ML16187A017.pdf
 https://www.nrc.gov/docs/ML1700/ML17007A001.pdf
+
+NuScale DC application, chapter 1: https://www.nrc.gov/docs/ML1701/ML17013A264.pdf
+NuScale DC application, chapter 4: https://www.nrc.gov/docs/ML1701/ML17013A274.pdf
+
 """
 
 import copy
@@ -29,23 +33,23 @@ INCHES = 2.54
 # RPV: Reactor Pressure Vessel
 
 # fuel rod parameters
-pellet_OR          = 0.3195*INCHES/2  # DC, Table 4.1-2
-clad_IR            = 0.326*INCHES/2   # DC, Table 4.1-2
-clad_OR            = 0.374*INCHES/2   # DC, Table 4.1-2
-active_fuel_length = 78.74*INCHES     # DC, Figure 4.2-10
-plenum_length      = 5.311*INCHES     # DC, Figure 4.2-10
-fuel_rod_length    = 85.00*INCHES     # Table 4.1-2
+pellet_OR          = 0.3195*INCHES/2  # ML17013A274, Table 4.1-2
+clad_IR            = 0.326*INCHES/2   # ML17013A274, Table 4.1-2
+clad_OR            = 0.374*INCHES/2   # ML17013A274, Table 4.1-2
+active_fuel_length = 78.74*INCHES     # ML17013A274, Figure 4.2-10
+plenum_length      = 5.311*INCHES     # ML17013A274, Figure 4.2-10
+fuel_rod_length    = 85.00*INCHES     # ML17013A274, Table 4.1-2
 lower_end_cap      = 0.575*INCHES     # ML17007A001, Table 3-2
 
 # pin cell parameters
-guide_tube_IR      = 0.450*INCHES/2  # DC, Table 4.1-2
-guide_tube_OR      = 0.482*INCHES/2  # DC, Table 4.1-2
-guide_tube_dash_IR = 0.397*INCHES/2  # DC, Table 4.1-2
+guide_tube_IR      = 0.450*INCHES/2  # ML17013A274, Table 4.1-2
+guide_tube_OR      = 0.482*INCHES/2  # ML17013A274, Table 4.1-2
+guide_tube_dash_IR = 0.397*INCHES/2  # ML17013A274, Table 4.1-2
 guide_tube_dash_OR = guide_tube_OR
-boron_carbide_OR   = 0.333*INCHES/2  # DC, Table 4.1-3
-ag_in_cd_OR        = 0.336*INCHES/2  # DC, Table 4.1-3
-control_rod_IR     = 0.344*INCHES/2  # DC, Table 4.1-3
-control_rod_OR     = 0.381*INCHES/2  # DC, Table 4.1-3
+boron_carbide_OR   = 0.333*INCHES/2  # ML17013A274, Table 4.1-3
+ag_in_cd_OR        = 0.336*INCHES/2  # ML17013A274, Table 4.1-3
+control_rod_IR     = 0.344*INCHES/2  # ML17013A274, Table 4.1-3
+control_rod_OR     = 0.381*INCHES/2  # ML17013A274, Table 4.1-3
 burn_abs_r1        = 0.21400
 burn_abs_r2        = 0.23051
 burn_abs_r3        = 0.24130
@@ -60,19 +64,19 @@ plenum_spring_OR   = 0.06459  # Estimate, actual is ECI
 
 # grid spacer parameters
 rod_grid_side = 1.24416
-spacer_height = 1.750*INCHES  # DC, Figure 4.2-7
+spacer_height = 1.750*INCHES  # ML17013A274, Figure 4.2-7
 
 # assembly parameters
-assembly_length   = 95.89*INCHES  # DC, Table 4.1-2
-pin_pitch         = 0.496*INCHES  # DC, Table 4.1-2
-lattice_pitch     = 8.466*INCHES  # DC, Table 4.1-2
+assembly_length   = 95.89*INCHES  # ML17013A274, Table 4.1-2
+pin_pitch         = 0.496*INCHES  # ML17013A274, Table 4.1-2
+lattice_pitch     = 8.466*INCHES  # ML17013A274, Table 4.1-2
 grid_strap_side   = 21.47270
-top_nozzle_height = 3.551*INCHES  # DC, Figure 4.2-2
-top_nozzle_width  = 8.406*INCHES  # DC, Figure 4.2-2
+top_nozzle_height = 3.551*INCHES  # ML17013A274, Figure 4.2-2
+top_nozzle_width  = 8.406*INCHES  # ML17013A274, Figure 4.2-2
 
 # core radial parameters
-core_barrel_IR     = 74*INCHES/2  # DC, Table 4.1-2
-core_barrel_OR     = 78*INCHES/2  # DC, Table 4.1-2
+core_barrel_IR     = 74*INCHES/2  # ML17013A274, Table 4.1-2
+core_barrel_OR     = 78*INCHES/2  # ML17013A274, Table 4.1-2
 neutron_shield_OR  = core_barrel_OR + 2.0
 rpv_IR             = 120.0  # Estimate?
 rpv_OR             = 135.0  # Estimate?
@@ -95,8 +99,9 @@ top_upper_nozzle = bottom_upper_nozzle + (431.876 - 423.049) # BEAVRS, Fig. 32
 highest_extent = top_upper_nozzle + 20.0
 
 # The grid spacer locations are eyeball estimated from Figure 3-1 in NuScale's
-# FA design certification doc. This assumes 6cm and 2cm spacings between the
-# bottom and top of the fuel rods and the bottom and top grid spacers.
+# FA design certification doc, ML17007A001. This assumes 6cm and 2cm spacings
+# between the bottom and top of the fuel rods and the bottom and top grid
+# spacers.
 first_grid_bot = bottom_fuel_rod + 6.0
 last_grid_top = top_fuel_rod - 2.0
 last_grid_bot = last_grid_top - spacer_height
