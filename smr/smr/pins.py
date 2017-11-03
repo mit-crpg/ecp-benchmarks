@@ -1,9 +1,31 @@
 """Instantiate pin cell Cells and Universes for core model."""
 
+import numpy as np
 import openmc
 
 from .materials import mats
-from .surfaces import surfs, n_rings
+from .surfaces import surfs, n_rings, bottom_fuel_rod, top_active_core
+
+
+def subdivide(surfaces):
+    """Create regions separate by a series of surfaces.
+
+    Parameters
+    ----------
+    surfaces : iterable of openmc.Surface
+        Surfaces separating regions
+
+    Returns
+    -------
+    list of openmc.Region
+        Regions formed by the given surfaces
+
+    """
+    regions = [-surfaces[0]]
+    for s0, s1 in zip(surfaces[:-1], surfaces[1:]):
+        regions.append(+s0 & -s1)
+    regions.append(+surfaces[-1])
+    return regions
 
 
 def make_pin(name, surfaces, materials, grid=None):
@@ -579,30 +601,6 @@ stack_surfs_BA = [
     surfs['bot upper nozzle'],
     surfs['top upper nozzle']]
 
-stack_surfs = [
-    surfs['bot support plate'],
-    surfs['top support plate'],
-    surfs['top lower nozzle'],
-    surfs['top lower thimble'],
-    surfs['grid1bot'],
-    surfs['grid1top'],
-    surfs['dashpot top'],
-    surfs['grid2bot'],
-    surfs['grid2top'],
-    surfs['grid3bot'],
-    surfs['grid3top'],
-    surfs['grid4bot'],
-    surfs['grid4top'],
-    surfs['top active core'],
-    surfs['grid5bot'],
-    surfs['grid5top'],
-    surfs['top pin plenum'],
-    surfs['top FR'],
-    surfs['bot upper nozzle'],
-    surfs['top upper nozzle']
-]
-
-
 # Stack all axial pieces of control rod tubes together for each bank
 
 univs['BA stack'] = make_stack(
@@ -669,10 +667,26 @@ univs['pin plenum grid (intermediate)'] = make_pin(
 
 #### 1.6% ENRICHED FUEL PIN CELL
 
+# Determine z position between each fuel pellet, omitting the surfaces
+# corresponding to the very bottom and top of the active fuel length
+axial_splits = np.linspace(bottom_fuel_rod, top_active_core, 196)[1:-1]
+axial_surfs = [openmc.ZPlane(z0=z) for z in axial_splits]
+
+# Get z-cylinder surfaces for each ring
 rings = [surfs['fuel ring {}'.format(i)] for i in range(1, n_rings)]
-fuel_surfaces = rings + [surfs['pellet OR'], surfs['clad IR'],
-                         surfs['clad OR']]
-fuel_mats = [mats['UO2 1.6']]*10 + [mats['He'], mats['Zr'], mats['H2O']]
+
+# Create universe for UO2 alone with axial/radial subdivision
+uo2_cells = []
+for axial_region in subdivide(axial_surfs):
+    for ring_region in subdivide(rings):
+        uo2_cells.append(openmc.Cell(
+            fill=mats['UO2 1.6'],
+            region=axial_region & ring_region
+        ))
+univs['Subdivided Fuel (1.6%)'] = openmc.Universe(cells=uo2_cells)
+
+fuel_surfaces = [surfs['pellet OR'], surfs['clad IR'], surfs['clad OR']]
+fuel_mats = [univs['Subdivided Fuel (1.6%)'], mats['He'], mats['Zr'], mats['H2O']]
 
 univs['Fuel (1.6%)'] = make_pin(
     'Fuel (1.6%)',
@@ -721,7 +735,17 @@ univs['Fuel (1.6%) stack'] = make_stack(
 
 #### 2.4% ENRICHED FUEL PIN CELL
 
-fuel_mats = [mats['UO2 2.4']]*10 + [mats['He'], mats['Zr'], mats['H2O']]
+# Create universe for UO2 alone with axial/radial subdivision
+uo2_cells = []
+for axial_region in subdivide(axial_surfs):
+    for ring_region in subdivide(rings):
+        uo2_cells.append(openmc.Cell(
+            fill=mats['UO2 2.4'],
+            region=axial_region & ring_region
+        ))
+univs['Subdivided Fuel (2.4%)'] = openmc.Universe(cells=uo2_cells)
+
+fuel_mats = [univs['Subdivided Fuel (2.4%)'], mats['He'], mats['Zr'], mats['H2O']]
 
 univs['Fuel (2.4%)'] = make_pin(
     'Fuel (2.4%)',
@@ -770,7 +794,17 @@ univs['Fuel (2.4%) stack'] = make_stack(
 
 #### 3.1% ENRICHED FUEL PIN CELL
 
-fuel_mats = [mats['UO2 3.1']]*10 + [mats['He'], mats['Zr'], mats['H2O']]
+# Create universe for UO2 alone with axial/radial subdivision
+uo2_cells = []
+for axial_region in subdivide(axial_surfs):
+    for ring_region in subdivide(rings):
+        uo2_cells.append(openmc.Cell(
+            fill=mats['UO2 3.1'],
+            region=axial_region & ring_region
+        ))
+univs['Subdivided Fuel (3.1%)'] = openmc.Universe(cells=uo2_cells)
+
+fuel_mats = [univs['Subdivided Fuel (3.1%)'], mats['He'], mats['Zr'], mats['H2O']]
 
 univs['Fuel (3.1%)'] = make_pin(
     'Fuel (3.1%)',

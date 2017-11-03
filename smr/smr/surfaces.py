@@ -34,6 +34,7 @@ INCHES = 2.54
 
 # fuel rod parameters
 pellet_OR          = 0.3195*INCHES/2  # ML17013A274, Table 4.1-2
+pellet_length      = 0.4*INCHES       # ML17013A274, Table 4.1-2
 clad_IR            = 0.326*INCHES/2   # ML17013A274, Table 4.1-2
 clad_OR            = 0.374*INCHES/2   # ML17013A274, Table 4.1-2
 active_fuel_length = 78.74*INCHES     # ML17013A274, Figure 4.2-10
@@ -128,10 +129,8 @@ surfs = {}
 
 # Create radii for rings in fuel
 n_rings = 10
-ring_radii = []
 for i in range(1, n_rings):
     R = sqrt(i*pellet_OR**2/n_rings)
-    ring_radii.append(R)
     name = 'fuel ring {}'.format(i)
     surfs[name] = openmc.ZCylinder(R=R, name=name)
 

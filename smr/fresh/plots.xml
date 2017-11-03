@@ -76,4 +76,17 @@
     <color id="11" rgb="255 215 0" />
     <color id="12" rgb="0 0 128" />
   </plot>
+  <!--assembly no spacer cell-->
+  <plot basis="xy" color_by="cell" filename="assm_no_spacer_cell" id="5" type="slice">
+    <origin>0.0 0.0 90.0</origin>
+    <width>32.25546 32.25546</width>
+    <pixels>2000 2000</pixels>
+    <background>255 255 255</background>
+  </plot>
+  <!--z slice-->
+  <plot basis="xz" color_by="cell" filename="assm_xz" id="6" type="slice">
+    <origin>0.0 0.0 141.61599999999999</origin>
+    <width>32.25546 283.23199999999997</width>
+    <pixels>455 4000</pixels>
+  </plot>
 </plots>

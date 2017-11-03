@@ -1,31 +1,31 @@
 <?xml version='1.0' encoding='utf-8'?>
 <tallies>
   <filter id="1" type="distribcell">
-    <bins>684</bins>
+    <bins>2634</bins>
   </filter>
   <filter id="2" type="distribcell">
-    <bins>688</bins>
+    <bins>2638</bins>
   </filter>
   <filter id="3" type="distribcell">
-    <bins>693</bins>
+    <bins>2643</bins>
   </filter>
   <filter id="4" type="distribcell">
-    <bins>719</bins>
+    <bins>4619</bins>
   </filter>
   <filter id="5" type="distribcell">
-    <bins>723</bins>
+    <bins>4623</bins>
   </filter>
   <filter id="6" type="distribcell">
-    <bins>728</bins>
+    <bins>4628</bins>
   </filter>
   <filter id="7" type="distribcell">
-    <bins>754</bins>
+    <bins>6604</bins>
   </filter>
   <filter id="8" type="distribcell">
-    <bins>758</bins>
+    <bins>6608</bins>
   </filter>
   <filter id="9" type="distribcell">
-    <bins>763</bins>
+    <bins>6613</bins>
   </filter>
   <tally id="1" name="depletion tally">
     <filters>1</filters>

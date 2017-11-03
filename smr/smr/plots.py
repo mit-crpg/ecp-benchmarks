@@ -33,7 +33,7 @@ plot.filename = 'radial_xy_slice'
 plot.colors = colors
 plot.background = [255, 255, 255]
 plot.pixels = [1000, 1000]
-plots += [plot]
+plots.append(plot)
 
 plot = openmc.Plot(name='axial slice')
 plot.basis = 'xz'
@@ -44,7 +44,7 @@ plot.filename = 'axial_xz_slice'
 plot.colors = colors
 plot.background = [255, 255, 255]
 plot.pixels = [1000, 1000]
-plots += [plot]
+plots.append(plot)
 
 plot = openmc.Plot(name='assembly grid spacer')
 plot.basis = 'xy'
@@ -55,7 +55,7 @@ plot.filename = 'assm_grid_spacer'
 plot.colors = colors
 plot.background = [255, 255, 255]
 plot.pixels = [2000, 2000]
-plots += [plot]
+plots.append(plot)
 
 plot = openmc.Plot(name='assembly no spacer')
 plot.basis = 'xy'
@@ -66,4 +66,23 @@ plot.filename = 'assm_no_spacer'
 plot.colors = colors
 plot.background = [255, 255, 255]
 plot.pixels = [2000, 2000]
-plots += [plot]
+plots.append(plot)
+
+plot = openmc.Plot(name='assembly no spacer cell')
+plot.basis = 'xy'
+plot.color_by = 'cell'
+plot.origin = [0., 0., 90.]
+plot.width = [lattice_pitch*1.5, lattice_pitch*1.5]
+plot.filename = 'assm_no_spacer_cell'
+plot.background = [255, 255, 255]
+plot.pixels = [2000, 2000]
+plots.append(plot)
+
+plot = openmc.Plot(name='z slice')
+plot.basis = 'xz'
+plot.color_by = 'cell'
+plot.filename = 'assm_xz'
+plot.origin = (0., 0., lowest_extent + (highest_extent - lowest_extent)/2)
+plot.width = (lattice_pitch*1.5, highest_extent - lowest_extent)
+plot.pixels = (int(plot.width[0]/plot.width[1]*4000), 4000)
+plots.append(plot)
