@@ -669,7 +669,8 @@ univs['pin plenum grid (intermediate)'] = make_pin(
 
 # Determine z position between each fuel pellet, omitting the surfaces
 # corresponding to the very bottom and top of the active fuel length
-axial_splits = np.linspace(bottom_fuel_rod, top_active_core, 196)[1:-1]
+n_pellets = 196
+axial_splits = np.linspace(bottom_fuel_rod, top_active_core, n_pellets + 1)[1:-1]
 axial_surfs = [openmc.ZPlane(z0=z) for z in axial_splits]
 
 # Get z-cylinder surfaces for each ring
