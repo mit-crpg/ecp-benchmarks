@@ -2,30 +2,10 @@
 
 import numpy as np
 import openmc
+from openmc.model import subdivide
 
 from .materials import mats
 from .surfaces import surfs, n_rings, bottom_fuel_rod, top_active_core
-
-
-def subdivide(surfaces):
-    """Create regions separate by a series of surfaces.
-
-    Parameters
-    ----------
-    surfaces : iterable of openmc.Surface
-        Surfaces separating regions
-
-    Returns
-    -------
-    list of openmc.Region
-        Regions formed by the given surfaces
-
-    """
-    regions = [-surfaces[0]]
-    for s0, s1 in zip(surfaces[:-1], surfaces[1:]):
-        regions.append(+s0 & -s1)
-    regions.append(+surfaces[-1])
-    return regions
 
 
 def make_pin(name, surfaces, materials, grid=None):
@@ -110,22 +90,51 @@ def make_stack(name, surfaces, universes):
 
     universe = openmc.Universe(name=name)
 
-    # Create cell for region below lowest ZPlane
-    cell_name = name + ' (0)'
-    cell = openmc.Cell(name=cell_name, fill=universes[0], region=-surfaces[0])
-    universe.add_cell(cell)
-
-    # Create cells between two ZPlanes
-    for i, (univ, surf) in enumerate(zip(universes[1:-1], surfaces[:-1])):
-        cell_name = name + ' ({})'.format(i+1)
-        cell = openmc.Cell(name=cell_name, fill=univ,
-                           region=+surf & -surfaces[i+1])
+    # Create cells for each axial segment
+    for i, (univ, region) in enumerate(zip(universes, subdivide(surfaces))):
+        cell_name = '{} ({})'.format(name, i)
+        cell = openmc.Cell(name=cell_name, fill=univ, region=region)
         universe.add_cell(cell)
 
-    # Create cell for region above highest ZPlane
-    cell_name = name + ' (last)'
-    cell = openmc.Cell(name=cell_name, fill=universes[-1],
-                       region=+surfaces[-1])
+    return universe
+
+
+def make_pin_stack(name, zsurfaces, universes, boundary, pin_universe):
+    """Construct a Universe of axially stacked universes with a single inner fuel
+    pin universe.
+
+    Parameters
+    ----------
+    name: str
+        The string name to assign to the Universe and each of its Cells
+    zsurfaces: Iterable of openmc.ZPlane
+        A collection of axial surfaces between which pin cells are
+        filled to comprise an axially stacked pin cell
+    universes: Iterable of openmc.Universe
+        The Universes used within each axial layer. This collection
+        must be one unit longer than the collection of surfaces.
+    boundary : openmc.Surface
+        Boundary between the fuel pin itself and everything outside (gap, clad,
+        moderator)
+    pin_universe : openmc.Universe
+        Universe containing (subdivided) fuel pin
+
+    Returns
+    -------
+    universe: openmc.Universe
+        The pin cell Universe
+
+    """
+
+    universe = openmc.Universe(name=name)
+
+    for i, (univ, r) in enumerate(zip(universes, subdivide(zsurfaces))):
+        cell_name = '{} (o{})'.format(name, i)
+        cell = openmc.Cell(name=cell_name, fill=univ, region=r & +boundary)
+        universe.add_cell(cell)
+
+    cell_name = '{} (i)'.format(name)
+    cell = openmc.Cell(name=cell_name, fill=pin_universe, region=-boundary)
     universe.add_cell(cell)
 
     return universe
@@ -686,45 +695,80 @@ for axial_region in subdivide(axial_surfs):
         ))
 univs['Subdivided Fuel (1.6%)'] = openmc.Universe(cells=uo2_cells)
 
-fuel_surfaces = [surfs['pellet OR'], surfs['clad IR'], surfs['clad OR']]
-fuel_mats = [univs['Subdivided Fuel (1.6%)'], mats['He'], mats['Zr'], mats['H2O']]
+outside_pin_surfaces = [surfs['clad IR'], surfs['clad OR']]
+outside_pin_mats = [mats['He'], mats['Zr'], mats['H2O']]
 
-univs['Fuel (1.6%)'] = make_pin(
-    'Fuel (1.6%)',
-    surfaces=fuel_surfaces,
-    materials=fuel_mats)
+univs['Outside pin'] = make_pin(
+    'Outside pin',
+    surfaces=outside_pin_surfaces,
+    materials=outside_pin_mats)
 
-univs['Fuel (1.6%) grid (bottom)'] = make_pin(
-    'Fuel (1.6%) grid (bottom)',
-    surfaces=fuel_surfaces,
-    materials=fuel_mats,
+univs['Outside pin grid (bottom)'] = make_pin(
+    'Outside pin grid (bottom)',
+    surfaces=outside_pin_surfaces,
+    materials=outside_pin_mats,
     grid='bottom')
 
-univs['Fuel (1.6%) grid (intermediate)'] = make_pin(
-    'Fuel (1.6%) grid (intermediate)',
-    surfaces=fuel_surfaces,
-    materials=fuel_mats,
+univs['Outside pin grid (intermediate)'] = make_pin(
+    'Outside pin grid (intermediate)',
+    surfaces=outside_pin_surfaces,
+    materials=outside_pin_mats,
     grid='intermediate')
 
 # Stack all axial pieces of 1.6% enriched fuel pin cell
 
+within_fuel_surfs = [
+    surfs['grid1bot'],
+    surfs['grid1top'],
+    surfs['dashpot top'],
+    surfs['grid2bot'],
+    surfs['grid2top'],
+    surfs['grid3bot'],
+    surfs['grid3top'],
+    surfs['grid4bot'],
+    surfs['grid4top']
+]
+
+univs['Fuel pin (1.6%) stack'] = make_pin_stack(
+    'Fuel pin (1.6%) stack',
+    zsurfaces=within_fuel_surfs,
+    universes=[
+        univs['Outside pin'],
+        univs['Outside pin grid (bottom)'],
+        univs['Outside pin'],
+        univs['Outside pin'],
+        univs['Outside pin grid (intermediate)'],
+        univs['Outside pin'],
+        univs['Outside pin grid (intermediate)'],
+        univs['Outside pin'],
+        univs['Outside pin grid (intermediate)'],
+        univs['Outside pin']
+    ],
+    boundary=surfs['pellet OR'],
+    pin_universe=univs['Subdivided Fuel (1.6%)'])
+
+fuel_stack_surfs = [
+    surfs['bot support plate'],
+    surfs['top support plate'],
+    surfs['top lower nozzle'],
+    surfs['top lower thimble'],
+    surfs['top active core'],
+    surfs['grid5bot'],
+    surfs['grid5top'],
+    surfs['top pin plenum'],
+    surfs['top FR'],
+    surfs['bot upper nozzle'],
+    surfs['top upper nozzle']
+]
+
 univs['Fuel (1.6%) stack'] = make_stack(
     'Fuel (1.6%) stack',
-    surfaces=stack_surfs,
+    surfaces=fuel_stack_surfs,
     universes=[univs['water pin'],
                univs['SS pin'],
                univs['SS pin'],
                univs['end plug'],
-               univs['Fuel (1.6%)'],
-               univs['Fuel (1.6%) grid (bottom)'],
-               univs['Fuel (1.6%)'],
-               univs['Fuel (1.6%)'],
-               univs['Fuel (1.6%) grid (intermediate)'],
-               univs['Fuel (1.6%)'],
-               univs['Fuel (1.6%) grid (intermediate)'],
-               univs['Fuel (1.6%)'],
-               univs['Fuel (1.6%) grid (intermediate)'],
-               univs['Fuel (1.6%)'],
+               univs['Fuel pin (1.6%) stack'],
                univs['pin plenum'],
                univs['pin plenum grid (intermediate)'],
                univs['pin plenum'],
@@ -746,44 +790,34 @@ for axial_region in subdivide(axial_surfs):
         ))
 univs['Subdivided Fuel (2.4%)'] = openmc.Universe(cells=uo2_cells)
 
-fuel_mats = [univs['Subdivided Fuel (2.4%)'], mats['He'], mats['Zr'], mats['H2O']]
-
-univs['Fuel (2.4%)'] = make_pin(
-    'Fuel (2.4%)',
-    surfaces=fuel_surfaces,
-    materials=fuel_mats)
-
-univs['Fuel (2.4%) grid (bottom)'] = make_pin(
-    'Fuel (2.4%) grid (bottom)',
-    surfaces=fuel_surfaces,
-    materials=fuel_mats,
-    grid='bottom')
-
-univs['Fuel (2.4%) grid (intermediate)'] = make_pin(
-    'Fuel (2.4%) grid (intermediate)',
-    surfaces=fuel_surfaces,
-    materials=fuel_mats,
-    grid='intermediate')
-
 # Stack all axial pieces of 2.4% enriched fuel pin cell
+
+univs['Fuel pin (2.4%) stack'] = make_pin_stack(
+    'Fuel pin (2.4%) stack',
+    zsurfaces=within_fuel_surfs,
+    universes=[
+        univs['Outside pin'],
+        univs['Outside pin grid (bottom)'],
+        univs['Outside pin'],
+        univs['Outside pin'],
+        univs['Outside pin grid (intermediate)'],
+        univs['Outside pin'],
+        univs['Outside pin grid (intermediate)'],
+        univs['Outside pin'],
+        univs['Outside pin grid (intermediate)'],
+        univs['Outside pin']
+    ],
+    boundary=surfs['pellet OR'],
+    pin_universe=univs['Subdivided Fuel (2.4%)'])
 
 univs['Fuel (2.4%) stack'] = make_stack(
     'Fuel (2.4%) stack',
-    surfaces=stack_surfs,
+    surfaces=fuel_stack_surfs,
     universes=[univs['water pin'],
                univs['SS pin'],
                univs['SS pin'],
                univs['end plug'],
-               univs['Fuel (2.4%)'],
-               univs['Fuel (2.4%) grid (bottom)'],
-               univs['Fuel (2.4%)'],
-               univs['Fuel (2.4%)'],
-               univs['Fuel (2.4%) grid (intermediate)'],
-               univs['Fuel (2.4%)'],
-               univs['Fuel (2.4%) grid (intermediate)'],
-               univs['Fuel (2.4%)'],
-               univs['Fuel (2.4%) grid (intermediate)'],
-               univs['Fuel (2.4%)'],
+               univs['Fuel pin (2.4%) stack'],
                univs['pin plenum'],
                univs['pin plenum grid (intermediate)'],
                univs['pin plenum'],
@@ -805,44 +839,34 @@ for axial_region in subdivide(axial_surfs):
         ))
 univs['Subdivided Fuel (3.1%)'] = openmc.Universe(cells=uo2_cells)
 
-fuel_mats = [univs['Subdivided Fuel (3.1%)'], mats['He'], mats['Zr'], mats['H2O']]
-
-univs['Fuel (3.1%)'] = make_pin(
-    'Fuel (3.1%)',
-    surfaces=fuel_surfaces,
-    materials=fuel_mats)
-
-univs['Fuel (3.1%) grid (bottom)'] = make_pin(
-    'Fuel (3.1%) grid (bottom)',
-    surfaces=fuel_surfaces,
-    materials=fuel_mats,
-    grid='bottom')
-
-univs['Fuel (3.1%) grid (intermediate)'] = make_pin(
-    'Fuel (3.1%) grid (intermediate)',
-    surfaces=fuel_surfaces,
-    materials=fuel_mats,
-    grid='intermediate')
-
 # Stack all axial pieces of 3.1% enriched fuel pin cell
+
+univs['Fuel pin (3.1%) stack'] = make_pin_stack(
+    'Fuel pin (3.1%) stack',
+    zsurfaces=within_fuel_surfs,
+    universes=[
+        univs['Outside pin'],
+        univs['Outside pin grid (bottom)'],
+        univs['Outside pin'],
+        univs['Outside pin'],
+        univs['Outside pin grid (intermediate)'],
+        univs['Outside pin'],
+        univs['Outside pin grid (intermediate)'],
+        univs['Outside pin'],
+        univs['Outside pin grid (intermediate)'],
+        univs['Outside pin']
+    ],
+    boundary=surfs['pellet OR'],
+    pin_universe=univs['Subdivided Fuel (3.1%)'])
 
 univs['Fuel (3.1%) stack'] = make_stack(
     'Fuel (3.1%) stack',
-    surfaces=stack_surfs,
+    surfaces=fuel_stack_surfs,
     universes=[univs['water pin'],
                univs['SS pin'],
                univs['SS pin'],
                univs['end plug'],
-               univs['Fuel (3.1%)'],
-               univs['Fuel (3.1%) grid (bottom)'],
-               univs['Fuel (3.1%)'],
-               univs['Fuel (3.1%)'],
-               univs['Fuel (3.1%) grid (intermediate)'],
-               univs['Fuel (3.1%)'],
-               univs['Fuel (3.1%) grid (intermediate)'],
-               univs['Fuel (3.1%)'],
-               univs['Fuel (3.1%) grid (intermediate)'],
-               univs['Fuel (3.1%)'],
+               univs['Fuel pin (3.1%) stack'],
                univs['pin plenum'],
                univs['pin plenum grid (intermediate)'],
                univs['pin plenum'],
