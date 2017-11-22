@@ -6250,139 +6250,147 @@
   <cell fill="1" id="6641" name="Fuel (3.1%) stack (9)" region="59 -60" universe="106" />
   <cell fill="91" id="6642" name="Fuel (3.1%) stack (10)" region="60 -61" universe="106" />
   <cell fill="1" id="6643" name="Fuel (3.1%) stack (11)" region="61" universe="106" />
-  <cell fill="125" id="6743" name="Assembly (1.6%) no BAs instr lattice" region="33 -34 35 -36" universe="126" />
-  <cell fill="1" id="6744" name="Assembly (1.6%) no BAs instr lattice outer water" region="~(37 -38 39 -40)" universe="126" />
-  <cell id="6745" material="8" name="Assembly (1.6%) no BAs instr lattice axial (0)" region="37 -38 39 -40 ~(33 -34 35 -36) -47" universe="126" />
-  <cell id="6746" material="4" name="Assembly (1.6%) no BAs instr lattice axial (1)" region="37 -38 39 -40 ~(33 -34 35 -36) 47 -48" universe="126" />
-  <cell id="6747" material="8" name="Assembly (1.6%) no BAs instr lattice axial (2)" region="37 -38 39 -40 ~(33 -34 35 -36) 48 -49" universe="126" />
-  <cell id="6748" material="6" name="Assembly (1.6%) no BAs instr lattice axial (3)" region="37 -38 39 -40 ~(33 -34 35 -36) 49 -50" universe="126" />
-  <cell id="6749" material="8" name="Assembly (1.6%) no BAs instr lattice axial (4)" region="37 -38 39 -40 ~(33 -34 35 -36) 50 -51" universe="126" />
-  <cell id="6750" material="6" name="Assembly (1.6%) no BAs instr lattice axial (5)" region="37 -38 39 -40 ~(33 -34 35 -36) 51 -52" universe="126" />
-  <cell id="6751" material="8" name="Assembly (1.6%) no BAs instr lattice axial (6)" region="37 -38 39 -40 ~(33 -34 35 -36) 52 -53" universe="126" />
-  <cell id="6752" material="4" name="Assembly (1.6%) no BAs instr lattice axial (7)" region="37 -38 39 -40 ~(33 -34 35 -36) 53 -54" universe="126" />
-  <cell id="6753" material="8" name="Assembly (1.6%) no BAs instr lattice axial (last)" region="37 -38 39 -40 ~(33 -34 35 -36) 54" universe="126" />
-  <cell fill="145" id="6853" name="Assembly (2.4%) CR D lattice" region="33 -34 35 -36" universe="146" />
-  <cell fill="1" id="6854" name="Assembly (2.4%) CR D lattice outer water" region="~(37 -38 39 -40)" universe="146" />
-  <cell id="6855" material="8" name="Assembly (2.4%) CR D lattice axial (0)" region="37 -38 39 -40 ~(33 -34 35 -36) -47" universe="146" />
-  <cell id="6856" material="4" name="Assembly (2.4%) CR D lattice axial (1)" region="37 -38 39 -40 ~(33 -34 35 -36) 47 -48" universe="146" />
-  <cell id="6857" material="8" name="Assembly (2.4%) CR D lattice axial (2)" region="37 -38 39 -40 ~(33 -34 35 -36) 48 -49" universe="146" />
-  <cell id="6858" material="6" name="Assembly (2.4%) CR D lattice axial (3)" region="37 -38 39 -40 ~(33 -34 35 -36) 49 -50" universe="146" />
-  <cell id="6859" material="8" name="Assembly (2.4%) CR D lattice axial (4)" region="37 -38 39 -40 ~(33 -34 35 -36) 50 -51" universe="146" />
-  <cell id="6860" material="6" name="Assembly (2.4%) CR D lattice axial (5)" region="37 -38 39 -40 ~(33 -34 35 -36) 51 -52" universe="146" />
-  <cell id="6861" material="8" name="Assembly (2.4%) CR D lattice axial (6)" region="37 -38 39 -40 ~(33 -34 35 -36) 52 -53" universe="146" />
-  <cell id="6862" material="4" name="Assembly (2.4%) CR D lattice axial (7)" region="37 -38 39 -40 ~(33 -34 35 -36) 53 -54" universe="146" />
-  <cell id="6863" material="8" name="Assembly (2.4%) CR D lattice axial (last)" region="37 -38 39 -40 ~(33 -34 35 -36) 54" universe="146" />
-  <cell fill="165" id="6963" name="Assembly (3.1%) 16BA lattice" region="33 -34 35 -36" universe="166" />
-  <cell fill="1" id="6964" name="Assembly (3.1%) 16BA lattice outer water" region="~(37 -38 39 -40)" universe="166" />
-  <cell id="6965" material="8" name="Assembly (3.1%) 16BA lattice axial (0)" region="37 -38 39 -40 ~(33 -34 35 -36) -47" universe="166" />
-  <cell id="6966" material="4" name="Assembly (3.1%) 16BA lattice axial (1)" region="37 -38 39 -40 ~(33 -34 35 -36) 47 -48" universe="166" />
-  <cell id="6967" material="8" name="Assembly (3.1%) 16BA lattice axial (2)" region="37 -38 39 -40 ~(33 -34 35 -36) 48 -49" universe="166" />
-  <cell id="6968" material="6" name="Assembly (3.1%) 16BA lattice axial (3)" region="37 -38 39 -40 ~(33 -34 35 -36) 49 -50" universe="166" />
-  <cell id="6969" material="8" name="Assembly (3.1%) 16BA lattice axial (4)" region="37 -38 39 -40 ~(33 -34 35 -36) 50 -51" universe="166" />
-  <cell id="6970" material="6" name="Assembly (3.1%) 16BA lattice axial (5)" region="37 -38 39 -40 ~(33 -34 35 -36) 51 -52" universe="166" />
-  <cell id="6971" material="8" name="Assembly (3.1%) 16BA lattice axial (6)" region="37 -38 39 -40 ~(33 -34 35 -36) 52 -53" universe="166" />
-  <cell id="6972" material="4" name="Assembly (3.1%) 16BA lattice axial (7)" region="37 -38 39 -40 ~(33 -34 35 -36) 53 -54" universe="166" />
-  <cell id="6973" material="8" name="Assembly (3.1%) 16BA lattice axial (last)" region="37 -38 39 -40 ~(33 -34 35 -36) 54" universe="166" />
-  <cell fill="183" id="7062" name="Assembly (3.1%) no BAs instr lattice" region="33 -34 35 -36" universe="184" />
-  <cell fill="1" id="7063" name="Assembly (3.1%) no BAs instr lattice outer water" region="~(37 -38 39 -40)" universe="184" />
-  <cell id="7064" material="8" name="Assembly (3.1%) no BAs instr lattice axial (0)" region="37 -38 39 -40 ~(33 -34 35 -36) -47" universe="184" />
-  <cell id="7065" material="4" name="Assembly (3.1%) no BAs instr lattice axial (1)" region="37 -38 39 -40 ~(33 -34 35 -36) 47 -48" universe="184" />
-  <cell id="7066" material="8" name="Assembly (3.1%) no BAs instr lattice axial (2)" region="37 -38 39 -40 ~(33 -34 35 -36) 48 -49" universe="184" />
-  <cell id="7067" material="6" name="Assembly (3.1%) no BAs instr lattice axial (3)" region="37 -38 39 -40 ~(33 -34 35 -36) 49 -50" universe="184" />
-  <cell id="7068" material="8" name="Assembly (3.1%) no BAs instr lattice axial (4)" region="37 -38 39 -40 ~(33 -34 35 -36) 50 -51" universe="184" />
-  <cell id="7069" material="6" name="Assembly (3.1%) no BAs instr lattice axial (5)" region="37 -38 39 -40 ~(33 -34 35 -36) 51 -52" universe="184" />
-  <cell id="7070" material="8" name="Assembly (3.1%) no BAs instr lattice axial (6)" region="37 -38 39 -40 ~(33 -34 35 -36) 52 -53" universe="184" />
-  <cell id="7071" material="4" name="Assembly (3.1%) no BAs instr lattice axial (7)" region="37 -38 39 -40 ~(33 -34 35 -36) 53 -54" universe="184" />
-  <cell id="7072" material="8" name="Assembly (3.1%) no BAs instr lattice axial (last)" region="37 -38 39 -40 ~(33 -34 35 -36) 54" universe="184" />
-  <cell id="7194" material="8" region="-286" universe="207" />
-  <cell id="7195" material="8" region="-287" universe="207" />
-  <cell id="7196" material="8" region="-288" universe="207" />
-  <cell id="7197" material="8" region="-289" universe="207" />
-  <cell id="7198" material="8" region="-290" universe="207" />
-  <cell id="7199" material="8" region="-291" universe="207" />
-  <cell id="7200" material="8" region="-292" universe="207" />
-  <cell id="7201" material="8" region="-293" universe="207" />
-  <cell id="7202" material="8" region="-294" universe="207" />
-  <cell id="7203" material="8" region="-295" universe="207" />
-  <cell id="7204" material="8" region="-296" universe="207" />
-  <cell id="7205" material="8" region="-297" universe="207" />
-  <cell id="7206" material="8" region="-298" universe="207" />
-  <cell id="7207" material="4" name="heavy reflector NW SS" region="286 287 288 289 290 291 292 293 294 295 296 297 298" universe="207" />
-  <cell id="7208" material="8" region="-299" universe="208" />
-  <cell id="7209" material="8" region="-300" universe="208" />
-  <cell id="7210" material="8" region="-301" universe="208" />
-  <cell id="7211" material="4" name="heavy reflector 1,1 SS" region="299 300 301" universe="208" />
-  <cell id="7212" material="8" region="-302" universe="209" />
-  <cell id="7213" material="8" region="-303" universe="209" />
-  <cell id="7214" material="8" region="-304" universe="209" />
-  <cell id="7215" material="8" region="-305" universe="209" />
-  <cell id="7216" material="8" region="-306" universe="209" />
-  <cell id="7217" material="8" region="-307" universe="209" />
-  <cell id="7218" material="8" region="-308" universe="209" />
-  <cell id="7219" material="8" region="-309" universe="209" />
-  <cell id="7220" material="8" region="-310" universe="209" />
-  <cell id="7221" material="8" region="-311" universe="209" />
-  <cell id="7222" material="8" region="-312" universe="209" />
-  <cell id="7223" material="4" name="heavy reflector 4,0 SS" region="302 303 304 305 306 307 308 309 310 311 312" universe="209" />
-  <cell id="7224" material="8" region="-313" universe="210" />
-  <cell id="7225" material="8" region="-314" universe="210" />
-  <cell id="7226" material="8" region="-315" universe="210" />
-  <cell id="7227" material="8" region="-316" universe="210" />
-  <cell id="7228" material="8" region="-317" universe="210" />
-  <cell id="7229" material="8" region="-318" universe="210" />
-  <cell id="7230" material="8" region="-319" universe="210" />
-  <cell id="7231" material="8" region="-320" universe="210" />
-  <cell id="7232" material="8" region="-321" universe="210" />
-  <cell id="7233" material="8" region="-322" universe="210" />
-  <cell id="7234" material="4" name="heavy reflector 3,0 SS" region="313 314 315 316 317 318 319 320 321 322" universe="210" />
-  <cell id="7235" material="8" region="-323" universe="211" />
-  <cell id="7236" material="8" region="-324" universe="211" />
-  <cell id="7237" material="8" region="-325" universe="211" />
-  <cell id="7238" material="8" region="-326" universe="211" />
-  <cell id="7239" material="8" region="-327" universe="211" />
-  <cell id="7240" material="8" region="-328" universe="211" />
-  <cell id="7241" material="8" region="-329" universe="211" />
-  <cell id="7242" material="8" region="-330" universe="211" />
-  <cell id="7243" material="8" region="-331" universe="211" />
-  <cell id="7244" material="8" region="-332" universe="211" />
-  <cell id="7245" material="4" name="heavy reflector 5,0 SS" region="323 324 325 326 327 328 329 330 331 332" universe="211" />
-  <cell id="7246" material="8" region="-333" universe="212" />
-  <cell id="7247" material="4" name="heavy reflector 2,0 SS" region="333" universe="212" />
-  <cell fill="207" id="7248" name="heavy reflector NE" rotation="0 0 -90" universe="213" />
-  <cell fill="207" id="7249" name="heavy reflector SW" rotation="0 0 90" universe="214" />
-  <cell fill="207" id="7250" name="heavy reflector SE" rotation="0 0 180" universe="215" />
-  <cell fill="212" id="7251" name="heavy reflector 0,2" rotation="0 180 -90" universe="216" />
-  <cell fill="211" id="7252" name="heavy reflector 0,3" rotation="0 0 -90" universe="217" />
-  <cell fill="209" id="7253" name="heavy reflector 0,4" rotation="0 0 -90" universe="218" />
-  <cell fill="210" id="7254" name="heavy reflector 0,5" rotation="0 0 -90" universe="219" />
-  <cell fill="212" id="7255" name="heavy reflector 0,6" rotation="0 0 -90" universe="220" />
-  <cell fill="208" id="7256" name="heavy reflector 1,7" rotation="0 0 -90" universe="221" />
-  <cell fill="212" id="7257" name="heavy reflector 2,8" rotation="0 180 0" universe="222" />
-  <cell fill="210" id="7258" name="heavy reflector 3,8" rotation="0 180 0" universe="223" />
-  <cell fill="209" id="7259" name="heavy reflector 4,8" rotation="0 180 0" universe="224" />
-  <cell fill="210" id="7260" name="heavy reflector 5,8" rotation="0 0 180" universe="225" />
-  <cell fill="212" id="7261" name="heavy reflector 6,0" rotation="180 0 0" universe="226" />
-  <cell fill="212" id="7262" name="heavy reflector 6,8" rotation="0 0 180" universe="227" />
-  <cell fill="208" id="7263" name="heavy reflector 7,1" rotation="180 0 0" universe="228" />
-  <cell fill="208" id="7264" name="heavy reflector 7,7" rotation="0 0 180" universe="229" />
-  <cell fill="212" id="7265" name="heavy reflector 8,2" rotation="0 0 90" universe="230" />
-  <cell fill="210" id="7266" name="heavy reflector 8,3" rotation="0 0 90" universe="231" />
-  <cell fill="209" id="7267" name="heavy reflector 8,4" rotation="0 0 90" universe="232" />
-  <cell fill="211" id="7268" name="heavy reflector 8,5" rotation="0 0 90" universe="233" />
-  <cell fill="212" id="7269" name="heavy reflector 8,6" rotation="0 0 180" universe="234" />
-  <cell id="7270" material="4" name="heavy reflector" universe="235" />
-  <cell fill="236" id="7271" name="Main core" region="-80 90 -89" universe="0" />
-  <cell id="7272" material="4" name="core barrel" region="80 -81 90 -89" universe="0" />
-  <cell id="7273" material="4" name="neutron shield panel NW" region="81 -82 83 -84 90 -89" universe="0" />
-  <cell id="7274" material="8" name="neutron shield panel N" region="81 -82 84 -86 90 -89" universe="0" />
-  <cell id="7275" material="4" name="neutron shield panel SE" region="81 -82 -83 84 90 -89" universe="0" />
-  <cell id="7276" material="8" name="neutron shield panel E" region="81 -82 83 85 90 -89" universe="0" />
-  <cell id="7277" material="4" name="neutron shield panel NE" region="81 -82 85 -86 90 -89" universe="0" />
-  <cell id="7278" material="8" name="neutron shield panel S" region="81 -82 -84 86 90 -89" universe="0" />
-  <cell id="7279" material="4" name="neutron shield panel SW" region="81 -82 -85 86 90 -89" universe="0" />
-  <cell id="7280" material="8" name="neutron shield panel W" region="81 -82 -83 -85 90 -89" universe="0" />
-  <cell id="7281" material="8" name="downcomer" region="82 -87 90 -89" universe="0" />
-  <cell id="7282" material="5" name="reactor pressure vessel" region="87 -88 90 -89" universe="0" />
+  <cell fill="125" id="6761" name="Assembly (1.6%) no BAs instr lattice" region="33 -34 35 -36" universe="126" />
+  <cell fill="1" id="6762" name="Assembly (1.6%) no BAs instr lattice outer water" region="~(37 -38 39 -40)" universe="126" />
+  <cell id="6763" material="8" name="Assembly (1.6%) no BAs instr lattice axial (0)" region="37 -38 39 -40 ~(33 -34 35 -36) -47" universe="126" />
+  <cell id="6764" material="3" name="Assembly (1.6%) no BAs instr lattice axial (1)" region="37 -38 39 -40 ~(33 -34 35 -36) 47 -48" universe="126" />
+  <cell id="6765" material="8" name="Assembly (1.6%) no BAs instr lattice axial (2)" region="37 -38 39 -40 ~(33 -34 35 -36) 48 -49" universe="126" />
+  <cell id="6766" material="6" name="Assembly (1.6%) no BAs instr lattice axial (3)" region="37 -38 39 -40 ~(33 -34 35 -36) 49 -50" universe="126" />
+  <cell id="6767" material="8" name="Assembly (1.6%) no BAs instr lattice axial (4)" region="37 -38 39 -40 ~(33 -34 35 -36) 50 -51" universe="126" />
+  <cell id="6768" material="6" name="Assembly (1.6%) no BAs instr lattice axial (5)" region="37 -38 39 -40 ~(33 -34 35 -36) 51 -52" universe="126" />
+  <cell id="6769" material="8" name="Assembly (1.6%) no BAs instr lattice axial (6)" region="37 -38 39 -40 ~(33 -34 35 -36) 52 -53" universe="126" />
+  <cell id="6770" material="6" name="Assembly (1.6%) no BAs instr lattice axial (7)" region="37 -38 39 -40 ~(33 -34 35 -36) 53 -54" universe="126" />
+  <cell id="6771" material="8" name="Assembly (1.6%) no BAs instr lattice axial (8)" region="37 -38 39 -40 ~(33 -34 35 -36) 54 -55" universe="126" />
+  <cell id="6772" material="6" name="Assembly (1.6%) no BAs instr lattice axial (9)" region="37 -38 39 -40 ~(33 -34 35 -36) 55 -56" universe="126" />
+  <cell id="6773" material="8" name="Assembly (1.6%) no BAs instr lattice axial (last)" region="37 -38 39 -40 ~(33 -34 35 -36) 56" universe="126" />
+  <cell fill="145" id="6891" name="Assembly (2.4%) CR D lattice" region="33 -34 35 -36" universe="146" />
+  <cell fill="1" id="6892" name="Assembly (2.4%) CR D lattice outer water" region="~(37 -38 39 -40)" universe="146" />
+  <cell id="6893" material="8" name="Assembly (2.4%) CR D lattice axial (0)" region="37 -38 39 -40 ~(33 -34 35 -36) -47" universe="146" />
+  <cell id="6894" material="3" name="Assembly (2.4%) CR D lattice axial (1)" region="37 -38 39 -40 ~(33 -34 35 -36) 47 -48" universe="146" />
+  <cell id="6895" material="8" name="Assembly (2.4%) CR D lattice axial (2)" region="37 -38 39 -40 ~(33 -34 35 -36) 48 -49" universe="146" />
+  <cell id="6896" material="6" name="Assembly (2.4%) CR D lattice axial (3)" region="37 -38 39 -40 ~(33 -34 35 -36) 49 -50" universe="146" />
+  <cell id="6897" material="8" name="Assembly (2.4%) CR D lattice axial (4)" region="37 -38 39 -40 ~(33 -34 35 -36) 50 -51" universe="146" />
+  <cell id="6898" material="6" name="Assembly (2.4%) CR D lattice axial (5)" region="37 -38 39 -40 ~(33 -34 35 -36) 51 -52" universe="146" />
+  <cell id="6899" material="8" name="Assembly (2.4%) CR D lattice axial (6)" region="37 -38 39 -40 ~(33 -34 35 -36) 52 -53" universe="146" />
+  <cell id="6900" material="6" name="Assembly (2.4%) CR D lattice axial (7)" region="37 -38 39 -40 ~(33 -34 35 -36) 53 -54" universe="146" />
+  <cell id="6901" material="8" name="Assembly (2.4%) CR D lattice axial (8)" region="37 -38 39 -40 ~(33 -34 35 -36) 54 -55" universe="146" />
+  <cell id="6902" material="6" name="Assembly (2.4%) CR D lattice axial (9)" region="37 -38 39 -40 ~(33 -34 35 -36) 55 -56" universe="146" />
+  <cell id="6903" material="8" name="Assembly (2.4%) CR D lattice axial (last)" region="37 -38 39 -40 ~(33 -34 35 -36) 56" universe="146" />
+  <cell fill="165" id="7021" name="Assembly (3.1%) 16BA lattice" region="33 -34 35 -36" universe="166" />
+  <cell fill="1" id="7022" name="Assembly (3.1%) 16BA lattice outer water" region="~(37 -38 39 -40)" universe="166" />
+  <cell id="7023" material="8" name="Assembly (3.1%) 16BA lattice axial (0)" region="37 -38 39 -40 ~(33 -34 35 -36) -47" universe="166" />
+  <cell id="7024" material="3" name="Assembly (3.1%) 16BA lattice axial (1)" region="37 -38 39 -40 ~(33 -34 35 -36) 47 -48" universe="166" />
+  <cell id="7025" material="8" name="Assembly (3.1%) 16BA lattice axial (2)" region="37 -38 39 -40 ~(33 -34 35 -36) 48 -49" universe="166" />
+  <cell id="7026" material="6" name="Assembly (3.1%) 16BA lattice axial (3)" region="37 -38 39 -40 ~(33 -34 35 -36) 49 -50" universe="166" />
+  <cell id="7027" material="8" name="Assembly (3.1%) 16BA lattice axial (4)" region="37 -38 39 -40 ~(33 -34 35 -36) 50 -51" universe="166" />
+  <cell id="7028" material="6" name="Assembly (3.1%) 16BA lattice axial (5)" region="37 -38 39 -40 ~(33 -34 35 -36) 51 -52" universe="166" />
+  <cell id="7029" material="8" name="Assembly (3.1%) 16BA lattice axial (6)" region="37 -38 39 -40 ~(33 -34 35 -36) 52 -53" universe="166" />
+  <cell id="7030" material="6" name="Assembly (3.1%) 16BA lattice axial (7)" region="37 -38 39 -40 ~(33 -34 35 -36) 53 -54" universe="166" />
+  <cell id="7031" material="8" name="Assembly (3.1%) 16BA lattice axial (8)" region="37 -38 39 -40 ~(33 -34 35 -36) 54 -55" universe="166" />
+  <cell id="7032" material="6" name="Assembly (3.1%) 16BA lattice axial (9)" region="37 -38 39 -40 ~(33 -34 35 -36) 55 -56" universe="166" />
+  <cell id="7033" material="8" name="Assembly (3.1%) 16BA lattice axial (last)" region="37 -38 39 -40 ~(33 -34 35 -36) 56" universe="166" />
+  <cell fill="183" id="7138" name="Assembly (3.1%) no BAs instr lattice" region="33 -34 35 -36" universe="184" />
+  <cell fill="1" id="7139" name="Assembly (3.1%) no BAs instr lattice outer water" region="~(37 -38 39 -40)" universe="184" />
+  <cell id="7140" material="8" name="Assembly (3.1%) no BAs instr lattice axial (0)" region="37 -38 39 -40 ~(33 -34 35 -36) -47" universe="184" />
+  <cell id="7141" material="3" name="Assembly (3.1%) no BAs instr lattice axial (1)" region="37 -38 39 -40 ~(33 -34 35 -36) 47 -48" universe="184" />
+  <cell id="7142" material="8" name="Assembly (3.1%) no BAs instr lattice axial (2)" region="37 -38 39 -40 ~(33 -34 35 -36) 48 -49" universe="184" />
+  <cell id="7143" material="6" name="Assembly (3.1%) no BAs instr lattice axial (3)" region="37 -38 39 -40 ~(33 -34 35 -36) 49 -50" universe="184" />
+  <cell id="7144" material="8" name="Assembly (3.1%) no BAs instr lattice axial (4)" region="37 -38 39 -40 ~(33 -34 35 -36) 50 -51" universe="184" />
+  <cell id="7145" material="6" name="Assembly (3.1%) no BAs instr lattice axial (5)" region="37 -38 39 -40 ~(33 -34 35 -36) 51 -52" universe="184" />
+  <cell id="7146" material="8" name="Assembly (3.1%) no BAs instr lattice axial (6)" region="37 -38 39 -40 ~(33 -34 35 -36) 52 -53" universe="184" />
+  <cell id="7147" material="6" name="Assembly (3.1%) no BAs instr lattice axial (7)" region="37 -38 39 -40 ~(33 -34 35 -36) 53 -54" universe="184" />
+  <cell id="7148" material="8" name="Assembly (3.1%) no BAs instr lattice axial (8)" region="37 -38 39 -40 ~(33 -34 35 -36) 54 -55" universe="184" />
+  <cell id="7149" material="6" name="Assembly (3.1%) no BAs instr lattice axial (9)" region="37 -38 39 -40 ~(33 -34 35 -36) 55 -56" universe="184" />
+  <cell id="7150" material="8" name="Assembly (3.1%) no BAs instr lattice axial (last)" region="37 -38 39 -40 ~(33 -34 35 -36) 56" universe="184" />
+  <cell id="7294" material="8" region="-286" universe="207" />
+  <cell id="7295" material="8" region="-287" universe="207" />
+  <cell id="7296" material="8" region="-288" universe="207" />
+  <cell id="7297" material="8" region="-289" universe="207" />
+  <cell id="7298" material="8" region="-290" universe="207" />
+  <cell id="7299" material="8" region="-291" universe="207" />
+  <cell id="7300" material="8" region="-292" universe="207" />
+  <cell id="7301" material="8" region="-293" universe="207" />
+  <cell id="7302" material="8" region="-294" universe="207" />
+  <cell id="7303" material="8" region="-295" universe="207" />
+  <cell id="7304" material="8" region="-296" universe="207" />
+  <cell id="7305" material="8" region="-297" universe="207" />
+  <cell id="7306" material="8" region="-298" universe="207" />
+  <cell id="7307" material="4" name="heavy reflector NW SS" region="286 287 288 289 290 291 292 293 294 295 296 297 298" universe="207" />
+  <cell id="7308" material="8" region="-299" universe="208" />
+  <cell id="7309" material="8" region="-300" universe="208" />
+  <cell id="7310" material="8" region="-301" universe="208" />
+  <cell id="7311" material="4" name="heavy reflector 1,1 SS" region="299 300 301" universe="208" />
+  <cell id="7312" material="8" region="-302" universe="209" />
+  <cell id="7313" material="8" region="-303" universe="209" />
+  <cell id="7314" material="8" region="-304" universe="209" />
+  <cell id="7315" material="8" region="-305" universe="209" />
+  <cell id="7316" material="8" region="-306" universe="209" />
+  <cell id="7317" material="8" region="-307" universe="209" />
+  <cell id="7318" material="8" region="-308" universe="209" />
+  <cell id="7319" material="8" region="-309" universe="209" />
+  <cell id="7320" material="8" region="-310" universe="209" />
+  <cell id="7321" material="8" region="-311" universe="209" />
+  <cell id="7322" material="8" region="-312" universe="209" />
+  <cell id="7323" material="4" name="heavy reflector 4,0 SS" region="302 303 304 305 306 307 308 309 310 311 312" universe="209" />
+  <cell id="7324" material="8" region="-313" universe="210" />
+  <cell id="7325" material="8" region="-314" universe="210" />
+  <cell id="7326" material="8" region="-315" universe="210" />
+  <cell id="7327" material="8" region="-316" universe="210" />
+  <cell id="7328" material="8" region="-317" universe="210" />
+  <cell id="7329" material="8" region="-318" universe="210" />
+  <cell id="7330" material="8" region="-319" universe="210" />
+  <cell id="7331" material="8" region="-320" universe="210" />
+  <cell id="7332" material="8" region="-321" universe="210" />
+  <cell id="7333" material="8" region="-322" universe="210" />
+  <cell id="7334" material="4" name="heavy reflector 3,0 SS" region="313 314 315 316 317 318 319 320 321 322" universe="210" />
+  <cell id="7335" material="8" region="-323" universe="211" />
+  <cell id="7336" material="8" region="-324" universe="211" />
+  <cell id="7337" material="8" region="-325" universe="211" />
+  <cell id="7338" material="8" region="-326" universe="211" />
+  <cell id="7339" material="8" region="-327" universe="211" />
+  <cell id="7340" material="8" region="-328" universe="211" />
+  <cell id="7341" material="8" region="-329" universe="211" />
+  <cell id="7342" material="8" region="-330" universe="211" />
+  <cell id="7343" material="8" region="-331" universe="211" />
+  <cell id="7344" material="8" region="-332" universe="211" />
+  <cell id="7345" material="4" name="heavy reflector 5,0 SS" region="323 324 325 326 327 328 329 330 331 332" universe="211" />
+  <cell id="7346" material="8" region="-333" universe="212" />
+  <cell id="7347" material="4" name="heavy reflector 2,0 SS" region="333" universe="212" />
+  <cell fill="207" id="7348" name="heavy reflector NE" rotation="0 0 -90" universe="213" />
+  <cell fill="207" id="7349" name="heavy reflector SW" rotation="0 0 90" universe="214" />
+  <cell fill="207" id="7350" name="heavy reflector SE" rotation="0 0 180" universe="215" />
+  <cell fill="212" id="7351" name="heavy reflector 0,2" rotation="0 180 -90" universe="216" />
+  <cell fill="211" id="7352" name="heavy reflector 0,3" rotation="0 0 -90" universe="217" />
+  <cell fill="209" id="7353" name="heavy reflector 0,4" rotation="0 0 -90" universe="218" />
+  <cell fill="210" id="7354" name="heavy reflector 0,5" rotation="0 0 -90" universe="219" />
+  <cell fill="212" id="7355" name="heavy reflector 0,6" rotation="0 0 -90" universe="220" />
+  <cell fill="208" id="7356" name="heavy reflector 1,7" rotation="0 0 -90" universe="221" />
+  <cell fill="212" id="7357" name="heavy reflector 2,8" rotation="0 180 0" universe="222" />
+  <cell fill="210" id="7358" name="heavy reflector 3,8" rotation="0 180 0" universe="223" />
+  <cell fill="209" id="7359" name="heavy reflector 4,8" rotation="0 180 0" universe="224" />
+  <cell fill="210" id="7360" name="heavy reflector 5,8" rotation="0 0 180" universe="225" />
+  <cell fill="212" id="7361" name="heavy reflector 6,0" rotation="180 0 0" universe="226" />
+  <cell fill="212" id="7362" name="heavy reflector 6,8" rotation="0 0 180" universe="227" />
+  <cell fill="208" id="7363" name="heavy reflector 7,1" rotation="180 0 0" universe="228" />
+  <cell fill="208" id="7364" name="heavy reflector 7,7" rotation="0 0 180" universe="229" />
+  <cell fill="212" id="7365" name="heavy reflector 8,2" rotation="0 0 90" universe="230" />
+  <cell fill="210" id="7366" name="heavy reflector 8,3" rotation="0 0 90" universe="231" />
+  <cell fill="209" id="7367" name="heavy reflector 8,4" rotation="0 0 90" universe="232" />
+  <cell fill="211" id="7368" name="heavy reflector 8,5" rotation="0 0 90" universe="233" />
+  <cell fill="212" id="7369" name="heavy reflector 8,6" rotation="0 0 180" universe="234" />
+  <cell id="7370" material="4" name="heavy reflector" universe="235" />
+  <cell fill="236" id="7371" name="Main core" region="-80 90 -89" universe="0" />
+  <cell id="7372" material="4" name="core barrel" region="80 -81 90 -89" universe="0" />
+  <cell id="7373" material="4" name="neutron shield panel NW" region="81 -82 83 -84 90 -89" universe="0" />
+  <cell id="7374" material="8" name="neutron shield panel N" region="81 -82 84 -86 90 -89" universe="0" />
+  <cell id="7375" material="4" name="neutron shield panel SE" region="81 -82 -83 84 90 -89" universe="0" />
+  <cell id="7376" material="8" name="neutron shield panel E" region="81 -82 83 85 90 -89" universe="0" />
+  <cell id="7377" material="4" name="neutron shield panel NE" region="81 -82 85 -86 90 -89" universe="0" />
+  <cell id="7378" material="8" name="neutron shield panel S" region="81 -82 -84 86 90 -89" universe="0" />
+  <cell id="7379" material="4" name="neutron shield panel SW" region="81 -82 -85 86 90 -89" universe="0" />
+  <cell id="7380" material="8" name="neutron shield panel W" region="81 -82 -83 -85 90 -89" universe="0" />
+  <cell id="7381" material="8" name="downcomer" region="82 -87 90 -89" universe="0" />
+  <cell id="7382" material="5" name="reactor pressure vessel" region="87 -88 90 -89" universe="0" />
   <lattice id="125" name="Assembly (1.6%) no BAs instr">
     <pitch>1.25984 1.25984</pitch>
     <dimension>17 17</dimension>
