@@ -127,10 +127,10 @@ univs['GT empty'] = make_pin(
     [mats['H2O'], mats['Zr'], mats['H2O']])
 univs['GT empty grid (bottom)'] = make_pin(
     'GT empty grid (bottom)', [surfs['GT IR'], surfs['GT OR']],
-    [mats['H2O'], mats['Zr'], mats['H2O']], grid='(bottom)')
+    [mats['H2O'], mats['Zr'], mats['H2O']], grid='bottom')
 univs['GT empty grid (intermediate)'] = make_pin(
     'GT empty grid (intermediate)', [surfs['GT IR'], surfs['GT OR']],
-    [mats['H2O'], mats['Zr'], mats['H2O']], grid='(intermediate)')
+    [mats['H2O'], mats['Zr'], mats['H2O']], grid='intermediate')
 univs['GT empty nozzle'] = make_pin(
     'GT empty nozzle', [surfs['GT IR'], surfs['GT OR']],
     [mats['H2O'], mats['Zr'], mats['H2O']])
@@ -141,11 +141,11 @@ univs['GTd empty'] = make_pin(
 univs['GTd empty grid (bottom)'] = make_pin(
     'GT empty at dashpot grid (bottom)',
     [surfs['GT dashpot IR'], surfs['GT dashpot OR']],
-    [mats['H2O'], mats['Zr'], mats['H2O']], grid='(bottom)')
+    [mats['H2O'], mats['Zr'], mats['H2O']], grid='bottom')
 univs['GTd empty grid (intermediate)'] = make_pin(
     'GT empty at dashpot grid (intermediate)',
     [surfs['GT dashpot IR'], surfs['GT dashpot OR']],
-    [mats['H2O'], mats['Zr'], mats['H2O']], grid='(intermediate)')
+    [mats['H2O'], mats['Zr'], mats['H2O']], grid='intermediate')
 univs['GTd empty nozzle'] = make_pin(
     'GT empty nozzle', [surfs['GT dashpot IR'], surfs['GT dashpot OR']],
     [mats['H2O'], mats['Zr'], mats['H2O']])
@@ -166,9 +166,9 @@ stack_surfs = [
     surfs['grid3top'],
     surfs['grid4bot'],
     surfs['grid4top'],
+    surfs['top active core'],
     surfs['grid5bot'],
     surfs['grid5top'],
-    surfs['top active core'],
     surfs['top pin plenum'],
     surfs['top FR'],
     surfs['bot upper nozzle'],
@@ -192,7 +192,7 @@ univs['GT empty'] = make_stack(
                univs['GT empty grid (intermediate)'],
                univs['GT empty'],
                univs['GT empty'],
-               univs['GT empty grid (bottom)'],
+               univs['GT empty grid (intermediate)'],
                univs['GT empty'],
                univs['GT empty'],
                univs['GT empty'],
@@ -216,7 +216,7 @@ univs['GT empty instr'] = make_stack(
                univs['GT empty grid (intermediate)'],
                univs['GT empty'],
                univs['GT empty'],
-               univs['GT empty grid (bottom)'],
+               univs['GT empty grid (intermediate)'],
                univs['GT empty'],
                univs['GT empty'],
                univs['GT empty'],
@@ -233,12 +233,12 @@ univs['IT grid (bottom)'] = make_pin(
     'IT grid (bottom)',
     [surfs['IT IR'], surfs['IT OR'], surfs['GT IR'], surfs['GT OR']],
     [mats['Air'], mats['Zr'], mats['H2O'], mats['Zr'], mats['H2O']],
-    grid='(bottom)')
+    grid='bottom')
 univs['IT grid (intermediate)'] = make_pin(
     'IT grid (intermediate)',
     [surfs['IT IR'], surfs['IT OR'], surfs['GT IR'], surfs['GT OR']],
     [mats['Air'], mats['Zr'], mats['H2O'], mats['Zr'], mats['H2O']],
-    grid='(intermediate)')
+    grid='intermediate')
 
 univs['IT nozzle'] = make_pin(
     'IT nozzle',
@@ -267,7 +267,7 @@ univs['IT stack'] = make_stack(
                univs['IT grid (intermediate)'],
                univs['IT'],
                univs['IT'],
-               univs['IT grid (bottom)'],
+               univs['IT grid (intermediate)'],
                univs['IT'],
                univs['IT'],
                univs['IT'],
@@ -283,12 +283,12 @@ univs['CR'] = make_pin(
 univs['CR grid (bottom)'] = make_pin(
     'CR grid (bottom)', [surfs['CP OR'], surfs['CR IR'], surfs['GT IR'], surfs['GT OR']],
     [mats['AIC'], mats['Air'], mats['SS'], mats['H2O'], mats['Zr'], mats['H2O']],
-    grid='(bottom)')
+    grid='bottom')
 univs['CR grid (intermediate)'] = make_pin(
     'CR grid (intermediate)',
     [surfs['CP OR'], surfs['CR IR'], surfs['GT IR'], surfs['GT OR']],
     [mats['AIC'], mats['Air'], mats['SS'], mats['H2O'], mats['Zr'], mats['H2O']],
-    grid='(intermediate)')
+    grid='intermediate')
 univs['CR nozzle'] = make_pin(
     'CR nozzle', [surfs['CP OR'], surfs['CR IR'], surfs['CR OR']],
     [mats['AIC'], mats['Air'], mats['SS'], mats['H2O']])
@@ -301,12 +301,12 @@ univs['CR blank grid (bottom)'] = make_pin(
     'CR blank grid (bottom)',
     [surfs['CP OR'], surfs['CR IR'], surfs['CR OR'], surfs['GT IR'], surfs['GT OR']],
     [mats['SS'], mats['Air'], mats['SS'], mats['H2O'], mats['Zr'], mats['H2O']],
-    grid='(bottom)')
+    grid='bottom')
 univs['CR blank grid (intermediate)'] = make_pin(
     'CR blank grid (intermediate)',
     [surfs['CP OR'], surfs['CR IR'], surfs['CR OR'], surfs['GT IR'], surfs['GT OR']],
     [mats['SS'], mats['Air'], mats['SS'], mats['H2O'], mats['Zr'], mats['H2O']],
-    grid='(intermediate)')
+    grid='intermediate')
 univs['CR blank nozzle'] = make_pin(
     'CR blank nozzle', [surfs['CP OR'], surfs['CR IR'], surfs['CR OR']],
     [mats['SS'], mats['Air'], mats['SS'], mats['H2O']])
@@ -455,7 +455,7 @@ univs['BA grid (bottom)'] = make_pin(
                mats['H2O'],
                mats['Zr'],
                mats['H2O']],
-    grid='(bottom)')
+    grid='bottom')
 
 univs['BA grid (intermediate)'] = make_pin(
     'BA grid (intermediate)',
@@ -476,7 +476,7 @@ univs['BA grid (intermediate)'] = make_pin(
                mats['H2O'],
                mats['Zr'],
                mats['H2O']],
-    grid='(intermediate)')
+    grid='intermediate')
 
 univs['BA dashpot'] = make_pin(
     'BA dashpot',
@@ -517,7 +517,7 @@ univs['BA dashpot grid (bottom)'] = make_pin(
                mats['H2O'],
                mats['Zr'],
                mats['H2O']],
-    grid='(bottom)')
+    grid='bottom')
 
 univs['BA dashpot grid (intermediate)'] = make_pin(
     'BA dashpot grid (intermediate)',
@@ -538,7 +538,7 @@ univs['BA dashpot grid (intermediate)'] = make_pin(
                mats['H2O'],
                mats['Zr'],
                mats['H2O']],
-    grid='(intermediate)')
+    grid='intermediate')
 
 univs['BA blank SS'] = make_pin(
     'BA blank SS',
@@ -571,9 +571,9 @@ stack_surfs_BA = [
     surfs['grid3top'],
     surfs['grid4bot'],
     surfs['grid4top'],
+    surfs['top active core'],
     surfs['grid5bot'],
     surfs['grid5top'],
-    surfs['top active core'],
     surfs['top pin plenum'],
     surfs['top FR'],
     surfs['bot upper nozzle'],
@@ -593,9 +593,9 @@ stack_surfs = [
     surfs['grid3top'],
     surfs['grid4bot'],
     surfs['grid4top'],
+    surfs['top active core'],
     surfs['grid5bot'],
     surfs['grid5top'],
-    surfs['top active core'],
     surfs['top pin plenum'],
     surfs['top FR'],
     surfs['bot upper nozzle'],
@@ -655,8 +655,8 @@ univs['pin plenum'] = make_pin(
                mats['Zr'],
                mats['H2O']])
 
-univs['pin plenum grid (bottom)'] = make_pin(
-    'pin plenum grid (bottom)',
+univs['pin plenum grid (intermediate)'] = make_pin(
+    'pin plenum grid (intermediate)',
     surfaces=[surfs['plenum spring OR'],
               surfs['clad IR'],
               surfs['clad OR']],
@@ -664,7 +664,7 @@ univs['pin plenum grid (bottom)'] = make_pin(
                mats['He'],
                mats['Zr'],
                mats['H2O']],
-    grid='(bottom)')
+    grid='intermediate')
 
 
 #### 1.6% ENRICHED FUEL PIN CELL
@@ -688,7 +688,7 @@ univs['Fuel (1.6%) grid (bottom)'] = make_pin(
                mats['He'],
                mats['Zr'],
                mats['H2O']],
-    grid='(bottom)')
+    grid='bottom')
 
 univs['Fuel (1.6%) grid (intermediate)'] = make_pin(
     'Fuel (1.6%) grid (intermediate)',
@@ -699,7 +699,7 @@ univs['Fuel (1.6%) grid (intermediate)'] = make_pin(
                mats['He'],
                mats['Zr'],
                mats['H2O']],
-    grid='(intermediate)')
+    grid='intermediate')
 
 # Stack all axial pieces of 1.6% enriched fuel pin cell
 
@@ -721,7 +721,7 @@ univs['Fuel (1.6%) stack'] = make_stack(
                univs['Fuel (1.6%) grid (intermediate)'],
                univs['Fuel (1.6%)'],
                univs['pin plenum'],
-               univs['pin plenum grid (bottom)'],
+               univs['pin plenum grid (intermediate)'],
                univs['pin plenum'],
                univs['end plug'],
                univs['water pin'],
@@ -750,7 +750,7 @@ univs['Fuel (2.4%) grid (bottom)'] = make_pin(
                mats['He'],
                mats['Zr'],
                mats['H2O']],
-    grid='(bottom)')
+    grid='bottom')
 
 univs['Fuel (2.4%) grid (intermediate)'] = make_pin(
     'Fuel (2.4%) grid (intermediate)',
@@ -761,7 +761,7 @@ univs['Fuel (2.4%) grid (intermediate)'] = make_pin(
                mats['He'],
                mats['Zr'],
                mats['H2O']],
-    grid='(intermediate)')
+    grid='intermediate')
 
 # Stack all axial pieces of 2.4% enriched fuel pin cell
 
@@ -783,7 +783,7 @@ univs['Fuel (2.4%) stack'] = make_stack(
                univs['Fuel (2.4%) grid (intermediate)'],
                univs['Fuel (2.4%)'],
                univs['pin plenum'],
-               univs['pin plenum grid (bottom)'],
+               univs['pin plenum grid (intermediate)'],
                univs['pin plenum'],
                univs['end plug'],
                univs['water pin'],
@@ -812,7 +812,7 @@ univs['Fuel (3.1%) grid (bottom)'] = make_pin(
                mats['He'],
                mats['Zr'],
                mats['H2O']],
-    grid='(bottom)')
+    grid='bottom')
 
 univs['Fuel (3.1%) grid (intermediate)'] = make_pin(
     'Fuel (3.1%) grid (intermediate)',
@@ -823,7 +823,7 @@ univs['Fuel (3.1%) grid (intermediate)'] = make_pin(
                mats['He'],
                mats['Zr'],
                mats['H2O']],
-    grid='(intermediate)')
+    grid='intermediate')
 
 # Stack all axial pieces of 3.1% enriched fuel pin cell
 
@@ -845,7 +845,7 @@ univs['Fuel (3.1%) stack'] = make_stack(
                univs['Fuel (3.1%) grid (intermediate)'],
                univs['Fuel (3.1%)'],
                univs['pin plenum'],
-               univs['pin plenum grid (bottom)'],
+               univs['pin plenum grid (intermediate)'],
                univs['pin plenum'],
                univs['end plug'],
                univs['water pin'],
