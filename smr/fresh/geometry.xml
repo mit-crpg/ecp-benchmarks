@@ -6251,7 +6251,7 @@
   <cell fill="91" id="6642" name="Fuel (3.1%) stack (10)" region="60 -61" universe="106" />
   <cell fill="1" id="6643" name="Fuel (3.1%) stack (11)" region="61" universe="106" />
   <cell fill="125" id="6761" name="Assembly (1.6%) no BAs instr lattice" region="33 -34 35 -36" universe="126" />
-  <cell fill="1" id="6762" name="Assembly (1.6%) no BAs instr lattice outer water" region="~(37 -38 39 -40)" universe="126" />
+  <cell id="6762" material="8" name="Assembly (1.6%) no BAs instr lattice outer water" region="~(37 -38 39 -40)" universe="126" />
   <cell id="6763" material="8" name="Assembly (1.6%) no BAs instr lattice axial (0)" region="37 -38 39 -40 ~(33 -34 35 -36) -47" universe="126" />
   <cell id="6764" material="3" name="Assembly (1.6%) no BAs instr lattice axial (1)" region="37 -38 39 -40 ~(33 -34 35 -36) 47 -48" universe="126" />
   <cell id="6765" material="8" name="Assembly (1.6%) no BAs instr lattice axial (2)" region="37 -38 39 -40 ~(33 -34 35 -36) 48 -49" universe="126" />
@@ -6264,7 +6264,7 @@
   <cell id="6772" material="6" name="Assembly (1.6%) no BAs instr lattice axial (9)" region="37 -38 39 -40 ~(33 -34 35 -36) 55 -56" universe="126" />
   <cell id="6773" material="8" name="Assembly (1.6%) no BAs instr lattice axial (last)" region="37 -38 39 -40 ~(33 -34 35 -36) 56" universe="126" />
   <cell fill="145" id="6891" name="Assembly (2.4%) CR D lattice" region="33 -34 35 -36" universe="146" />
-  <cell fill="1" id="6892" name="Assembly (2.4%) CR D lattice outer water" region="~(37 -38 39 -40)" universe="146" />
+  <cell id="6892" material="8" name="Assembly (2.4%) CR D lattice outer water" region="~(37 -38 39 -40)" universe="146" />
   <cell id="6893" material="8" name="Assembly (2.4%) CR D lattice axial (0)" region="37 -38 39 -40 ~(33 -34 35 -36) -47" universe="146" />
   <cell id="6894" material="3" name="Assembly (2.4%) CR D lattice axial (1)" region="37 -38 39 -40 ~(33 -34 35 -36) 47 -48" universe="146" />
   <cell id="6895" material="8" name="Assembly (2.4%) CR D lattice axial (2)" region="37 -38 39 -40 ~(33 -34 35 -36) 48 -49" universe="146" />
@@ -6277,7 +6277,7 @@
   <cell id="6902" material="6" name="Assembly (2.4%) CR D lattice axial (9)" region="37 -38 39 -40 ~(33 -34 35 -36) 55 -56" universe="146" />
   <cell id="6903" material="8" name="Assembly (2.4%) CR D lattice axial (last)" region="37 -38 39 -40 ~(33 -34 35 -36) 56" universe="146" />
   <cell fill="165" id="7021" name="Assembly (3.1%) 16BA lattice" region="33 -34 35 -36" universe="166" />
-  <cell fill="1" id="7022" name="Assembly (3.1%) 16BA lattice outer water" region="~(37 -38 39 -40)" universe="166" />
+  <cell id="7022" material="8" name="Assembly (3.1%) 16BA lattice outer water" region="~(37 -38 39 -40)" universe="166" />
   <cell id="7023" material="8" name="Assembly (3.1%) 16BA lattice axial (0)" region="37 -38 39 -40 ~(33 -34 35 -36) -47" universe="166" />
   <cell id="7024" material="3" name="Assembly (3.1%) 16BA lattice axial (1)" region="37 -38 39 -40 ~(33 -34 35 -36) 47 -48" universe="166" />
   <cell id="7025" material="8" name="Assembly (3.1%) 16BA lattice axial (2)" region="37 -38 39 -40 ~(33 -34 35 -36) 48 -49" universe="166" />
@@ -6290,7 +6290,7 @@
   <cell id="7032" material="6" name="Assembly (3.1%) 16BA lattice axial (9)" region="37 -38 39 -40 ~(33 -34 35 -36) 55 -56" universe="166" />
   <cell id="7033" material="8" name="Assembly (3.1%) 16BA lattice axial (last)" region="37 -38 39 -40 ~(33 -34 35 -36) 56" universe="166" />
   <cell fill="183" id="7138" name="Assembly (3.1%) no BAs instr lattice" region="33 -34 35 -36" universe="184" />
-  <cell fill="1" id="7139" name="Assembly (3.1%) no BAs instr lattice outer water" region="~(37 -38 39 -40)" universe="184" />
+  <cell id="7139" material="8" name="Assembly (3.1%) no BAs instr lattice outer water" region="~(37 -38 39 -40)" universe="184" />
   <cell id="7140" material="8" name="Assembly (3.1%) no BAs instr lattice axial (0)" region="37 -38 39 -40 ~(33 -34 35 -36) -47" universe="184" />
   <cell id="7141" material="3" name="Assembly (3.1%) no BAs instr lattice axial (1)" region="37 -38 39 -40 ~(33 -34 35 -36) 47 -48" universe="184" />
   <cell id="7142" material="8" name="Assembly (3.1%) no BAs instr lattice axial (2)" region="37 -38 39 -40 ~(33 -34 35 -36) 48 -49" universe="184" />

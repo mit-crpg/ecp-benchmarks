@@ -6,7 +6,7 @@ import openmc
 
 from .materials import mats
 from .surfaces import surfs, pin_pitch
-from .pins import univs as pins
+from .pins import pin_universes
 
 
 def make_assembly(name, universes):
@@ -47,7 +47,7 @@ def make_assembly(name, universes):
 
     # Add outer water cell
     cell = openmc.Cell(name=univ_name + ' outer water')
-    cell.fill = pins['water pin']
+    cell.fill = mats['H2O']
     cell.region = ~surfs['lat grid box outer']
     universe.add_cell(cell)
 
@@ -121,6 +121,8 @@ def make_assembly(name, universes):
 
 
 def assembly_universes():
+    pins = pin_universes()
+
     # Create dictionary to store assembly universes
     univs = {}
 
