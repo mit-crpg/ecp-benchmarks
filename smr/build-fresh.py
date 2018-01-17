@@ -10,7 +10,7 @@ import openmc
 from smr.materials import materials
 from smr.plots import plots
 from smr.surfaces import lattice_pitch, bottom_fuel_stack, top_active_core
-from smr.core import geometry
+from smr.core import core_geometry
 
 
 #### Query the user for options
@@ -27,6 +27,7 @@ distrib = input('Use distribmat or distribcells? [mat/cell]: ').lower()
 if distrib not in ['cell', 'mat']:
     raise InputError('Distrib type "{}" is unsupported'.format(distrib))
 
+geometry = core_geometry()
 
 #### "Differentiate" the geometry if using distribmats
 if distrib == 'mat':

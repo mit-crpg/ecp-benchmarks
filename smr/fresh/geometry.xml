@@ -6315,11 +6315,11 @@
   <cell id="7304" material="8" region="-296" universe="207" />
   <cell id="7305" material="8" region="-297" universe="207" />
   <cell id="7306" material="8" region="-298" universe="207" />
-  <cell id="7307" material="4" name="heavy reflector NW SS" region="286 287 288 289 290 291 292 293 294 295 296 297 298" universe="207" />
+  <cell id="7307" material="4" name="reflector NW SS" region="286 287 288 289 290 291 292 293 294 295 296 297 298" universe="207" />
   <cell id="7308" material="8" region="-299" universe="208" />
   <cell id="7309" material="8" region="-300" universe="208" />
   <cell id="7310" material="8" region="-301" universe="208" />
-  <cell id="7311" material="4" name="heavy reflector 1,1 SS" region="299 300 301" universe="208" />
+  <cell id="7311" material="4" name="reflector 1,1 SS" region="299 300 301" universe="208" />
   <cell id="7312" material="8" region="-302" universe="209" />
   <cell id="7313" material="8" region="-303" universe="209" />
   <cell id="7314" material="8" region="-304" universe="209" />
@@ -6331,7 +6331,7 @@
   <cell id="7320" material="8" region="-310" universe="209" />
   <cell id="7321" material="8" region="-311" universe="209" />
   <cell id="7322" material="8" region="-312" universe="209" />
-  <cell id="7323" material="4" name="heavy reflector 4,0 SS" region="302 303 304 305 306 307 308 309 310 311 312" universe="209" />
+  <cell id="7323" material="4" name="reflector 4,0 SS" region="302 303 304 305 306 307 308 309 310 311 312" universe="209" />
   <cell id="7324" material="8" region="-313" universe="210" />
   <cell id="7325" material="8" region="-314" universe="210" />
   <cell id="7326" material="8" region="-315" universe="210" />
@@ -6342,7 +6342,7 @@
   <cell id="7331" material="8" region="-320" universe="210" />
   <cell id="7332" material="8" region="-321" universe="210" />
   <cell id="7333" material="8" region="-322" universe="210" />
-  <cell id="7334" material="4" name="heavy reflector 3,0 SS" region="313 314 315 316 317 318 319 320 321 322" universe="210" />
+  <cell id="7334" material="4" name="reflector 3,0 SS" region="313 314 315 316 317 318 319 320 321 322" universe="210" />
   <cell id="7335" material="8" region="-323" universe="211" />
   <cell id="7336" material="8" region="-324" universe="211" />
   <cell id="7337" material="8" region="-325" universe="211" />
@@ -6353,31 +6353,31 @@
   <cell id="7342" material="8" region="-330" universe="211" />
   <cell id="7343" material="8" region="-331" universe="211" />
   <cell id="7344" material="8" region="-332" universe="211" />
-  <cell id="7345" material="4" name="heavy reflector 5,0 SS" region="323 324 325 326 327 328 329 330 331 332" universe="211" />
+  <cell id="7345" material="4" name="reflector 5,0 SS" region="323 324 325 326 327 328 329 330 331 332" universe="211" />
   <cell id="7346" material="8" region="-333" universe="212" />
-  <cell id="7347" material="4" name="heavy reflector 2,0 SS" region="333" universe="212" />
-  <cell fill="207" id="7348" name="heavy reflector NE" rotation="0 0 -90" universe="213" />
-  <cell fill="207" id="7349" name="heavy reflector SW" rotation="0 0 90" universe="214" />
-  <cell fill="207" id="7350" name="heavy reflector SE" rotation="0 0 180" universe="215" />
-  <cell fill="212" id="7351" name="heavy reflector 0,2" rotation="0 180 -90" universe="216" />
-  <cell fill="211" id="7352" name="heavy reflector 0,3" rotation="0 0 -90" universe="217" />
-  <cell fill="209" id="7353" name="heavy reflector 0,4" rotation="0 0 -90" universe="218" />
-  <cell fill="210" id="7354" name="heavy reflector 0,5" rotation="0 0 -90" universe="219" />
-  <cell fill="212" id="7355" name="heavy reflector 0,6" rotation="0 0 -90" universe="220" />
-  <cell fill="208" id="7356" name="heavy reflector 1,7" rotation="0 0 -90" universe="221" />
-  <cell fill="212" id="7357" name="heavy reflector 2,8" rotation="0 180 0" universe="222" />
-  <cell fill="210" id="7358" name="heavy reflector 3,8" rotation="0 180 0" universe="223" />
-  <cell fill="209" id="7359" name="heavy reflector 4,8" rotation="0 180 0" universe="224" />
-  <cell fill="210" id="7360" name="heavy reflector 5,8" rotation="0 0 180" universe="225" />
-  <cell fill="212" id="7361" name="heavy reflector 6,0" rotation="180 0 0" universe="226" />
-  <cell fill="212" id="7362" name="heavy reflector 6,8" rotation="0 0 180" universe="227" />
-  <cell fill="208" id="7363" name="heavy reflector 7,1" rotation="180 0 0" universe="228" />
-  <cell fill="208" id="7364" name="heavy reflector 7,7" rotation="0 0 180" universe="229" />
-  <cell fill="212" id="7365" name="heavy reflector 8,2" rotation="0 0 90" universe="230" />
-  <cell fill="210" id="7366" name="heavy reflector 8,3" rotation="0 0 90" universe="231" />
-  <cell fill="209" id="7367" name="heavy reflector 8,4" rotation="0 0 90" universe="232" />
-  <cell fill="211" id="7368" name="heavy reflector 8,5" rotation="0 0 90" universe="233" />
-  <cell fill="212" id="7369" name="heavy reflector 8,6" rotation="0 0 180" universe="234" />
+  <cell id="7347" material="4" name="reflector 2,0 SS" region="333" universe="212" />
+  <cell fill="207" id="7348" name="reflector NE" rotation="0 0 -90" universe="213" />
+  <cell fill="207" id="7349" name="reflector SW" rotation="0 0 90" universe="214" />
+  <cell fill="207" id="7350" name="reflector SE" rotation="0 0 180" universe="215" />
+  <cell fill="212" id="7351" name="reflector 0,2" rotation="0 180 -90" universe="216" />
+  <cell fill="211" id="7352" name="reflector 0,3" rotation="0 0 -90" universe="217" />
+  <cell fill="209" id="7353" name="reflector 0,4" rotation="0 0 -90" universe="218" />
+  <cell fill="210" id="7354" name="reflector 0,5" rotation="0 0 -90" universe="219" />
+  <cell fill="212" id="7355" name="reflector 0,6" rotation="0 0 -90" universe="220" />
+  <cell fill="208" id="7356" name="reflector 1,7" rotation="0 0 -90" universe="221" />
+  <cell fill="212" id="7357" name="reflector 2,8" rotation="0 180 0" universe="222" />
+  <cell fill="210" id="7358" name="reflector 3,8" rotation="0 180 0" universe="223" />
+  <cell fill="209" id="7359" name="reflector 4,8" rotation="0 180 0" universe="224" />
+  <cell fill="210" id="7360" name="reflector 5,8" rotation="0 0 180" universe="225" />
+  <cell fill="212" id="7361" name="reflector 6,0" rotation="180 0 0" universe="226" />
+  <cell fill="212" id="7362" name="reflector 6,8" rotation="0 0 180" universe="227" />
+  <cell fill="208" id="7363" name="reflector 7,1" rotation="180 0 0" universe="228" />
+  <cell fill="208" id="7364" name="reflector 7,7" rotation="0 0 180" universe="229" />
+  <cell fill="212" id="7365" name="reflector 8,2" rotation="0 0 90" universe="230" />
+  <cell fill="210" id="7366" name="reflector 8,3" rotation="0 0 90" universe="231" />
+  <cell fill="209" id="7367" name="reflector 8,4" rotation="0 0 90" universe="232" />
+  <cell fill="211" id="7368" name="reflector 8,5" rotation="0 0 90" universe="233" />
+  <cell fill="212" id="7369" name="reflector 8,6" rotation="0 0 180" universe="234" />
   <cell id="7370" material="4" name="heavy reflector" universe="235" />
   <cell fill="236" id="7371" name="Main core" region="-80 90 -89" universe="0" />
   <cell id="7372" material="4" name="core barrel" region="80 -81 90 -89" universe="0" />
