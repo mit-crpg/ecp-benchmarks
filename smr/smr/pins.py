@@ -1,11 +1,13 @@
 """Instantiate pin cell Cells and Universes for core model."""
 
+from math import sqrt
+
 import numpy as np
 import openmc
 from openmc.model import subdivide
 
 from .materials import mats
-from .surfaces import surfs, n_rings, bottom_fuel_rod, top_active_core
+from .surfaces import surfs, pellet_OR, bottom_fuel_rod, top_active_core
 
 
 def make_pin(name, surfaces, materials, grid=None):
@@ -140,7 +142,7 @@ def make_pin_stack(name, zsurfaces, universes, boundary, pin_universe):
     return universe
 
 
-def pin_universes():
+def pin_universes(num_rings=10):
     # Create dictionary to store pin universes
     univs = {}
 
@@ -686,7 +688,11 @@ def pin_universes():
     axial_surfs = [openmc.ZPlane(z0=z) for z in axial_splits]
 
     # Get z-cylinder surfaces for each ring
-    rings = [surfs['fuel ring {}'.format(i)] for i in range(1, n_rings)]
+    rings = []
+    for i in range(num_rings):
+        R = sqrt(i*pellet_OR**2/num_rings)
+        cyl = openmc.ZCylinder(R=R, name='fuel ring {}'.format(i))
+        rings.append(cyl)
 
     # Create universe for UO2 alone with axial/radial subdivision
     uo2_cells = []

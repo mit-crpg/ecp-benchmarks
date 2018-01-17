@@ -14,7 +14,7 @@ NuScale DC application, chapter 4: https://www.nrc.gov/docs/ML1701/ML17013A274.p
 """
 
 import copy
-from math import tan, pi, sqrt
+from math import tan, pi
 
 import numpy as np
 import openmc
@@ -126,14 +126,6 @@ neutron_shield_NEtop_SWbot = tan(-pi/6)
 
 
 surfs = {}
-
-# Create radii for rings in fuel
-n_rings = 10
-for i in range(1, n_rings):
-    R = sqrt(i*pellet_OR**2/n_rings)
-    name = 'fuel ring {}'.format(i)
-    surfs[name] = openmc.ZCylinder(R=R, name=name)
-
 
 surfs['pellet OR'] = openmc.ZCylinder(
     R=pellet_OR, name='Pellet OR')
