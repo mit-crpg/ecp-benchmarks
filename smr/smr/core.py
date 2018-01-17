@@ -12,8 +12,8 @@ from .assemblies import assembly_universes
 
 #### CONSTRUCT MAIN CORE LATTICE
 
-def core_lattice():
-    assembly = assembly_universes()
+def core_geometry(num_rings=10, num_axial=196):
+    assembly = assembly_universes(num_rings, num_axial)
     reflector = reflector_universes()
 
     core = openmc.RectLattice(name='Main core')
@@ -100,12 +100,6 @@ def core_lattice():
     universes[8, 6] = reflector['8,6']
 
     core.universes = universes
-    return core
-
-
-def core_geometry():
-    # Create core lattice
-    core = core_lattice()
 
     root_univ = openmc.Universe(universe_id=0, name='root universe')
 

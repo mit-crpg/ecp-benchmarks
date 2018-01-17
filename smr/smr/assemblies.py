@@ -120,8 +120,8 @@ def make_assembly(name, universes):
     return universe
 
 
-def assembly_universes():
-    pins = pin_universes()
+def assembly_universes(num_rings=10, num_axial=196):
+    pins = pin_universes(num_rings, num_axial)
 
     # Create dictionary to store assembly universes
     univs = {}

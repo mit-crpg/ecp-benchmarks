@@ -20,10 +20,14 @@ parser.add_argument('-m', '--multipole', action='store_true',
                     help='Whether to use multipole cross sections')
 parser.add_argument('-t', '--tallies', choices=('cell', 'mat'), default='cell',
                     help='Whether to use distribmats or distribcells for tallies')
+parser.add_argument('-r', '--rings', type=int, default=10,
+                    help='Number of annular regions in fuel')
+parser.add_argument('-a', '--axial', type=int, default=196,
+                    help='Number of axial subdivisions in fuel')
 args = parser.parse_args()
 
 
-geometry = core_geometry()
+geometry = core_geometry(args.rings, args.axial)
 
 #### "Differentiate" the geometry if using distribmats
 if args.tallies == 'mat':

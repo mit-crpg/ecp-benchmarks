@@ -142,7 +142,7 @@ def make_pin_stack(name, zsurfaces, universes, boundary, pin_universe):
     return universe
 
 
-def pin_universes(num_rings=10):
+def pin_universes(num_rings=10, num_axial=196):
     # Create dictionary to store pin universes
     univs = {}
 
@@ -683,8 +683,7 @@ def pin_universes(num_rings=10):
 
     # Determine z position between each fuel pellet, omitting the surfaces
     # corresponding to the very bottom and top of the active fuel length
-    n_pellets = 196
-    axial_splits = np.linspace(bottom_fuel_rod, top_active_core, n_pellets + 1)[1:-1]
+    axial_splits = np.linspace(bottom_fuel_rod, top_active_core, num_axial + 1)[1:-1]
     axial_surfs = [openmc.ZPlane(z0=z) for z in axial_splits]
 
     # Get z-cylinder surfaces for each ring
