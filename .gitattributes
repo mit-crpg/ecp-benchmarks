@@ -2,3 +2,4 @@ assembly/depleted/materials.xml filter=lfs diff=lfs merge=lfs -text
 2x2-periodic/depleted/materials.xml filter=lfs diff=lfs merge=lfs -text
 2x2-reflector/depleted/materials.xml filter=lfs diff=lfs merge=lfs -text
 smr/depleted/materials.xml filter=lfs diff=lfs merge=lfs -text
+smr/assembly/materials.xml filter=lfs diff=lfs merge=lfs -text
