@@ -49,6 +49,21 @@ def make_reflector(name, parameters):
 
 
 def reflector_universes():
+    """Generate universes for SMR heavy neutron reflector blocks.
+
+    Parameters
+    ----------
+    num_rings : int
+        Number of annual regions in fuel
+    num_axial : int
+        Number of axial subdivisions in fuel
+
+    Returns
+    -------
+    dict
+        Dictionary mapping a universe name to a openmc.Universe object
+
+    """
     # Create dictionary to store universes
     univs = {}
 

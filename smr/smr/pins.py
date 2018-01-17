@@ -143,6 +143,21 @@ def make_pin_stack(name, zsurfaces, universes, boundary, fuel_fill):
 
 
 def pin_universes(num_rings=10, num_axial=196):
+    """Generate universes for SMR fuel pins.
+
+    Parameters
+    ----------
+    num_rings : int
+        Number of annual regions in fuel
+    num_axial : int
+        Number of axial subdivisions in fuel
+
+    Returns
+    -------
+    dict
+        Dictionary mapping a universe name to a openmc.Universe object
+
+    """
     # Create dictionary to store pin universes
     univs = {}
 

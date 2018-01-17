@@ -10,16 +10,30 @@ from .reflector import reflector_universes
 from .assemblies import assembly_universes
 
 
-#### CONSTRUCT MAIN CORE LATTICE
+def core_geometry(num_rings, num_axial):
+    """Generate full core SMR geometry.
 
-def core_geometry(num_rings=10, num_axial=196):
+    Parameters
+    ----------
+    num_rings : int
+        Number of annual regions in fuel
+    num_axial : int
+        Number of axial subdivisions in fuel
+
+    Returns
+    -------
+    openmc.Geometry
+        SMR full core geometry
+
+    """
     assembly = assembly_universes(num_rings, num_axial)
     reflector = reflector_universes()
 
+    # Construct main core lattice
     core = openmc.RectLattice(name='Main core')
     core.lower_left = (-9*lattice_pitch/2, -9*lattice_pitch/2)
     core.pitch = (lattice_pitch, lattice_pitch)
-    universes = np.tile(reflector['solid'], (9,9))
+    universes = np.tile(reflector['solid'], (9, 9))
 
     universes[0, 2] = reflector['0,2']
     universes[0, 3] = reflector['0,3']
@@ -117,7 +131,6 @@ def core_geometry(num_rings=10, num_axial=196):
                    +surfs['lower bound'] & -surfs['upper bound'])
     root_univ.add_cell(cell)
 
-
     # Neutron shield panels
     cell = openmc.Cell(name='neutron shield panel NW')
     cell.fill = mats['SS']
@@ -183,14 +196,12 @@ def core_geometry(num_rings=10, num_axial=196):
                    +surfs['lower bound'] & -surfs['upper bound'])
     root_univ.add_cell(cell)
 
-
     # Downcomer
     cell = openmc.Cell(name='downcomer')
     cell.fill = mats['H2O']
     cell.region = (+surfs['neutron shield OR'] & -surfs['RPV IR'] &
                    +surfs['lower bound'] & -surfs['upper bound'])
     root_univ.add_cell(cell)
-
 
     # Reactor pressure vessel
     cell = openmc.Cell(name='reactor pressure vessel')
