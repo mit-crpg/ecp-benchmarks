@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<plots>
-    <plot basis="xy" color_by="material" filename="2x2-reflector" id="10020" type="slice">
-        <origin>0.0 0.0 195.0</origin>
-        <width>64.25184 64.25184</width>
-        <pixels>1000 1000</pixels>
-    </plot>
-</plots>
