@@ -4,6 +4,7 @@ import os
 import shutil
 import copy
 import argparse
+from pathlib import Path
 
 import numpy as np
 
@@ -26,8 +27,18 @@ parser.add_argument('-a', '--axial', type=int, default=196,
                     help='Number of axial subdivisions in fuel')
 parser.add_argument('-d', '--depleted', action='store_true',
                     help='Whether UO2 compositions should represent depleted fuel')
+parser.add_argument('-o', '--output-dir', type=Path, default=None)
 args = parser.parse_args()
 
+# Make directory for inputs
+if args.output_dir is None:
+    if args.depleted:
+        directory = Path('core-depleted')
+    else:
+        directory = Path('core-fresh')
+else:
+    directory = args.output_dir
+directory.mkdir(exist_ok=True)
 
 geometry = core_geometry(args.rings, args.axial, args.depleted)
 
@@ -47,11 +58,11 @@ if args.tallies == 'mat':
 #### Create OpenMC "materials.xml" file
 all_materials = geometry.get_all_materials()
 materials = openmc.Materials(all_materials.values())
-materials.export_to_xml()
+materials.export_to_xml(str(directory / 'materials.xml'))
 
 
 #### Create OpenMC "geometry.xml" file
-geometry.export_to_xml()
+geometry.export_to_xml(str(directory / 'geometry.xml'))
 
 
 #### Create OpenMC "settings.xml" file
@@ -66,19 +77,19 @@ settings = openmc.Settings()
 settings.batches = 200
 settings.inactive = 100
 settings.particles = 10000
-settings.output = {'tallies': False}
+settings.output = {'tallies': False, 'summary': False}
 settings.source = source
 settings.sourcepoint_write = False
 
 if args.multipole:
     settings.temperature = {'multipole': True, 'tolerance': 1000}
 
-settings.export_to_xml()
+settings.export_to_xml(str(directory / 'settings.xml'))
 
 
 #### Create OpenMC "plots.xml" file
 plots = core_plots()
-plots.export_to_xml()
+plots.export_to_xml(str(directory / 'plots.xml'))
 
 
 ####  Create OpenMC "tallies.xml" file
@@ -109,16 +120,4 @@ elif args.tallies == 'mat':
     tally.filters = [openmc.MaterialFilter(materials)]
     tallies.append(tally)
 
-tallies.export_to_xml()
-
-
-#### Move all XML files to 'fresh' directory
-
-if not os.path.exists('core-fresh'):
-    os.makedirs('core-fresh')
-
-shutil.move('materials.xml', 'core-fresh/materials.xml')
-shutil.move('geometry.xml', 'core-fresh/geometry.xml')
-shutil.move('settings.xml', 'core-fresh/settings.xml')
-shutil.move('tallies.xml', 'core-fresh/tallies.xml')
-shutil.move('plots.xml', 'core-fresh/plots.xml')
+tallies.export_to_xml(str(directory / 'tallies.xml'))
