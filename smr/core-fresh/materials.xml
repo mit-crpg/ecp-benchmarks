@@ -172,14 +172,14 @@
   <material id="9" name="Borosilicate Glass">
     <temperature>300</temperature>
     <density units="g/cc" value="2.26" />
-    <nuclide ao="0.012259454378427138" name="B10" />
-    <nuclide ao="0.06018253698401973" name="B11" />
     <nuclide ao="0.6509787013744828" name="O16" />
     <nuclide ao="0.00024681447050525047" name="O17" />
     <nuclide ao="0.23640592474731761" name="Si28" />
     <nuclide ao="0.01200401834354893" name="Si29" />
     <nuclide ao="0.007913102535354443" name="Si30" />
     <nuclide ao="0.024236195272461444" name="Al27" />
+    <nuclide ao="0.012259454378427138" name="B10" />
+    <nuclide ao="0.06018253698401973" name="B11" />
   </material>
   <material id="10" name="1.6% Enr. UO2 Fuel">
     <temperature>300</temperature>

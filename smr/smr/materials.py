@@ -3,6 +3,40 @@
 import openmc
 from openmc.data import atomic_weight, atomic_mass
 
+
+_DEPLETION_NUCLIDES = [
+    "U239", "U240", "Np234", "Np235", "Np236", "Np237", "Np238", "Np239",
+    "Pu236", "Pu237", "Pu238", "Pu239", "Pu240", "Pu241", "Pu242", "B11",
+    "N14", "N15", "Fe57", "Fe58", "Co59", "Ni60", "Ni61", "Ni62",
+    "Cu63", "Ni64", "Zn64", "Cu65", "Zn65", "Zn66", "Zn67", "Zn68",
+    "Ga69", "Zn70", "Ge70", "Ga71", "Ge72", "Ge73", "Ge74", "As74",
+    "Se74", "As75", "Ge76", "Se76", "Se77", "Se78", "Se79", "Br79",
+    "Se80", "Kr80", "Br81", "Se82", "Kr82", "Kr83", "Kr84", "Sr84",
+    "Kr85", "Rb85", "Kr86", "Rb86", "Sr86", "Rb87", "Sr87", "Sr88",
+    "Sr89", "Y89", "Sr90", "Y90", "Zr90", "Y91", "Zr91", "Zr92",
+    "Zr93", "Nb93", "Zr94", "Nb94", "Mo94", "Zr95", "Nb95", "Mo95",
+    "Zr96", "Mo96", "Mo97", "Mo98", "Ru98", "Mo99", "Tc99", "Ru99",
+    "Mo100", "Ru100", "Ru101", "Ru102", "Pd102", "Ru103", "Rh103", "Ru104",
+    "Pd104", "Ru105", "Rh105", "Pd105", "Ru106", "Pd106", "Pd107", "Ag107",
+    "Pd108", "Cd108", "Ag109", "Pd110", "Cd110", "Ag111", "Cd111", "Cd112",
+    "Sn112", "Cd113", "In113", "Sn113", "Cd114", "Sn114", "In115", "Sn115",
+    "Cd116", "Sn116", "Sn117", "Sn118", "Sn119", "Sn120", "Te120", "Sb121",
+    "Sn122", "Te122", "Sn123", "Sb123", "Te123", "Sn124", "Sb124", "Te124",
+    "Sn125", "Sb125", "Te125", "Sn126", "Sb126", "Te126", "Xe126", "I127",
+    "Te128", "Xe128", "I129", "Xe129", "Te130", "I130", "Xe130", "I131",
+    "Xe131", "Te132", "Xe132", "Ba132", "Xe133", "Cs133", "Ba133", "Xe134",
+    "Cs134", "Ba134", "I135", "Xe135", "Cs135", "Ba135", "Xe136", "Cs136",
+    "Ba136", "Cs137", "Ba137", "Ba138", "La138", "Ce138", "La139", "Ce139",
+    "Ba140", "La140", "Ce140", "Ce141", "Pr141", "Ce142", "Pr142", "Nd142",
+    "Ce143", "Pr143", "Nd143", "Ce144", "Nd144", "Nd145", "Nd146", "Nd147",
+    "Pm147", "Sm147", "Nd148", "Pm148", "Sm148", "Pm149", "Sm149", "Nd150",
+    "Sm150", "Pm151", "Sm151", "Eu151", "Sm152", "Eu152", "Gd152", "Sm153",
+    "Eu153", "Gd153", "Sm154", "Eu154", "Gd154", "Eu155", "Gd155", "Eu156",
+    "Gd156", "Eu157", "Gd157", "Gd158", "Dy158", "Tb159", "Gd160", "Tb160",
+    "Dy160", "Dy161", "Dy162", "Dy163", "Dy164", "Er164", "Ho165", "Er166",
+    "Er167", "Er168", "Tm168", "Tm169", "Er170", "Tm170"]
+
+
 mats = {}
 
 # Create He gas material for fuel pin gap
@@ -156,25 +190,56 @@ mats['BSG'].add_nuclide('B11', aB11_bsg, 'ao')
 #### Enriched UO2 Fuel
 
 # Create 1.6% enriched UO2 fuel material
-mats['UO2 1.6'] = openmc.Material(name='1.6% Enr. UO2 Fuel')
-mats['UO2 1.6'].temperature = 300
-mats['UO2 1.6'].set_density('g/cc', 10.31341)
-mats['UO2 1.6'].add_element('O', 2., 'ao')
-mats['UO2 1.6'].add_element('U', 1., 'ao', enrichment=1.61006)
+mat = openmc.Material(name='1.6% Enr. UO2 Fuel')
+mat.temperature = 300
+mat.set_density('g/cc', 10.31341)
+mat.add_element('O', 2., 'ao')
+mat.add_element('U', 1., 'ao', enrichment=1.61006)
+mats['UO2 1.6 fresh'] = mat
 
 # Create 2.4% enriched UO2 fuel material
-mats['UO2 2.4'] = openmc.Material(name='2.4% Enr. UO2 Fuel')
-mats['UO2 2.4'].temperature = 300
-mats['UO2 2.4'].set_density('g/cc', 10.29748)
-mats['UO2 2.4'].add_element('O', 2., 'ao')
-mats['UO2 2.4'].add_element('U', 1., 'ao', enrichment=2.39993)
+mat = openmc.Material(name='2.4% Enr. UO2 Fuel')
+mat.temperature = 300
+mat.set_density('g/cc', 10.29748)
+mat.add_element('O', 2., 'ao')
+mat.add_element('U', 1., 'ao', enrichment=2.39993)
+mats['UO2 2.4 fresh'] = mat
 
 # Create 3.1% enriched UO2 fuel material
-mats['UO2 3.1'] = openmc.Material(name='3.1% Enr. UO2 Fuel')
-mats['UO2 3.1'].temperature = 300
-mats['UO2 3.1'].set_density('g/cc', 10.30166)
-mats['UO2 3.1'].add_element('O', 2., 'ao')
-mats['UO2 3.1'].add_element('U', 1., 'ao', enrichment=3.10221)
+mat = openmc.Material(name='3.1% Enr. UO2 Fuel')
+mat.temperature = 300
+mat.set_density('g/cc', 10.30166)
+mat.add_element('O', 2., 'ao')
+mat.add_element('U', 1., 'ao', enrichment=3.10221)
+mats['UO2 3.1 fresh'] = mat
+
+# Depleted versions of 1.6%, 2.4%, 3.1% fuel
+mat = openmc.Material(name='2.4% Enr. UO2 Fuel')
+mat.temperature = 300
+mat.set_density('g/cc', 10.29748)
+mat.add_element('O', 2., 'ao')
+mat.add_element('U', 1., 'ao', enrichment=2.39993)
+for nuc in _DEPLETION_NUCLIDES:
+    mat.add_nuclide(nuc, 1.0e-11)
+mats['UO2 2.4 depleted'] = mat
+
+mat = openmc.Material(name='1.6% Enr. UO2 Fuel')
+mat.temperature = 300
+mat.set_density('g/cc', 10.31341)
+mat.add_element('O', 2., 'ao')
+mat.add_element('U', 1., 'ao', enrichment=1.61006)
+for nuc in _DEPLETION_NUCLIDES:
+    mat.add_nuclide(nuc, 1.0e-11)
+mats['UO2 1.6 depleted'] = mat
+
+mat = openmc.Material(name='3.1% Enr. UO2 Fuel')
+mat.temperature = 300
+mat.set_density('g/cc', 10.30166)
+mat.add_element('O', 2., 'ao')
+mat.add_element('U', 1., 'ao', enrichment=3.10221)
+for nuc in _DEPLETION_NUCLIDES:
+    mat.add_nuclide(nuc, 1.0e-11)
+mats['UO2 3.1 depleted'] = mat
 
 
 # Construct a collection of Materials to export to XML

@@ -34,6 +34,7 @@ INCHES = 2.54
 
 # fuel rod parameters
 pellet_OR          = 0.3195*INCHES/2  # ML17013A274, Table 4.1-2
+pellet_length      = 0.4*INCHES       # ML17013A274, Table 4.1-2
 clad_IR            = 0.326*INCHES/2   # ML17013A274, Table 4.1-2
 clad_OR            = 0.374*INCHES/2   # ML17013A274, Table 4.1-2
 active_fuel_length = 78.74*INCHES     # ML17013A274, Figure 4.2-10

@@ -12,8 +12,7 @@ converted to actual dimensions by scaling according to the width of an assembly.
 import openmc
 
 from .materials import mats
-from .surfaces import surfs, lattice_pitch
-from .assemblies import univs
+from .surfaces import lattice_pitch
 
 
 def make_reflector(name, parameters):
@@ -27,6 +26,11 @@ def make_reflector(name, parameters):
         Iterable containing tuple with the (x,y) coordinates of the center and
         the radius of a Z-cylinder and the
 
+    Returns
+    -------
+    openmc.Universe
+        Universe containing reflector block
+
     """
     water_holes = []
     for x, y, r in parameters:
@@ -35,277 +39,191 @@ def make_reflector(name, parameters):
         water_holes.append(hole)
 
     ss_region = openmc.Intersection(~c.region for c in water_holes)
-    ss_cell = openmc.Cell(name='{} SS'.format(name), fill=mats['SS'],
+    ss_cell = openmc.Cell(name='reflector {} SS'.format(name), fill=mats['SS'],
                           region=ss_region)
 
-    univs[name] = openmc.Universe(name=name)
-    univs[name].add_cells(water_holes)
-    univs[name].add_cell(ss_cell)
+    univ = openmc.Universe(name='reflector {}'.format(name))
+    univ.add_cells(water_holes)
+    univ.add_cell(ss_cell)
+    return univ
 
 
-# Reflector at northwest corner (fuel assemblies to the right and below)
+def reflector_universes():
+    """Generate universes for SMR heavy neutron reflector blocks.
 
-width = 276
-p1 = 59
-p2 = 126
-p3 = 196
-p4 = 264
+    Parameters
+    ----------
+    num_rings : int
+        Number of annual regions in fuel
+    num_axial : int
+        Number of axial subdivisions in fuel
 
-p5 = 105
+    Returns
+    -------
+    dict
+        Dictionary mapping a universe name to a openmc.Universe object
 
-p6 = 122
-p7 = 164
+    """
+    # Create dictionary to store universes
+    univs = {}
 
-p8 = 138
-p9 = 222
+    # Reflector at northwest corner (fuel assemblies to the right and below)
+    width = 276
+    p1 = 59
+    p2 = 126
+    p3 = 196
+    p4 = 264
 
-p10 = 247
+    p5 = 105
 
-# There are 8 large water holes and all others appear to have the same, smaller
-# diameter
-d_small = 13
-d_large = 30
+    p6 = 122
+    p7 = 164
 
-# All pixel widths are scaled according to the actual width of an assembly
-# divided by the width of an assembly in pixels
-scale = lattice_pitch/width
+    p8 = 138
+    p9 = 222
 
-# Physical positions
-x1 = -lattice_pitch/2 + scale*(width - p4)
-x2 = -lattice_pitch/2 + scale*(width - p3)
-x3 = -lattice_pitch/2 + scale*(width - p2)
-x4 = -lattice_pitch/2 + scale*(width - p1)
-y1 = -lattice_pitch/2 + scale*p1
-y2 = -lattice_pitch/2 + scale*p2
-y3 = -lattice_pitch/2 + scale*p3
-y4 = -lattice_pitch/2 + scale*p4
+    p10 = 247
 
-x5 = -lattice_pitch/2 + scale*(width - p5)
-y5 = -lattice_pitch/2 + scale*p5
-x6 = -lattice_pitch/2 + scale*(width - p7)
-y6 = -lattice_pitch/2 + scale*p6
-x7 = -lattice_pitch/2 + scale*(width - p6)
-y7 = -lattice_pitch/2 + scale*p7
-x8 = -lattice_pitch/2 + scale*(width - p9)
-y8 = -lattice_pitch/2 + scale*p8
-x9 = -lattice_pitch/2 + scale*(width - p8)
-y9 = -lattice_pitch/2 + scale*p9
+    # There are 8 large water holes and all others appear to have the same, smaller
+    # diameter
+    d_small = 13
+    d_large = 30
 
-y10 = -lattice_pitch/2 + scale*p10
+    # All pixel widths are scaled according to the actual width of an assembly
+    # divided by the width of an assembly in pixels
+    scale = lattice_pitch/width
 
-# Radius of small/large water holes
-r1 = scale*d_small/2
-r2 = scale*d_large/2
+    # Physical positions
+    x1 = -lattice_pitch/2 + scale*(width - p4)
+    x2 = -lattice_pitch/2 + scale*(width - p3)
+    x3 = -lattice_pitch/2 + scale*(width - p2)
+    x4 = -lattice_pitch/2 + scale*(width - p1)
+    y1 = -lattice_pitch/2 + scale*p1
+    y2 = -lattice_pitch/2 + scale*p2
+    y3 = -lattice_pitch/2 + scale*p3
+    y4 = -lattice_pitch/2 + scale*p4
 
-params = [
-    (x1, y1, r1), (x2, y1, r1), (x3, y1, r1), (x4, y1, r2),
-    (x4, y2, r1), (x4, y3, r1), (x4, y4, r1), (x5, y5, r1),
-    (x6, y6, r1), (x7, y7, r1), (x8, y8, r1), (x9, y9, r1),
-    (x1, y10, r1)
-]
+    x5 = -lattice_pitch/2 + scale*(width - p5)
+    y5 = -lattice_pitch/2 + scale*p5
+    x6 = -lattice_pitch/2 + scale*(width - p7)
+    y6 = -lattice_pitch/2 + scale*p6
+    x7 = -lattice_pitch/2 + scale*(width - p6)
+    y7 = -lattice_pitch/2 + scale*p7
+    x8 = -lattice_pitch/2 + scale*(width - p9)
+    y8 = -lattice_pitch/2 + scale*p8
+    x9 = -lattice_pitch/2 + scale*(width - p8)
+    y9 = -lattice_pitch/2 + scale*p9
 
-make_reflector('heavy reflector NW', params)
+    y10 = -lattice_pitch/2 + scale*p10
 
-# Reflector at (1, 1)
+    # Radius of small/large water holes
+    r1 = scale*d_small/2
+    r2 = scale*d_large/2
 
-params = [
-    (x4, y1, r1),
-    (lattice_pitch/2 - scale*103, -lattice_pitch/2 + scale*156, r1),
-    (lattice_pitch/2 - scale*158, -lattice_pitch/2 + scale*103, r1)
-]
-make_reflector('heavy reflector 1,1', params)
+    params = [
+        (x1, y1, r1), (x2, y1, r1), (x3, y1, r1), (x4, y1, r2),
+        (x4, y2, r1), (x4, y3, r1), (x4, y4, r1), (x5, y5, r1),
+        (x6, y6, r1), (x7, y7, r1), (x8, y8, r1), (x9, y9, r1),
+        (x1, y10, r1)
+    ]
+    univs['NW'] = make_reflector('NW', params)
 
-# Left reflector (4,0)
+    # Reflector at (1, 1)
 
-left1 = 58
-left2 = 118
-left3 = 173
-up3 = 76
+    params = [
+        (x4, y1, r1),
+        (lattice_pitch/2 - scale*103, -lattice_pitch/2 + scale*156, r1),
+        (lattice_pitch/2 - scale*158, -lattice_pitch/2 + scale*103, r1)
+    ]
+    univs['1,1'] = make_reflector('1,1', params)
 
-x1 = -lattice_pitch/2 + scale*(width - left1)
-x2 = -lattice_pitch/2 + scale*(width - left2)
-d_y = scale*67
-x3 = -lattice_pitch/2 + scale*(width - left3)
-y3 = scale*up3
+    # Left reflector (4,0)
 
-params = [
-    (x1, 0, r1), (x1, d_y, r1), (x1, 2*d_y, r1), (x1, -d_y, r1), (x1, -2*d_y, r1),
-    (x2, d_y/2, r1), (x2, 3/2*d_y, r1), (x2, -d_y/2, r1), (x2, -3/2*d_y, r1),
-    (x3, y3, r1), (x3, -y3, r1)
-]
+    left1 = 58
+    left2 = 118
+    left3 = 173
+    up3 = 76
 
-make_reflector('heavy reflector 4,0', params)
+    x1 = -lattice_pitch/2 + scale*(width - left1)
+    x2 = -lattice_pitch/2 + scale*(width - left2)
+    d_y = scale*67
+    x3 = -lattice_pitch/2 + scale*(width - left3)
+    y3 = scale*up3
 
-# Reflector at (3,0)
+    params = [
+        (x1, 0, r1), (x1, d_y, r1), (x1, 2*d_y, r1), (x1, -d_y, r1), (x1, -2*d_y, r1),
+        (x2, d_y/2, r1), (x2, 3/2*d_y, r1), (x2, -d_y/2, r1), (x2, -3/2*d_y, r1),
+        (x3, y3, r1), (x3, -y3, r1)
+       ]
+    univs['4,0'] = make_reflector('4,0', params)
 
-params = []
-for i in range(2, 7):
-    params.append((x1, i*d_y - lattice_pitch, r1))
-for i in (5, 7, 11):
-    params.append((x2, i*d_y/2 - lattice_pitch, r1))
+    # Reflector at (3,0)
 
-left3 = 140
-left4 = 183
-up3 = 159
-up4 = 47
+    params = []
+    for i in range(2, 7):
+        params.append((x1, i*d_y - lattice_pitch, r1))
+    for i in (5, 7, 11):
+        params.append((x2, i*d_y/2 - lattice_pitch, r1))
 
-x3 = -lattice_pitch/2 + scale*(width - left3)
-y3 = -lattice_pitch/2 + scale*up3
-x4 = -lattice_pitch/2 + scale*(width - left4)
-y4 = -lattice_pitch/2 + scale*up4
-params += [(x3, y3, r1), (x4, y4, r1)]
+    left3 = 140
+    left4 = 183
+    up3 = 159
+    up4 = 47
 
-make_reflector('heavy reflector 3,0', params)
+    x3 = -lattice_pitch/2 + scale*(width - left3)
+    y3 = -lattice_pitch/2 + scale*up3
+    x4 = -lattice_pitch/2 + scale*(width - left4)
+    y4 = -lattice_pitch/2 + scale*up4
+    params += [(x3, y3, r1), (x4, y4, r1)]
 
-# Reflector at (5,0)
+    univs['3,0'] = make_reflector('3,0', params)
 
-params = [(x, -y, r) for x, y, r in params]
-make_reflector('heavy reflector 5,0', params)
+    # Reflector at (5,0)
+    params = [(x, -y, r) for x, y, r in params]
+    univs['5,0'] = make_reflector('5,0', params)
 
-# Reflector at (2, 0)
+    # Reflector at (2, 0)
 
-params = [(-lattice_pitch/2 + scale*(width - 78),
-           -lattice_pitch/2 + scale*98, r1)]
-make_reflector('heavy reflector 2,0', params)
+    params = [(-lattice_pitch/2 + scale*(width - 78),
+               -lattice_pitch/2 + scale*98, r1)]
+    univs['2,0'] = make_reflector('2,0', params)
 
-################################################################################
-# Beyond this point, all universes are just copies of the ones previously
-# created with a rotation applied
+    ################################################################################
+    # Beyond this point, all universes are just copies of the ones previously
+    # created with a rotation applied
 
-# NE corner
-cell = openmc.Cell(name='heavy reflector NE', fill=univs['heavy reflector NW'])
-cell.rotation = (0, 0, -90)
-univs['heavy reflector NE'] = openmc.Universe(name='heavy reflector NE')
-univs['heavy reflector NE'].add_cell(cell)
+    # First define helper function to create new universe by rotating an
+    # existing one
+    def rotate_universe(univ, rotation, name):
+        cell = openmc.Cell(name='reflector {}'.format(name), fill=univ)
+        cell.rotation = rotation
+        return openmc.Universe(name=name, cells=[cell])
 
-# SW corner
-cell = openmc.Cell(name='heavy reflector SW', fill=univs['heavy reflector NW'])
-cell.rotation = (0, 0, 90)
-univs['heavy reflector SW'] = openmc.Universe(name='heavy reflector SW')
-univs['heavy reflector SW'].add_cell(cell)
+    univs['NE'] = rotate_universe(univs['NW'], (0, 0, -90), 'NE')
+    univs['SW'] = rotate_universe(univs['NW'], (0, 0, 90), 'SW')
+    univs['SE'] = rotate_universe(univs['NW'], (0, 0, 180), 'SE')
+    univs['0,2'] = rotate_universe(univs['2,0'], (0, 180, -90), '0,2')
+    univs['0,3'] = rotate_universe(univs['5,0'], (0, 0, -90), '0,3')
+    univs['0,4'] = rotate_universe(univs['4,0'], (0, 0, -90), '0,4')
+    univs['0,5'] = rotate_universe(univs['3,0'], (0, 0, -90), '0,5')
+    univs['0,6'] = rotate_universe(univs['2,0'], (0, 0, -90), '0,6')
+    univs['1,7'] = rotate_universe(univs['1,1'], (0, 0, -90), '1,7')
+    univs['2,8'] = rotate_universe(univs['2,0'], (0, 180, 0), '2,8')
+    univs['3,8'] = rotate_universe(univs['3,0'], (0, 180, 0), '3,8')
+    univs['4,8'] = rotate_universe(univs['4,0'], (0, 180, 0), '4,8')
+    univs['5,8'] = rotate_universe(univs['3,0'], (0, 0, 180), '5,8')
+    univs['6,0'] = rotate_universe(univs['2,0'], (180, 0, 0), '6,0')
+    univs['6,8'] = rotate_universe(univs['2,0'], (0, 0, 180), '6,8')
+    univs['7,1'] = rotate_universe(univs['1,1'], (180, 0, 0), '7,1')
+    univs['7,7'] = rotate_universe(univs['1,1'], (0, 0, 180), '7,7')
+    univs['8,2'] = rotate_universe(univs['2,0'], (0, 0, 90), '8,2')
+    univs['8,3'] = rotate_universe(univs['3,0'], (0, 0, 90), '8,3')
+    univs['8,4'] = rotate_universe(univs['4,0'], (0, 0, 90), '8,4')
+    univs['8,5'] = rotate_universe(univs['5,0'], (0, 0, 90), '8,5')
+    univs['8,6'] = rotate_universe(univs['2,0'], (0, 0, 180), '8,6')
 
-# SE corner
-cell = openmc.Cell(name='heavy reflector SE', fill=univs['heavy reflector NW'])
-cell.rotation = (0, 0, 180)
-univs['heavy reflector SE'] = openmc.Universe(name='heavy reflector SE')
-univs['heavy reflector SE'].add_cell(cell)
+    # Solid stainless steel universe
+    all_ss = openmc.Cell(name='heavy reflector', fill=mats['SS'])
+    univs['solid'] = openmc.Universe(name='solid', cells=[all_ss])
 
-# Reflector at (0, 2)
-name = 'heavy reflector 0,2'
-cell = openmc.Cell(name=name, fill=univs['heavy reflector 2,0'])
-cell.rotation = (0, 180, -90)
-univs[name] = openmc.Universe(name=name, cells=[cell])
-
-# Reflector at (0, 3)
-name = 'heavy reflector 0,3'
-cell = openmc.Cell(name=name, fill=univs['heavy reflector 5,0'])
-cell.rotation = (0, 0, -90)
-univs[name] = openmc.Universe(name=name, cells=[cell])
-
-# Reflector at (0, 4)
-name = 'heavy reflector 0,4'
-cell = openmc.Cell(name=name, fill=univs['heavy reflector 4,0'])
-cell.rotation = (0, 0, -90)
-univs[name] = openmc.Universe(name=name, cells=[cell])
-
-# Reflector at (0, 5)
-name = 'heavy reflector 0,5'
-cell = openmc.Cell(name=name, fill=univs['heavy reflector 3,0'])
-cell.rotation = (0, 0, -90)
-univs[name] = openmc.Universe(name=name, cells=[cell])
-
-# Reflector at (0, 6)
-name = 'heavy reflector 0,6'
-cell = openmc.Cell(name=name, fill=univs['heavy reflector 2,0'])
-cell.rotation = (0, 0, -90)
-univs[name] = openmc.Universe(name=name, cells=[cell])
-
-# Reflector at (1, 7)
-name = 'heavy reflector 1,7'
-cell = openmc.Cell(name=name, fill=univs['heavy reflector 1,1'])
-cell.rotation = (0, 0, -90)
-univs[name] = openmc.Universe(name=name, cells=[cell])
-
-# Reflector at (2, 8)
-name = 'heavy reflector 2,8'
-cell = openmc.Cell(name=name, fill=univs['heavy reflector 2,0'])
-cell.rotation = (0, 180, 0)
-univs[name] = openmc.Universe(name=name, cells=[cell])
-
-# Reflector at (3, 8)
-name = 'heavy reflector 3,8'
-cell = openmc.Cell(name=name, fill=univs['heavy reflector 3,0'])
-cell.rotation = (0, 180, 0)
-univs[name] = openmc.Universe(name=name, cells=[cell])
-
-# Reflector at (4, 8)
-name = 'heavy reflector 4,8'
-cell = openmc.Cell(name=name, fill=univs['heavy reflector 4,0'])
-cell.rotation = (0, 180, 0)
-univs[name] = openmc.Universe(name=name, cells=[cell])
-
-# Reflector at (5, 8)
-name = 'heavy reflector 5,8'
-cell = openmc.Cell(name=name, fill=univs['heavy reflector 3,0'])
-cell.rotation = (0, 0, 180)
-univs[name] = openmc.Universe(name=name, cells=[cell])
-
-# Reflector at (6, 0)
-name = 'heavy reflector 6,0'
-cell = openmc.Cell(name=name, fill=univs['heavy reflector 2,0'])
-cell.rotation = (180, 0, 0)
-univs[name] = openmc.Universe(name=name, cells=[cell])
-
-# Reflector at (6, 8)
-name = 'heavy reflector 6,8'
-cell = openmc.Cell(name=name, fill=univs['heavy reflector 2,0'])
-cell.rotation = (0, 0, 180)
-univs[name] = openmc.Universe(name=name, cells=[cell])
-
-# Reflector at (7, 1)
-name = 'heavy reflector 7,1'
-cell = openmc.Cell(name=name, fill=univs['heavy reflector 1,1'])
-cell.rotation = (180, 0, 0)
-univs[name] = openmc.Universe(name=name, cells=[cell])
-
-# Reflector at (7, 7)
-name = 'heavy reflector 7,7'
-cell = openmc.Cell(name=name, fill=univs['heavy reflector 1,1'])
-cell.rotation = (0, 0, 180)
-univs[name] = openmc.Universe(name=name, cells=[cell])
-
-# Reflector at (8, 2)
-name = 'heavy reflector 8,2'
-cell = openmc.Cell(name=name, fill=univs['heavy reflector 2,0'])
-cell.rotation = (0, 0, 90)
-univs[name] = openmc.Universe(name=name, cells=[cell])
-
-# Reflector at (8, 3)
-name = 'heavy reflector 8,3'
-cell = openmc.Cell(name=name, fill=univs['heavy reflector 3,0'])
-cell.rotation = (0, 0, 90)
-univs[name] = openmc.Universe(name=name, cells=[cell])
-
-# Reflector at (8, 4)
-name = 'heavy reflector 8,4'
-cell = openmc.Cell(name=name, fill=univs['heavy reflector 4,0'])
-cell.rotation = (0, 0, 90)
-univs[name] = openmc.Universe(name=name, cells=[cell])
-
-# Reflector at (8, 5)
-name = 'heavy reflector 8,5'
-cell = openmc.Cell(name=name, fill=univs['heavy reflector 5,0'])
-cell.rotation = (0, 0, 90)
-univs[name] = openmc.Universe(name=name, cells=[cell])
-
-# Reflector at (8, 6)
-name = 'heavy reflector 8,6'
-cell = openmc.Cell(name=name, fill=univs['heavy reflector 2,0'])
-cell.rotation = (0, 0, 180)
-univs[name] = openmc.Universe(name=name, cells=[cell])
-
-# Solid stainless steel universe
-
-all_ss = openmc.Cell(name='heavy reflector', fill=mats['SS'])
-univs['heavy reflector'] = openmc.Universe(
-    name='heavy reflector', cells=[all_ss])
+    return univs

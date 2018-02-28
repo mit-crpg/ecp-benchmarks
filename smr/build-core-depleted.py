@@ -64,7 +64,7 @@ settings.entropy_dimension = [15, 15, 1]
 # MeV/second cm from CASMO
 settings.power = 2.337e15 * ((17.*17.*37.) / 1.5**2) * height
 settings.dt_vec = dt
-settings.output_dir = 'depleted'
+settings.output_dir = 'core-depleted'
 
 op = opendeplete.OpenMCOperator(geometry, settings)
 

@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<plots>
-    <plot basis="xy" color_by="material" filename="2x2-periodic" id="10020" type="slice">
-        <origin>0.0 0.0 195.0</origin>
-        <width>42.83456 42.83456</width>
-        <pixels>1000 1000</pixels>
-    </plot>
-</plots>

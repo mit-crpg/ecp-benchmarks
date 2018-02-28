@@ -6,202 +6,211 @@ import openmc
 
 from .materials import mats
 from .surfaces import surfs, lattice_pitch
-from .reflector import univs
+from .reflector import reflector_universes
+from .assemblies import assembly_universes
 
 
-#### CONSTRUCT MAIN CORE LATTICE
+def core_geometry(num_rings, num_axial, depleted):
+    """Generate full core SMR geometry.
 
-core = openmc.RectLattice(name='Main core')
-core.lower_left = [-9*lattice_pitch/2, -9*lattice_pitch/2]
-core.pitch = [lattice_pitch, lattice_pitch]
-universes = np.tile(univs['heavy reflector'], (9,9))
+    Parameters
+    ----------
+    num_rings : int
+        Number of annual regions in fuel
+    num_axial : int
+        Number of axial subdivisions in fuel
+    depleted : bool
+        Whether fuel should contain nuclides as though it were depleted
 
-universes[0, 2] = univs['heavy reflector 0,2']
-universes[0, 3] = univs['heavy reflector 0,3']
-universes[0, 4] = univs['heavy reflector 0,4']
-universes[0, 5] = univs['heavy reflector 0,5']
-universes[0, 6] = univs['heavy reflector 0,6']
+    Returns
+    -------
+    openmc.Geometry
+        SMR full core geometry
 
-universes[1, 1] = univs['heavy reflector 1,1']
-universes[1, 2] = univs['heavy reflector NW']
-universes[1, 3] = univs['Assembly (3.1%) instr']
-universes[1, 4] = univs['Assembly (2.4%) CR D']
-universes[1, 5] = univs['Assembly (3.1%) instr']
-universes[1, 6] = univs['heavy reflector NE']
-universes[1, 7] = univs['heavy reflector 1,7']
+    """
+    assembly = assembly_universes(num_rings, num_axial, depleted)
+    reflector = reflector_universes()
 
-universes[2, 0] = univs['heavy reflector 2,0']
-universes[2, 1] = univs['heavy reflector NW']
-universes[2, 2] = univs['Assembly (3.1%) instr']
-universes[2, 3] = univs['Assembly (2.4%) CR D']
-universes[2, 4] = univs['Assembly (3.1%) 16BA']
-universes[2, 5] = univs['Assembly (2.4%) CR D']
-universes[2, 6] = univs['Assembly (3.1%) instr']
-universes[2, 7] = univs['heavy reflector NE']
-universes[2, 8] = univs['heavy reflector 2,8']
+    # Construct main core lattice
+    core = openmc.RectLattice(name='Main core')
+    core.lower_left = (-9*lattice_pitch/2, -9*lattice_pitch/2)
+    core.pitch = (lattice_pitch, lattice_pitch)
+    universes = np.tile(reflector['solid'], (9, 9))
 
-universes[3, 0] = univs['heavy reflector 3,0']
-universes[3, 1] = univs['Assembly (3.1%) instr']
-universes[3, 2] = univs['Assembly (2.4%) CR D']
-universes[3, 3] = univs['Assembly (3.1%) 16BA']
-universes[3, 4] = univs['Assembly (2.4%) CR D']
-universes[3, 5] = univs['Assembly (3.1%) 16BA']
-universes[3, 6] = univs['Assembly (2.4%) CR D']
-universes[3, 7] = univs['Assembly (3.1%) instr']
-universes[3, 8] = univs['heavy reflector 3,8']
+    universes[0, 2] = reflector['0,2']
+    universes[0, 3] = reflector['0,3']
+    universes[0, 4] = reflector['0,4']
+    universes[0, 5] = reflector['0,5']
+    universes[0, 6] = reflector['0,6']
 
-universes[4, 0] = univs['heavy reflector 4,0']
-universes[4, 1] = univs['Assembly (2.4%) CR D']
-universes[4, 2] = univs['Assembly (3.1%) 16BA']
-universes[4, 3] = univs['Assembly (2.4%) CR D']
-universes[4, 4] = univs['Assembly (1.6%) instr']
-universes[4, 5] = univs['Assembly (2.4%) CR D']
-universes[4, 6] = univs['Assembly (3.1%) 16BA']
-universes[4, 7] = univs['Assembly (2.4%) CR D']
-universes[4, 8] = univs['heavy reflector 4,8']
+    universes[1, 1] = reflector['1,1']
+    universes[1, 2] = reflector['NW']
+    universes[1, 3] = assembly['Assembly (3.1%) instr']
+    universes[1, 4] = assembly['Assembly (2.4%) CR D']
+    universes[1, 5] = assembly['Assembly (3.1%) instr']
+    universes[1, 6] = reflector['NE']
+    universes[1, 7] = reflector['1,7']
 
-universes[5, 0] = univs['heavy reflector 5,0']
-universes[5, 1] = univs['Assembly (3.1%) instr']
-universes[5, 2] = univs['Assembly (2.4%) CR D']
-universes[5, 3] = univs['Assembly (3.1%) 16BA']
-universes[5, 4] = univs['Assembly (2.4%) CR D']
-universes[5, 5] = univs['Assembly (3.1%) 16BA']
-universes[5, 6] = univs['Assembly (2.4%) CR D']
-universes[5, 7] = univs['Assembly (3.1%) instr']
-universes[5, 8] = univs['heavy reflector 5,8']
+    universes[2, 0] = reflector['2,0']
+    universes[2, 1] = reflector['NW']
+    universes[2, 2] = assembly['Assembly (3.1%) instr']
+    universes[2, 3] = assembly['Assembly (2.4%) CR D']
+    universes[2, 4] = assembly['Assembly (3.1%) 16BA']
+    universes[2, 5] = assembly['Assembly (2.4%) CR D']
+    universes[2, 6] = assembly['Assembly (3.1%) instr']
+    universes[2, 7] = reflector['NE']
+    universes[2, 8] = reflector['2,8']
 
-universes[6, 0] = univs['heavy reflector 6,0']
-universes[6, 1] = univs['heavy reflector SW']
-universes[6, 2] = univs['Assembly (3.1%) instr']
-universes[6, 3] = univs['Assembly (2.4%) CR D']
-universes[6, 4] = univs['Assembly (3.1%) 16BA']
-universes[6, 5] = univs['Assembly (2.4%) CR D']
-universes[6, 6] = univs['Assembly (3.1%) instr']
-universes[6, 7] = univs['heavy reflector SE']
-universes[6, 8] = univs['heavy reflector 6,8']
+    universes[3, 0] = reflector['3,0']
+    universes[3, 1] = assembly['Assembly (3.1%) instr']
+    universes[3, 2] = assembly['Assembly (2.4%) CR D']
+    universes[3, 3] = assembly['Assembly (3.1%) 16BA']
+    universes[3, 4] = assembly['Assembly (2.4%) CR D']
+    universes[3, 5] = assembly['Assembly (3.1%) 16BA']
+    universes[3, 6] = assembly['Assembly (2.4%) CR D']
+    universes[3, 7] = assembly['Assembly (3.1%) instr']
+    universes[3, 8] = reflector['3,8']
 
-universes[7, 1] = univs['heavy reflector 7,1']
-universes[7, 2] = univs['heavy reflector SW']
-universes[7, 3] = univs['Assembly (3.1%) instr']
-universes[7, 4] = univs['Assembly (2.4%) CR D']
-universes[7, 5] = univs['Assembly (3.1%) instr']
-universes[7, 6] = univs['heavy reflector SE']
-universes[7, 7] = univs['heavy reflector 7,7']
+    universes[4, 0] = reflector['4,0']
+    universes[4, 1] = assembly['Assembly (2.4%) CR D']
+    universes[4, 2] = assembly['Assembly (3.1%) 16BA']
+    universes[4, 3] = assembly['Assembly (2.4%) CR D']
+    universes[4, 4] = assembly['Assembly (1.6%) instr']
+    universes[4, 5] = assembly['Assembly (2.4%) CR D']
+    universes[4, 6] = assembly['Assembly (3.1%) 16BA']
+    universes[4, 7] = assembly['Assembly (2.4%) CR D']
+    universes[4, 8] = reflector['4,8']
 
-universes[8, 2] = univs['heavy reflector 8,2']
-universes[8, 3] = univs['heavy reflector 8,3']
-universes[8, 4] = univs['heavy reflector 8,4']
-universes[8, 5] = univs['heavy reflector 8,5']
-universes[8, 6] = univs['heavy reflector 8,6']
+    universes[5, 0] = reflector['5,0']
+    universes[5, 1] = assembly['Assembly (3.1%) instr']
+    universes[5, 2] = assembly['Assembly (2.4%) CR D']
+    universes[5, 3] = assembly['Assembly (3.1%) 16BA']
+    universes[5, 4] = assembly['Assembly (2.4%) CR D']
+    universes[5, 5] = assembly['Assembly (3.1%) 16BA']
+    universes[5, 6] = assembly['Assembly (2.4%) CR D']
+    universes[5, 7] = assembly['Assembly (3.1%) instr']
+    universes[5, 8] = reflector['5,8']
 
-core.universes = universes
+    universes[6, 0] = reflector['6,0']
+    universes[6, 1] = reflector['SW']
+    universes[6, 2] = assembly['Assembly (3.1%) instr']
+    universes[6, 3] = assembly['Assembly (2.4%) CR D']
+    universes[6, 4] = assembly['Assembly (3.1%) 16BA']
+    universes[6, 5] = assembly['Assembly (2.4%) CR D']
+    universes[6, 6] = assembly['Assembly (3.1%) instr']
+    universes[6, 7] = reflector['SE']
+    universes[6, 8] = reflector['6,8']
 
+    universes[7, 1] = reflector['7,1']
+    universes[7, 2] = reflector['SW']
+    universes[7, 3] = assembly['Assembly (3.1%) instr']
+    universes[7, 4] = assembly['Assembly (2.4%) CR D']
+    universes[7, 5] = assembly['Assembly (3.1%) instr']
+    universes[7, 6] = reflector['SE']
+    universes[7, 7] = reflector['7,7']
 
-#### CONSTRUCT ROOT UNIVERSE AND CELLS
+    universes[8, 2] = reflector['8,2']
+    universes[8, 3] = reflector['8,3']
+    universes[8, 4] = reflector['8,4']
+    universes[8, 5] = reflector['8,5']
+    universes[8, 6] = reflector['8,6']
 
-root_univ = openmc.Universe(universe_id=0, name='root universe')
+    core.universes = universes
 
-cell = openmc.Cell(name='Main core')
-cell.fill = core
-cell.region = \
-    -surfs['core barrel IR'] & +surfs['lower bound'] & -surfs['upper bound']
-root_univ.add_cell(cell)
+    root_univ = openmc.Universe(universe_id=0, name='root universe')
 
+    # Cylinder filled with core lattice
+    cell = openmc.Cell(name='Main core')
+    cell.fill = core
+    cell.region = \
+        -surfs['core barrel IR'] & +surfs['lower bound'] & -surfs['upper bound']
+    root_univ.add_cell(cell)
 
-# CONSTRUCT CORE BARREL
+    # Core barrel
+    cell = openmc.Cell(name='core barrel')
+    cell.fill = mats['SS']
+    cell.region = (+surfs['core barrel IR'] & -surfs['core barrel OR'] &
+                   +surfs['lower bound'] & -surfs['upper bound'])
+    root_univ.add_cell(cell)
 
-cell = openmc.Cell(name='core barrel')
-cell.fill = mats['SS']
-cell.region = (+surfs['core barrel IR'] & -surfs['core barrel OR'] &
-               +surfs['lower bound'] & -surfs['upper bound'])
-root_univ.add_cell(cell)
+    # Neutron shield panels
+    cell = openmc.Cell(name='neutron shield panel NW')
+    cell.fill = mats['SS']
+    cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
+                   +surfs['neutron shield NWbot SEtop'] &
+                   -surfs['neutron shield NWtop SEbot'] &
+                   +surfs['lower bound'] & -surfs['upper bound'])
+    root_univ.add_cell(cell)
 
+    cell = openmc.Cell(name='neutron shield panel N')
+    cell.fill = mats['H2O']
+    cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
+                   +surfs['neutron shield NWtop SEbot'] &
+                   -surfs['neutron shield NEtop SWbot'] &
+                   +surfs['lower bound'] & -surfs['upper bound'])
+    root_univ.add_cell(cell)
 
-#### CONSTRUCT NEUTRON SHIELD PANELS
+    cell = openmc.Cell(name='neutron shield panel SE')
+    cell.fill = mats['SS']
+    cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
+                   -surfs['neutron shield NWbot SEtop'] &
+                   +surfs['neutron shield NWtop SEbot'] &
+                   +surfs['lower bound'] & -surfs['upper bound'])
+    root_univ.add_cell(cell)
 
-cell = openmc.Cell(name='neutron shield panel NW')
-cell.fill = mats['SS']
-cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
-               +surfs['neutron shield NWbot SEtop'] &
-               -surfs['neutron shield NWtop SEbot'] &
-               +surfs['lower bound'] & -surfs['upper bound'])
-root_univ.add_cell(cell)
+    cell = openmc.Cell(name='neutron shield panel E')
+    cell.fill = mats['H2O']
+    cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
+                   +surfs['neutron shield NWbot SEtop'] &
+                   +surfs['neutron shield NEbot SWtop'] &
+                   +surfs['lower bound'] & -surfs['upper bound'])
+    root_univ.add_cell(cell)
 
-cell = openmc.Cell(name='neutron shield panel N')
-cell.fill = mats['H2O']
-cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
-               +surfs['neutron shield NWtop SEbot'] &
-               -surfs['neutron shield NEtop SWbot'] &
-               +surfs['lower bound'] & -surfs['upper bound'])
-root_univ.add_cell(cell)
+    cell = openmc.Cell(name='neutron shield panel NE')
+    cell.fill = mats['SS']
+    cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
+                   +surfs['neutron shield NEbot SWtop'] &
+                   -surfs['neutron shield NEtop SWbot'] &
+                   +surfs['lower bound'] & -surfs['upper bound'])
+    root_univ.add_cell(cell)
 
-cell = openmc.Cell(name='neutron shield panel SE')
-cell.fill = mats['SS']
-cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
-               -surfs['neutron shield NWbot SEtop'] &
-               +surfs['neutron shield NWtop SEbot'] &
-               +surfs['lower bound'] & -surfs['upper bound'])
-root_univ.add_cell(cell)
+    cell = openmc.Cell(name='neutron shield panel S')
+    cell.fill = mats['H2O']
+    cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
+                   -surfs['neutron shield NWtop SEbot'] &
+                   +surfs['neutron shield NEtop SWbot'] &
+                   +surfs['lower bound'] & -surfs['upper bound'])
+    root_univ.add_cell(cell)
 
-cell = openmc.Cell(name='neutron shield panel E')
-cell.fill = mats['H2O']
-cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
-               +surfs['neutron shield NWbot SEtop'] &
-               +surfs['neutron shield NEbot SWtop'] &
-               +surfs['lower bound'] & -surfs['upper bound'])
-root_univ.add_cell(cell)
+    cell = openmc.Cell(name='neutron shield panel SW')
+    cell.fill = mats['SS']
+    cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
+                   -surfs['neutron shield NEbot SWtop'] &
+                   +surfs['neutron shield NEtop SWbot'] &
+                   +surfs['lower bound'] & -surfs['upper bound'])
+    root_univ.add_cell(cell)
 
-cell = openmc.Cell(name='neutron shield panel NE')
-cell.fill = mats['SS']
-cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
-               +surfs['neutron shield NEbot SWtop'] &
-               -surfs['neutron shield NEtop SWbot'] &
-               +surfs['lower bound'] & -surfs['upper bound'])
-root_univ.add_cell(cell)
+    cell = openmc.Cell(name='neutron shield panel W')
+    cell.fill = mats['H2O']
+    cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
+                   -surfs['neutron shield NWbot SEtop'] &
+                   -surfs['neutron shield NEbot SWtop'] &
+                   +surfs['lower bound'] & -surfs['upper bound'])
+    root_univ.add_cell(cell)
 
-cell = openmc.Cell(name='neutron shield panel S')
-cell.fill = mats['H2O']
-cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
-               -surfs['neutron shield NWtop SEbot'] &
-               +surfs['neutron shield NEtop SWbot'] &
-               +surfs['lower bound'] & -surfs['upper bound'])
-root_univ.add_cell(cell)
+    # Downcomer
+    cell = openmc.Cell(name='downcomer')
+    cell.fill = mats['H2O']
+    cell.region = (+surfs['neutron shield OR'] & -surfs['RPV IR'] &
+                   +surfs['lower bound'] & -surfs['upper bound'])
+    root_univ.add_cell(cell)
 
-cell = openmc.Cell(name='neutron shield panel SW')
-cell.fill = mats['SS']
-cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
-               -surfs['neutron shield NEbot SWtop'] &
-               +surfs['neutron shield NEtop SWbot'] &
-               +surfs['lower bound'] & -surfs['upper bound'])
-root_univ.add_cell(cell)
+    # Reactor pressure vessel
+    cell = openmc.Cell(name='reactor pressure vessel')
+    cell.fill = mats['CS']
+    cell.region = (+surfs['RPV IR'] & -surfs['RPV OR'] &
+                   +surfs['lower bound'] & -surfs['upper bound'])
+    root_univ.add_cell(cell)
 
-cell = openmc.Cell(name='neutron shield panel W')
-cell.fill = mats['H2O']
-cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
-               -surfs['neutron shield NWbot SEtop'] &
-               -surfs['neutron shield NEbot SWtop'] &
-               +surfs['lower bound'] & -surfs['upper bound'])
-root_univ.add_cell(cell)
-
-
-#### CONSTRUCT DOWNCOMER
-
-cell = openmc.Cell(name='downcomer')
-cell.fill = mats['H2O']
-cell.region = (+surfs['neutron shield OR'] & -surfs['RPV IR'] &
-               +surfs['lower bound'] & -surfs['upper bound'])
-root_univ.add_cell(cell)
-
-
-#### CONSTRUCT REACTOR PRESSURE VESSEL
-
-cell = openmc.Cell(name='reactor pressure vessel')
-cell.fill = mats['CS']
-cell.region = (+surfs['RPV IR'] & -surfs['RPV OR'] &
-               +surfs['lower bound'] & -surfs['upper bound'])
-root_univ.add_cell(cell)
-
-
-#### CONSTRUCT GEOMETRY
-
-geometry = openmc.Geometry(root_univ)
+    # Return geometry
+    return openmc.Geometry(root_univ)
