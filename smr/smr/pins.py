@@ -700,12 +700,6 @@ def pin_universes(num_rings=10, num_axial=196, depleted=False):
 
     #### 1.6% ENRICHED FUEL PIN CELL
 
-    if num_axial > 1:
-        # Determine z position between each fuel pellet, omitting the surfaces
-        # corresponding to the very bottom and top of the active fuel length
-        axial_splits = np.linspace(bottom_fuel_rod, top_active_core, num_axial + 1)[1:-1]
-        axial_surfs = [openmc.ZPlane(z0=z) for z in axial_splits]
-
     if num_rings > 1:
         # Get z-cylinder surfaces for each ring
         rings = []
@@ -715,35 +709,27 @@ def pin_universes(num_rings=10, num_axial=196, depleted=False):
             rings.append(cyl)
 
     def subdivided_fuel(fill):
-        # Create universe for UO2 alone with axial/radial subdivision
-        if num_axial > 1:
-            univs = np.empty((num_axial, 1, 1), dtype=openmc.Universe)
-            for i in range(num_axial):
-                univ_i = openmc.Universe()
-                if num_rings > 1:
-                    for ring_region in subdivide(rings):
-                        cell = openmc.Cell(fill=fill, region=ring_region)
-                        univ_i.add_cell(cell)
-                else:
-                    univ_i.add_cell(openmc.Cell(fill=fill))
-                univs[i, 0, 0] = univ_i
+        """Create universe for UO2 alone with axial/radial subdivision"""
+        # Create universe with radial rings
+        univ = openmc.Universe()
+        if num_rings > 1:
+            for ring_region in subdivide(rings):
+                cell = openmc.Cell(fill=fill, region=ring_region)
+                univ.add_cell(cell)
+        else:
+            univ.add_cell(openmc.Cell(fill=fill))
 
+        # If multiple axial segments are needed, use a lattice to avoid
+        # performance cost of neighbor lookups
+        if num_axial > 1:
             zlattice = openmc.RectLattice()
             zlattice.lower_left = (-100., -100., bottom_fuel_rod)
             zlattice.pitch = (200., 200., (top_active_core - bottom_fuel_rod)/num_axial)
             zlattice.dimension = (1, 1, num_axial)
-            zlattice.universes = univs
+            zlattice.universes = np.full((num_axial, 1, 1), univ)
             return zlattice
         else:
-            uo2_cells = []
-            if num_rings > 1:
-                for ring_region in subdivide(rings):
-                    cell = openmc.Cell(fill=fill, region=ring_region)
-                    uo2_cells.append(cell)
-            else:
-                raise RuntimeError("Shouldn't call with 1 ring and 1 axial segment")
-
-            return openmc.Universe(cells=uo2_cells)
+            return univ
 
     # If rings/axial segments are present, create a universe for the subdivided
     # fuel. Otherwise just use a plain material.
