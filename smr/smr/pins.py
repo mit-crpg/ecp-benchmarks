@@ -716,16 +716,26 @@ def pin_universes(num_rings=10, num_axial=196, depleted=False):
 
     def subdivided_fuel(fill):
         # Create universe for UO2 alone with axial/radial subdivision
-        uo2_cells = []
         if num_axial > 1:
-            for axial_region in subdivide(axial_surfs):
+            univs = np.empty((num_axial, 1, 1), dtype=openmc.Universe)
+            for i in range(num_axial):
+                univ_i = openmc.Universe()
                 if num_rings > 1:
                     for ring_region in subdivide(rings):
-                        cell = openmc.Cell(fill=fill, region=axial_region & ring_region)
-                        uo2_cells.append(cell)
+                        cell = openmc.Cell(fill=fill, region=ring_region)
+                        univ_i.add_cell(cell)
                 else:
-                    uo2_cells.append(openmc.Cell(fill=fill, region=axial_region))
+                    univ_i.add_cell(openmc.Cell(fill=fill))
+                univs[i, 0, 0] = univ_i
+
+            zlattice = openmc.RectLattice()
+            zlattice.lower_left = (-100., -100., bottom_fuel_rod)
+            zlattice.pitch = (200., 200., (top_active_core - bottom_fuel_rod)/num_axial)
+            zlattice.dimension = (1, 1, num_axial)
+            zlattice.universes = univs
+            return zlattice
         else:
+            uo2_cells = []
             if num_rings > 1:
                 for ring_region in subdivide(rings):
                     cell = openmc.Cell(fill=fill, region=ring_region)
@@ -733,7 +743,7 @@ def pin_universes(num_rings=10, num_axial=196, depleted=False):
             else:
                 raise RuntimeError("Shouldn't call with 1 ring and 1 axial segment")
 
-        return openmc.Universe(cells=uo2_cells)
+            return openmc.Universe(cells=uo2_cells)
 
     # If rings/axial segments are present, create a universe for the subdivided
     # fuel. Otherwise just use a plain material.
