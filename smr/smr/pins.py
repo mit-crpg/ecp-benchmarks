@@ -7,7 +7,7 @@ import openmc
 from openmc.model import subdivide
 
 from .materials import mats
-from .surfaces import surfs, pellet_OR, bottom_fuel_rod, top_active_core
+from .surfaces import surfs, pellet_OR, bottom_fuel_stack, top_active_core
 
 
 def make_pin(name, surfaces, materials, grid=None):
@@ -723,10 +723,11 @@ def pin_universes(num_rings=10, num_axial=196, depleted=False):
         # performance cost of neighbor lookups
         if num_axial > 1:
             zlattice = openmc.RectLattice()
-            zlattice.lower_left = (-100., -100., bottom_fuel_rod)
-            zlattice.pitch = (200., 200., (top_active_core - bottom_fuel_rod)/num_axial)
+            zlattice.lower_left = (-100., -100., bottom_fuel_stack)
+            zlattice.pitch = (200., 200., (top_active_core - bottom_fuel_stack)/num_axial)
             zlattice.dimension = (1, 1, num_axial)
             zlattice.universes = np.full((num_axial, 1, 1), univ)
+            zlattice.outer = univ
             return zlattice
         else:
             return univ

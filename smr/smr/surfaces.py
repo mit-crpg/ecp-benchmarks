@@ -192,7 +192,7 @@ surfs['bot active core'] = openmc.ZPlane(
 surfs['top active core'] = openmc.ZPlane(
     z0=top_active_core, name='top active core')
 
-surfs['top lower thimble'] = copy.deepcopy(surfs['bot active core'])
+surfs['top lower thimble'] = surfs['bot active core']
 surfs['BA bot'] = openmc.ZPlane(
     z0=bot_burn_abs, name='bottom of BA')
 
