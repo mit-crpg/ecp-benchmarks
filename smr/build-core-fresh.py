@@ -15,6 +15,13 @@ from smr.surfaces import lattice_pitch, bottom_fuel_stack, top_active_core
 from smr.core import core_geometry
 
 
+def clone(mat):
+    """Make a shallow copy of a material (sharing compositions)."""
+    mat_copy = copy.copy(mat)
+    mat_copy.id = None
+    return mat_copy
+
+
 # Define command-line options
 parser = argparse.ArgumentParser()
 parser.add_argument('-m', '--multipole', action='store_true',
@@ -53,7 +60,7 @@ if args.tallies == 'mat':
     for cell in geometry.get_all_cells().values():
         if cell.fill in fuel_mats:
             # Fill cell with list of "differentiated" materials
-            cell.fill = [cell.fill.clone() for i in range(cell.num_instances)]
+            cell.fill = [clone(cell.fill) for i in range(cell.num_instances)]
 
 #### Create OpenMC "materials.xml" file
 all_materials = geometry.get_all_materials()
