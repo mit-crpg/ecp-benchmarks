@@ -711,7 +711,7 @@ def pin_universes(num_rings=10, num_axial=196, depleted=False):
         rings = []
         for i in range(1, num_rings):
             R = sqrt(i*pellet_OR**2/num_rings)
-            cyl = openmc.ZCylinder(R=R, name='fuel ring {}'.format(i))
+            cyl = openmc.ZCylinder(r=R, name='fuel ring {}'.format(i))
             rings.append(cyl)
 
     def subdivided_fuel(fill):
