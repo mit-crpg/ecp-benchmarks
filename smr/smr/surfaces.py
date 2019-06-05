@@ -37,7 +37,7 @@ pellet_OR          = 0.3195*INCHES/2  # ML17013A274, Table 4.1-2
 pellet_length      = 0.4*INCHES       # ML17013A274, Table 4.1-2
 clad_IR            = 0.326*INCHES/2   # ML17013A274, Table 4.1-2
 clad_OR            = 0.374*INCHES/2   # ML17013A274, Table 4.1-2
-active_fuel_length = 78.74*INCHES     # ML17013A274, Figure 4.2-10
+#active_fuel_length = 78.74*INCHES     # ML17013A274, Figure 4.2-10
 plenum_length      = 5.311*INCHES     # ML17013A274, Figure 4.2-10
 fuel_rod_length    = 85.00*INCHES     # ML17013A274, Table 4.1-2
 lower_end_cap      = 0.575*INCHES     # ML17007A001, Table 3-2
@@ -75,6 +75,8 @@ grid_strap_side   = 21.47270
 top_nozzle_height = 3.551*INCHES  # ML17013A274, Figure 4.2-2
 top_nozzle_width  = 8.406*INCHES  # ML17013A274, Figure 4.2-2
 
+active_fuel_length  = 10.0*pin_pitch
+
 # core radial parameters
 core_barrel_IR     = 74*INCHES/2  # ML17013A274, Table 4.1-2
 core_barrel_OR     = 78*INCHES/2  # ML17013A274, Table 4.1-2
@@ -83,15 +85,16 @@ rpv_IR             = 120.0  # Estimate?
 rpv_OR             = 135.0  # Estimate?
 
 # axial parameters
-lowest_extent        =      0.000
-bottom_support_plate =     20.000
-top_support_plate    =     25.000
-bottom_lower_nozzle  =     25.000
-top_lower_nozzle     =     35.160
-bottom_fuel_rod      =     35.160
-top_lower_thimble    =     36.007
-bottom_fuel_stack    =     36.007
-bot_burn_abs         =     41.087
+_reference_z = 36.007
+lowest_extent        =      0.000 - _reference_z
+bottom_support_plate =     20.000 - _reference_z
+top_support_plate    =     25.000 - _reference_z
+bottom_lower_nozzle  =     25.000 - _reference_z
+top_lower_nozzle     =     35.160 - _reference_z
+bottom_fuel_rod      =     35.160 - _reference_z
+top_lower_thimble    =     36.007 - _reference_z
+bottom_fuel_stack    =     36.007 - _reference_z
+bot_burn_abs         =     41.087 - _reference_z
 top_active_core = bottom_fuel_stack + active_fuel_length
 top_plenum = top_active_core + plenum_length
 top_fuel_rod = bottom_fuel_rod + fuel_rod_length

@@ -142,7 +142,7 @@ def make_pin_stack(name, zsurfaces, universes, boundary, fuel_fill):
     return universe
 
 
-def pin_universes(num_rings=10, num_axial=196, depleted=False):
+def pin_universes(ring_radii=None, num_axial=196, depleted=False):
     """Generate universes for SMR fuel pins.
 
     Parameters
@@ -230,8 +230,8 @@ def pin_universes(num_rings=10, num_axial=196, depleted=False):
         surfs['top upper nozzle']
     ]
 
-    univs['GT empty'] = make_stack(
-        'GT empty', surfaces=stack_surfs,
+    univs['GT empty stack'] = make_stack(
+        'GT empty stack', surfaces=stack_surfs,
         universes=[univs['water pin'],
                    univs['water pin'],
                    univs['water pin'],
@@ -706,12 +706,11 @@ def pin_universes(num_rings=10, num_axial=196, depleted=False):
         axial_splits = np.linspace(bottom_fuel_stack, top_active_core, num_axial + 1)[1:-1]
         axial_surfs = [openmc.ZPlane(z0=z) for z in axial_splits]
 
-    if num_rings > 1:
+    if ring_radii is not None:
         # Get z-cylinder surfaces for each ring
         rings = []
-        for i in range(1, num_rings):
-            R = sqrt(i*pellet_OR**2/num_rings)
-            cyl = openmc.ZCylinder(r=R, name='fuel ring {}'.format(i))
+        for i, r in enumerate(ring_radii):
+            cyl = openmc.ZCylinder(r=r, name='fuel ring {}'.format(i))
             rings.append(cyl)
 
     def subdivided_fuel(fill):
@@ -719,14 +718,14 @@ def pin_universes(num_rings=10, num_axial=196, depleted=False):
         uo2_cells = []
         if num_axial > 1:
             for axial_region in subdivide(axial_surfs):
-                if num_rings > 1:
+                if ring_radii is not None:
                     for ring_region in subdivide(rings):
                         cell = openmc.Cell(fill=fill, region=axial_region & ring_region)
                         uo2_cells.append(cell)
                 else:
                     uo2_cells.append(openmc.Cell(fill=fill, region=axial_region))
         else:
-            if num_rings > 1:
+            if ring_radii is not None:
                 for ring_region in subdivide(rings):
                     cell = openmc.Cell(fill=fill, region=ring_region)
                     uo2_cells.append(cell)
@@ -737,7 +736,7 @@ def pin_universes(num_rings=10, num_axial=196, depleted=False):
 
     # If rings/axial segments are present, create a universe for the subdivided
     # fuel. Otherwise just use a plain material.
-    if num_rings > 1 or num_axial > 1:
+    if ring_radii is not None or num_axial > 1:
         fuel_fill = subdivided_fuel(mats['UO2 1.6 {}'.format(fuel)])
     else:
         fuel_fill = mats['UO2 1.6 {}'.format(fuel)]
@@ -761,6 +760,12 @@ def pin_universes(num_rings=10, num_axial=196, depleted=False):
         surfaces=outside_pin_surfaces,
         materials=outside_pin_mats,
         grid='intermediate')
+
+    univs['Fuel pin (1.6%) no grid'] = make_pin(
+        'Pin no grid',
+        surfaces=[surfs['pellet OR']] + outside_pin_surfaces,
+        materials=[fuel_fill] + outside_pin_mats
+    )
 
     # Stack all axial pieces of 1.6% enriched fuel pin cell
 
@@ -815,7 +820,7 @@ def pin_universes(num_rings=10, num_axial=196, depleted=False):
                    univs['SS pin'],
                    univs['SS pin'],
                    univs['end plug'],
-                   univs['Fuel pin (1.6%) stack'],
+                   univs['Fuel pin (1.6%) no grid'],
                    univs['pin plenum'],
                    univs['pin plenum grid (intermediate)'],
                    univs['pin plenum'],
@@ -829,10 +834,16 @@ def pin_universes(num_rings=10, num_axial=196, depleted=False):
 
     # If rings/axial segments are present, create a universe for the subdivided
     # fuel. Otherwise just use a plain material.
-    if num_rings > 1 or num_axial > 1:
+    if ring_radii is not None or num_axial > 1:
         fuel_fill = subdivided_fuel(mats['UO2 2.4 {}'.format(fuel)])
     else:
         fuel_fill = mats['UO2 2.4 {}'.format(fuel)]
+
+    univs['Fuel pin (2.4%) no grid'] = make_pin(
+        'Pin no grid',
+        surfaces=[surfs['pellet OR']] + outside_pin_surfaces,
+        materials=[fuel_fill] + outside_pin_mats
+    )
 
     # Stack all axial pieces of 2.4% enriched fuel pin cell
 
@@ -861,7 +872,7 @@ def pin_universes(num_rings=10, num_axial=196, depleted=False):
                    univs['SS pin'],
                    univs['SS pin'],
                    univs['end plug'],
-                   univs['Fuel pin (2.4%) stack'],
+                   univs['Fuel pin (2.4%) no grid'],
                    univs['pin plenum'],
                    univs['pin plenum grid (intermediate)'],
                    univs['pin plenum'],
@@ -875,10 +886,16 @@ def pin_universes(num_rings=10, num_axial=196, depleted=False):
 
     # If rings/axial segments are present, create a universe for the subdivided
     # fuel. Otherwise just use a plain material.
-    if num_rings > 1 or num_axial > 1:
+    if ring_radii is not None or num_axial > 1:
         fuel_fill = subdivided_fuel(mats['UO2 3.1 {}'.format(fuel)])
     else:
         fuel_fill = mats['UO2 3.1 {}'.format(fuel)]
+
+    univs['Fuel pin (3.1%) no grid'] = make_pin(
+        'Pin no grid',
+        surfaces=[surfs['pellet OR']] + outside_pin_surfaces,
+        materials=[fuel_fill] + outside_pin_mats
+    )
 
     # Stack all axial pieces of 3.1% enriched fuel pin cell
 
@@ -907,7 +924,7 @@ def pin_universes(num_rings=10, num_axial=196, depleted=False):
                    univs['SS pin'],
                    univs['SS pin'],
                    univs['end plug'],
-                   univs['Fuel pin (3.1%) stack'],
+                   univs['Fuel pin (3.1%) no grid'],
                    univs['pin plenum'],
                    univs['pin plenum grid (intermediate)'],
                    univs['pin plenum'],
