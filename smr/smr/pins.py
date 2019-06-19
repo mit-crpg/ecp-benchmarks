@@ -743,7 +743,7 @@ def pin_universes(num_rings=10, num_axial=196, depleted=False):
         fuel_fill = mats['UO2 1.6 {}'.format(fuel)]
 
     outside_pin_surfaces = [surfs['clad IR'], surfs['clad OR']]
-    outside_pin_mats = [mats['He'], mats['Zr'], mats['H2O']]
+    outside_pin_mats = [mats['He'], mats['M5'], mats['H2O']]
 
     univs['Outside pin'] = make_pin(
         'Outside pin',

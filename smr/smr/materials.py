@@ -1,7 +1,9 @@
 """Instantiate the OpenMC Materials needed by the core model."""
 
 import openmc
-from openmc.data import atomic_weight, atomic_mass
+from openmc.data import atomic_weight, atomic_mass, water_density
+
+from . import system_pressure, core_average_temperature
 
 
 _DEPLETION_NUCLIDES = [
@@ -41,13 +43,11 @@ mats = {}
 
 # Create He gas material for fuel pin gap
 mats['He'] = openmc.Material(name='Helium')
-mats['He'].temperature = 300
 mats['He'].set_density('g/cc', 0.0015981)
 mats['He'].add_element('He', 1.0, 'ao')
 
 # Create air material for instrument tubes
 mats['Air'] = openmc.Material(name='Air')
-mats['Air'].temperature = 300
 mats['Air'].set_density('g/cc', 0.00616)
 mats['Air'].add_element('O', 0.2095, 'ao')
 mats['Air'].add_element('N', 0.7809, 'ao')
@@ -56,7 +56,6 @@ mats['Air'].add_element('C', 0.00027, 'ao')
 
 # Create inconel 718 material
 mats['In'] = openmc.Material(name='Inconel')
-mats['In'].temperature = 300
 mats['In'].set_density('g/cc', 8.2)
 mats['In'].add_element('Si', 0.0035, 'wo')
 mats['In'].add_element('Cr', 0.1896, 'wo')
@@ -66,7 +65,6 @@ mats['In'].add_element('Ni', 0.5119, 'wo')
 
 # Create stainless steel material
 mats['SS'] = openmc.Material(name='SS304')
-mats['SS'].temperature = 300
 mats['SS'].set_density('g/cc', 8.03)
 mats['SS'].add_element('Si', 0.0060, 'wo')
 mats['SS'].add_element('Cr', 0.1900, 'wo')
@@ -76,7 +74,6 @@ mats['SS'].add_element('Ni', 0.1000, 'wo')
 
 # Create carbon steel material
 mats['CS'] = openmc.Material(name='Carbon Steel')
-mats['CS'].temperature = 300
 mats['CS'].set_density('g/cc', 7.8)
 mats['CS'].add_element('C', 0.00270, 'wo')
 mats['CS'].add_element('Mn', 0.00750, 'wo')
@@ -97,7 +94,6 @@ mats['CS'].add_element('Fe', 0.96487, 'wo')
 
 # Create zircaloy 4 material
 mats['Zr'] = openmc.Material(name='Zircaloy-4')
-mats['Zr'].temperature = 300
 mats['Zr'].set_density('g/cc', 6.55)
 mats['Zr'].add_element('O', 0.00125, 'wo')
 mats['Zr'].add_element('Cr', 0.0010, 'wo')
@@ -105,9 +101,18 @@ mats['Zr'].add_element('Fe', 0.0021, 'wo')
 mats['Zr'].add_element('Zr', 0.98115, 'wo')
 mats['Zr'].add_element('Sn', 0.0145, 'wo')
 
+# Create M5 alloy material
+m5_niobium = 0.01    # http://publications.jrc.ec.europa.eu/repository/bitstream/JRC100644/lcna28366enn.pdf
+m5_oxygen = 0.00135  # http://publications.jrc.ec.europa.eu/repository/bitstream/JRC100644/lcna28366enn.pdf
+m5_density = 6.494   # 10.1039/C5DT03403E
+mats['M5'] = openmc.Material(name='M5')
+mats['M5'].add_element('Zr', 1.0 - m5_niobium - m5_oxygen)
+mats['M5'].add_element('Nb', m5_niobium)
+mats['M5'].add_element('O', m5_oxygen)
+mats['M5'].set_density('g/cm3', m5_density)
+
 # Create Ag-In-Cd control rod material
 mats['AIC'] = openmc.Material(name='Ag-In-Cd')
-mats['AIC'].temperature = 300
 mats['AIC'].set_density('g/cc', 10.16)
 mats['AIC'].add_element('Ag', 0.80, 'wo')
 mats['AIC'].add_element('In', 0.15, 'wo')
@@ -116,10 +121,11 @@ mats['AIC'].add_element('Cd', 0.05, 'wo')
 
 #### Borated Water
 
-boron_ppm = 975
+# Concentration of boron at beginning of equilibrium cycle
+boron_ppm = 1240  # ML17013A274, Figure 4.3-17
 
-# Density of clean water at 2250 psia T=560F NIST
-h2o_dens = 0.73986
+# Density of water
+h2o_dens = water_density(core_average_temperature, system_pressure)
 
 # Weight percent of natural boron in borated water
 wB_Bh2o = boron_ppm * 1.0e-6
@@ -146,7 +152,6 @@ aho_Bh2o = ah2o_Bh2o
 
 # Create borated water for coolant / moderator
 mats['H2O'] = openmc.Material(name='Borated Water')
-mats['H2O'].temperature = 300
 mats['H2O'].set_density('g/cc', rho_Bh2o)
 mats['H2O'].add_element('B', aB_Bh2o, 'ao')
 mats['H2O'].add_element('H', ah_Bh2o, 'ao')
