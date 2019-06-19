@@ -128,43 +128,43 @@ neutron_shield_NEtop_SWbot = tan(-pi/6)
 surfs = {}
 
 surfs['pellet OR'] = openmc.ZCylinder(
-    R=pellet_OR, name='Pellet OR')
+    r=pellet_OR, name='Pellet OR')
 surfs['plenum spring OR'] = openmc.ZCylinder(
-    R=plenum_spring_OR, name='FR Plenum Spring OR')
+    r=plenum_spring_OR, name='FR Plenum Spring OR')
 surfs['clad IR'] = openmc.ZCylinder(
-    R=clad_IR, name='Clad IR')
+    r=clad_IR, name='Clad IR')
 surfs['clad OR'] = openmc.ZCylinder(
-    R=clad_OR, name='Clad OR')
+    r=clad_OR, name='Clad OR')
 surfs['GT IR'] = openmc.ZCylinder(
-    R=guide_tube_IR, name='GT IR (above dashpot)')
+    r=guide_tube_IR, name='GT IR (above dashpot)')
 surfs['GT OR'] = openmc.ZCylinder(
-    R=guide_tube_OR, name='GT OR (above dashpot)')
+    r=guide_tube_OR, name='GT OR (above dashpot)')
 surfs['GT dashpot IR'] = openmc.ZCylinder(
-    R=guide_tube_dash_IR, name='GT IR (at dashpot)')
+    r=guide_tube_dash_IR, name='GT IR (at dashpot)')
 surfs['GT dashpot OR'] = openmc.ZCylinder(
-    R=guide_tube_dash_OR, name='GT OR (at dashpot)')
+    r=guide_tube_dash_OR, name='GT OR (at dashpot)')
 surfs['CP OR'] = openmc.ZCylinder(
-    R=boron_carbide_OR, name='Control Poison OR')
+    r=boron_carbide_OR, name='Control Poison OR')
 surfs['CR IR'] = openmc.ZCylinder(
-    R=control_rod_IR, name='CR Clad IR')
+    r=control_rod_IR, name='CR Clad IR')
 surfs['CR OR'] = openmc.ZCylinder(
-    R=control_rod_OR, name='CR Clad OR')
+    r=control_rod_OR, name='CR Clad OR')
 surfs['BA IR 1'] = openmc.ZCylinder(
-    R=burn_abs_r1, name='BA IR 1')
+    r=burn_abs_r1, name='BA IR 1')
 surfs['BA IR 2'] = openmc.ZCylinder(
-    R=burn_abs_r2, name='BA IR 2')
+    r=burn_abs_r2, name='BA IR 2')
 surfs['BA IR 3'] = openmc.ZCylinder(
-    R=burn_abs_r3, name='BA IR 3')
+    r=burn_abs_r3, name='BA IR 3')
 surfs['BA IR 4'] = openmc.ZCylinder(
-    R=burn_abs_r4, name='BA IR 4')
+    r=burn_abs_r4, name='BA IR 4')
 surfs['BA IR 5'] = openmc.ZCylinder(
-    R=burn_abs_r5, name='BA IR 5')
+    r=burn_abs_r5, name='BA IR 5')
 surfs['BA IR 6'] = openmc.ZCylinder(
-    R=burn_abs_r6, name='BA IR 6')
+    r=burn_abs_r6, name='BA IR 6')
 surfs['BA IR 7'] = openmc.ZCylinder(
-    R=burn_abs_r7, name='BA IR 7')
+    r=burn_abs_r7, name='BA IR 7')
 surfs['BA IR 8'] = openmc.ZCylinder(
-    R=burn_abs_r8, name='BA IR 8')
+    r=burn_abs_r8, name='BA IR 8')
 surfs['IT IR'] = copy.deepcopy(surfs['BA IR 5'])
 surfs['IT OR'] = copy.deepcopy(surfs['BA IR 6'])
 
@@ -245,31 +245,31 @@ surfs['bankD bot'] = openmc.ZPlane(
 
 # outer radial surfaces
 surfs['core barrel IR'] = openmc.ZCylinder(
-    R=core_barrel_IR, name='core barrel IR')
+    r=core_barrel_IR, name='core barrel IR')
 surfs['core barrel OR'] = openmc.ZCylinder(
-    R=core_barrel_OR, name='core barrel OR')
+    r=core_barrel_OR, name='core barrel OR')
 surfs['neutron shield OR'] = openmc.ZCylinder(
-    R=neutron_shield_OR, name='neutron shield OR')
+    r=neutron_shield_OR, name='neutron shield OR')
 
 # neutron shield planes
 surfs['neutron shield NWbot SEtop'] = openmc.Plane(
-    A=1., B=neutron_shield_NWbot_SEtop, C=0., D=0.,
+    a=1., b=neutron_shield_NWbot_SEtop, c=0., d=0.,
     name='neutron shield NWbot SEtop')
 surfs['neutron shield NWtop SEbot'] = openmc.Plane(
-    A=1., B=neutron_shield_NWtop_SEbot, C=0., D=0.,
+    a=1., b=neutron_shield_NWtop_SEbot, c=0., d=0.,
     name='neutron shield NWtop SEbot')
 surfs['neutron shield NEbot SWtop'] = openmc.Plane(
-    A=1., B=neutron_shield_NEbot_SWtop, C=0., D=0.,
+    a=1., b=neutron_shield_NEbot_SWtop, c=0., d=0.,
     name='neutron shield NEbot SWtop')
 surfs['neutron shield NEtop SWbot'] = openmc.Plane(
-    A=1., B=neutron_shield_NEtop_SWbot, C=0., D=0.,
+    a=1., b=neutron_shield_NEtop_SWbot, c=0., d=0.,
     name='neutron shield NEtop SWbot')
 
 # outer radial surfaces
 surfs['RPV IR'] = openmc.ZCylinder(
-    R=rpv_IR, name='RPV IR')
+    r=rpv_IR, name='RPV IR')
 surfs['RPV OR'] = openmc.ZCylinder(
-    R=rpv_OR, name='RPV OR', boundary_type='vacuum')
+    r=rpv_OR, name='RPV OR', boundary_type='vacuum')
 
 # outer axial surfaces
 surfs['upper bound'] = openmc.ZPlane(

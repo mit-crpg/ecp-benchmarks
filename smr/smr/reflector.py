@@ -34,7 +34,7 @@ def make_reflector(name, parameters):
     """
     water_holes = []
     for x, y, r in parameters:
-        zcyl = openmc.ZCylinder(x0=x, y0=y, R=r)
+        zcyl = openmc.ZCylinder(x0=x, y0=y, r=r)
         hole = openmc.Cell(fill=mats['H2O'], region=-zcyl)
         water_holes.append(hole)
 

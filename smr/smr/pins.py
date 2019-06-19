@@ -7,7 +7,7 @@ import openmc
 from openmc.model import subdivide
 
 from .materials import mats
-from .surfaces import surfs, pellet_OR, bottom_fuel_rod, top_active_core
+from .surfaces import surfs, pellet_OR, bottom_fuel_stack, top_active_core
 
 
 def make_pin(name, surfaces, materials, grid=None):
@@ -703,7 +703,7 @@ def pin_universes(num_rings=10, num_axial=196, depleted=False):
     if num_axial > 1:
         # Determine z position between each fuel pellet, omitting the surfaces
         # corresponding to the very bottom and top of the active fuel length
-        axial_splits = np.linspace(bottom_fuel_rod, top_active_core, num_axial + 1)[1:-1]
+        axial_splits = np.linspace(bottom_fuel_stack, top_active_core, num_axial + 1)[1:-1]
         axial_surfs = [openmc.ZPlane(z0=z) for z in axial_splits]
 
     if num_rings > 1:
@@ -711,7 +711,7 @@ def pin_universes(num_rings=10, num_axial=196, depleted=False):
         rings = []
         for i in range(1, num_rings):
             R = sqrt(i*pellet_OR**2/num_rings)
-            cyl = openmc.ZCylinder(R=R, name='fuel ring {}'.format(i))
+            cyl = openmc.ZCylinder(r=R, name='fuel ring {}'.format(i))
             rings.append(cyl)
 
     def subdivided_fuel(fill):
