@@ -2,15 +2,16 @@
 
 import argparse
 import copy
+from math import pi, isclose
 from pathlib import Path
 
 import numpy as np
 from tqdm import tqdm
-
 import openmc
+
 from smr.materials import materials, mats
 from smr.surfaces import surfs, lattice_pitch, pin_pitch, bottom_fuel_stack, \
-    top_active_core
+    top_active_core, pellet_OR, clad_OR
 from smr.pins import pin_universes
 
 
@@ -20,7 +21,7 @@ parser.add_argument('-m', '--multipole', action='store_true',
                     help='Whether to use multipole cross sections')
 parser.add_argument('-t', '--tallies', choices=('cell', 'mat'), default='mat',
                     help='Whether to use distribmats or distribcells for tallies')
-parser.add_argument('-a', '--axial', type=int, default=196,
+parser.add_argument('-a', '--axial', type=int, default=10,
                     help='Number of axial subdivisions in fuel')
 parser.add_argument('-d', '--depleted', action='store_true',
                     help='Whether UO2 compositions should represent depleted fuel')
@@ -58,12 +59,6 @@ universes[nonfuel_y, nonfuel_x] = [    gtu,   gtu,   gtu,
                                      gtu,              gtu,
                                        gtu,   gtu,   gtu     ]
 
-xy_bounds = openmc.model.get_rectangular_prism(
-    lattice_pitch, lattice_pitch, boundary_type='reflective')
-z_bounds = +surfs['bot active core'] & -surfs['top active core']
-surfs['bot active core'].boundary_type = 'reflective'
-surfs['top active core'].boundary_type = 'reflective'
-
 # Instantiate the lattice
 lattice = openmc.RectLattice(name='Pin lattice')
 lattice.lower_left = (-17.*pin_pitch/2., -17.*pin_pitch/2.)
@@ -74,14 +69,15 @@ lattice.universes = universes
 root_universe = openmc.Universe(name='Root universe')
 cell = openmc.Cell(name='Lattice cell')
 cell.fill = lattice
+z_bounds = +surfs['bot active core'] & -surfs['top active core']
 cell.region = surfs['lat grid box inner'] & z_bounds
 root_universe.add_cell(cell)
 
-# Add outer water cell
-cell = openmc.Cell(name='outer water')
-cell.fill = mats['H2O']
-cell.region = ~surfs['lat grid box inner'] & xy_bounds & z_bounds
-root_universe.add_cell(cell)
+# Apply reflective boundaries
+surfs['bot active core'].boundary_type = 'reflective'
+surfs['top active core'].boundary_type = 'reflective'
+for halfspace in surfs['lat grid box inner']:
+    halfspace.surface.boundary_type = 'reflective'
 
 # Define geometry with a single assembly
 geometry = openmc.Geometry(root_universe)
@@ -95,18 +91,40 @@ def clone(material):
 
 
 #### "Differentiate" the geometry if using distribmats
+h = 10.0*pin_pitch / args.axial
 if args.tallies == 'mat':
     # Count the number of instances for each cell and material
     geometry.determine_paths(instances_only=True)
 
     # Extract all cells filled by a fuel material
-    fuel_mats = {m for m in materials if 'UO2 Fuel' in m.name}
+    diff_mats = {m for m in materials if 'UO2 Fuel' in m.name
+                 or m.name == 'Borated Water'}
 
     for cell in tqdm(geometry.get_all_material_cells().values(),
                      desc='Differentiating materials'):
-        if cell.fill in fuel_mats:
+        if cell.fill in diff_mats:
             # Fill cell with list of "differentiated" materials
             cell.fill = [clone(cell.fill) for i in range(cell.num_instances)]
+
+            # Determine volume of each fuel material
+            if 'UO2 Fuel' in cell.fill[0].name:
+                lower_left, _ = cell.region.bounding_box
+                if isclose(lower_left[0], rings[0]):
+                    ro = rings[0]
+                    ri = 0.0
+                elif isclose(lower_left[0], rings[1]):
+                    ro = rings[1]
+                    ri = rings[0]
+                else:
+                    ro = pellet_OR
+                    ri = rings[1]
+                for mat in cell.fill:
+                    mat.volume = pi * (ro*ro - ri*ri) * h
+            else:
+                for mat in cell.fill:
+                    mat.volume = pin_pitch**2 - pi*clad_OR**2 * h
+
+mats['M5'].volume = 1.0
 
 #### Create OpenMC "materials.xml" file
 print('Getting materials...')
