@@ -11,7 +11,7 @@ import openmc
 
 from smr.materials import materials, mats
 from smr.surfaces import surfs, lattice_pitch, pin_pitch, bottom_fuel_stack, \
-    top_active_core, pellet_OR, clad_OR
+    top_active_core, pellet_OR, clad_OR, clad_IR, guide_tube_IR, guide_tube_OR
 from smr.pins import pin_universes
 
 
@@ -96,13 +96,9 @@ if args.tallies == 'mat':
     # Count the number of instances for each cell and material
     geometry.determine_paths(instances_only=True)
 
-    # Extract all cells filled by a fuel material
-    diff_mats = {m for m in materials if 'UO2 Fuel' in m.name
-                 or m.name == 'Borated Water'}
-
     for cell in tqdm(geometry.get_all_material_cells().values(),
                      desc='Differentiating materials'):
-        if cell.fill in diff_mats:
+        if cell.fill in materials:
             # Fill cell with list of "differentiated" materials
             cell.fill = [clone(cell.fill) for i in range(cell.num_instances)]
 
@@ -110,21 +106,25 @@ if args.tallies == 'mat':
             if 'UO2 Fuel' in cell.fill[0].name:
                 lower_left, _ = cell.region.bounding_box
                 if isclose(lower_left[0], rings[0]):
-                    ro = rings[0]
-                    ri = 0.0
+                    ri, ro = 0.0, rings[0]
                 elif isclose(lower_left[0], rings[1]):
-                    ro = rings[1]
-                    ri = rings[0]
+                    ri, ro = rings[0], rings[1]
                 else:
-                    ro = pellet_OR
-                    ri = rings[1]
+                    ri, ro = rings[1], pellet_OR
                 for mat in cell.fill:
                     mat.volume = pi * (ro*ro - ri*ri) * h
-            else:
+            elif cell.fill[0].name == 'Borated Water':
                 for mat in cell.fill:
                     mat.volume = pin_pitch**2 - pi*clad_OR**2 * h
-
-mats['M5'].volume = 1.0
+            elif cell.fill[0].name == 'Helium':
+                for mat in cell.fill:
+                    mat.volume = pi * (clad_IR**2 - pellet_OR**2) * h
+            elif cell.fill[0].name == 'M5':
+                for mat in cell.fill:
+                    mat.volume = pi * (clad_OR**2 - clad_IR**2) * h
+            elif cell.fill[0].name == 'Zircaloy-4':
+                for mat in cell.fill:
+                    mat.volume = pi * (guide_tube_OR**2 - guide_tube_IR**2) * h
 
 #### Create OpenMC "materials.xml" file
 print('Getting materials...')
