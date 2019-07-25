@@ -63,6 +63,15 @@ mats['In'].add_element('Mn', 0.0087, 'wo')
 mats['In'].add_element('Fe', 0.2863, 'wo')
 mats['In'].add_element('Ni', 0.5119, 'wo')
 
+# Create stainless steel 302
+mats['SS302'] = openmc.Material(name='SS302')
+mats['SS302'].set_density('g/cm3', 7.86)
+mats['SS302'].add_element('Si', 0.01, 'wo')
+mats['SS302'].add_element('Cr', 0.18, 'wo')
+mats['SS302'].add_element('Mn', 0.02, 'wo')
+mats['SS302'].add_element('Fe', 0.70, 'wo')
+mats['SS302'].add_element('Ni', 0.09, 'wo')
+
 # Create stainless steel material
 mats['SS'] = openmc.Material(name='SS304')
 mats['SS'].set_density('g/cc', 8.03)

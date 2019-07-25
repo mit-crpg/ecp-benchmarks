@@ -674,16 +674,16 @@ def pin_universes(num_rings=10, num_axial=196, depleted=False):
     univs['end plug'] = make_pin(
         'end plug',
         [surfs['clad OR']],
-        [mats['Zr'], mats['H2O']])
+        [mats['M5'], mats['H2O']])
 
     univs['pin plenum'] = make_pin(
         'pin plenum',
         surfaces=[surfs['plenum spring OR'],
                   surfs['clad IR'],
                   surfs['clad OR']],
-        materials=[mats['In'],
+        materials=[mats['SS302'],
                    mats['He'],
-                   mats['Zr'],
+                   mats['M5'],
                    mats['H2O']])
 
     univs['pin plenum grid (intermediate)'] = make_pin(
