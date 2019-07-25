@@ -133,75 +133,10 @@ def core_geometry(num_rings, num_axial, depleted):
                    +surfs['lower bound'] & -surfs['upper bound'])
     root_univ.add_cell(cell)
 
-    # Neutron shield panels
-    cell = openmc.Cell(name='neutron shield panel NW')
-    cell.fill = mats['SS']
-    cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
-                   +surfs['neutron shield NWbot SEtop'] &
-                   -surfs['neutron shield NWtop SEbot'] &
-                   +surfs['lower bound'] & -surfs['upper bound'])
-    root_univ.add_cell(cell)
-
-    cell = openmc.Cell(name='neutron shield panel N')
-    cell.fill = mats['H2O']
-    cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
-                   +surfs['neutron shield NWtop SEbot'] &
-                   -surfs['neutron shield NEtop SWbot'] &
-                   +surfs['lower bound'] & -surfs['upper bound'])
-    root_univ.add_cell(cell)
-
-    cell = openmc.Cell(name='neutron shield panel SE')
-    cell.fill = mats['SS']
-    cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
-                   -surfs['neutron shield NWbot SEtop'] &
-                   +surfs['neutron shield NWtop SEbot'] &
-                   +surfs['lower bound'] & -surfs['upper bound'])
-    root_univ.add_cell(cell)
-
-    cell = openmc.Cell(name='neutron shield panel E')
-    cell.fill = mats['H2O']
-    cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
-                   +surfs['neutron shield NWbot SEtop'] &
-                   +surfs['neutron shield NEbot SWtop'] &
-                   +surfs['lower bound'] & -surfs['upper bound'])
-    root_univ.add_cell(cell)
-
-    cell = openmc.Cell(name='neutron shield panel NE')
-    cell.fill = mats['SS']
-    cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
-                   +surfs['neutron shield NEbot SWtop'] &
-                   -surfs['neutron shield NEtop SWbot'] &
-                   +surfs['lower bound'] & -surfs['upper bound'])
-    root_univ.add_cell(cell)
-
-    cell = openmc.Cell(name='neutron shield panel S')
-    cell.fill = mats['H2O']
-    cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
-                   -surfs['neutron shield NWtop SEbot'] &
-                   +surfs['neutron shield NEtop SWbot'] &
-                   +surfs['lower bound'] & -surfs['upper bound'])
-    root_univ.add_cell(cell)
-
-    cell = openmc.Cell(name='neutron shield panel SW')
-    cell.fill = mats['SS']
-    cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
-                   -surfs['neutron shield NEbot SWtop'] &
-                   +surfs['neutron shield NEtop SWbot'] &
-                   +surfs['lower bound'] & -surfs['upper bound'])
-    root_univ.add_cell(cell)
-
-    cell = openmc.Cell(name='neutron shield panel W')
-    cell.fill = mats['H2O']
-    cell.region = (+surfs['core barrel OR'] & -surfs['neutron shield OR'] &
-                   -surfs['neutron shield NWbot SEtop'] &
-                   -surfs['neutron shield NEbot SWtop'] &
-                   +surfs['lower bound'] & -surfs['upper bound'])
-    root_univ.add_cell(cell)
-
     # Downcomer
     cell = openmc.Cell(name='downcomer')
     cell.fill = mats['H2O']
-    cell.region = (+surfs['neutron shield OR'] & -surfs['RPV IR'] &
+    cell.region = (+surfs['core barrel OR'] & -surfs['RPV IR'] &
                    +surfs['lower bound'] & -surfs['upper bound'])
     root_univ.add_cell(cell)
 

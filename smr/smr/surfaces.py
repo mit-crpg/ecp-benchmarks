@@ -40,7 +40,7 @@ clad_OR            = 0.374*INCHES/2   # ML17013A274, Table 4.1-2
 active_fuel_length = 78.74*INCHES     # ML17013A274, Figure 4.2-10
 plenum_length      = 5.311*INCHES     # ML17013A274, Figure 4.2-10
 fuel_rod_length    = 85.00*INCHES     # ML17013A274, Table 4.1-2
-lower_end_cap      = 0.575*INCHES     # ML17007A001, Table 3-2
+lower_end_cap_length = 0.575*INCHES   # ML17007A001, Table 3-2
 
 # pin cell parameters
 guide_tube_IR      = 0.450*INCHES/2  # ML17013A274, Table 4.1-2
@@ -79,19 +79,20 @@ top_nozzle_width  = 8.406*INCHES  # ML17013A274, Figure 4.2-2
 core_barrel_IR     = 74*INCHES/2  # ML17013A274, Table 4.1-2
 core_barrel_OR     = 78*INCHES/2  # ML17013A274, Table 4.1-2
 neutron_shield_OR  = core_barrel_OR + 2.0
-rpv_IR             = 120.0  # Estimate?
-rpv_OR             = 135.0  # Estimate?
+rpv_IR             = 96.5*INCHES/2  # ML17013A274, Table 5.3-1
+rpv_OR             = 105*INCHES/2   # ML17013A274, Table 5.3-1
 
 # axial parameters
-lowest_extent        =      0.000
-bottom_support_plate =     20.000
-top_support_plate    =     25.000
-bottom_lower_nozzle  =     25.000
-top_lower_nozzle     =     35.160
-bottom_fuel_rod      =     35.160
-top_lower_thimble    =     36.007
-bottom_fuel_stack    =     36.007
-bot_burn_abs         =     41.087
+reference_z = 0.0
+lowest_extent        = reference_z
+bottom_support_plate = lowest_extent + 20.000
+top_support_plate    = bottom_support_plate + 5.000
+bottom_lower_nozzle  = bottom_support_plate + 5.000
+top_lower_nozzle     = bottom_lower_nozzle + 4.0*INCHES
+bottom_fuel_rod      = bottom_lower_nozzle + 4.0*INCHES
+top_lower_thimble    = bottom_fuel_rod + lower_end_cap_length
+bottom_fuel_stack    = bottom_fuel_rod + lower_end_cap_length
+bot_burn_abs         = bottom_fuel_stack + 2.0*INCHES
 top_active_core = bottom_fuel_stack + active_fuel_length
 top_plenum = top_active_core + plenum_length
 top_fuel_rod = bottom_fuel_rod + fuel_rod_length
@@ -170,13 +171,13 @@ surfs['IT OR'] = copy.deepcopy(surfs['BA IR 6'])
 
 # Rectangular prisms for grid spacers
 surfs['rod grid box'] = \
-    openmc.get_rectangular_prism(rod_grid_side, rod_grid_side)
+    openmc.rectangular_prism(rod_grid_side, rod_grid_side)
 
 # Rectangular prisms for lattice grid sleeves
 surfs['lat grid box inner'] = \
-    openmc.get_rectangular_prism(17.*pin_pitch, 17.*pin_pitch)
+    openmc.rectangular_prism(17.*pin_pitch, 17.*pin_pitch)
 surfs['lat grid box outer'] = \
-    openmc.get_rectangular_prism(grid_strap_side, grid_strap_side)
+    openmc.rectangular_prism(grid_strap_side, grid_strap_side)
 
 surfs['bot support plate'] = openmc.ZPlane(
     z0=bottom_support_plate, name='bot support plate')

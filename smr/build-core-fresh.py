@@ -13,6 +13,7 @@ from smr.materials import materials
 from smr.plots import core_plots
 from smr.surfaces import lattice_pitch, bottom_fuel_stack, top_active_core
 from smr.core import core_geometry
+from smr import inlet_temperature
 
 
 def clone(mat):
@@ -88,8 +89,14 @@ settings.output = {'tallies': False, 'summary': False}
 settings.source = source
 settings.sourcepoint_write = False
 
+settings.temperature = {
+    'default': inlet_temperature,
+    'method': 'interpolation',
+    'range': (300.0, 1500.0),
+}
 if args.multipole:
-    settings.temperature = {'multipole': True, 'tolerance': 1000}
+    settings.temperature['multipole'] = True
+    settings.temperature['tolerance'] = 1000
 
 settings.export_to_xml(str(directory / 'settings.xml'))
 

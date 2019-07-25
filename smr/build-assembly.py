@@ -12,6 +12,7 @@ from smr.materials import materials
 from smr.surfaces import surfs, lattice_pitch, bottom_fuel_stack, top_active_core
 from smr.assemblies import assembly_universes
 from smr.plots import assembly_plots
+from smr import inlet_temperature
 
 
 # Define command-line options
@@ -100,9 +101,14 @@ settings.particles = 10000
 settings.output = {'tallies': False, 'summary': False}
 settings.source = source
 settings.sourcepoint_write = False
-
+settings.temperature = {
+    'default': inlet_temperature,
+    'method': 'interpolation',
+    'range': (300.0, 1500.0),
+}
 if args.multipole:
-    settings.temperature = {'multipole': True, 'tolerance': 1000}
+    settings.temperature['multipole'] = True
+    settings.temperature['tolerance'] = 1000
 
 settings.export_to_xml(str(directory / 'settings.xml'))
 
