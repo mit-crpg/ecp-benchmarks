@@ -79,8 +79,8 @@ top_nozzle_width  = 8.406*INCHES  # ML17013A274, Figure 4.2-2
 core_barrel_IR     = 74*INCHES/2  # ML17013A274, Table 4.1-2
 core_barrel_OR     = 78*INCHES/2  # ML17013A274, Table 4.1-2
 neutron_shield_OR  = core_barrel_OR + 2.0
-rpv_IR             = 120.0  # Estimate?
-rpv_OR             = 135.0  # Estimate?
+rpv_IR             = 96.5*INCHES/2  # ML17013A274, Table 5.3-1
+rpv_OR             = 105*INCHES/2   # ML17013A274, Table 5.3-1
 
 # axial parameters
 lowest_extent        =      0.000
