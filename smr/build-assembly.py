@@ -44,7 +44,10 @@ else:
 directory.mkdir(exist_ok=True)
 
 # Define geometry with a single assembly
-ring_radii = np.sqrt(np.arange(1, args.rings)*pellet_OR**2 / args.rings)
+if args.rings > 1:
+    ring_radii = np.sqrt(np.arange(1, args.rings)*pellet_OR**2 / args.rings)
+else:
+    ring_radii = None
 assembly = assembly_universes(ring_radii, args.axial, args.depleted)
 lattice_sides = openmc.model.get_rectangular_prism(lattice_pitch, lattice_pitch,
                                                    boundary_type='reflective')
