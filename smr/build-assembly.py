@@ -17,8 +17,10 @@ from smr import inlet_temperature
 
 # Define command-line options
 parser = argparse.ArgumentParser()
-parser.add_argument('-m', '--multipole', action='store_true',
-                    help='Whether to use multipole cross sections')
+parser.add_argument('--multipole', action='store_true',
+                    help='Use multipole cross sections')
+parser.add_argument('--no-multipole', action='store_false',
+                    help='Do not use multipole cross sections')
 parser.add_argument('-t', '--tallies', choices=('cell', 'mat'), default='mat',
                     help='Whether to use distribmats or distribcells for tallies')
 parser.add_argument('-r', '--rings', type=int, default=10,
@@ -28,6 +30,7 @@ parser.add_argument('-a', '--axial', type=int, default=196,
 parser.add_argument('-d', '--depleted', action='store_true',
                     help='Whether UO2 compositions should represent depleted fuel')
 parser.add_argument('-o', '--output-dir', type=Path, default=None)
+parser.set_defaults(multipole=True)
 args = parser.parse_args()
 
 # Make directory for inputs
