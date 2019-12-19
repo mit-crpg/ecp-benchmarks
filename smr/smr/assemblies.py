@@ -144,7 +144,7 @@ def assembly_universes(num_rings, num_axial, depleted):
     univs = {}
 
     # commonly needed universes
-    gtu = pins['GT empty']
+    gtu = pins['GT empty stack']
     gti = pins['GT empty instr']
     bas = pins['BA stack']
     ins = pins['IT stack']

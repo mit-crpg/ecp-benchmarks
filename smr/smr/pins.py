@@ -230,8 +230,8 @@ def pin_universes(num_rings=10, num_axial=196, depleted=False):
         surfs['top upper nozzle']
     ]
 
-    univs['GT empty'] = make_stack(
-        'GT empty', surfaces=stack_surfs,
+    univs['GT empty stack'] = make_stack(
+        'GT empty stack', surfaces=stack_surfs,
         universes=[univs['water pin'],
                    univs['water pin'],
                    univs['water pin'],
