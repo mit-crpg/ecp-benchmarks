@@ -762,6 +762,12 @@ def pin_universes(ring_radii=None, num_axial=196, depleted=False):
         materials=outside_pin_mats,
         grid='intermediate')
 
+    univs['Fuel pin (1.6%) no grid'] = make_pin(
+        'Pin no grid',
+        surfaces=[surfs['pellet OR']] + outside_pin_surfaces,
+        materials=[fuel_fill] + outside_pin_mats
+    )
+
     # Stack all axial pieces of 1.6% enriched fuel pin cell
 
     within_fuel_surfs = [
@@ -834,6 +840,12 @@ def pin_universes(ring_radii=None, num_axial=196, depleted=False):
     else:
         fuel_fill = mats['UO2 2.4 {}'.format(fuel)]
 
+    univs['Fuel pin (2.4%) no grid'] = make_pin(
+        'Pin no grid',
+        surfaces=[surfs['pellet OR']] + outside_pin_surfaces,
+        materials=[fuel_fill] + outside_pin_mats
+    )
+
     # Stack all axial pieces of 2.4% enriched fuel pin cell
 
     univs['Fuel pin (2.4%) stack'] = make_pin_stack(
@@ -888,6 +900,12 @@ def pin_universes(ring_radii=None, num_axial=196, depleted=False):
         water_fill = openmc.Universe(cells=water_cells)
     else:
         water_fill = mats['H2O']
+
+    univs['Fuel pin (3.1%) no grid'] = make_pin(
+        'Pin no grid',
+        surfaces=[surfs['pellet OR']] + outside_pin_surfaces,
+        materials=[fuel_fill, mats['He'], mats['M5'], water_fill]
+    )
 
     # Stack all axial pieces of 3.1% enriched fuel pin cell
 
