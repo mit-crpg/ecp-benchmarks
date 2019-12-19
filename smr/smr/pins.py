@@ -142,13 +142,14 @@ def make_pin_stack(name, zsurfaces, universes, boundary, fuel_fill):
     return universe
 
 
-def pin_universes(num_rings=10, num_axial=196, depleted=False):
+def pin_universes(ring_radii=None, num_axial=196, depleted=False):
     """Generate universes for SMR fuel pins.
 
     Parameters
     ----------
-    num_rings : int
-        Number of annual regions in fuel
+    ring_radii : iterable of float
+        Radii of rings in fuel (note that this doesn't need to include the
+        full fuel pin radius)
     num_axial : int
         Number of axial subdivisions in fuel
     depleted : bool
@@ -706,12 +707,11 @@ def pin_universes(num_rings=10, num_axial=196, depleted=False):
         axial_splits = np.linspace(bottom_fuel_stack, top_active_core, num_axial + 1)[1:-1]
         axial_surfs = [openmc.ZPlane(z0=z) for z in axial_splits]
 
-    if num_rings > 1:
+    if ring_radii is not None:
         # Get z-cylinder surfaces for each ring
         rings = []
-        for i in range(1, num_rings):
-            R = sqrt(i*pellet_OR**2/num_rings)
-            cyl = openmc.ZCylinder(r=R, name='fuel ring {}'.format(i))
+        for i, r in enumerate(ring_radii):
+            cyl = openmc.ZCylinder(r=r, name='fuel ring {}'.format(i))
             rings.append(cyl)
 
     def subdivided_fuel(fill):
@@ -719,14 +719,14 @@ def pin_universes(num_rings=10, num_axial=196, depleted=False):
         uo2_cells = []
         if num_axial > 1:
             for axial_region in subdivide(axial_surfs):
-                if num_rings > 1:
+                if ring_radii is not None:
                     for ring_region in subdivide(rings):
                         cell = openmc.Cell(fill=fill, region=axial_region & ring_region)
                         uo2_cells.append(cell)
                 else:
                     uo2_cells.append(openmc.Cell(fill=fill, region=axial_region))
         else:
-            if num_rings > 1:
+            if ring_radii is not None:
                 for ring_region in subdivide(rings):
                     cell = openmc.Cell(fill=fill, region=ring_region)
                     uo2_cells.append(cell)
@@ -737,7 +737,7 @@ def pin_universes(num_rings=10, num_axial=196, depleted=False):
 
     # If rings/axial segments are present, create a universe for the subdivided
     # fuel. Otherwise just use a plain material.
-    if num_rings > 1 or num_axial > 1:
+    if ring_radii is not None or num_axial > 1:
         fuel_fill = subdivided_fuel(mats['UO2 1.6 {}'.format(fuel)])
     else:
         fuel_fill = mats['UO2 1.6 {}'.format(fuel)]
@@ -829,7 +829,7 @@ def pin_universes(num_rings=10, num_axial=196, depleted=False):
 
     # If rings/axial segments are present, create a universe for the subdivided
     # fuel. Otherwise just use a plain material.
-    if num_rings > 1 or num_axial > 1:
+    if ring_radii is not None or num_axial > 1:
         fuel_fill = subdivided_fuel(mats['UO2 2.4 {}'.format(fuel)])
     else:
         fuel_fill = mats['UO2 2.4 {}'.format(fuel)]
@@ -875,10 +875,19 @@ def pin_universes(num_rings=10, num_axial=196, depleted=False):
 
     # If rings/axial segments are present, create a universe for the subdivided
     # fuel. Otherwise just use a plain material.
-    if num_rings > 1 or num_axial > 1:
+    if ring_radii is not None or num_axial > 1:
         fuel_fill = subdivided_fuel(mats['UO2 3.1 {}'.format(fuel)])
     else:
         fuel_fill = mats['UO2 3.1 {}'.format(fuel)]
+
+    if num_axial > 1:
+        water_cells = []
+        for i, r in enumerate(subdivide(axial_surfs)):
+            cell = openmc.Cell(fill=mats['H2O'], region=r, name=f'Water ({i})')
+            water_cells.append(cell)
+        water_fill = openmc.Universe(cells=water_cells)
+    else:
+        water_fill = mats['H2O']
 
     # Stack all axial pieces of 3.1% enriched fuel pin cell
 

@@ -10,13 +10,14 @@ from .reflector import reflector_universes
 from .assemblies import assembly_universes
 
 
-def core_geometry(num_rings, num_axial, depleted):
+def core_geometry(ring_radii, num_axial, depleted):
     """Generate full core SMR geometry.
 
     Parameters
     ----------
-    num_rings : int
-        Number of annual regions in fuel
+    ring_radii : iterable of float
+        Radii of rings in fuel (note that this doesn't need to include the
+        full fuel pin radius)
     num_axial : int
         Number of axial subdivisions in fuel
     depleted : bool
@@ -28,7 +29,7 @@ def core_geometry(num_rings, num_axial, depleted):
         SMR full core geometry
 
     """
-    assembly = assembly_universes(num_rings, num_axial, depleted)
+    assembly = assembly_universes(ring_radii, num_axial, depleted)
     reflector = reflector_universes()
 
     # Construct main core lattice

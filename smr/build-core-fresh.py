@@ -11,7 +11,7 @@ import numpy as np
 import openmc
 from smr.materials import materials
 from smr.plots import core_plots
-from smr.surfaces import lattice_pitch, bottom_fuel_stack, top_active_core
+from smr.surfaces import lattice_pitch, bottom_fuel_stack, top_active_core, pellet_OR
 from smr.core import core_geometry
 from smr import inlet_temperature
 
@@ -48,7 +48,8 @@ else:
     directory = args.output_dir
 directory.mkdir(exist_ok=True)
 
-geometry = core_geometry(args.rings, args.axial, args.depleted)
+ring_radii = np.sqrt(np.arange(1, args.rings)*pellet_OR**2 / args.rings)
+geometry = core_geometry(ring_radii, args.axial, args.depleted)
 
 #### "Differentiate" the geometry if using distribmats
 if args.tallies == 'mat':

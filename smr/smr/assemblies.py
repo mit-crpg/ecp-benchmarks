@@ -120,13 +120,14 @@ def make_assembly(name, universes):
     return universe
 
 
-def assembly_universes(num_rings, num_axial, depleted):
+def assembly_universes(ring_radii, num_axial, depleted):
     """Generate universes for SMR fuel assemblies.
 
     Parameters
     ----------
-    num_rings : int
-        Number of annual regions in fuel
+    ring_radii : iterable of float
+        Radii of rings in fuel (note that this doesn't need to include the
+        full fuel pin radius)
     num_axial : int
         Number of axial subdivisions in fuel
     depleted : bool
@@ -138,7 +139,7 @@ def assembly_universes(num_rings, num_axial, depleted):
         Dictionary mapping a universe name to a openmc.Universe object
 
     """
-    pins = pin_universes(num_rings, num_axial, depleted)
+    pins = pin_universes(ring_radii, num_axial, depleted)
 
     # Create dictionary to store assembly universes
     univs = {}

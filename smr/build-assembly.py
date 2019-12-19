@@ -9,7 +9,7 @@ from tqdm import tqdm
 
 import openmc
 from smr.materials import materials
-from smr.surfaces import surfs, lattice_pitch, bottom_fuel_stack, top_active_core
+from smr.surfaces import surfs, lattice_pitch, bottom_fuel_stack, top_active_core, pellet_OR
 from smr.assemblies import assembly_universes
 from smr.plots import assembly_plots
 from smr import inlet_temperature
@@ -41,7 +41,8 @@ else:
 directory.mkdir(exist_ok=True)
 
 # Define geometry with a single assembly
-assembly = assembly_universes(args.rings, args.axial, args.depleted)
+ring_radii = np.sqrt(np.arange(1, args.rings)*pellet_OR**2 / args.rings)
+assembly = assembly_universes(ring_radii, args.axial, args.depleted)
 lattice_sides = openmc.model.get_rectangular_prism(lattice_pitch, lattice_pitch,
                                                    boundary_type='reflective')
 main_cell = openmc.Cell(
