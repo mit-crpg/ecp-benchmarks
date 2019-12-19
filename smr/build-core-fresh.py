@@ -4,6 +4,7 @@ import os
 import shutil
 import copy
 import argparse
+from math import pi
 from pathlib import Path
 
 import numpy as np
@@ -11,16 +12,10 @@ import numpy as np
 import openmc
 from smr.materials import materials
 from smr.plots import core_plots
-from smr.surfaces import lattice_pitch, bottom_fuel_stack, top_active_core, pellet_OR
+from smr.surfaces import lattice_pitch, bottom_fuel_stack, top_active_core, \
+    pellet_OR, active_fuel_length
 from smr.core import core_geometry
 from smr import inlet_temperature
-
-
-def clone(mat):
-    """Make a shallow copy of a material (sharing compositions)."""
-    mat_copy = copy.copy(mat)
-    mat_copy.id = None
-    return mat_copy
 
 
 # Define command-line options
@@ -29,8 +24,6 @@ parser.add_argument('--multipole', action='store_true',
                     help='Use multipole cross sections')
 parser.add_argument('--no-multipole', action='store_false',
                     help='Do not use multipole cross sections')
-parser.add_argument('-t', '--tallies', choices=('cell', 'mat'), default='cell',
-                    help='Whether to use distribmats or distribcells for tallies')
 parser.add_argument('-r', '--rings', type=int, default=10,
                     help='Number of annular regions in fuel')
 parser.add_argument('-a', '--axial', type=int, default=196,
@@ -57,18 +50,24 @@ else:
     ring_radii = None
 geometry = core_geometry(ring_radii, args.axial, args.depleted)
 
-#### "Differentiate" the geometry if using distribmats
-if args.tallies == 'mat':
-    # Count the number of instances for each cell and material
-    geometry.determine_paths(instances_only=True)
+h = active_fuel_length / args.axial
+fuel_mats = {}
 
-    # Extract all cells filled by a fuel material
-    fuel_mats = {m for m in materials if 'UO2 Fuel' in m.name}
+fuel_volume = pi * pellet_OR**2 * h / args.rings
+for cell in geometry.get_all_cells().values():
+    if cell.fill in materials:
+        # Determine volume of each fuel material
+        if 'UO2 Fuel' in cell.fill.name:
+            r_o = cell.region.bounding_box[1][0]
+            if r_o not in fuel_mats:
+                cell.fill = cell.fill.clone()
+                cell.fill.volume = fuel_volume
+                fuel_mats[r_o] = cell.fill
+            else:
+                cell.fill = fuel_mats[r_o]
+        else:
+            cell.fill.volume = 1.0
 
-    for cell in geometry.get_all_cells().values():
-        if cell.fill in fuel_mats:
-            # Fill cell with list of "differentiated" materials
-            cell.fill = [clone(cell.fill) for i in range(cell.num_instances)]
 
 #### Create OpenMC "materials.xml" file
 all_materials = geometry.get_all_materials()
@@ -107,38 +106,3 @@ if args.multipole:
 
 settings.export_to_xml(str(directory / 'settings.xml'))
 
-
-#### Create OpenMC "plots.xml" file
-plots = core_plots()
-plots.export_to_xml(str(directory / 'plots.xml'))
-
-
-####  Create OpenMC "tallies.xml" file
-tallies = openmc.Tallies()
-
-# Extract all fuel materials
-materials = geometry.get_materials_by_name(name='Fuel', matching=False)
-
-# If using distribcells, create distribcell tally needed for depletion
-if args.tallies == 'cell':
-    # Extract all cells filled by a fuel material
-    fuel_cells = []
-    for cell in geometry.get_all_cells().values():
-        if cell.fill in materials:
-            tally = openmc.Tally(name='depletion tally')
-            tally.scores = ['(n,p)', '(n,a)', '(n,gamma)',
-                            'fission', '(n,2n)', '(n,3n)', '(n,4n)']
-            tally.nuclides = cell.fill.get_nuclides()
-            tally.filters.append(openmc.DistribcellFilter([cell]))
-            tallies.append(tally)
-
-# If using distribmats, create material tally needed for depletion
-elif args.tallies == 'mat':
-    tally = openmc.Tally(name='depletion tally')
-    tally.scores = ['(n,p)', '(n,a)', '(n,gamma)',
-                    'fission', '(n,2n)', '(n,3n)', '(n,4n)']
-    tally.nuclides = materials[0].get_nuclides()
-    tally.filters = [openmc.MaterialFilter(materials)]
-    tallies.append(tally)
-
-tallies.export_to_xml(str(directory / 'tallies.xml'))

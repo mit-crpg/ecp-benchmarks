@@ -22,9 +22,7 @@ parser.add_argument('--multipole', action='store_true',
                     help='Use multipole cross sections')
 parser.add_argument('--no-multipole', action='store_false',
                     help='Do not use multipole cross sections')
-parser.add_argument('-t', '--tallies', choices=('cell', 'mat'), default='mat',
-                    help='Whether to use distribmats or distribcells for tallies')
-parser.add_argument('-a', '--axial', type=int, default=92,
+parser.add_argument('-a', '--axial', type=int, default=100,
                     help='Number of axial subdivisions in fuel')
 parser.add_argument('-d', '--depleted', action='store_true',
                     help='Whether UO2 compositions should represent depleted fuel')
@@ -99,40 +97,30 @@ for halfspace in surfs['lat grid box inner']:
 # Define geometry with a single assembly
 geometry = openmc.Geometry(root_universe)
 
-
-def clone(material):
-    """Perform copy of material but share nuclide densities"""
-    shared_mat = copy.copy(material)
-    shared_mat.id = None
-    return shared_mat
-
-
-#### "Differentiate" the geometry if using distribmats
 h = active_fuel_length / args.axial
-if args.tallies == 'mat':
-    # Count the number of instances for each cell and material
-    geometry.determine_paths(instances_only=True)
 
-    for cell in tqdm(geometry.get_all_material_cells().values(),
-                     desc='Differentiating materials'):
-        if cell.fill in materials:
-            # Fill cell with list of "differentiated" materials
-            cell.fill = [clone(cell.fill) for i in range(cell.num_instances)]
+fuel_mats = {}
 
-            # Determine volume of each fuel material
-            if 'UO2 Fuel' in cell.fill[0].name:
-                upper_right = cell.region.bounding_box[1]
-                if isclose(upper_right[0], rings[0]):
-                    ri, ro = 0.0, rings[0]
-                elif isclose(upper_right[0], rings[1]):
-                    ri, ro = rings[0], rings[1]
-                else:
-                    ri, ro = rings[1], pellet_OR
-                for mat in cell.fill:
-                    mat.volume = pi * (ro*ro - ri*ri) * h
+for cell in tqdm(geometry.get_all_material_cells().values(),
+                 desc='Assigning volume'):
+    if cell.fill in materials:
+        # Determine volume of each fuel material
+        if 'UO2 Fuel' in cell.fill.name:
+            upper_right = cell.region.bounding_box[1]
+            if isclose(upper_right[0], rings[0]):
+                ri, ro = 0.0, rings[0]
+            elif isclose(upper_right[0], rings[1]):
+                ri, ro = rings[0], rings[1]
             else:
-                for mat in cell.fill:
-                    mat.volume = 1.0
+                ri, ro = rings[1], pellet_OR
+            if ri not in fuel_mats:
+                cell.fill = cell.fill.clone()
+                cell.fill.volume = pi * (ro*ro - ri*ri) * h
+                fuel_mats[ri] = cell.fill
+            else:
+                cell.fill = fuel_mats[ri]
+        else:
+            cell.fill.volume = 1.0
 
 #### Create OpenMC "materials.xml" file
 print('Getting materials...')
@@ -173,34 +161,3 @@ if args.multipole:
     }
 
 settings.export_to_xml(str(directory / 'settings.xml'))
-
-
-####  Create OpenMC "tallies.xml" file
-tallies = openmc.Tallies()
-
-# Extract all fuel materials
-materials = geometry.get_materials_by_name(name='Fuel', matching=False)
-
-# If using distribcells, create distribcell tally needed for depletion
-if args.tallies == 'cell':
-    # Extract all cells filled by a fuel material
-    fuel_cells = []
-    for cell in geometry.get_all_cells().values():
-        if cell.fill in materials:
-            tally = openmc.Tally(name='depletion tally')
-            tally.scores = ['(n,p)', '(n,a)', '(n,gamma)',
-                            'fission', '(n,2n)', '(n,3n)', '(n,4n)']
-            tally.nuclides = cell.fill.get_nuclides()
-            tally.filters.append(openmc.DistribcellFilter([cell]))
-            tallies.append(tally)
-
-# If using distribmats, create material tally needed for depletion
-elif args.tallies == 'mat':
-    tally = openmc.Tally(name='depletion tally')
-    tally.scores = ['(n,p)', '(n,a)', '(n,gamma)',
-                    'fission', '(n,2n)', '(n,3n)', '(n,4n)']
-    tally.nuclides = materials[0].get_nuclides()
-    tally.filters = [openmc.MaterialFilter(materials)]
-    tallies.append(tally)
-
-tallies.export_to_xml(str(directory / 'tallies.xml'))
