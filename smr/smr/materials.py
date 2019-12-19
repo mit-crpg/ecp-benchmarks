@@ -192,7 +192,6 @@ aB_bsg = aB10_bsg + aB11_bsg
 
 # Create borosilicate glass material
 mats['BSG'] = openmc.Material(name='Borosilicate Glass')
-mats['BSG'].temperature = 300
 mats['BSG'].set_density('g/cc', 2.26)
 mats['BSG'].add_element('O', aO_bsg, 'ao')
 mats['BSG'].add_element('Si', aSi_bsg, 'ao')
@@ -205,7 +204,6 @@ mats['BSG'].add_nuclide('B11', aB11_bsg, 'ao')
 
 # Create 1.6% enriched UO2 fuel material
 mat = openmc.Material(name='1.6% Enr. UO2 Fuel')
-mat.temperature = 300
 mat.set_density('g/cc', 10.31341)
 mat.add_element('O', 2., 'ao')
 mat.add_element('U', 1., 'ao', enrichment=1.61006)
@@ -213,7 +211,6 @@ mats['UO2 1.6 fresh'] = mat
 
 # Create 2.4% enriched UO2 fuel material
 mat = openmc.Material(name='2.4% Enr. UO2 Fuel')
-mat.temperature = 300
 mat.set_density('g/cc', 10.29748)
 mat.add_element('O', 2., 'ao')
 mat.add_element('U', 1., 'ao', enrichment=2.39993)
@@ -221,7 +218,6 @@ mats['UO2 2.4 fresh'] = mat
 
 # Create 3.1% enriched UO2 fuel material
 mat = openmc.Material(name='3.1% Enr. UO2 Fuel')
-mat.temperature = 300
 mat.set_density('g/cc', 10.30166)
 mat.add_element('O', 2., 'ao')
 mat.add_element('U', 1., 'ao', enrichment=3.10221)
@@ -229,7 +225,6 @@ mats['UO2 3.1 fresh'] = mat
 
 # Depleted versions of 1.6%, 2.4%, 3.1% fuel
 mat = openmc.Material(name='2.4% Enr. UO2 Fuel')
-mat.temperature = 300
 mat.set_density('g/cc', 10.29748)
 mat.add_element('O', 2., 'ao')
 mat.add_element('U', 1., 'ao', enrichment=2.39993)
@@ -238,7 +233,6 @@ for nuc in _DEPLETION_NUCLIDES:
 mats['UO2 2.4 depleted'] = mat
 
 mat = openmc.Material(name='1.6% Enr. UO2 Fuel')
-mat.temperature = 300
 mat.set_density('g/cc', 10.31341)
 mat.add_element('O', 2., 'ao')
 mat.add_element('U', 1., 'ao', enrichment=1.61006)
@@ -247,7 +241,6 @@ for nuc in _DEPLETION_NUCLIDES:
 mats['UO2 1.6 depleted'] = mat
 
 mat = openmc.Material(name='3.1% Enr. UO2 Fuel')
-mat.temperature = 300
 mat.set_density('g/cc', 10.30166)
 mat.add_element('O', 2., 'ao')
 mat.add_element('U', 1., 'ao', enrichment=3.10221)
