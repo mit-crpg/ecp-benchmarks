@@ -13,7 +13,6 @@ NuScale DC application, chapter 4: https://www.nrc.gov/docs/ML1701/ML17013A274.p
 
 """
 
-import copy
 from math import tan, pi
 
 import numpy as np
