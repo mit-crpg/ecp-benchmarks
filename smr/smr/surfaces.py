@@ -69,7 +69,8 @@ spacer_height = 1.750*INCHES  # ML17013A274, Figure 4.2-7
 # assembly parameters
 assembly_length   = 95.89*INCHES  # ML17013A274, Table 4.1-2
 pin_pitch         = 0.496*INCHES  # ML17013A274, Table 4.1-2
-lattice_pitch     = 8.466*INCHES  # ML17013A274, Table 4.1-2
+#lattice_pitch     = 8.466*INCHES  # ML17013A274, Table 4.1-2
+lattice_pitch     = 17*pin_pitch
 grid_strap_side   = 21.47270
 top_nozzle_height = 3.551*INCHES  # ML17013A274, Figure 4.2-2
 top_nozzle_width  = 8.406*INCHES  # ML17013A274, Figure 4.2-2
