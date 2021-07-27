@@ -4,7 +4,7 @@ import os
 import shutil
 import copy
 import argparse
-from math import pi
+from math import pi, isclose
 from pathlib import Path
 
 import numpy as np
@@ -13,7 +13,7 @@ import openmc
 from smr.materials import materials
 from smr.plots import core_plots
 from smr.surfaces import lattice_pitch, bottom_fuel_stack, top_active_core, \
-    pellet_OR, surfs, pin_pitch
+    pellet_OR, surfs, pin_pitch, clad_IR, clad_OR
 import smr.surfaces
 import smr.pins
 from smr.core import core_geometry
@@ -63,18 +63,27 @@ geometry = core_geometry(ring_radii, args.axial, args.depleted)
 h = length / args.axial
 fuel_mats = {}
 
-fuel_volume = pi * pellet_OR**2 * h / (len(ring_radii) + 1)
 for cell in geometry.get_all_cells().values():
     if cell.fill in materials:
         # Determine volume of each fuel material
         if 'UO2 Fuel' in cell.fill.name:
-            r_o = cell.region.bounding_box[1][0]
-            if r_o not in fuel_mats:
-                cell.fill = cell.fill.clone()
-                cell.fill.volume = fuel_volume
-                fuel_mats[r_o] = cell.fill
+            upper_right = cell.region.bounding_box[1][0]
+            if isclose(upper_right, ring_radii[0]):
+                ri, ro = 0.0, ring_radii[0]
+            elif isclose(upper_right, ring_radii[1]):
+                ri, ro = ring_radii[0], ring_radii[1]
             else:
-                cell.fill = fuel_mats[r_o]
+                ri, ro = ring_radii[1], pellet_OR
+            if ri not in fuel_mats:
+                cell.fill = cell.fill.clone()
+                cell.fill.volume = pi * (ro*ro - ri*ri) * h
+                fuel_mats[ri] = cell.fill
+            else:
+                cell.fill = fuel_mats[ri]
+        elif cell.fill.name == 'Helium':
+            cell.fill.volume = pi * (clad_IR**2 - pellet_OR**2) * h
+        elif cell.fill.name == 'M5':
+            cell.fill.volume = pi * (clad_OR**2 - clad_IR**2) * h
         else:
             cell.fill.volume = 1.0
 
