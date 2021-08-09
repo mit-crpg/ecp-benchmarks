@@ -66,7 +66,8 @@ fuel_mats = {}
 for cell in geometry.get_all_cells().values():
     if cell.fill in materials:
         # Determine volume of each fuel material
-        if 'UO2 Fuel' in cell.fill.name:
+        name = cell.fill.name
+        if 'UO2 Fuel' in name:
             upper_right = cell.region.bounding_box[1][0]
             if isclose(upper_right, ring_radii[0]):
                 ri, ro = 0.0, ring_radii[0]
@@ -74,16 +75,17 @@ for cell in geometry.get_all_cells().values():
                 ri, ro = ring_radii[0], ring_radii[1]
             else:
                 ri, ro = ring_radii[1], pellet_OR
-            if ri not in fuel_mats:
+            if (name, ri) not in fuel_mats:
                 cell.fill = cell.fill.clone()
                 cell.fill.volume = pi * (ro*ro - ri*ri) * h
-                fuel_mats[ri] = cell.fill
+                fuel_mats[name, ri] = cell.fill
             else:
-                cell.fill = fuel_mats[ri]
-        elif cell.fill.name == 'Helium':
+                cell.fill = fuel_mats[name, ri]
+        elif name == 'Helium':
             cell.fill.volume = pi * (clad_IR**2 - pellet_OR**2) * h
-        elif cell.fill.name == 'M5':
-            cell.fill.volume = pi * (clad_OR**2 - clad_IR**2) * h
+        elif name == 'M5':
+            # Clad is not subdivided
+            cell.fill.volume = pi * (clad_OR**2 - clad_IR**2) * length
         else:
             cell.fill.volume = 1.0
 
@@ -92,7 +94,6 @@ for cell in geometry.get_all_cells().values():
 all_materials = geometry.get_all_materials()
 materials = openmc.Materials(all_materials.values())
 materials.export_to_xml(str(directory / 'materials.xml'))
-
 
 #### Create OpenMC "geometry.xml" file
 geometry.export_to_xml(str(directory / 'geometry.xml'))
@@ -125,3 +126,11 @@ if args.multipole:
 
 settings.export_to_xml(str(directory / 'settings.xml'))
 
+# Check assembly power distribution
+core_lattice = geometry.get_cells_by_fill_name('Main core')[0].fill
+mesh = openmc.RegularMesh.from_rect_lattice(core_lattice)
+assembly_power = openmc.Tally()
+assembly_power.filters = [openmc.MeshFilter(mesh)]
+assembly_power.scores = ['nu-fission']
+tallies = openmc.Tallies([assembly_power])
+tallies.export_to_xml(directory / 'tallies.xml')
