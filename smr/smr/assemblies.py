@@ -215,7 +215,7 @@ def assembly_universes(ring_radii, num_axial, depleted):
                                            gtu, gtu,  gtu,  gtu, gtu,
                                              gtu,              gtu,
                                                gtu,   gtu,   gtu     ]
-        univs['Assembly (2.4%) no BAs' + comment] = \
+        univs['Assembly (2.4%)' + comment] = \
             make_assembly('Assembly (2.4%) no BAs' + comment, universes)
 
         # WITH CONTROL ROD D BANK
