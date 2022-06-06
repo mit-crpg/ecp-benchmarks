@@ -20,16 +20,18 @@ from smr.pins import pin_universes, make_stack
 parser = argparse.ArgumentParser()
 parser.add_argument('--multipole', action='store_true',
                     help='Use multipole cross sections')
-parser.add_argument('--no-multipole', action='store_false',
+parser.add_argument('--no-multipole', dest='multipole', action='store_false',
                     help='Do not use multipole cross sections')
-parser.add_argument('-t', '--tallies', choices=('cell', 'mat'), default='mat',
-                    help='Whether to use distribmats or distribcells for tallies')
-parser.add_argument('-a', '--axial', type=int, default=92,
+parser.add_argument('--clone', action='store_true',
+                    help='Clone materials for each cell instance')
+parser.add_argument('--no-clone', dest='clone', action='store_false',
+                    help='Do not clone materials for each cell instance')
+parser.add_argument('-a', '--axial', type=int, default=100,
                     help='Number of axial subdivisions in fuel')
 parser.add_argument('-d', '--depleted', action='store_true',
                     help='Whether UO2 compositions should represent depleted fuel')
 parser.add_argument('-o', '--output-dir', type=Path, default=None)
-parser.set_defaults(multipole=True)
+parser.set_defaults(clone=False, multipole=True)
 args = parser.parse_args()
 
 # Make directory for inputs
@@ -106,33 +108,52 @@ def clone(material):
     shared_mat.id = None
     return shared_mat
 
-
-#### "Differentiate" the geometry if using distribmats
 h = active_fuel_length / args.axial
-if args.tallies == 'mat':
-    # Count the number of instances for each cell and material
+
+fuel_mats = {}
+
+# Count the number of instances for each cell and material
+if args.clone:
     geometry.determine_paths(instances_only=True)
 
-    for cell in tqdm(geometry.get_all_material_cells().values(),
-                     desc='Differentiating materials'):
-        if cell.fill in materials:
-            # Fill cell with list of "differentiated" materials
+for cell in tqdm(geometry.get_all_material_cells().values(),
+                 desc='Differentiating materials / assigning volume'):
+    if cell.fill in materials:
+        # Determine if this material is fuel
+        is_fuel = 'UO2 Fuel' in cell.fill.name
+
+        # Fill cell with list of "differentiated" materials if requested
+        if args.clone:
             cell.fill = [clone(cell.fill) for i in range(cell.num_instances)]
 
-            # Determine volume of each fuel material
-            if 'UO2 Fuel' in cell.fill[0].name:
-                upper_right = cell.region.bounding_box[1]
-                if isclose(upper_right[0], rings[0]):
-                    ri, ro = 0.0, rings[0]
-                elif isclose(upper_right[0], rings[1]):
-                    ri, ro = rings[0], rings[1]
-                else:
-                    ri, ro = rings[1], pellet_OR
+        # Determine volume of each fuel material
+        if is_fuel:
+            upper_right = cell.region.bounding_box[1]
+            if isclose(upper_right[0], rings[0]):
+                ri, ro = 0.0, rings[0]
+            elif isclose(upper_right[0], rings[1]):
+                ri, ro = rings[0], rings[1]
+            else:
+                ri, ro = rings[1], pellet_OR
+
+            if args.clone:
                 for mat in cell.fill:
                     mat.volume = pi * (ro*ro - ri*ri) * h
             else:
+                # In non-clone mode, we still need to create a copy of the
+                # material for each ring since they get different volumes
+                if ri not in fuel_mats:
+                    cell.fill = cell.fill.clone()
+                    cell.fill.volume = pi * (ro*ro - ri*ri) * h
+                    fuel_mats[ri] = cell.fill
+                else:
+                    cell.fill = fuel_mats[ri]
+        else:
+            if args.clone:
                 for mat in cell.fill:
                     mat.volume = 1.0
+            else:
+                cell.fill.volume = 1.0
 
 #### Create OpenMC "materials.xml" file
 print('Getting materials...')
@@ -173,34 +194,3 @@ if args.multipole:
     }
 
 settings.export_to_xml(str(directory / 'settings.xml'))
-
-
-####  Create OpenMC "tallies.xml" file
-tallies = openmc.Tallies()
-
-# Extract all fuel materials
-materials = geometry.get_materials_by_name(name='Fuel', matching=False)
-
-# If using distribcells, create distribcell tally needed for depletion
-if args.tallies == 'cell':
-    # Extract all cells filled by a fuel material
-    fuel_cells = []
-    for cell in geometry.get_all_cells().values():
-        if cell.fill in materials:
-            tally = openmc.Tally(name='depletion tally')
-            tally.scores = ['(n,p)', '(n,a)', '(n,gamma)',
-                            'fission', '(n,2n)', '(n,3n)', '(n,4n)']
-            tally.nuclides = cell.fill.get_nuclides()
-            tally.filters.append(openmc.DistribcellFilter([cell]))
-            tallies.append(tally)
-
-# If using distribmats, create material tally needed for depletion
-elif args.tallies == 'mat':
-    tally = openmc.Tally(name='depletion tally')
-    tally.scores = ['(n,p)', '(n,a)', '(n,gamma)',
-                    'fission', '(n,2n)', '(n,3n)', '(n,4n)']
-    tally.nuclides = materials[0].get_nuclides()
-    tally.filters = [openmc.MaterialFilter(materials)]
-    tallies.append(tally)
-
-tallies.export_to_xml(str(directory / 'tallies.xml'))
