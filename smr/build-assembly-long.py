@@ -20,14 +20,18 @@ from smr.pins import pin_universes, make_stack
 parser = argparse.ArgumentParser()
 parser.add_argument('--multipole', action='store_true',
                     help='Use multipole cross sections')
-parser.add_argument('--no-multipole', action='store_false',
+parser.add_argument('--no-multipole', dest='multipole', action='store_false',
                     help='Do not use multipole cross sections')
+parser.add_argument('--clone', action='store_true',
+                    help='Clone materials for each cell instance')
+parser.add_argument('--no-clone', dest='clone', action='store_false',
+                    help='Do not clone materials for each cell instance')
 parser.add_argument('-a', '--axial', type=int, default=100,
                     help='Number of axial subdivisions in fuel')
 parser.add_argument('-d', '--depleted', action='store_true',
                     help='Whether UO2 compositions should represent depleted fuel')
 parser.add_argument('-o', '--output-dir', type=Path, default=None)
-parser.set_defaults(multipole=True)
+parser.set_defaults(clone=False, multipole=True)
 args = parser.parse_args()
 
 # Make directory for inputs
@@ -97,15 +101,33 @@ for halfspace in surfs['lat grid box inner']:
 # Define geometry with a single assembly
 geometry = openmc.Geometry(root_universe)
 
+
+def clone(material):
+    """Perform copy of material but share nuclide densities"""
+    shared_mat = copy.copy(material)
+    shared_mat.id = None
+    return shared_mat
+
 h = active_fuel_length / args.axial
 
 fuel_mats = {}
 
+# Count the number of instances for each cell and material
+if args.clone:
+    geometry.determine_paths(instances_only=True)
+
 for cell in tqdm(geometry.get_all_material_cells().values(),
-                 desc='Assigning volume'):
+                 desc='Differentiating materials / assigning volume'):
     if cell.fill in materials:
+        # Determine if this material is fuel
+        is_fuel = 'UO2 Fuel' in cell.fill.name
+
+        # Fill cell with list of "differentiated" materials if requested
+        if args.clone:
+            cell.fill = [clone(cell.fill) for i in range(cell.num_instances)]
+
         # Determine volume of each fuel material
-        if 'UO2 Fuel' in cell.fill.name:
+        if is_fuel:
             upper_right = cell.region.bounding_box[1]
             if isclose(upper_right[0], rings[0]):
                 ri, ro = 0.0, rings[0]
@@ -113,14 +135,25 @@ for cell in tqdm(geometry.get_all_material_cells().values(),
                 ri, ro = rings[0], rings[1]
             else:
                 ri, ro = rings[1], pellet_OR
-            if ri not in fuel_mats:
-                cell.fill = cell.fill.clone()
-                cell.fill.volume = pi * (ro*ro - ri*ri) * h
-                fuel_mats[ri] = cell.fill
+
+            if args.clone:
+                for mat in cell.fill:
+                    mat.volume = pi * (ro*ro - ri*ri) * h
             else:
-                cell.fill = fuel_mats[ri]
+                # In non-clone mode, we still need to create a copy of the
+                # material for each ring since they get different volumes
+                if ri not in fuel_mats:
+                    cell.fill = cell.fill.clone()
+                    cell.fill.volume = pi * (ro*ro - ri*ri) * h
+                    fuel_mats[ri] = cell.fill
+                else:
+                    cell.fill = fuel_mats[ri]
         else:
-            cell.fill.volume = 1.0
+            if args.clone:
+                for mat in cell.fill:
+                    mat.volume = 1.0
+            else:
+                cell.fill.volume = 1.0
 
 #### Create OpenMC "materials.xml" file
 print('Getting materials...')
