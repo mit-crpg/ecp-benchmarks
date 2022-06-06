@@ -83,7 +83,7 @@ rpv_IR             = 96.5*INCHES/2  # ML17013A274, Table 5.3-1
 rpv_OR             = 105*INCHES/2   # ML17013A274, Table 5.3-1
 
 # axial parameters
-reference_z = 0.0
+reference_z = -36.6205
 lowest_extent        = reference_z
 bottom_support_plate = lowest_extent + 20.000
 top_support_plate    = bottom_support_plate + 5.000
@@ -166,8 +166,8 @@ surfs['BA IR 7'] = openmc.ZCylinder(
     r=burn_abs_r7, name='BA IR 7')
 surfs['BA IR 8'] = openmc.ZCylinder(
     r=burn_abs_r8, name='BA IR 8')
-surfs['IT IR'] = copy.deepcopy(surfs['BA IR 5'])
-surfs['IT OR'] = copy.deepcopy(surfs['BA IR 6'])
+surfs['IT IR'] = surfs['BA IR 5']
+surfs['IT OR'] = surfs['BA IR 6']
 
 # Rectangular prisms for grid spacers
 surfs['rod grid box'] = \
@@ -184,8 +184,8 @@ surfs['bot support plate'] = openmc.ZPlane(
 surfs['top support plate'] = openmc.ZPlane(
     z0=top_support_plate, name='top support plate')
 surfs['bottom FR'] = openmc.ZPlane(z0=bottom_fuel_rod, name='bottom FR')
-surfs['top lower nozzle'] = copy.deepcopy(surfs['bottom FR'])
-surfs['bot lower nozzle'] = copy.deepcopy(surfs['top support plate'])
+surfs['top lower nozzle'] = surfs['bottom FR']
+surfs['bot lower nozzle'] = surfs['top support plate']
 
 # axial surfaces
 surfs['bot active core'] = openmc.ZPlane(
@@ -193,7 +193,7 @@ surfs['bot active core'] = openmc.ZPlane(
 surfs['top active core'] = openmc.ZPlane(
     z0=top_active_core, name='top active core')
 
-surfs['top lower thimble'] = copy.deepcopy(surfs['bot active core'])
+surfs['top lower thimble'] = surfs['bot active core']
 surfs['BA bot'] = openmc.ZPlane(
     z0=bot_burn_abs, name='bottom of BA')
 

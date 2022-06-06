@@ -11,7 +11,7 @@ import numpy as np
 import openmc
 from smr.materials import materials
 from smr.plots import core_plots
-from smr.surfaces import lattice_pitch, bottom_fuel_stack, top_active_core
+from smr.surfaces import lattice_pitch, bottom_fuel_stack, top_active_core, pellet_OR
 from smr.core import core_geometry
 from smr import inlet_temperature
 
@@ -25,8 +25,10 @@ def clone(mat):
 
 # Define command-line options
 parser = argparse.ArgumentParser()
-parser.add_argument('-m', '--multipole', action='store_true',
-                    help='Whether to use multipole cross sections')
+parser.add_argument('--multipole', action='store_true',
+                    help='Use multipole cross sections')
+parser.add_argument('--no-multipole', action='store_false',
+                    help='Do not use multipole cross sections')
 parser.add_argument('-t', '--tallies', choices=('cell', 'mat'), default='cell',
                     help='Whether to use distribmats or distribcells for tallies')
 parser.add_argument('-r', '--rings', type=int, default=10,
@@ -36,6 +38,7 @@ parser.add_argument('-a', '--axial', type=int, default=196,
 parser.add_argument('-d', '--depleted', action='store_true',
                     help='Whether UO2 compositions should represent depleted fuel')
 parser.add_argument('-o', '--output-dir', type=Path, default=None)
+parser.set_defaults(multipole=True)
 args = parser.parse_args()
 
 # Make directory for inputs
@@ -48,7 +51,11 @@ else:
     directory = args.output_dir
 directory.mkdir(exist_ok=True)
 
-geometry = core_geometry(args.rings, args.axial, args.depleted)
+if args.rings > 1:
+    ring_radii = np.sqrt(np.arange(1, args.rings)*pellet_OR**2 / args.rings)
+else:
+    ring_radii = None
+geometry = core_geometry(ring_radii, args.axial, args.depleted)
 
 #### "Differentiate" the geometry if using distribmats
 if args.tallies == 'mat':
