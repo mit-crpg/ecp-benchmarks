@@ -12,7 +12,7 @@ converted to actual dimensions by scaling according to the width of an assembly.
 import openmc
 
 from .materials import mats
-from .surfaces import lattice_pitch
+from smr import surfaces
 
 
 def make_reflector(name, parameters):
@@ -91,6 +91,7 @@ def reflector_universes():
 
     # All pixel widths are scaled according to the actual width of an assembly
     # divided by the width of an assembly in pixels
+    lattice_pitch = surfaces.lattice_pitch
     scale = lattice_pitch/width
 
     # Physical positions
