@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import argparse
-import copy
 from math import pi, isclose
 from pathlib import Path
 
@@ -9,10 +8,9 @@ import numpy as np
 from tqdm import tqdm
 import openmc
 
-from smr.materials import materials, mats
+from smr.materials import materials, clone
 from smr.surfaces import surfs, lattice_pitch, pin_pitch, bottom_fuel_stack, \
-    top_active_core, pellet_OR, clad_OR, clad_IR, guide_tube_IR, guide_tube_OR, \
-    active_fuel_length
+    top_active_core, pellet_OR, active_fuel_length
 from smr.pins import pin_universes, make_stack
 
 
@@ -100,13 +98,6 @@ for halfspace in surfs['lat grid box inner']:
 
 # Define geometry with a single assembly
 geometry = openmc.Geometry(root_universe)
-
-
-def clone(material):
-    """Perform copy of material but share nuclide densities"""
-    shared_mat = copy.copy(material)
-    shared_mat.id = None
-    return shared_mat
 
 h = active_fuel_length / args.axial
 

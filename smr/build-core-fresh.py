@@ -9,18 +9,11 @@ import numpy as np
 import openmc
 from tqdm import tqdm
 
-from smr.materials import materials
+from smr.materials import materials, clone
 from smr.surfaces import lattice_pitch, bottom_fuel_stack, top_active_core, \
     pellet_OR, active_fuel_length
 from smr.core import core_geometry
 from smr import inlet_temperature
-
-
-def clone(material):
-    """Perform copy of material but share nuclide densities"""
-    shared_mat = copy.copy(material)
-    shared_mat.id = None
-    return shared_mat
 
 
 # Define command-line options
