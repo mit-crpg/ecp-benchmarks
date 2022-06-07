@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
 
 import argparse
-import copy
 from pathlib import Path
 
 import numpy as np
 from tqdm import tqdm
 
 import openmc
-from smr.materials import materials
+from smr.materials import materials, clone
 from smr.surfaces import surfs, lattice_pitch, bottom_fuel_stack, top_active_core, pellet_OR
 from smr.assemblies import assembly_universes
 from smr.plots import assembly_plots
@@ -57,14 +56,6 @@ main_cell = openmc.Cell(
 )
 root_univ = openmc.Universe(cells=[main_cell])
 geometry = openmc.Geometry(root_univ)
-
-
-def clone(material):
-    """Perform copy of material but share nuclide densities"""
-    shared_mat = copy.copy(material)
-    shared_mat.id = None
-    return shared_mat
-
 
 #### "Differentiate" the geometry if using distribmats
 if args.tallies == 'mat':

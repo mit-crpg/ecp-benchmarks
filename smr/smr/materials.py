@@ -1,5 +1,7 @@
 """Instantiate the OpenMC Materials needed by the core model."""
 
+import copy
+
 import openmc
 from openmc.data import atomic_weight, atomic_mass, water_density
 
@@ -252,3 +254,10 @@ mats['UO2 3.1 depleted'] = mat
 # Construct a collection of Materials to export to XML
 
 materials = openmc.Materials(mats.values())
+
+
+def clone(material):
+    """Perform copy of material but share nuclide densities"""
+    shared_mat = copy.copy(material)
+    shared_mat.id = None
+    return shared_mat
