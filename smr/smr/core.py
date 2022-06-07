@@ -5,9 +5,9 @@ import numpy as np
 import openmc
 
 from .materials import mats
-from .surfaces import surfs, lattice_pitch
 from .reflector import reflector_universes
 from .assemblies import assembly_universes
+from smr import surfaces
 
 
 def core_geometry(ring_radii, num_axial, depleted):
@@ -34,6 +34,7 @@ def core_geometry(ring_radii, num_axial, depleted):
 
     # Construct main core lattice
     core = openmc.RectLattice(name='Main core')
+    lattice_pitch = surfaces.lattice_pitch
     core.lower_left = (-9*lattice_pitch/2, -9*lattice_pitch/2)
     core.pitch = (lattice_pitch, lattice_pitch)
     universes = np.tile(reflector['solid'], (9, 9))
@@ -119,6 +120,7 @@ def core_geometry(ring_radii, num_axial, depleted):
     core.universes = universes
 
     root_univ = openmc.Universe(universe_id=0, name='root universe')
+    surfs = surfaces.surfs
 
     # Cylinder filled with core lattice
     cell = openmc.Cell(name='Main core')

@@ -6,17 +6,17 @@ from pathlib import Path
 
 import openmc
 from smr.materials import materials
-from smr.surfaces import lattice_pitch, bottom_fuel_stack, top_active_core, \
+from smr.surfaces import bottom_fuel_stack, top_active_core, \
     pellet_OR, pin_pitch, clad_IR, clad_OR, active_fuel_length
 from smr.core import core_geometry
 from smr import inlet_temperature
-
+import smr.surfaces
 
 # Define command-line options
 parser = argparse.ArgumentParser()
 parser.add_argument('--multipole', action='store_true',
                     help='Use multipole cross sections')
-parser.add_argument('--no-multipole', action='store_false',
+parser.add_argument('--no-multipole', dest='multipole', action='store_false',
                     help='Do not use multipole cross sections')
 parser.add_argument('-a', '--axial', type=int, default=100,
                     help='Number of axial subdivisions in fuel')
@@ -35,6 +35,9 @@ if args.output_dir is None:
 else:
     directory = args.output_dir
 directory.mkdir(exist_ok=True)
+
+# Modify lattice pitch
+smr.surfaces.lattice_pitch = lattice_pitch = 17*smr.surfaces.pin_pitch
 
 ring_radii = [0.1*pin_pitch, 0.2*pin_pitch]
 

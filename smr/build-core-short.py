@@ -1,24 +1,17 @@
 #!/usr/bin/env python3
 
-import os
-import shutil
-import copy
 import argparse
 from math import pi, isclose
 from pathlib import Path
 
-import numpy as np
-
 import openmc
 from smr.materials import materials
-from smr.plots import core_plots
-from smr.surfaces import lattice_pitch, bottom_fuel_stack, top_active_core, \
+from smr.surfaces import bottom_fuel_stack, top_active_core, \
     pellet_OR, surfs, pin_pitch, clad_IR, clad_OR
 import smr.surfaces
 import smr.pins
 from smr.core import core_geometry
 from smr import inlet_temperature
-
 
 # Define command-line options
 parser = argparse.ArgumentParser()
@@ -43,6 +36,9 @@ if args.output_dir is None:
 else:
     directory = args.output_dir
 directory.mkdir(exist_ok=True)
+
+# Modify lattice pitch
+smr.surfaces.lattice_pitch = lattice_pitch = 17*smr.surfaces.pin_pitch
 
 # Modify fuel length
 length = 3. * pin_pitch
