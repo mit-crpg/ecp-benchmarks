@@ -10,7 +10,6 @@ import openmc
 from smr.materials import materials, clone
 from smr.surfaces import surfs, lattice_pitch, bottom_fuel_stack, top_active_core, pellet_OR
 from smr.assemblies import assembly_universes
-from smr.plots import assembly_plots
 from smr import inlet_temperature
 
 
@@ -20,6 +19,10 @@ parser.add_argument('--multipole', action='store_true',
                     help='Use multipole cross sections')
 parser.add_argument('--no-multipole', action='store_false',
                     help='Do not use multipole cross sections')
+parser.add_argument('--clone', action='store_true',
+                    help='Clone materials for each cell instance')
+parser.add_argument('--no-clone', dest='clone', action='store_false',
+                    help='Do not clone materials for each cell instance')
 parser.add_argument('-t', '--tallies', choices=('cell', 'mat'), default='mat',
                     help='Whether to use distribmats or distribcells for tallies')
 parser.add_argument('-r', '--rings', type=int, default=10,
@@ -29,7 +32,7 @@ parser.add_argument('-a', '--axial', type=int, default=196,
 parser.add_argument('-d', '--depleted', action='store_true',
                     help='Whether UO2 compositions should represent depleted fuel')
 parser.add_argument('-o', '--output-dir', type=Path, default=None)
-parser.set_defaults(multipole=True)
+parser.set_defaults(clone=False, multipole=True)
 args = parser.parse_args()
 
 # Make directory for inputs
@@ -48,17 +51,17 @@ if args.rings > 1:
 else:
     ring_radii = None
 assembly = assembly_universes(ring_radii, args.axial, args.depleted)
-lattice_sides = openmc.model.get_rectangular_prism(lattice_pitch, lattice_pitch,
-                                                   boundary_type='reflective')
+lattice_sides = openmc.model.rectangular_prism(lattice_pitch, lattice_pitch,
+                                               boundary_type='reflective')
 main_cell = openmc.Cell(
-    fill=assembly['Assembly (3.1%) 16BA'],
+    fill=assembly['Assembly (3.1%)'],
     region=lattice_sides & +surfs['lower bound'] & -surfs['upper bound']
 )
 root_univ = openmc.Universe(cells=[main_cell])
 geometry = openmc.Geometry(root_univ)
 
 #### "Differentiate" the geometry if using distribmats
-if args.tallies == 'mat':
+if args.clone:
     # Count the number of instances for each cell and material
     geometry.determine_paths(instances_only=True)
 
@@ -98,7 +101,7 @@ settings.inactive = 100
 settings.particles = 10000
 settings.output = {'tallies': False, 'summary': False}
 settings.source = source
-settings.sourcepoint_write = False
+settings.sourcepoint = {'write': False}
 settings.temperature = {
     'default': inlet_temperature,
     'method': 'interpolation',
@@ -140,7 +143,3 @@ elif args.tallies == 'mat':
     tallies.append(tally)
 
 tallies.export_to_xml(str(directory / 'tallies.xml'))
-
-# Create plots
-plots = assembly_plots(main_cell.fill)
-plots.export_to_xml(str(directory / 'plots.xml'))
