@@ -17,7 +17,7 @@ from smr import inlet_temperature
 parser = argparse.ArgumentParser()
 parser.add_argument('--multipole', action='store_true',
                     help='Use multipole cross sections')
-parser.add_argument('--no-multipole', action='store_false',
+parser.add_argument('--no-multipole', dest='multipole', action='store_false',
                     help='Do not use multipole cross sections')
 parser.add_argument('--clone', action='store_true',
                     help='Clone materials for each cell instance')
