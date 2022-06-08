@@ -174,14 +174,13 @@ settings.particles = 10000
 settings.output = {'tallies': False, 'summary': False}
 settings.source = source
 settings.sourcepoint = {'write': False}
-
-if args.multipole:
-    settings.temperature = {
-        'multipole': True,
-        'tolerance': 1000,
-        'default': 531.5,
-        'method': 'interpolation',
+settings.temperature = {
+    'default': 531.5,
+    'method': 'interpolation',
         'range': (500.0, 1300.0)
-    }
+}
+if args.multipole:
+    settings.temperature['multipole'] = True
+    settings.temperature['tolerance'] = 1000
 
 settings.export_to_xml(str(directory / 'settings.xml'))

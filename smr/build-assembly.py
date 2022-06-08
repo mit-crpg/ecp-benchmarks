@@ -10,7 +10,6 @@ import openmc
 from smr.materials import materials, clone
 from smr.surfaces import surfs, lattice_pitch, bottom_fuel_stack, top_active_core, pellet_OR
 from smr.assemblies import assembly_universes
-from smr.plots import assembly_plots
 from smr import inlet_temperature
 
 
@@ -48,10 +47,10 @@ if args.rings > 1:
 else:
     ring_radii = None
 assembly = assembly_universes(ring_radii, args.axial, args.depleted)
-lattice_sides = openmc.model.get_rectangular_prism(lattice_pitch, lattice_pitch,
-                                                   boundary_type='reflective')
+lattice_sides = openmc.model.rectangular_prism(lattice_pitch, lattice_pitch,
+                                               boundary_type='reflective')
 main_cell = openmc.Cell(
-    fill=assembly['Assembly (3.1%) 16BA'],
+    fill=assembly['Assembly (3.1%)'],
     region=lattice_sides & +surfs['lower bound'] & -surfs['upper bound']
 )
 root_univ = openmc.Universe(cells=[main_cell])
@@ -98,7 +97,7 @@ settings.inactive = 100
 settings.particles = 10000
 settings.output = {'tallies': False, 'summary': False}
 settings.source = source
-settings.sourcepoint_write = False
+settings.sourcepoint = {'write': False}
 settings.temperature = {
     'default': inlet_temperature,
     'method': 'interpolation',
@@ -140,7 +139,3 @@ elif args.tallies == 'mat':
     tallies.append(tally)
 
 tallies.export_to_xml(str(directory / 'tallies.xml'))
-
-# Create plots
-plots = assembly_plots(main_cell.fill)
-plots.export_to_xml(str(directory / 'plots.xml'))
