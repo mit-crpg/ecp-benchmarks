@@ -109,8 +109,7 @@ settings.inactive = 100
 settings.particles = 10000
 settings.output = {'tallies': False, 'summary': False}
 settings.source = source
-settings.sourcepoint_write = False
-
+settings.sourcepoint = {'write': False}
 settings.temperature = {
     'default': inlet_temperature,
     'method': 'interpolation',

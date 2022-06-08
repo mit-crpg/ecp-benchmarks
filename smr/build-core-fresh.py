@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import copy
 import argparse
 from math import pi
 from pathlib import Path
@@ -109,8 +108,7 @@ settings.inactive = 100
 settings.particles = 10000
 settings.output = {'tallies': False, 'summary': False}
 settings.source = source
-settings.sourcepoint_write = False
-
+settings.sourcepoint = {'write': False}
 settings.temperature = {
     'default': inlet_temperature,
     'method': 'interpolation',
@@ -121,4 +119,3 @@ if args.multipole:
     settings.temperature['tolerance'] = 1000
 
 settings.export_to_xml(str(directory / 'settings.xml'))
-
