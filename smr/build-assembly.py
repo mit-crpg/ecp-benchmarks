@@ -19,6 +19,10 @@ parser.add_argument('--multipole', action='store_true',
                     help='Use multipole cross sections')
 parser.add_argument('--no-multipole', action='store_false',
                     help='Do not use multipole cross sections')
+parser.add_argument('--clone', action='store_true',
+                    help='Clone materials for each cell instance')
+parser.add_argument('--no-clone', dest='clone', action='store_false',
+                    help='Do not clone materials for each cell instance')
 parser.add_argument('-t', '--tallies', choices=('cell', 'mat'), default='mat',
                     help='Whether to use distribmats or distribcells for tallies')
 parser.add_argument('-r', '--rings', type=int, default=10,
@@ -28,7 +32,7 @@ parser.add_argument('-a', '--axial', type=int, default=196,
 parser.add_argument('-d', '--depleted', action='store_true',
                     help='Whether UO2 compositions should represent depleted fuel')
 parser.add_argument('-o', '--output-dir', type=Path, default=None)
-parser.set_defaults(multipole=True)
+parser.set_defaults(clone=False, multipole=True)
 args = parser.parse_args()
 
 # Make directory for inputs
@@ -57,7 +61,7 @@ root_univ = openmc.Universe(cells=[main_cell])
 geometry = openmc.Geometry(root_univ)
 
 #### "Differentiate" the geometry if using distribmats
-if args.tallies == 'mat':
+if args.clone:
     # Count the number of instances for each cell and material
     geometry.determine_paths(instances_only=True)
 
